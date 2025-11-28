@@ -1,0 +1,132 @@
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+  <div class="main-content screenfixed new-margin-T dash_big_screen" >
+  <div class="container-fluid2 ">
+  
+  
+  <div class="row mt-2 " *ngIf="Entry_View">
+   
+    <div class="col-md-12 pl-0 pr-0">
+      <div class="dt-card mb-0 pb-1 pt-4">         
+          <div class="dt-card__body mb-0 pb-0">
+             
+              <div class="form-row">
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Region<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                  <div class="col-md-3 col-sm-3 mb-2">
+                      <input type="text" class="form-control"[(ngModel)]="Region_.Region_Name" name="Region_.Region_Name"  placeholder="Region">        
+                  </div>
+            
+                  <div class=" row col-4">
+                    <label for="normal-input-4" class="col-md-3  col-form-label text-sm-right">From Time<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                    <div class="col-md-9">
+                        <!-- <input type="time" [(ngModel)]="Task_.Time" min="09:00" max="18:00" name="Task_.Time" class="form-control" placeholder="Time" > -->
+                        <input [ngxTimepicker]="picker"  [(ngModel)]="Region_.From_Time" [format]="24" class="form-control">
+        <ngx-material-timepicker #picker></ngx-material-timepicker>
+                    </div>
+                </div>
+                <div class=" row col-4">
+                    <label for="normal-input-4" class="col-md-3  col-form-label text-sm-right">To Time<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                    <div class="col-md-9 ">
+                        <input class="form-control" [ngxTimepicker]="picker2"  [(ngModel)]="Region_.To_Time" [format]="24">
+                        <ngx-material-timepicker #picker2></ngx-material-timepicker>
+                        <!-- <input type="time" [(ngModel)]="Task_.Estimated_Time" name="Task_.Estimated_Time" class="form-control" placeholder="Estimated_Time"  > -->
+         
+                    </div>
+                </div>
+                  <div class="col-md-0 col-sm-0 mt-0 ml-1">  
+                    <button mat-raised-button type="submit" class="close-button-style pull-right mr-1 " (click)="Close_Click()">Close</button>
+                    <button mat-raised-button type="submit" [hidden]="Region_Save==false"id="Save_Button"  class="save-button-style pull-right mr-1" (click)="Save_Region()">Save</button>
+                 
+                      </div>
+              </div>
+       
+          </div>
+      </div>        
+    </div> 
+  
+  
+  
+  </div>
+  <div class="row " *ngIf="!Entry_View">
+  
+  
+   <div class="col-md-12 pr-0 pl-0 mt-2">
+    <div class="dt-card mb-2 pb-1 pt-3">         
+        <div class="dt-card__body mb-0 pb-0">
+            <form class="mb-0">           
+            <div class="form-row" style="padding-left: 10px;">
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right mr-0">Region</label>
+            
+                <div class="col-md-4  col-sm-4  mb-2">  
+                    <input type="text" class="form-control"[(ngModel)]="Search_Region_" name="Search_Region_"  placeholder="Region">
+                  
+                </div>
+
+
+
+        
+                
+                <div class="col-md-0 col-sm-0 mt-0  ml-1" >                    
+                     <button (click)="Search_Region()" mat-raised-button type="submit" class="other-button-style pull-left mr-1">Search</button>
+                     <button (click)="Create_New()" mat-raised-button type="submit"  class="save-button-style pull-left mr-1 ">Create New</button>
+
+                    </div>
+            </div>
+        </form>
+        </div>
+    </div>        
+  </div> 
+  
+  
+  
+ 
+  
+  <div class="col-md-12 pr-0 pl-0"   [style.height.px]="myInnerHeight" itemSize="10" >
+    <div class="dt-module" >            
+        <div class="dt-module__container" >
+            <!-- style="overflow: scroll;"[style.height.px]="myTotalHeight" -->
+            <div class="dt-module__content ps-custom-scrollbar">
+                <div class="dt-module__content-inner card-body set-height-scroll-bar-wole-block">   
+                    <div class="dt-module__list" [style.height.px]="myInnerHeight"
+                    style="overflow-y: scroll"
+                    id="profile">
+                        <!-- <div class="card-body set-height-scroll-bar-wole-block"> -->
+                        <div class="dt-module__list-item pb-2 pt-2" *ngFor="let Region_1 of Region_Data; let i = index"> 
+                            <div class="dt-module__list-item-content">
+                                <div class="user-detail">
+
+
+                                    <span class="icon-background2 mr-1" *ngIf="Region_Edit" (click)="Edit_Region(Region_1,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                    <span class="icon-background3 mr-1" *ngIf="Region_Delete" (click)="Delete_Region(Region_1.Region_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+        
+
+                                    <span class="user-name">{{Region_1["Region_Name"]}}</span>
+                        
+                                </div>
+                         
+                            </div>                                
+                        </div>
+                       
+                   
+                     
+                    </div>
+                </div>
+              
+            </div>
+           
+        </div>
+       
+      </div>
+  </div>  
+    </div>
+  </div>

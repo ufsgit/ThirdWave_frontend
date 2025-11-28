@@ -1,0 +1,34 @@
+
+@media only screen and (min-width: 1350px) {
+   .data_dsk{
+    margin-top: -20% !important;
+   }
+
+      }
+      @media only screen and (min-width: 1281px) {
+         .dash_big_screen{
+         margin-left: 90px;
+         }
+       }
+       @media only screen and (max-width: 1280px) {
+             .dash_big_screen{
+                 margin-left: 60px;
+             }
+       }
+       .manage-users-form {
+         margin-bottom: 20px;
+       }
+       
+       .manage-users-form input {
+         margin-right: 10px;
+       }
+       
+       .dt-module__list-item {
+         border-bottom: 1px solid #ccc;
+         padding: 10px 0;
+       }
+       
+       .user-name {
+         font-weight: bold;
+       }
+       

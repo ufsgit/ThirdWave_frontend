@@ -1,0 +1,151 @@
+
+
+<div *ngIf="issLoading" class="overlay">
+    <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+    </mat-progress-spinner>
+</div>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row" *ngIf="Entry_View">
+            <div class="col-md-12">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label
+                                class="col-md-3 label-to-crect-all-names-to-divs name-label-margin-down-employer-details-name">Document<span
+                                    style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span>
+                            </label>
+                            <mat-form-field
+                                class="col-md-9 input-allighn-to-crect-wole-paddings input-allighn-typer-head-all-divs-matinputs">
+                                <input matInput type="text" [(ngModel)]="Document_.Document_Name"
+                                    name="Document_.Document_Name" class="input-text-item-group-diary" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+                            </mat-form-field>
+                          
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6 down-alighn-label-all">
+                                <button mat-raised-button type="submit"
+                                    [hidden]="Document_Save==false" id="Save_Button"
+                                    class="btn btn-danger pull-right" (click)="Save_Document()">Save</button>
+                                <button mat-raised-button type="submit"
+                                    class="btn btn-danger pull-right" (click)="Close_Click()">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+        <div class="row" *ngIf="!Entry_View">
+            <div class="col-md-12">
+                <div class="card">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 alighyn-div-margin-search-item-group mt-3">
+                                <div class="row col-md-12 crect-allighyn-tdiv-one-by-one-div">
+                                    <label class="col-md-2 label-down-alighn-nvce-nmbr-prhse-mstr-br-cde">Document</label>
+                                    <mat-form-field class="col-md-10 margin-lh-rh-to-crect-textbox">
+                                        <input matInput type="text" [(ngModel)]="Document_Name_Search" name="Search_Name" 
+                                        class="margin-lh-rh-to-crect-textbox input-text-item-group-diary input-allighn-to-crect-wole-paddings">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-md-6 alighyn-div-margin-search-item-group">
+                                <label class="col-md-3 name-label-margin-down-employer-details-name">Document</label>
+                                <mat-form-field class="col-md-9 input-allighn-to-crect-wole-paddings">
+                                    <input matInput type="text" [(ngModel)]="Document_Name_Search" name="Search_Name" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+                                </mat-form-field>
+                            </div> -->
+
+                           
+                            <div class="col-md-3">
+                                <button mat-raised-button type="submit" (click)="Search_Document()" class="btn btn-danger">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button> 
+                                <button mat-raised-button type="submit" (click)="Create_New()" class="btn btn-danger">
+                                  <i class="fa fa-plus" aria-hidden="true"></i>
+                                </button> 
+                                </div>
+                           
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12 card-body">
+                <div class="card-plain set-height-scroll-bar-wole-block">
+                    <div class="table-responsive">
+                       
+                        <div class="row grid_header"  style="background-color: #ebeef0;color: black;">
+                            <div class="col-md-2">
+                                Sl No
+                            </div>
+                            <div class="col-md-2">
+                                Document  
+                            </div>
+                            <div class="col-md-1">
+                            Edit
+                            </div>
+                            <div class="col-md-1">
+                            Delete
+                            </div>
+                        </div>
+
+
+                        <cdk-virtual-scroll-viewport [style.height.px]="myInnerHeight" itemSize="90" >
+
+   
+                            <ng-container *cdkVirtualFor="let Document1 of Document_Data; let i = index">
+                                <div class="row grid_data">
+                            <div class="col-md-2">
+                                {{ i+1 }}
+                            </div>
+                            <div class="col-md-2">
+                                {{Document1["Document_Name"]}}
+                                
+                            </div>
+                            
+                            <div class="col-md-1"   (click)="Edit_Document(Document1,i)">
+                            
+                             <button _ngcontent-gdi-c11="" [hidden]="Document_Edit==false" 
+                                    class="btn btn-danger2" 
+                                    mattooltip="Edit Task" type="button" aria-describedby="cdk-describedby-message-1"
+                                    cdk-describedby-host=""
+                                    ng-reflect-position="above" ng-reflect-message="Edit Task"><span class="mat-button-wrapper">
+                                        <i _ngcontent-gdi-c11="" class="material-icons" 
+                                         >edit</i></span>
+                                        <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                        ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                        <div class="mat-button-focus-overlay"></div></button>   
+                    
+                            </div>
+                    
+                            <div class="col-md-1"  (click)="Delete_Document(Document1.Document_Id,i)">
+                                
+                                <button _ngcontent-gdi-c11="" [hidden]="Document_Delete==false" 
+                                class="btn btn-danger1" 
+                                mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" cdk-describedby-host=""
+                                ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper">
+                                    <i _ngcontent-gdi-c11="" class="material-icons" 
+                                     >close</i></span>
+                                    <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                    ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                    <div class="mat-button-focus-overlay"  ></div></button>          
+                            </div>
+                        </div>
+                        </ng-container> 
+                    </cdk-virtual-scroll-viewport>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <label class="entry-num">Entries : {{Total_Entries}}</label>
+            </div>  
+        </div>
+    </div>

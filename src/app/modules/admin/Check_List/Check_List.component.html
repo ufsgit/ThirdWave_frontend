@@ -1,0 +1,153 @@
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+  <div class="main-content">
+  <div class="container-fluid2 right-sec">
+  
+  
+  <div class="row" *ngIf="Entry_View">
+  
+
+ <div class="col-md-12 pl-0 pt-2">
+    <div class="dt-card mb-0 pb-1 pt-3">         
+        <div class="dt-card__body mb-0 pb-0">
+              <form class="mb-0">           
+              <div class="form-row" style="padding-left: 10px;">
+                  <label class="col-md-0  col-sm-0 col-form-label text-sm-right">Check List <span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                  <div class="col-md-3 col-sm-3 mb-2">
+                      <input type="text" class="form-control" [(ngModel)]="Check_List_.Check_List_Name"  name="Check_List_.Check_List_Name"  placeholder="Check List">
+                     
+                  </div>
+                  
+                  <div class="col-md-2 col-sm-2 mt-0">                    
+                    <button mat-raised-button type="submit" class="close-button-style pull-left mr-1 " (click)="Close_Click()">Close</button>
+                    <button mat-raised-button type="submit"id="Save_Button" [hidden]="Check_List_Save==false"  class="save-button-style pull-left mr-1"(click)="Save_Check_List()">Save</button> 
+                      </div>
+              </div>
+          </form>
+          </div>
+      </div>        
+    </div> 
+  
+  
+  
+  </div>
+  <div class="row" *ngIf="!Entry_View">
+    <div class="col-md-12 pl-0 pt-2 mb-5">
+        <div class="dt-card mb-0 pb-1 pt-3">         
+            <div class="dt-card__body mb-0 pb-0">
+                <form class="mb-0">           
+                <div class="form-row" style="padding-left: 10px;">
+                    <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Check List Name</label>
+                    <div class="col-md-3 col-sm-3 mb-2">
+                        <input type="text" class="form-control" [(ngModel)]="Check_List_Name_Search" name="Check_List_Name"  placeholder="Check List Name">
+                       
+                    </div>
+                    
+                    <div class="col-md-2 col-sm-2 mt-0">                    
+                         <button (click)="Search_Check_List()" mat-raised-button type="submit"  class="other-button-style pull-left mr-1">Search</button>
+                         <button (click)="Create_New_Check_List()" mat-raised-button type="submit" class="save-button-style pull-left mr-1 ">Create New</button>
+    
+                        </div>
+                </div>
+            </form>
+            </div>
+        </div>        
+      </div> 
+      <!-- <div class="col-md-11 mt-2 mb-6">
+          <button (click)="Create_New_Check_List()" mat-raised-button type="submit" class="save-button-style pull-right ">Create New</button>
+          <button (click)="Search_Check_List()" mat-raised-button type="submit"  class="other-button-style pull-right mr-1">Search</button>
+  
+      </div> -->
+  
+  
+  
+  
+  <div class="col-md-12 pl-0"  [style.height.px]="myInnerHeight" itemSize="10" >
+    <div class="dt-module">            
+        <div class="dt-module__container" >
+            <!-- style="overflow: scroll;"[style.height.px]="myTotalHeight" -->
+            <div class="dt-module__content ps-custom-scrollbar">
+                <div class="dt-module__content-inner card-body set-height-scroll-bar-wole-block">   
+                    <div class="dt-module__list">
+                        <!-- <div class="card-body set-height-scroll-bar-wole-block"> -->
+                        <div class="dt-module__list-item pb-2 pt-2" *ngFor="let Check_List of Check_List_Data; let i = index"> 
+                            <div class="dt-module__list-item-content">
+                                <div class="user-detail">
+
+                                    <span class="icon-background2 mr-1" (click)="Edit_Check_List(Check_List,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                    <span class="icon-background3 mr-1" (click)="Delete_Check_List(Check_List.Check_List_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+        
+
+                                <!-- <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" 
+                                    class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" 
+                                    mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button">
+                                    <span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" 
+                                     _ngcontent-gxp-c5="" class="material-icons save-material-style" (click)="Edit_Check_List(Check_List,i)" >edit</i></span>
+                                     <div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                     ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" 
+                                     class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" 
+                                     ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                     <div class="mat-button-focus-overlay"></div>
+                                </button>     
+                                     <button _ngcontent-gdi-c11="" class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button" 
+                                     mat-raised-button="" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" 
+                                     cdk-describedby-host="" ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper">
+                                     <i _ngcontent-gdi-c11="" class="material-icons delete-material-style"  (click)="Delete_Check_List(Check_List.Check_List_Id,i)" >close</i></span>
+                                     <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" 
+                                     ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"></div>
+                                    </button>                               -->
+                                    <span class="user-name">{{Check_List["Check_List_Name"]}}</span>
+                                   
+                                </div>
+                               
+                            </div>                                
+                        </div>
+                       
+                
+                   <!-- </div> -->
+                     
+                    </div>
+                </div>
+                <!-- <div class="form-group">                       
+                    <button type="submit" (click)="Search_Client_Accounts()" class="btn btn-primary">Previous</button>
+                    <button type="submit" (click)="Create_New()" class="btn btn-primary">Next</button>                             
+                </div> -->
+            </div>
+            <!-- <div class="form-group">  
+                <div class="col-md-6" style="float: right;">                     
+            <button mat-raised-button type="submit" (click)="previous_Click()"  class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-left" aria-hidden="true" style="color:#5f6368;"></i></button>
+            <button mat-raised-button type="submit"  (click)="Next_Click()" class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #5f6368;"></i></button>
+            </div>
+        </div> -->
+        </div>
+       
+      </div>
+  </div>  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  </div>

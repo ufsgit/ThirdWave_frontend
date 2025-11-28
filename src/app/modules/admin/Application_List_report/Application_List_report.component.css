@@ -1,0 +1,207 @@
+.one { color: rgb(42, 11, 219) ; } 
+.three { color:green; } 
+.two { color: rgb(255, 0, 0); } 
+.Four { color: black; }
+.Five { color: rgb(165, 2, 151); }
+.text-dark {
+    margin-left: 0;
+}
+
+.icon-backgroune {
+    cursor: pointer;
+    padding: 20px;
+    width: 78px;
+    text-align: center;
+    height: 37px;
+    background-color: #dff5df;
+    border: solid 1px #0ab33c;
+    border-radius: 10px;
+    display: inline-block;
+    border-radius: 9px;
+    padding-top: 6px;
+    padding-left: 8px;
+    padding-right: 9px;
+    transition: .4s ease-in-out;
+}
+.icon-backgroune:hover{
+    transform: scale(1.07);
+}
+.card:hover {
+    background-color: #fff;
+	box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15) !important;
+}
+td{
+    
+    padding: 1px 6px !important;
+
+}
+
+::ng-deep .mat-form-field-infix {
+    width: 100px !important;
+}
+
+.new-card button{
+    background-color: #0ab33c70;
+    color: #4a7c5a;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 47px;
+    color: #34B941;
+    /* font-family: Product Sans Medium; */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-radius: 34px;
+background: rgba(91, 225, 104, 0.19);
+   
+
+}
+.f-line{
+    align-items: center;
+    color: #727272;
+    font-weight: 400;
+    line-height: normal;
+
+}
+.s-line button{
+    padding: 5px 20px !important;
+    border-radius: 5px !important;
+}
+.s-line {
+    color: #5b6add !important;
+}
+/* .lh{
+    padding: 0 10px;
+    margin-right: 15px;
+
+} */
+.f-line div{
+    position: relative;
+}
+.f-line div::before{
+    content: '';
+    height: 50%;
+    width: 1px;
+    background-color: #c0b8b887;
+    right: -5px;
+    bottom: 9px;
+    position: absolute;
+}
+.lh2::before{
+    display: none !important;
+}
+.new-card{
+    position: relative;
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'Lato', sans-serif;
+    padding-bottom: 10px;
+}
+.new-card::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 95%;
+    background-color: #b5b5b54d;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1px;
+}
+.text-dark{
+    color: #3F3F3F !important;
+    font-weight: 500 !important;
+}
+.text-dark span{
+    padding-left: 15px;
+}
+
+.twobg1{
+    /* background-color: rgb(245, 153, 153); */
+    /* border-radius: 4px; */
+    /* background-color:  rgb(210, 249, 216);
+    border-color:  rgb(210, 249, 216); */
+    box-shadow:none !important;
+    border-radius: 0px;
+  
+    position: relative;
+    padding: 7px 14px 7px 14px;
+    margin: 0.3125rem 1px;
+    min-width: 140px!important;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    letter-spacing: 0;
+    cursor: default;     
+    border: 0;
+    outline: 0;    
+    color:#fff!important; 
+   
+    }
+    .hidden {
+        display: none;
+      }
+      .table-container {
+        max-height: 500px; /* Adjust this value as needed */
+        overflow-y: auto; /* Adds vertical scroll if content overflows */
+      }
+      .table thead th {
+        white-space: nowrap; /* Prevents text wrapping in header cells */
+      }
+      .table {
+        table-layout: fixed; /* Ensures fixed column widths */
+        width: 100%;
+      }
+      .table td, .table th {
+        overflow: hidden; /* Prevents overflow in cells */
+        text-overflow: ellipsis; /* Adds ellipsis for overflowed text */
+        white-space: nowrap; /* Prevents text wrapping in cells */
+      }
+      .table-responsive {
+        overflow: auto; 
+    }
+    
+    table {
+        table-layout: fixed;
+        width: 100%; 
+    }
+    
+    
+    td, th {
+        white-space: normal; 
+        word-wrap: break-word; 
+        overflow-wrap: break-word; 
+    }
+    
+/*     
+    th, td {
+        min-width: 150px; 
+        padding: 10px;
+        font-size: 14px !important;
+    } */
+    
+    
+    .fixed-width {
+        width: 250px; 
+    }
+
+    .fixed-width1 {
+        width: 400px; 
+    }
+    
+    .fixed-widthhash {
+        width: 50px; 
+    }
+            /* th input[name="Course_"],
+th input[name="University_1"] {
+    width: 95% !important;
+    min-width: 300px !important;
+} */
+    
+::ng-deep .cdk-overlay-pane {
+    width: fit-content !important;
+} 

@@ -1,0 +1,24 @@
+import { Checklist } from "./Checklist";
+
+export class Pre_Admission
+{
+Student_Preadmission_Checklist_Master_Id:number;
+Student_Id:number;
+User_Id:number;
+Entry_Date:Date;
+Country_Id:number;
+Application_details_Id:number;
+Country_Name:string;
+Check_Box_View:boolean;
+Checklist_Id:number;
+Checklist_Details:Checklist[];
+
+Check_Box:boolean;
+
+
+constructor(values: Object = {})  
+{
+Object.assign(this, values) 
+}
+}
+

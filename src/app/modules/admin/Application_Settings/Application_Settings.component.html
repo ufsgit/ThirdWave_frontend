@@ -1,0 +1,484 @@
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+<img src="/assets/img/spinner.gif" width="100px" >
+</div>  
+  <div class="main-content new-margin-T">        
+    <div class="container-fluid">
+      <div class="row right-sec2" *ngIf="Application_Div">
+        <div class="col-xl-12 pl-0 pr-0 " >
+       <div class="dt-card mb-2 mt-2">
+                  <!-- <div class="dt-card mt-0"> -->
+                      
+                      <div class="dt-card__body">               
+                          <form class="mb-0">
+                              <!-- <div class="cards"> -->
+                          <div class="form-row  " >
+                            
+                            <label class="col-md-2 col-lg-2 col-form-label text-sm-right">Call Status Value<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                            <div class="col-md-4 col-lg-2 mb-1">
+                                <input type="number" [(ngModel)]="Application_Settings_.Settings_Value "  name="Settings_Value" class="form-control" min="0" max="1" step="1">
+                            </div> 
+
+
+
+                          
+                                <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right" style="background: transparent;">Enrollment By</label>
+                                <div class="col-md-2 col-sm-9">
+                                        <select name="Registration_by" [(ngModel)]="Registration_by" required class="form-control p-0 pl-1" id="normal-input-4" >
+                                          <option value="1">Enrollment by Fees Receipt</option>
+                                          <option value="2">Enrollment by Status</option>
+                                          </select>
+                                </div>
+                                </div>
+                                <div class="form-row  " >
+                               
+
+                                
+                                <!-- <label
+                class="col-md-2 col-lg-2 ml-3 col-form-label text-sm-right x-tra-label"
+                
+                >Branch</label
+              >
+
+
+              <div class="col-md-0 col-lg-0 mb-1" style="padding-top: 12px">
+                <div
+                  _ngcontent-xmy-c9=""
+                  class="checkbox-to-crect-sales-search-section"
+                >
+                  <div
+                    _ngcontent-xmy-c9=""
+                    class="form-check uper-dte-lbel-sales-sctn-new1 pl-0"
+                  >
+                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        name="Application_Settings_.Branch"
+                        [(ngModel)]="Application_Settings_.Branch"
+                      />
+                      <span _ngcontent-xmy-c9="" class="form-check-sign"
+                        ><span _ngcontent-xmy-c9="" class="check"> </span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <label
+                class="col-md-2 col-lg-2 ml-3 col-form-label text-sm-right x-tra-label"
+                
+                >Department</label
+              >
+
+
+              <div class="col-md-0 col-lg-0 mb-1" style="padding-top: 12px">
+                <div
+                  _ngcontent-xmy-c9=""
+                  class="checkbox-to-crect-sales-search-section"
+                >
+                  <div
+                    _ngcontent-xmy-c9=""
+                    class="form-check uper-dte-lbel-sales-sctn-new1 pl-0"
+                  >
+                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        name="Application_Settings_.Department"
+                        [(ngModel)]="Application_Settings_.Department"
+                      />
+                      <span _ngcontent-xmy-c9="" class="form-check-sign"
+                        ><span _ngcontent-xmy-c9="" class="check"> </span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <label
+                class="col-md-2 col-lg-2 ml-3 col-form-label text-sm-right x-tra-label"
+                
+                >Tostaff</label
+              >
+
+
+              <div class="col-md-0 col-lg-0 mb-1" style="padding-top: 12px">
+                <div
+                  _ngcontent-xmy-c9=""
+                  class="checkbox-to-crect-sales-search-section"
+                >
+                  <div
+                    _ngcontent-xmy-c9=""
+                    class="form-check uper-dte-lbel-sales-sctn-new1 pl-0"
+                  >
+                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        name="Application_Settings_.Tostaff"
+                        [(ngModel)]="Application_Settings_.Tostaff"
+                      />
+                      <span _ngcontent-xmy-c9="" class="form-check-sign"
+                        ><span _ngcontent-xmy-c9="" class="check"> </span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div> -->
+
+
+
+
+
+              <label
+              class="col-md-2 col-sm-2 col-form-label text-sm-right"
+              > Receipt Notification User</label
+                        >
+      
+                <div class="col-md-2 col-sm-3 mb-1"  >
+                  <select
+                      [(ngModel)]="Users_"
+                      name="Users_"
+                      required
+                      class="form-control p-0 pl-1"
+                  >
+                      <option
+                          *ngFor="let Users_Data_T of Users_Data"
+                          [ngValue]="Users_Data_T"
+                      >
+                          {{ Users_Data_T.User_Details_Name }}
+                      </option>
+                  </select>
+              </div>
+
+
+         
+
+
+
+
+              
+              <label
+              class="col-md-1 col-lg-1 col-form-label text-sm-right x-tra-label"
+              
+              >Round Robin</label
+            >
+
+
+            <div class="col-md-0 col-lg-1 mb-1" style="padding-top: 12px">
+              <div
+                _ngcontent-xmy-c9=""
+                class="checkbox-to-crect-sales-search-section"
+              >
+                <div
+                  _ngcontent-xmy-c9=""
+                  class="form-check uper-dte-lbel-sales-sctn-new1 pl-0"
+                >
+                  <label _ngcontent-xmy-c9="" class="form-check-label">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      name="Application_Settings_.Round_Robin"
+                      [(ngModel)]="Application_Settings_.Round_Robin"
+                    />
+                    <span _ngcontent-xmy-c9="" class="form-check-sign"
+                      ><span _ngcontent-xmy-c9="" class="check"> </span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+
+
+            <label
+            class="col-md-1 col-lg-1 col-form-label text-sm-right x-tra-label"
+            
+            >Import with Status</label
+          >
+
+
+          <div class="col-md-0 col-lg-1 mb-1" style="padding-top: 12px">
+            <div
+              _ngcontent-xmy-c9=""
+              class="checkbox-to-crect-sales-search-section"
+            >
+              <div
+                _ngcontent-xmy-c9=""
+                class="form-check uper-dte-lbel-sales-sctn-new1 pl-0"
+              >
+                <label _ngcontent-xmy-c9="" class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Application_Settings_.Import_with_Status"
+                    [(ngModel)]="Application_Settings_.Import_with_Status"
+                  />
+                  <span _ngcontent-xmy-c9="" class="form-check-sign"
+                    ><span _ngcontent-xmy-c9="" class="check"> </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+
+          <label
+            class="col-md-1 col-lg-1 col-form-label text-sm-right x-tra-label"
+            
+            >Import with Enquiry Source</label
+          >
+
+
+          <div class="col-md-0 col-lg-1 mb-1" style="padding-top: 12px">
+            <div
+              _ngcontent-xmy-c9=""
+              class="checkbox-to-crect-sales-search-section"
+            >
+              <div
+                _ngcontent-xmy-c9=""
+                class="form-check uper-dte-lbel-sales-sctn-new1 pl-0"
+              >
+                <label _ngcontent-xmy-c9="" class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Application_Settings_.Import_with_Enquiry_Source"
+                    [(ngModel)]="Application_Settings_.Import_with_Enquiry_Source"
+                  />
+                  <span _ngcontent-xmy-c9="" class="form-check-sign"
+                    ><span _ngcontent-xmy-c9="" class="check"> </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+
+          <label
+            class="col-md-1 col-lg-1 col-form-label text-sm-right x-tra-label"
+            
+            >Highest Department Profile</label
+          >
+
+
+          <div class="col-md-0 col-lg-1 mb-1" style="padding-top: 12px">
+            <div
+              _ngcontent-xmy-c9=""
+              class="checkbox-to-crect-sales-search-section"
+            >
+              <div
+                _ngcontent-xmy-c9=""
+                class="form-check uper-dte-lbel-sales-sctn-new1 pl-0"
+              >
+                <label _ngcontent-xmy-c9="" class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Application_Settings_.Highest_Department_Profile"
+                    [(ngModel)]="Application_Settings_.Highest_Department_Profile"
+                  />
+                  <span _ngcontent-xmy-c9="" class="form-check-sign"
+                    ><span _ngcontent-xmy-c9="" class="check"> </span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+          <label
+          class="col-md-1 col-lg-1 col-form-label text-sm-right x-tra-label"
+          
+          >Class Profile</label
+        >
+
+
+        <div class="col-md-0 col-lg-1 mb-1" style="padding-top: 12px">
+          <div
+            _ngcontent-xmy-c9=""
+            class="checkbox-to-crect-sales-search-section"
+          >
+            <div
+              _ngcontent-xmy-c9=""
+              class="form-check uper-dte-lbel-sales-sctn-new1 pl-0"
+            >
+              <label _ngcontent-xmy-c9="" class="form-check-label">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Application_Settings_.Class_Profile"
+                  [(ngModel)]="Application_Settings_.Class_Profile"
+                />
+                <span _ngcontent-xmy-c9="" class="form-check-sign"
+                  ><span _ngcontent-xmy-c9="" class="check"> </span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+
+        <label
+          class="col-md-1 col-lg-1 col-form-label text-sm-right x-tra-label"
+          
+          >Highest Status Profile</label
+        >
+
+
+        <div class="col-md-0 col-lg-1 mb-1" style="padding-top: 12px">
+          <div
+            _ngcontent-xmy-c9=""
+            class="checkbox-to-crect-sales-search-section"
+          >
+            <div
+              _ngcontent-xmy-c9=""
+              class="form-check uper-dte-lbel-sales-sctn-new1 pl-0"
+            >
+              <label _ngcontent-xmy-c9="" class="form-check-label">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="Application_Settings_.Highest_Status_Profile"
+                  [(ngModel)]="Application_Settings_.Highest_Status_Profile"
+                />
+                <span _ngcontent-xmy-c9="" class="form-check-sign"
+                  ><span _ngcontent-xmy-c9="" class="check"> </span>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+        <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Status</label>
+        <div class="col-md-2 col-sm-3 mb-1"  >
+
+          <select
+          [(ngModel)]="Search_Status"
+          name="Search_Status"
+          required
+          class="form-control p-0 pl-1"
+      >
+          <option
+              *ngFor="let Status_T of Status_Data"
+              [ngValue]="Status_T"
+          >
+              {{ Status_T.Department_Status_Name }}
+          </option>
+      </select>
+            <!-- <select [(ngModel)]="Search_Status" class="form-control p-0 pl-1" id="simple-select">
+                <option *ngFor="let Status_T of Status_Data" [ngValue]="Status_T" >{{Status_T.Department_Status_Name}}
+                </option>
+            
+            </select> -->
+        </div>
+
+
+
+                        
+
+
+                                <div class="col-lg-1 mb-1">
+                                    <button class="save-button-style btnflot"  id="Save_Button" (click)="Save_Application_Setitngs()" type="submit">Save</button>
+                                  </div>  
+                                </div>
+
+
+                            <!-- <div class="col-md-1"></div> -->
+
+
+                            <!-- <label
+                            class="col-md-2 col-lg-2 ml-1 col-form-label text-sm-right x-tra-label"
+                            style="padding-left: 19px"
+                            >Registration Status</label
+                        >
+                               
+                        <div class="col-md-1 col-sm-0 mb-1 x-tra-label-mob" >
+                            <div
+                                _ngcontent-xmy-c9=""
+                                class="checkbox-to-crect-sales-search-section"
+                            >
+                                <div
+                                    _ngcontent-xmy-c9=""
+                                    class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                                >
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                        <input
+                                            type="checkbox"
+                                            class="form-check-input"
+                                            name="Application_Settings_.Register_Transfer_Status"
+                                            [(ngModel)]="Application_Settings_.Register_Transfer_Status"
+                                        />
+                                        <span _ngcontent-xmy-c9="" class="form-check-sign"
+                                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+              
+                        <label
+                      class="col-md-2 col-sm-2 col-form-label text-sm-right"
+                      *ngIf="Application_Settings_.Register_Transfer_Status"
+                      > Departments</label
+                                >
+              
+                        <div class="col-md-2 col-sm-3 mb-1"  *ngIf="Application_Settings_.Register_Transfer_Status">
+                          <select
+                              [(ngModel)]="User_Profile_Department_"
+                              name="User_Profile_Department_"
+                              required
+                              class="form-control p-0 pl-1"
+                          >
+                              <option
+                                  *ngFor="let User_Profile_Department_Data_T of User_Profile_Department_Data"
+                                  [ngValue]="User_Profile_Department_Data_T"
+                              >
+                                  {{ User_Profile_Department_Data_T.Department_Name }}
+                              </option>
+                          </select>
+                      </div> -->
+              
+              
+              
+
+
+
+
+
+
+
+
+
+
+                        
+<!--                     
+                          <div class="form-row  mb-2">
+                            <div class="col-lg-12 mb-1">
+                                <button class="save-button-style btnflot"  id="Save_Button" (click)="Save_Application_Setitngs()" type="submit">Save</button>
+                              </div>                                       
+                          </div> -->
+                  </form>
+                  </div>
+                  <!-- </div> -->
+          </div>
+          </div>    
+          </div>
+      </div>
+  </div>
+  
+  

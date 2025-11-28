@@ -1,0 +1,536 @@
+<!-- <div *ngIf="issLoading" class="overlay">
+	<mat-progress-spinner
+		class="spinner"
+		[color]="color"
+		[mode]="mode"
+		[value]="value"
+	>
+	</mat-progress-spinner>
+</div> -->
+<div *ngIf="issLoading" class="overlay" 
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+<img src="/assets/img/spinner.gif" width="100px" >
+</div>
+<div class="main-content screenfixed new-margin-T  dash_big_screen">
+	<div class="container-fluid2  " >
+		<div class="row mt-2" *ngIf="Entry_View">
+			<div class="col-md-12 pr-0 pl-0">
+				<div class="dt-card mb-0 pb-1">
+					<div class="dt-card__body mb-0 pb-0">
+						<form class="mb-0">
+							<div class="form-row">
+								<label class="col-md-2 col-lg-1 col-form-label text-sm-right"
+									>Name<span
+										style="
+											color: #ef071e;
+											font-size: 22px;
+											vertical-align: -webkit-baseline-middle;
+										"
+										>*</span
+									></label
+								>
+								<div class="col-md-4 col-lg-4 mb-2">
+									<input
+										type="text"
+										class="form-control"
+										[(ngModel)]="Agent_Details_.Agent_Name"
+										name="Agent_Details_.Agent_Name"
+										placeholder=""
+									/>
+								</div>
+								<!-- </div> -->
+								<div class="col-md-1 col-sm-0"></div>
+								<!-- <div class="form-row" > -->
+								<label class="col-md-1 col-lg-2 col-form-label text-sm-right"
+									>Phone<span
+										style="
+											color: #ef071e;
+											font-size: 22px;
+											vertical-align: -webkit-baseline-middle;
+										"
+										>*</span
+									>
+								</label>
+								<div class="col-md-4 col-lg-4 mb-2 ">
+									<input
+										type="number"
+										class="form-control"
+										[(ngModel)]="Agent_Details_.Phone"
+										name="Agent_Details_.Phone"
+										placeholder=""
+									/>
+								</div>
+
+
+						
+								<!-- <div class="form-row" > -->
+								<label class="col-md-1 col-form-label text-sm-right"
+									>Commission %<span
+										style="
+											color: #ef071e;
+											font-size: 22px;
+											vertical-align: -webkit-baseline-middle;
+										"
+										>*</span
+									>
+								</label>
+								<div class="col-md-4 col-lg-4 mb-2 ">
+									<input
+										type="number"
+										class="form-control"
+										[(ngModel)]="Agent_Details_.Commission"
+										name="Agent_Details_.Commission"
+										placeholder=""
+										
+									/>
+									<!-- oninput="this.value = this.value.slice(0, 2)" -->
+								</div>
+							</div>
+
+							<div class="form-row">
+								<label class="col-md-2 col-lg-1 col-form-label text-sm-right"
+									>Email<span
+										style="
+											color: #ef071e;
+											font-size: 22px;
+											vertical-align: -webkit-baseline-middle;
+										"
+										>*</span
+									></label
+								>
+								<div class="col-md-4 col-lg-4 mb-2">
+									<input
+										type="text"
+										class="form-control"
+										[(ngModel)]="Agent_Details_.Email"
+										name="Agent_Details_.Email"
+										placeholder=""
+									/>
+								</div>
+								<!-- </div> -->
+								<div class="col-md-1 col-sm-0"></div>
+
+								<!-- <div class="form-row" > -->
+								<label class="col-md-1 col-lg-2 col-form-label text-sm-right"
+									>Address<span
+										style="
+											color: #ef071e;
+											font-size: 22px;
+											vertical-align: -webkit-baseline-middle;
+										"
+										>*</span
+									>
+								</label>
+								<div class="col-md-4 col-lg-4 mb-2">
+									<input
+										type="text"
+										class="form-control"
+										[(ngModel)]="Agent_Details_.Address"
+										name="Agent_Details_.Address"
+										placeholder=""
+									/>
+								</div>
+							</div>
+
+
+
+							<div class="form-row">
+								<label class="col-md-2 col-lg-1 col-form-label text-sm-right"
+									>User Name<span
+										style="
+											color: #ef071e;
+											font-size: 22px;
+											vertical-align: -webkit-baseline-middle;
+										"
+										>*</span
+									></label
+								>
+								<div class="col-md-4 col-lg-4 mb-2">
+									<input
+										type="text"
+										class="form-control"
+										[(ngModel)]="Agent_Details_.User_Name"
+										name="Agent_Details_.User_Name"
+										placeholder=""
+									/>
+								</div>
+								<!-- </div> -->
+								<div class="col-md-1 col-sm-0"></div>
+
+								<!-- <div class="form-row" > -->
+								<label class="col-md-1 col-lg-2 col-form-label text-sm-right"
+									>Password<span
+										style="
+											color: #ef071e;
+											font-size: 22px;
+											vertical-align: -webkit-baseline-middle;
+										"
+										>*</span
+									>
+								</label>
+								<div class="col-md-4 col-lg-4 mb-2">
+									<input
+										type="text"
+										class="form-control"
+										[(ngModel)]="Agent_Details_.Password"
+										name="Agent_Details_.Password"
+										placeholder=""
+									/>
+								</div>
+							</div>
+
+
+
+
+
+
+							<!-- <div class="form-row">
+							
+
+
+								<label
+								class="col-md-2 col-lg-1 col-form-label text-sm-right"
+								>Department<span
+									style="
+										color: #ef071e;
+										font-size: 22px;
+										vertical-align: -webkit-baseline-middle;
+									"
+									>*</span
+								></label
+							>
+							<div class="col-md-4 col-lg-4 mb-2">
+								<input
+								type="text"
+								[matAutocomplete]="auto1"
+								class="form-control"
+								name="FollowUp_Department_"
+								[(ngModel)]="FollowUp_Department_"
+								(click)="Search_Branch_Department_Typeahead($event)"
+								(ngModelChange)="Department_Change()"
+							/>
+						</div>
+						
+						<mat-autocomplete
+							#auto1="matAutocomplete"
+							[displayWith]="display_Department"
+						>
+							<mat-option *ngIf="issLoading"
+								><mat-spinner diameter="500"></mat-spinner
+							></mat-option>
+							<ng-container *ngIf="!issLoading">
+								<mat-option
+									*ngFor="let Dept of Followup_Department_Data"
+									[value]="Dept"
+								>
+									<span >{{
+										Dept.Department_Name
+									}}</span>
+								</mat-option>
+							</ng-container>
+						</mat-autocomplete>
+
+								<div class="col-md-1 col-sm-0"></div>
+
+								
+
+
+								<label class="col-md-1 col-lg-2 col-form-label text-sm-right"
+									>First User <span
+										style="
+											color: #ef071e;
+											font-size: 22px;
+											vertical-align: -webkit-baseline-middle;
+										"
+										>*</span
+									>
+								</label>
+								<div class="col-md-4 col-lg-4 mb-2">
+									<select
+									[(ngModel)]="User_"
+									name="User_"
+									required
+									class="form-control p-0 pl-1"
+								>
+									<option
+										*ngFor="let Branch_Data_T of User_Data"
+										[ngValue]="Branch_Data_T"
+									>
+										{{ Branch_Data_T.User_Details_Name }}
+									</option>
+								</select>
+								</div>
+
+
+
+							</div> -->
+
+
+							<div class="form-row">
+
+								<!-- <label
+								class="col-md-2 col-lg-1 col-form-label text-sm-right"
+								>Department<span
+									style="
+										color: #ef071e;
+										font-size: 22px;
+										vertical-align: -webkit-baseline-middle;
+									"
+									>*</span
+								></label
+							>
+							<div class="col-md-4 col-lg-4 mb-2">
+								<input
+								type="text"
+								[matAutocomplete]="auto1"
+								class="form-control"
+								name="FollowUp_Department_"
+								[(ngModel)]="FollowUp_Department_"
+								(click)="Search_Branch_Department_Typeahead($event)"
+								(ngModelChange)="Department_Change()"
+							/>
+						</div>
+						
+						<mat-autocomplete
+							#auto1="matAutocomplete"
+							[displayWith]="display_Department"
+						>
+							<mat-option *ngIf="issLoading"
+								><mat-spinner diameter="500"></mat-spinner
+							></mat-option>
+							<ng-container *ngIf="!issLoading">
+								<mat-option
+									*ngFor="let Dept of Followup_Department_Data"
+									[value]="Dept"
+								>
+									<span >{{
+										Dept.Department_Name
+									}}</span>
+								</mat-option>
+							</ng-container>
+						</mat-autocomplete> -->
+
+							<!-- <div class="col-md-1 col-sm-0"></div> -->
+							<!-- <div class="col-md-1 col-sm-0"></div> -->
+							<!-- <label
+								class="col-md-1 col-lg-1 col-form-label text-sm-right"
+								>To staff<span
+									style="
+										color: #ef071e;
+										font-size: 22px;
+										vertical-align: -webkit-baseline-middle;
+									"
+									>*</span
+								></label
+							>
+							<div class="col-md-4 col-lg-4 mb-2">
+								<input
+													type="text"
+													class="form-control"
+													[matAutocomplete]="auto_Followup_Users"
+													name="Followup_Users_"
+													[(ngModel)]="Followup_Users_"
+													(click)="
+														Search_Department_User_Typeahead_Fllowup($event)
+													"
+												/>
+											</div>
+											
+											<mat-autocomplete
+												#auto_Followup_Users="matAutocomplete"
+												[displayWith]="display_Followup_Users"
+											>
+												<mat-option *ngIf="issLoading"
+													><mat-spinner diameter="500"></mat-spinner
+												></mat-option>
+												<ng-container *ngIf="!issLoading">
+													<mat-option
+														*ngFor="let Users_sub of Followup_Users_Data_t"
+														[value]="Users_sub"
+													>
+														<span>{{ Users_sub.User_Details_Name }}</span>
+													</mat-option>
+												</ng-container>
+											</mat-autocomplete> -->
+
+
+
+
+											<label class="col-md-1 col-lg-1 col-form-label text-sm-right"
+											>Description<span
+												style="
+													color: #ef071e;
+													font-size: 22px;
+													vertical-align: -webkit-baseline-middle;
+												"
+												>*</span
+											></label
+										>
+										<div class="col-md-4 col-lg-4 mb-2">
+											<input
+												type="text"
+												class="form-control"
+												[(ngModel)]="Agent_Details_.Description"
+												name="Agent_Details_.Description"
+												placeholder=""
+											/>
+										</div>
+
+
+							</div>
+
+
+
+
+
+
+
+
+
+
+								<div class="col-md-12 row" style="display: flex;
+    flex-direction: row-reverse;">
+									<button
+										mat-raised-button
+										type="submit"
+										[hidden]="Agent_Details_Save == false"
+										id="Save_Button"
+										class="save-button-style pull-right mr-1"
+										(click)="Save_Agent_Details()"
+									>
+										Save
+									</button>
+									<button
+										mat-raised-button
+										type="submit"
+										class="close-button-style pull-right mr-1"
+										(click)="Close_Click()"
+									>
+										Close
+									</button>
+									<!-- <button
+									mat-raised-button
+									type="submit"
+									class="close-button-style pull-right mr-1"
+									(click)="forgetPassword()"
+								>
+									Forget pass 
+								</button> -->
+								
+								</div>
+							
+
+
+
+
+
+
+
+
+
+
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-2" *ngIf="!Entry_View">
+			<div class="col-md-12 pr-0 pl-0 mb-5">
+				<div class="dt-card mb-2 pb-1">
+					<div class="dt-card__body mb-0 pb-0">
+						<form class="mb-0">
+							<div class="form-row" style="padding-left: 10px">
+								<label
+									class="col-md-0 col-sm-0 col-form-label text-sm-right mr-0"
+									>Freelancer Name</label
+								>
+
+								<div class="col-md-4 col-sm-4 mb-2">
+									<input
+										type="text"
+										class="form-control"
+										[(ngModel)]="Agent_Details_Name_Search"
+										name="Agent_Details_Name_Search"
+										placeholder=""
+									/>
+								</div>
+
+								<div class="col-md-0 col-sm-0 mt-0 ml-1">
+									<button
+										(click)="Search_Agent_Details()"
+										mat-raised-button
+										type="submit"
+										class="other-button-style pull-left mr-1"
+									>
+										Search
+									</button>
+									<button
+										(click)="Create_New()"
+										mat-raised-button
+										type="submit"
+										class="save-button-style pull-left mr-1"
+									>
+										Create New
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12 pr-0 pl-0 mt-0"     style="overflow: scroll; height: 507px;" [style.height.px]="myInnerHeight">
+				<div class="dt-module">
+					<div class="dt-module__container">
+						<div class="dt-module__content ps-custom-scrollbar">
+							<div
+								class="dt-module__content-inner pl-0 pr-0 card-body "
+							>
+								<div class="dt-module__list pl-0 pr-0">
+									<div
+										class="dt-module__list-item pb-2 pt-2"
+										*ngFor="
+											let Agent_Details_1 of Agent_Details_Data;
+											let i = index
+										"
+									>
+										<div class="dt-module__list-item-content">
+											<div class="user-detail">
+												<span
+													class="icon-background2 mr-1"
+													*ngIf="Agent_Details_Edit"
+													(click)="Edit_Agent_Details(Agent_Details_1, i)"
+												>
+													<mat-icon class="text-green small"
+														>edit</mat-icon
+													></span
+												>
+												<span
+													class="icon-background3 mr-1"
+													*ngIf="Agent_Details_Delete"
+													(click)="
+														Delete_Agent_Details(Agent_Details_1.Agent_Id, i)
+													"
+												>
+													<mat-icon class="text-red small"
+														>close</mat-icon
+													></span
+												>
+
+												<span class="user-name">{{
+													Agent_Details_1["Agent_Name"]
+												}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

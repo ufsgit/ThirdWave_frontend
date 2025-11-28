@@ -1,0 +1,210 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>                                     
+
+
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+
+<div class="main-content" [hidden]="Search_Div">
+<div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12 bg-set-leds-dtls">
+      <div class="row">
+          
+          <div class="col-md-2 margin-down-tocrect-lead-textbox-front-section-oter">
+            <label>Fees </label>
+              <select [(ngModel)]="Fees_Name_Search" name="Fees_" required class="col-md-8 input-allighn-to-crect-wole-paddings margin-lh-rh-to-crect-textbox select-user-block">
+            <option *ngFor="let Fee of Fees_Data" [ngValue]="Fee">{{Fee.Fees_Name}}</option>
+            </select>
+          </div>
+
+          <div _ngcontent-xmy-c9="" class="col-md-1 lead-search-section-date-alighn label-down-alighn-stk-ad-mstr-prhse-rte">
+            <div _ngcontent-xmy-c9="" class="form-check algyn-checkbx-lead-serch-scton margin-down-tocrect-lead-chckbox-date-front-section">
+              <label _ngcontent-xmy-c9="" class="form-check-label">
+                <input type='checkbox'class="form-check-input" placeholder='Search...' [(ngModel)]="Look_In_Date" />
+                <span _ngcontent-xmy-c9="" class="form-check-sign"><span _ngcontent-xmy-c9="" class="check"></span>
+                </span>
+                <label class="">Receipt</label>
+              </label>              
+            </div>
+            <!-- <label class="for-down-title-tabs-personal-details">Created</label> -->
+          </div>
+  
+          <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+            <label class="col-md-4 alighn-title-search-section-tab-lead-per-details">From</label>
+            <mat-form-field class="col-md-8 input-allighn-to-crect-wole-paddings alighn-date-search-section-new-tab-lead-per-details">
+            <input matInput [matDatepicker]="dpFromDate" placeholder="" [(ngModel)]="Search_FromDate">
+            <mat-datepicker-toggle matSuffix [for]="dpFromDate"></mat-datepicker-toggle>
+            <mat-datepicker #dpFromDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+            <label class="col-md-4 alighn-title-search-section-tab-lead-per-details">To</label>
+            <mat-form-field class="col-md-8 input-allighn-to-crect-wole-paddings alighn-date-search-section-new-tab-lead-per-details">
+            <input matInput [matDatepicker]="dpToDate" placeholder="" [(ngModel)]="Search_ToDate">
+            <mat-datepicker-toggle matSuffix [for]="dpToDate"></mat-datepicker-toggle>
+            <mat-datepicker #dpToDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-2 buton-down-ward-lead-search-front">
+              <button mat-raised-button type="submit" id="Registration_Report" (click)="Search_Lead_button()" class="btn btn-danger change-colour-button buton-save-search-edit"><i class="fa fa-search" aria-hidden="true"></i></button>
+              <!-- <button mat-raised-button type="submit"  (click)="Search_More_Options()"class="btn btn-danger change-colour-button buton-save-search-edit"><i class="fa fa-caret-down" aria-hidden="true"></i></button> -->
+              <button mat-raised-button type="submit" [hidden]="Export_View==false"  (click)="Export()"class="btn btn-danger change-colour-button buton-save-search-edit"><i></i>EXPORT</button>
+            </div>
+    </div>
+<!-- <div class="seperation-for-down-butons" >
+   <div class="row col-md-12 alyghn-croect-row-table-lead-sctn">
+          <div class="row col-md-4">
+            <label class="col-md-3 label-to-crect-all-names-to-divs label-crect-journal-entry-voucher-no label-down-alighn-oter-carge-tal-gst-prhse-mstr-down-new-stcn">Amount</label>
+            <select [(ngModel)]="Fees_Amount_Search" id="Department_" required  class="col-md-9 input-allighn-to-crect-wole-paddings">
+            <option *ngFor="let Amounts of Fees_Receipt_Data" [ngValue]="Department_T">{{Amounts.Amount}}</option>
+            </select> 
+          </div>
+
+          <div class="col-md-4">
+            <label class="col-md-4 label-crect-journal-entry-voucher-no"> Collected By</label>
+            <select [(ngModel)]="User_Search" id="User_" required class="col-md-8 input-allighn-to-crect-wole-paddings ng-untouched ng-valid ng-dirty">
+            <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">{{User_T.User_Details_Name}}</option>
+            </select>  
+          </div>
+
+        <div  class="col-md-4">
+          <label class="col-md-3 label-crect-journal-entry-voucher-no"> Description</label>
+          <select [(ngModel)]="Fees_Description_Search" required class="col-md-9 input-allighn-to-crect-wole-paddings ng-valid ng-dirty ng-touched">
+          <option *ngFor="let Descriptions of Fees_Receipt_Data" [ngValue]="Descriptions">{{Descriptions.Descriptions}}</option>
+          </select> 
+        </div>           
+        <div  class="col-md-4">
+          <label class="col-md-3 label-crect-journal-entry-voucher-no"> Branch</label>
+          <select [(ngModel)]="Search_Branch" required class="col-md-9 input-allighn-to-crect-wole-paddings ng-valid ng-dirty ng-touched">
+          <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">{{Branch_T.Branch_Name}}</option>
+          </select> 
+        </div>        
+    </div>          
+</div>     -->
+    </div>
+    </div>
+<div class="row div-to-down-margin-crect-allighn-wole-scton">
+  <div class="col-md-12 whole-portion-edit-section-lead-part" [style.height.px]="myInnerHeight" >
+  <div class="card card-plain">
+    <div class="card-body card-body-for-searchedit-lead-section">
+    <div class="table-responsive">
+    <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format">
+      <thead>
+        <th>
+          No
+        </th>
+        <th>
+          paid on
+        </th>
+        <th>
+          Collected By
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Fees
+          </th>
+          <th>
+            Amount
+          </th>
+        <th>
+          Created By
+        </th>
+        <th class="change-width-header-table-remar">
+        Description
+        </th>
+        <!-- <th>
+        File No
+        </th> -->
+        <th>
+        Branch
+        </th>
+        <th>
+        Department
+        </th>
+        <th>
+          Registered By
+        </th>
+        <th>
+          Registered On
+        </th>
+        <!-- <th>
+          Edit
+        </th> -->
+      </thead>
+      <tbody *ngFor="let Lead of Fees_Receipt_Search; let i = index">
+        <tr>
+          <td>
+          {{Lead["RowNo"]}}
+          </td>
+          <td>
+          {{Lead["Entry_Date"]}}
+          </td>
+          <td>
+            {{Lead["Fees_Collected_By"]}}
+            </td>
+            <td>
+              {{Lead["Student_Name"]}}
+              </td>
+              <td>
+                {{Lead["Fees_Name"]}}
+                </td>
+                <td>             
+                  {{Lead["Amount"]}} 
+                </td>
+          <td>
+            {{Lead["Created_By_Name"]}}
+            </td>
+            <td>
+              {{Lead["Description"]}}
+              </td>
+              <td>
+                {{Lead["Branch_Name"]}}
+                </td>
+            <td>
+              {{Lead["Department_Name"]}}
+              </td>
+          <!-- <td>
+          <div ><span [hidden]="Lead.FollowUp==0">
+            {{Lead["Next_FollowUp_Date"]}}</span></div>
+          </td>
+        -->
+          <td>
+            <div ><span [hidden]="Lead.Is_Registered==0">    
+          {{Lead["Registered_By_Name"]}}
+        </span></div>
+          </td>
+          <td>             
+            {{Lead["Registered_On"]}} 
+          </td>
+         
+             <!-- <td>
+      <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button"><span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" _ngcontent-gxp-c5="" class="material-icons" (click)="Edit_Lead(Lead.Lead_Id,i)" >edit</i></span><div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay" ></div></button>
+  </td> -->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+</div>  
+</div>
+
+
+
+           

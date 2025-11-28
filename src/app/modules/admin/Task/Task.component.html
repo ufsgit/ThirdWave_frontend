@@ -1,0 +1,270 @@
+<!-- <div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div> -->
+
+<div *ngIf="issLoading" class="overlay" 
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+<img src="/assets/img/spinner.gif" width="100px" >
+</div>
+
+  <div class="main-content">
+  <div class="container-fluid2 right-sec">
+  
+  
+  <div class="row" *ngIf="Entry_View">
+  
+
+ <div class="col-md-12 pl-0 pt-2">
+    <div class="dt-card mb-0 pb-1 pt-3">         
+        <div class="dt-card__body mb-0 pb-0">
+              <form class="mb-0">           
+              <div class="form-row" style="padding-left: 10px;">
+                  <label class="col-md-0  col-sm-0 col-form-label text-sm-right">Task Details <span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                  <div class="col-md-9 col-sm-9 mb-2">
+                      <input type="text" class="form-control" [(ngModel)]="Task_.Task_Details"  name="Task_.Task_Details"  placeholder="Task Details">
+                     
+                  </div>
+
+
+                  
+                  
+                  <div class="col-md-2 col-sm-2 mt-0">                    
+                    <!-- <button mat-raised-button type="submit" class="close-button-style pull-left mr-1 " (click)="Close_Click()">Close</button> -->
+                    <button (click)="Search_front_click()"  mat-raised-button type="submit"  class="other-button-style pull-right mr-7">Search</button>
+                    <button mat-raised-button type="submit"id="Save_Button"  class="save-button-style pull-left mr-1" *ngIf="Task_Save"(click)="Save_Task()">Save</button> 
+                      </div>
+              </div>
+          </form>
+          </div>
+      </div>        
+    </div> 
+  
+  
+    <div *ngIf="Task_Edit_View" class="col-md-12 pl-0"  [style.height.px]="myInnerHeight" itemSize="10"  >
+      <div class="dt-module">            
+          <div class="dt-module__container" >
+              <div class="dt-module__content ps-custom-scrollbar">
+                  <div class="dt-module__content-inner card-body set-height-scroll-bar-wole-block">   
+                      <div class="dt-module__list">
+                        
+                          <div class="dt-module__list-item pb-2 pt-2" *ngFor="let Task of Task_Data; let i = index"> 
+                              <div class="dt-module__list-item-content">
+                                  <div class="user-detail">
+                                    <span class="user-name">{{i+1}}</span>
+                                      <span class="icon-background2 mr-1" *ngIf="Task_Edit" (click)="Edit_Task(Task,i,1)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                      <span class="icon-background3 mr-1" *ngIf="Task_Delete" (click)="Delete_Task(Task.Task_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+          
+                                      <span class="user-name">{{Task["Task_Details"]}}</span>
+                                      
+                                     
+                                  </div>
+                                 
+                              </div>                                
+                          </div>
+                         
+                  
+                    
+                       
+                      </div>
+                  </div>
+                 
+              </div>
+             
+          </div>
+         
+        </div>
+    </div>  
+  
+  </div>
+
+  <div class="row" *ngIf="!Entry_View">
+    <div class="col-md-12 pl-0 pt-2 mb-5">
+        <div class="dt-card mb-0 pb-1 pt-3">         
+            <div class="dt-card__body mb-0 pb-0">
+                <form class="mb-0">  
+                    
+                    <div class="form-row"  >
+                        <label class="col-md-0 col-sm-0 col-form-label text-sm-right">From</label>
+                        <div class="col-md-2 col-sm-2 mb-2" >
+                            <input type="date" class="form-control" [(ngModel)]="Search_FromDate" name="Search_FromDate"  placeholder="">
+                            
+                        </div>
+                            <label class="col-md-0 col-sm-0 col-form-label text-sm-right">To</label>
+                        <div class="col-md-2 col-sm-2 mb-2" >
+                            <input type="date" class="form-control" [(ngModel)]="Search_ToDate" name="Search_ToDate"  >
+                           
+                        </div>
+                    
+
+    
+                        <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Task Details</label>
+                        <div class="col-md-2 col-sm-2 mb-2" >
+                            <input type="text" class="form-control" [(ngModel)]="Task_Name_Search" name="Task_Name_Search">
+                            </div>
+
+
+                            <label *ngIf="Login_User_Type==1" class="col-md-0 col-sm-0 col-form-label text-sm-right" >Staff</label>
+                            <div  *ngIf="Login_User_Type==1" class="col-md-2 col-sm-2 mb-2"  >
+                                <select [(ngModel)]="User_Details_" name="User_Details_"  class="form-control p-0 pl-1">
+                                    <option *ngFor="let User_Details_T of User_Details_Data" 
+                                    [ngValue]="User_Details_T">{{User_Details_T.User_Details_Name}}</option>
+                                    </select>
+                                </div>
+
+                    </div>
+
+                  
+              
+
+           <div  class="form-row" style="padding-left: 10px;margin-left: 384px;">
+                       <!--   <label  *ngIf="!Searchview" class="col-md-0  col-sm-0 col-form-label text-sm-right">Task Details <span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                  <div  *ngIf="!Searchview" class="col-md-3 col-sm-3 mb-2">
+                      <input type="text" class="form-control" [(ngModel)]="Task_.Task_Details"  name="Task_.Task_Details"  placeholder="">
+                     
+                  </div> -->
+                  
+                    
+                    <div class="col-md-2 col-sm-2 mt-0" style="margin-left: 677px;"> 
+                          <!-- <button  [hidden]="Searchview"  mat-raised-button type="submit"id="Save_Button"  class="save-button-style pull-left mr-1"(click)="Save_Task()">Save</button>      -->
+                          <button  (click)="Search_Task()" mat-raised-button type="submit" style="margin-left: 15px;
+                          margin-top: -49px;"  class="other-button-style pull-left mr-1">Search</button>
+                          <button  mat-raised-button type="submit"id="Save_Button" style="margin-top: -49px; margin-left: 102px;"   class="other-button-style pull-left mr-1"(click)="Close_Click_Task()">Close</button>     
+                         
+
+                        </div>
+                </div>
+
+            </form>
+            </div>
+        </div>        
+      </div> 
+     
+  
+  
+  
+  
+ 
+
+ 
+  <!-- <div class="row div-to-down-margin-crect-allighn-wole-scton"  [hidden]="!Searchview" *ngIf="Task_Data">
+    <div class="col-md-12 whole-portion-edit-section-lead-part" [style.height.px]="myInnerHeight" >
+ 
+    <div class="card card-plain">
+      <div class="card-body card-body-for-searchedit-lead-section">
+      <div class="table-responsive">
+      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format">
+        <thead>
+          <th>
+            No
+          </th>
+          <th>
+            Task Details
+              </th> 
+          <th>
+         Entry Date
+            </th>
+          <th>
+        By User Name
+          </th>
+        <th></th>
+        </thead>
+        <tbody *ngFor="let Lead of Task_Data; let i = index">          
+            <tr>
+            <td>
+            {{i+1}}
+            </td>
+            <td>
+              {{Lead["Task_Details"]}}
+              </td>
+            <td>
+              {{Lead["Entry_Date"]}}
+              </td>
+            <td>
+            {{Lead["User_Details_Name"]}}
+            </td>
+           </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+    </div>
+  </div>  -->
+
+  
+  <div class="col-md-12  pl-0 mt-2" [hidden]="!Searchview"  *ngIf="Task_Data" style="border: 1" >
+    <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">       
+
+  <div class="card-body card-body-for-searchedit-lead-section">
+  <div class="table-responsive"  style="overflow: scroll;"[style.height.px]="myTotalHeight">
+  <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format">
+    <thead>
+      <th style="width: 10px;">
+        No
+      </th>
+      <th style="width: 10px;">
+        edit
+      </th>
+      <th style="width: 94px;">
+        Delete
+      </th>
+      <th>
+        Task Details
+          </th> 
+      <th style="width: 122px;">
+     Entry Date
+        </th>
+      <th>
+Staff
+      </th>
+      
+    </thead>
+    <tbody *ngFor="let Lead of Task_Data; let i = index">          
+      <tr>
+      <td>
+      {{i+1}}
+      </td>
+
+      <td>
+        <span class="icon-background2 mr-1" (click)="Edit_Task(Lead,i,2)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+        </td>
+        <td>
+          <span class="icon-background3 mr-1" (click)="Delete_Task(Lead.Task_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+        </td>
+
+      <td>
+        {{Lead["Task_Details"]}}
+        </td>
+      <td>
+        {{Lead["Entry_Date"]}}
+        </td>
+      <td>
+      {{Lead["User_Details_Name"]}}
+      </td>
+     
+
+     </tr>
+    </tbody>
+    </table>
+  </div>
+  </div>
+
+
+</div>
+</div>
+
+
+
+
+</div>
+  </div>

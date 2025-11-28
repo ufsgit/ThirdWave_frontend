@@ -1,0 +1,106 @@
+
+
+
+<div *ngIf="issLoading" class="overlay">
+    <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+    </mat-progress-spinner>
+</div>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row" *ngIf="Entry_View">
+            <div class="col-md-12">
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label
+                                class="col-md-3 label-to-crect-all-names-to-divs name-label-margin-down-employer-details-name">Subject<span
+                                    style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span>
+                            </label>
+                            <mat-form-field
+                                class="col-md-9">
+                                <input matInput type="text" [(ngModel)]="Subject_.Subject_Name"
+                                    name="Subject_.Subject_Name" class="input-text-item-group-diary" 
+                                    style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+                            </mat-form-field>
+                          
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6 down-alighn-label-all">
+                                <button mat-raised-button type="submit"[hidden]="Subject_Save==false" id="Save_Button"class="btn btn-danger pull-right" (click)="Save_Subject()">Save</button>
+                                <button mat-raised-button type="submit"class="btn btn-danger pull-right" (click)="Close_Click()">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+        <div class="row" *ngIf="!Entry_View">
+            <div class="col-md-12">
+                <div class="card">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 alighyn-div-margin-search-item-group">
+                                <label class="col-md-3 alighn-title-search-section-tab-lead-per-details">Subject</label>
+                                <mat-form-field class="col-md-9 ">
+                                    <input matInput type="text" [(ngModel)]="Subject_Name_Search" name="Search_Name" 
+                                    style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+                                </mat-form-field>
+                            </div>
+
+                           
+                            <div class="col-md-3">
+                                <button mat-raised-button type="submit" (click)="Search_Subject()" class="btn btn-danger"><i class="fa fa-search" aria-hidden="true"></i></button> 
+                                <button mat-raised-button type="submit" (click)="Create_New()" class="btn btn-danger"><i class="fa fa-plus" aria-hidden="true"></i></button> 
+                            </div>
+                           
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12 card-body">
+                <div class="card-plain set-height-scroll-bar-wole-block" style="overflow-y: hidden;">
+                    <div class="table-responsive">
+                       
+                        <div class="row grid_header"  style="background-color: #ebeef0;color: black;">
+                            <div class="col-md-2">Sl No</div>
+                            <div class="col-md-4">Subject </div>
+                            <div class="col-md-1">Edit</div>
+                            <div class="col-md-1">Delete</div>
+                        </div>
+                        <cdk-virtual-scroll-viewport [style.height.px]="myInnerHeight" itemSize="90" >
+                            <ng-container *cdkVirtualFor="let Subject1 of Subject_Data; let i = index">
+                                <div class="row grid_data">
+                                   <div class="col-md-2">{{ i+1 }}</div>
+                                   <div class="col-md-4">{{Subject1["Subject_Name"]}}</div> 
+                                    <div class="col-md-1"  (click)="Edit_Subject(Subject1,i)">
+                                       <button _ngcontent-gdi-c11="" [hidden]="Subject_Edit==false" class="btn btn-danger2" mattooltip="Edit Task" type="button" aria-describedby="cdk-describedby-message-1"
+                                                cdk-describedby-host=""ng-reflect-position="above" ng-reflect-message="Edit Task"><span class="mat-button-wrapper"><i _ngcontent-gdi-c11="" class="material-icons" 
+                                                 >edit</i></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                                ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"></div>
+                                        </button>  
+                                    </div>
+                                    <div class="col-md-1"  (click)="Delete_Subject(Subject1.Subject_Id,i)">
+                                        <button _ngcontent-gdi-c11="" [hidden]="Subject_Delete==false" class="btn btn-danger1" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" cdk-describedby-host=""
+                                                 ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper"><i _ngcontent-gdi-c11="" class="material-icons" 
+                                                 >close</i></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                                ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"></div>
+                                        </button>          
+                                    </div>
+                                </div>
+                            </ng-container> 
+                        </cdk-virtual-scroll-viewport>
+                    </div>
+                </div>
+            </div> 
+            <div class="row col-md-12">
+                <label class="entry-num">Entries : {{Total_Entries}}</label>
+            </div>  
+        </div>
+        
+    </div>

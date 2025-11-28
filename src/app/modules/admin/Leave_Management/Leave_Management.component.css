@@ -1,0 +1,23 @@
+.two { color: rgb(42, 11, 219) ; } 
+.Four { color:green; } 
+.three { color: rgb(255, 0, 0); } 
+.six { color:rgba(12, 11, 12, 0.842); }
+.Five { color: rgb(165, 2, 151); }
+
+.table td{
+    padding: 1px 8px;
+}
+
+::ng-deep .mat-form-field-infix {
+    width: 100px !important;
+  }
+  @media only screen and (min-width: 1281px) {
+    .dash_big_screen{
+    margin-left: 90px;
+    }
+  }
+  @media only screen and (max-width: 1280px) {
+        .dash_big_screen{
+            margin-left: 60px;
+        }
+  }

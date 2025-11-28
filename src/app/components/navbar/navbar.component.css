@@ -1,0 +1,219 @@
+.home-component {
+  background: white;
+  height: 50px;
+  color: red;
+}
+.notification-box {
+  padding: 20px;
+}
+.v-btn {
+  font-size: 14px;
+  background: #5c89cc;
+  color: #fff;
+  padding: 1px 10px;
+  text-align: center;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0 10px 9px 0;
+}
+.inline-menu li:hover a i {
+  color: #214b47 !important;
+  font-size: 20px;
+}
+.inline-menu li {
+  transition: all 0.5s ease-in-out;
+}
+
+.c-dropdown {
+  position: absolute;
+  left: 257px;
+  top: 0;
+  background: #fff;
+  padding-left: 0;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+  padding: 15px 0;
+  border-radius: 0.4rem;
+  position: absolute;
+  left: 256px;
+}
+.c-dropdown2 {
+  position: absolute;
+  left: 257px;
+  top: -75px;
+  background: #fff;
+  padding-left: 0;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+  padding: 15px 0;
+  border-radius: 0.4rem;
+  position: absolute;
+  left: 256px;
+}
+.c-dropdown1 {
+  position: absolute;
+  left: 257px;
+ bottom: 0;
+  background: #fff;
+  padding-left: 0;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+  padding: 15px 0;
+  border-radius: 0.4rem;
+  position: absolute;
+  left: 256px;
+}
+.c-dropdownp {
+  position: relative;
+  width: 100%;
+  margin-right: 8px;
+  margin: 0;
+  min-width: 16rem;
+}
+.c-dropdown-item {
+  padding-left: 15px;
+  margin-right: 5px;
+  padding-right: 0;
+  /* padding-left: 25px; */
+}
+.c-dropdown li {
+  width: 100%;
+  margin: 0;
+}
+
+/*  */
+.side-bar .inline-menu,
+.inline-menu li {
+  display: inline-block;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  /* margin: 0 9px; */
+  text-align: center;
+  width: 100%;
+}
+.side-bar .inline-menu li .nav-link {
+  color: #545a6d !important;
+  display: flex;
+  align-items: center;
+
+  /* padding: 0.8rem 10px !important; */
+}
+.side-bar .inline-menu li a i {
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  transition: 0.4s;
+  transition: all 0.5s ease-in-out;
+  margin-left: 10px;
+}
+.side-bar .navbar-nav,
+.navbar-nav li {
+  display: inline-block;
+}
+.side-bar .nav-link .material-icons {
+  color: #fff;
+}
+.side-bar .navbar-nav .nav-item .nav-link {
+  padding: 0.8375rem;
+  padding-bottom: 5px;
+}
+.side-bar .nav-link {
+  padding: 0.8rem 5px;
+}
+
+.side-bar .login-user {
+  display: flex;
+  color: #17c240;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.8525rem;
+  margin: 0 0.3125rem;
+  padding: 0.625rem 1.45rem;
+  overflow: hidden;
+  line-height: 1.42857143;
+  text-overflow: ellipsis;
+}
+.nav-item img {
+  /* width: 35%; */
+  width: 28px;
+  position: relative;
+  margin-right: 0px;
+}
+.nav-item img:before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #3a79c130;
+  display: block;
+}
+
+.nav-item i {
+  color: #3a79c1 !important;
+  font-size: 20px;
+}
+.nav-item:hover i {
+  color: #3a79c1 !important;
+  font-size: 25px;
+}
+
+
+
+.side-bar:hover {
+  width: 12% !important;
+}
+.side-bar {
+  transition: all 0.5s ease-in-out;
+}
+
+.faa-ring.animated,
+.faa-ring.animated-hover:hover,
+s .faa-parent.animated-hover:hover > .faa-ring {
+  -webkit-animation: ring 2s ease infinite;
+  animation: ring 2s ease infinite;
+  transform-origin: 50% 0px 0;
+}
+
+@keyframes ring {
+  0%,
+  100% {
+    transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+    color: rgb(227, 13, 21); /* Change the color to red */
+  }
+  2%,
+  14%,
+  18% {
+    transform: rotate(15deg);
+    -ms-transform: rotate(15deg);
+    color: rgb(208, 196, 24); /* Change the color to blue at these keyframes */
+  }
+  4%,
+  12%,
+  16% {
+    transform: rotate(-18deg);
+    -ms-transform: rotate(-18deg);
+    color: rgb(208, 196, 24); /* Change the color to green at these keyframes */
+  }
+  6%,
+  10% {
+    transform: rotate(18deg);
+    -ms-transform: rotate(18deg);
+    color: rgb(185, 29, 34); /* Change the color to orange at these keyframes */
+  }
+  8% {
+    transform: rotate(-22deg);
+    -ms-transform: rotate(-22deg);
+    color: purple; /* Change the color to purple */
+  }
+  20% {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    color: rgb(185, 29, 34); /* Change the color back to red at the end */
+  }
+}
+
+.faa-ring {
+  color: rgb(60, 38, 150);
+  margin-right: 100px;
+}

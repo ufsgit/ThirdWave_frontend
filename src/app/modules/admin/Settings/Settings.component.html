@@ -1,0 +1,26 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>                                     
+
+
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+
+<div class="main-content new-margin-T" *ngIf="Settings_Div">
+  <div class="container-fluid mt-2">
+    <div class="row right-sec">
+      <div class="col-md-12 bg-set-leds-dtls ">
+          <button mat-raised-button type="submit" class="other-button-style btnflot pull-right mr-1" (click)="Delete_Data()" style="    float: left;">Clear all data</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>

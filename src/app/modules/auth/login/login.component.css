@@ -1,0 +1,22 @@
+.login-title{float: left; margin-top: 60px ; font-weight: bolder;}
+.login-logo-to-corect{
+    /* margin:25px auto 0px;max-width: 70%; */
+     display: table;
+    }
+
+
+.login-box-login-contents input{
+    border-radius: 8px;
+}
+.mat-input-element {
+    border-radius: 5px !important;
+    margin: 8px 0;
+    background: #e8f0fe !important;
+    padding-left: 12px;
+}
+.login-btn{
+    background: #a174ff !important;
+    color: #fff !important;
+    width: 100%;
+    margin-top: 10px;
+}

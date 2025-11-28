@@ -1,0 +1,492 @@
+<!-- <div *ngIf="issLoading" class="overlay">
+  <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+  </mat-progress-spinner>
+  
+  </div> -->
+  <div *ngIf="issLoading" class="overlay" 
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+<img src="/assets/img/spinner.gif" width="100px" >
+</div>
+
+
+
+
+
+
+
+
+
+
+  <div class="main-content screenfixed new-margin-T dash_big_screen" >
+  <div class="container-fluid2 ">
+  <div class="row" *ngIf="Entry_View">
+  <div class="col-md-12 pl-0 pr-0 pt-4" > 
+  
+  <div class="card-body" >
+  <form>
+
+
+  <div class="row">
+   
+
+  <!-- <div class="col-md-6">
+  <div class="col-md-12">
+  <label class="col-md-4 label-crect-ledger-to-date-srch-sctn">Department Name<span  style="color:#ef071e; font-size:24px; vertical-align: -webkit-baseline-middle; margin-left:8px;">*</span></label>
+  <mat-form-field class="col-md-8">
+  <input matInput type="text" [(ngModel)]="Department_.Department_Name" name="Department_.Department_Name" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+  </mat-form-field>
+  </div>
+  
+  <div class="col-md-12">
+  <label class="col-md-4 label-crect-ledger-to-date-srch-sctn">FollowUp<span  style="color:#ef071e; font-size:24px; vertical-align: -webkit-baseline-middle; margin-left:8px;">*</span></label>
+  <select name="FollowUp_Department" [(ngModel)]="Department_.FollowUp" required class="col-md-7  margin-lh-rh-to-crect-textbox select-user-block  style=border: 1px solid #949494 !important;padding: 8px 3px !important;" >
+  <option value="1">yes</option>
+  <option value="0">No</option>
+  </select>
+  </div>
+  
+  <div class="col-md-12">
+      <label class="col-md-4 label-crect-ledger-to-date-srch-sctn">Order</label>
+  <mat-form-field class="col-md-8">
+  <input matInput type="text" [(ngModel)]="Department_.Department_Order"  name="Department_.Department_Order" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+  </mat-form-field>
+  </div>  
+  <div class="col-md-12">
+  <button mat-raised-button type="submit" [hidden]="Department_Save==false"id="Save_Button"class="btn btn-danger pull-right"(click)="Save_Department()">Save</button>
+  <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="Close_Click()">Close</button>
+  </div>
+  </div> -->
+  
+  <!--  [style.color]="Department_.Color_Type_Name" -->
+  <div class="col-md-6 section-user-block-ne other-department-user-block">
+    <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-3. col-sm-3 col-form-label text-sm-right" style="background: transparent;">Department Name<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+        <div class="col-md-9 col-sm-9">
+            <input type="text" class="form-control" [(ngModel)]="Department_.Department_Name" name="Department_.Department_Name" id="normal-input-4" placeholder="Department Name">
+        </div>
+    </div>
+   
+    <!-- <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-3 col-sm-3 col-form-label text-sm-right" style="background: transparent;">FollowUp<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+        <div class="col-md-9 col-sm-9">
+      
+
+                <select name="FollowUp_Department" [(ngModel)]="Department_.FollowUp" required class="form-control p-0 pl-1" id="normal-input-4" >
+                  <option value="1">yes</option>
+                  <option value="0">No</option>
+                  </select>
+        </div>
+    </div> -->
+
+    <div class="form-group form-row">
+      <label class="col-md-3 col-sm-2 col-form-label text-sm-right">Default Status<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+     <div class="col-md-9 col-sm-9 mb-1">
+         <select [(ngModel)]="Department_Status_Dropdown_" name="Department_Status_Dropdown_" required class="form-control p-0 pl-1">
+          <option *ngFor="let Department_Status_Dropdown_T of Department_Status_Dropdown_Data" [ngValue]="Department_Status_Dropdown_T">{{Department_Status_Dropdown_T.Department_Status_Name}}</option>
+      </select>
+     </div> 
+  </div>
+
+    <div class="form-group form-row ">
+        <label for="normal-input-4" class="col-md-3 col-sm-3 col-form-label text-sm-right" style="background: transparent;">Order <span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+        <div class="col-md-5 col-sm-9">
+            <input type="number" class="form-control" [(ngModel)]="Department_.Department_Order"   name="Department_.Department_Order" id="normal-input-4" placeholder="">
+        </div>
+    </div>
+
+ 
+    <label for="normal-input-4" class="col-md-3 col-lg-2 col-form-label text-sm-right"> Agent Department</label> 
+    <div class="col-md-9 col-lg-10" style="    margin-top: 12px;">
+        <!-- <label _ngcontent-xmy-c9="" class="form-check-label"> -->
+            <input
+                type="checkbox"
+                class="form-check-input"
+                placeholder=""
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="Department_management_view"  
+             
+            />
+            <span
+                _ngcontent-xmy-c9=""
+                class="form-check-sign"
+                style="margin-top: 4px; margin-left: -15px"
+                ><span _ngcontent-xmy-c9="" class="check"></span>
+            </span>
+            <!-- <label class="">Created</label> -->
+        <!-- </label> -->
+    </div>
+
+
+    <label for="normal-input-4" class="col-md-3 col-lg-2 col-form-label text-sm-right">Round Robin</label> 
+    <div class="col-md-9 col-lg-10" style="    margin-top: 12px;">
+        <!-- <label _ngcontent-xmy-c9="" class="form-check-label"> -->
+            <input
+                type="checkbox"
+                class="form-check-input"
+                placeholder=""
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="Round_Robin_Check"  
+             
+            />
+            <span
+                _ngcontent-xmy-c9=""
+                class="form-check-sign"
+                style="margin-top: 4px; margin-left: -15px"
+                ><span _ngcontent-xmy-c9="" class="check"></span>
+            </span>
+            <!-- <label class="">Created</label> -->
+        <!-- </label> -->
+    </div>
+
+    <label for="normal-input-4" class="col-md-3 col-lg-2 col-form-label text-sm-right">Agent View</label> 
+    <div class="col-md-9 col-lg-10" style="    margin-top: 12px;">
+        <!-- <label _ngcontent-xmy-c9="" class="form-check-label"> -->
+            <input
+                type="checkbox"
+                class="form-check-input"
+                placeholder=""
+                [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="Agent_View_Check"  
+             
+            />
+            <span
+                _ngcontent-xmy-c9=""
+                class="form-check-sign"
+                style="margin-top: 4px; margin-left: -15px"
+                ><span _ngcontent-xmy-c9="" class="check"></span>
+            </span>
+            <!-- <label class="">Created</label> -->
+        <!-- </label> -->
+    </div>
+ 
+
+  <!-- <div class="form-group form-row">
+    <label class="col-md-3 col-sm-2 col-form-label text-sm-right">Transfer Method<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+   <div class="col-md-9 col-sm-9 mb-1">
+    <select
+    [(ngModel)]="Transfer_Method_"
+    class="form-control p-0 pl-1"
+    name="custimertype"
+    id="custimertype"
+   
+>
+    <option value=0>Select</option>
+    <option value=1>Automatic Transfer</option>
+    <option value=2>Manual Transfer</option>
+
+    
+</select>
+   </div> 
+</div> -->
+
+<!-- <div class="form-group form-row">
+  <label class="col-md-3 col-sm-2 col-form-label text-sm-right">Color<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+  <div class="col-md-9 col-sm-9 mb-1">
+  <select  class="form-control p-0 pl-1"  [(ngModel)]="Color_Type_"  (change)="selectedColor = $event.target.value" [ngModelOptions]=" 
+  {standalone: true}"> 
+    <option value=0>Select</option>
+    <option value=rgb(333,3,333)>Red</option>
+    <option value=green>Green</option>
+    <option value=blue>Blue</option>
+</select>
+</div>
+
+(change)="Color_Status_.Colors_Name = $event.target.value"
+</div> -->
+
+<!-- <div class="form-group form-row">
+  <label class="col-md-3 col-sm-2 col-form-label text-sm-right">Color<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+  <div class="col-md-9 col-sm-9 mb-1">
+    <select
+    [(ngModel)]="Color_Status_"  
+    name="Color_Status_"
+    required
+    class="form-control p-0 pl-1"
+  >
+    <option
+      *ngFor="let Color_Status_T of Color_Status_Data"
+      [ngValue]="Color_Status_T"
+    >
+      {{ Color_Status_T.Colors_Name }}
+    </option>
+  </select>
+</div> -->
+
+
+
+<!-- <div class="form-group form-row">
+  <label class="col-md-3 col-sm-2 col-form-label text-sm-right">Color<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+  <div class="col-md-9 col-sm-9 mb-1">
+    <input type="color" id="Color_Status_"    class="form-control p-0 pl-1"
+    [(ngModel)]="Color_Status_.Colors_Name"   name="Color_Status_.Colors_Name"
+    value="#fffff">
+</div> -->
+
+
+
+<div class="form-group form-row ">
+  <!-- <label class="col-md-3 col-sm-2 col-form-label text-sm-right">Color</label>                           
+  <div class="col-md-5 col-sm-2 mb-1">
+    <input type="color" id="Department_.Color_Type_Name"    class="form-control p-0 pl-1"
+    [(ngModel)]="Department_.Color_Type_Name"   name="Department_.Color_Type_Name"
+    value="#fffff">
+</div> -->
+<div class="col-md-4 mt-0 ">
+  <button mat-raised-button type="submit" class="close-button-style pull-right mr-1 " (click)="Close_Click()">Close</button>
+    <button mat-raised-button type="submit" [hidden]="Department_Save==false" id="Save_Button"  class="save-button-style pull-right mr-1" (click)="Save_Department()">Save</button>
+   
+
+</div>
+
+</div>
+
+
+
+  
+    <div class="form-row mt-2">
+        
+    </div>
+
+</div>
+
+
+
+  <div class="col-md-6">  
+  <div class="row full-box-contents-select-status-department p-0">
+  <div class="col-lg-12 crect-title-table pt-2 pb-1">
+  <span _ngcontent-xmy-c9="" class="nav-tabs-title">Select Department Status</span><span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span> </div>  
+  <div _ngcontent-xmy-c9="" class="card margin-corect-card">  
+  <!--<div _ngcontent-xmy-c9="" class="nav-tabs-navigation">  
+  <table _ngcontent-xmy-c9="" class="table table-accounts-colour-text Department_to-small-div-tocrect">
+  <tbody _ngcontent-xmy-c9="">
+  <tr _ngcontent-xmy-c9="">
+  <th class="crect-align-tblelst-srlno-department">Sl.No</th>
+  <th class="crect-align-tblelst-status-department">Select</th> 
+  <th>Status</th> 
+  <th class="crect-align-tblelst-vuol-lrg">View All</th>
+  </tr></tbody></table>  
+  </div>-->
+  <div _ngcontent-xmy-c9="" class="card-body" [style.height.px]="myTotalHeight"style="overflow-y: scroll;">
+    <div _ngcontent-xmy-c9="" class="tab-content" >
+  <div _ngcontent-xmy-c9="" class="tab-pane active" id="profile">
+  <table _ngcontent-xmy-c9="" class="table st-width2">
+    <tr _ngcontent-xmy-c9="" class="th-botm-bordr">
+      <th class="crect-align-tblelst-srlno-department th-botm-bordr-top">Sl.No</th>
+      <th class="crect-align-tblelst-status-department th-botm-bordr-top">Select</th> 
+      <th class="th-botm-bordr-top">Department Status</th> 
+    </tr>
+    <tbody _ngcontent-xmy-c9="" *ngFor="let Department_Status1 of Department_Status_Data; let i = index">
+      <tr _ngcontent-xmy-c9="">
+        <td class="crect-align-tblelst-srlno-branch">{{ i+1 }}</td>
+        <td _ngcontent-xmy-c9="" class="crect-align-tblelst-status-branch">  
+          <div _ngcontent-xmy-c9="" class="form-check mar-crect-for-check-bx-depart">
+            <label _ngcontent-xmy-c9="" class="form-check-label">
+              <!-- <input _ngcontent-xmy-c9="" checked="" class="form-check-input" type="checkbox" value=""> -->
+              <input type="checkbox" name={{Department_Status1.Department_Status_Id}} 
+              class="form-check-input"  [(ngModel)]="Department_Status1.Check_Box" 
+              [checked]="Department_Status1.Check_Box">
+              <!-- <input _ngcontent-xmy-c9=""  class="form-check-input" id="Department1.Check_Box" name="Department1.Check_Box" 
+              [(ngModel)]="Department1.Check_Box" type="checkbox" [checked]="Department1.Check_Box" > -->
+              <span _ngcontent-xmy-c9="" class="form-check-sign" style="    margin-left:8px;
+              margin-top: 13px;">
+                <span _ngcontent-xmy-c9="" class="check"></span>
+            </span></label></div></td>
+  <td class="crect-align-tblelst-select-branch">
+
+    <span name="Department_Status1.Department_Status_Name">{{
+      Department_Status1.Department_Status_Name
+    }} </span>
+
+  </td>
+  </tr>
+  </tbody></table></div>                                
+  </div>
+  </div>
+  </div>
+  
+  </div>
+  </div>
+  </div>
+  <div class="clearfix"></div>
+  </form>
+  </div>
+  
+  </div>
+  
+  
+  </div>
+  
+  <!-- <div class="row" *ngIf="!Entry_View">
+  <div class="col-md-11">
+    <button mat-raised-button type="submit" (click)="Create_New()" class="btn btn-danger pull-right change-colour-button buton-save-search-edit"><i class="fa fa-plus" aria-hidden="true"></i></button>    
+    <button mat-raised-button type="submit" id="Search_Department" (click)="Search_Department()" class="btn btn-danger pull-right change-colour-button buton-save-search-edit"><i class="fa fa-search" aria-hidden="true"></i></button>
+  </div>
+         <div class="col-md-12 margin-down-to-crect-div" [style.height.px]="myInnerHeight" itemSize="90">
+            <div class="col-md-11 card-body set-height-scroll-bar-wole-block margin-crect-labl-name-txt-wle-div">
+            <div class="table-responsive">
+            <table class="table table-hover heading-styles-as-gmail-format">
+            <thead class="">
+            <th class="srl-no-wdth-rdce-wle-pge">
+            Sl No
+            </th>
+            <th>
+            Department Name
+            </th>
+            <th [hidden]="Department_Edit==false" class="edit-delete-wdth-rdce-wle-pge">
+            Edit
+            </th>
+            <th [hidden]="Department_Delete==false" class="edit-delete-wdth-rdce-wle-pge">
+            Delete
+            </th>
+            </thead>
+            <tbody class="bk_tb_bg" *ngFor="let Department1 of Department_Data; let i = index">
+            <tr>
+            <td style="padding-left:5px;">{{ i+1 }}</td>
+            <td>{{Department1["Department_Name"]}}</td>
+            <td>
+            <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" [hidden]="Department_Edit==false"aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button"><span class="material-icons-outlined"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" _ngcontent-gxp-c5="" class="material-icons" style = "font-weight: 900;font-size: 30px;" (click)="Edit_Department(Department1,i)" >edit</i></span><div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay" ></div></button>
+            </td>
+            <td> 
+            <button style="border-width: 0ch;" _ngcontent-gdi-c11="" [hidden]="Department_Delete==false"class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" cdk-describedby-host="" ng-reflect-position="above" ng-reflect-message="Remove"><span class="material-icons-two-tone" ><i _ngcontent-gdi-c11="" class="material-icons" style = "font-weight: 900;font-size: 30px;" (click)="Delete_Department(Department1,i)" >delete_outline</i></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"  ></div></button>
+            </td>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+            </div>
+  
+    
+  
+  
+  </div>
+  <label class="entry-num">Entries : {{Total_Entries}}</label>
+  </div> -->
+  
+
+  <div class="row" *ngIf="!Entry_View"  >
+    <div class="col-md-12 pl-0 pr-0  mb-2 mt-2">
+      <div class="dt-card mb-0 pb-1 pt-3">         
+          <div class="dt-card__body mb-0 pb-0" >
+              <form class="mb-0">           
+              <div class="form-row" style="padding-left: 10px;">
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Department Name</label>
+                  <div class="col-md-3 col-sm-3 mb-2">
+                      <input type="text" class="form-control" [(ngModel)]="Department_Name_Search" name="Department_Name"  placeholder="Department Name">
+                     
+                  </div>
+                  
+                  <div class="col-md-4 col-lg-3 mt-0">                    
+                       <button (click)="Search_Department()" mat-raised-button type="submit"  class="other-button-style pull-left mr-1">Search</button>
+                       <button (click)="Create_New()" mat-raised-button type="submit" class="save-button-style pull-left mr-1 ">Create New</button>
+  
+                      </div>
+              </div>
+          </form>
+          </div>
+      </div>        
+    </div> 
+    <!-- <div class="col-md-12 pl-0 mb-6"> -->
+    <!-- <div class="dt-card">          --> 
+        <!-- <div class="dt-card__body"> -->
+            <!-- <form class="mb-0">            -->
+            <!-- <div class="form-row"> -->
+                <!-- <div class="col-md-11 mt-2"> -->
+                  <!-- <button mat-raised-button type="submit" (click)="Create_New()" class="save-button-style pull-right mr-1 ">Create New</button>     -->
+                  <!-- <button mat-raised-button type="submit" (click)="Search_Department()" class="other-button-style pull-right mr-1">Search</button>     -->
+
+                <!-- </div> -->
+            <!-- </div> -->
+        <!-- </form> -->
+        <!-- </div> -->
+    <!-- </div>         -->
+  <!-- </div>  -->
+  
+  
+  <div class="col-md-12 pl-0 pr-0 mt-0"   [style.height.px]="myInnerHeight">
+    <div class="dt-module"        >            
+        <div class="dt-module__container">
+          <!-- style="overflow: scroll;"[style.height.px]="myTotalHeight" -->
+            <div class="dt-module__content ps-custom-scrollbar">
+              <!-- <div class="card-body set-height-scroll-bar-wole-block"></div> -->
+              <div class="dt-module__content-inner card-body set-height-scroll-bar-wole-block">  
+                  
+                    <div class="dt-module__list" [style.height.px]="myInnerHeight"
+                    style="overflow-y: scroll"
+                    id="profile">
+                      
+                        <div class="dt-module__list-item pb-2 pt-2" *ngFor="let Department1 of Department_Data; let i = index"> 
+                            <div class="dt-module__list-item-content">
+                              
+                              
+                                <div class="user-detail">
+
+                                  <span class="icon-background2 mr-1" *ngIf="Department_Edit" (click)="Edit_Department(Department1,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                  <span class="icon-background3 mr-1" *ngIf="Department_Delete" (click)="Delete_Department(Department1,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+
+
+                                <!-- <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" 
+                                    class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" 
+                                    mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button">
+                                    <span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" 
+                                     _ngcontent-gxp-c5="" class="material-icons save-material-style" (click)="Edit_Department(Department1,i)">edit</i></span>
+                                     <div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                     ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" 
+                                     class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" 
+                                     ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                     <div class="mat-button-focus-overlay"></div>
+                                </button>  
+                                     <button _ngcontent-gdi-c11="" class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button" 
+                                     mat-raised-button="" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" 
+                                     cdk-describedby-host="" ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper">
+                                     <i _ngcontent-gdi-c11="" class="material-icons delete-material-style"  (click)="Delete_Department(Department1,i)" >close</i></span>
+                                     <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" 
+                                     ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                     <div class="mat-button-focus-overlay"></div>
+                                    </button> -->
+                                    <span class="user-name">{{Department1["Department_Name"]}}</span>
+                                    <span class="dt-separator-v">&nbsp;</span>
+                                    <!-- <span class="user-name">Order: {{Department1["Department_Order"]}}</span> -->
+
+
+                                    <span *ngIf="Department1.Department_Order" style="color: #000000;"> Order - &nbsp;
+                                  
+                                    </span>
+                                
+                                
+                                    <span
+                                    *ngIf="Department1.Department_Order"
+                                    style="
+                                    color: #ef071e;
+                                    
+                                  "
+                                     >
+                                    {{
+                                      Department1.Department_Order
+                                    }}</span>
+
+
+                                    <!-- <span class="designation">Graphic Design / Logo Design / UI &amp; UX</span> -->
+                                </div>                               
+                            </div>                                
+                        </div>  
+                        <!-- </div>                    -->
+                    </div>
+                </div>
+                <!-- <div class="form-group">                       
+                    <button type="submit" (click)="Search_Client_Accounts()" class="btn btn-primary">Previous</button>
+                    <button type="submit" (click)="Create_New()" class="btn btn-primary">Next</button>                             
+                </div> -->
+            </div>
+            <!-- <div class="form-group">  
+              <div class="col-md-6" style="float: right;">                     
+          <button mat-raised-button type="submit" (click)="previous_Click()"  class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-left" aria-hidden="true" style="color:#5f6368;"></i></button>
+          <button mat-raised-button type="submit"  (click)="Next_Click()" class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #5f6368;"></i></button>
+          </div>
+      </div> -->
+        </div>       
+      </div>
+  </div>  
+  </div>
+</div>

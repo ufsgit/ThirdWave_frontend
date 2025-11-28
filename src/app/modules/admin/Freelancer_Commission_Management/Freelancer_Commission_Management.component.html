@@ -1,0 +1,203 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>                                     
+
+
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+
+<div *ngIf="main_View" class="main-content screenfixed new-margin-T" [hidden]="Search_Div">
+<div class="container-fluid1 right-sec">
+      <div class="col-md-12  pl-0 pr-0 mt-2" style="border: 1">
+        <div class="dt-card mb-0 pb-1 pt-1">       
+            <div class="dt-card__body  m-0">
+              <div class="mb-0">  
+                
+                <div class="form-row">
+
+                  <label class="col-md-2 col-lg-1 col-form-label text-sm-right pt-1 x-tra-label" style="padding-left: 14px;" >Application Created On</label>                
+
+                  <div class="col-md-1 col-lg-2 mb-1 x-tra-label">                    
+                    <div _ngcontent-xmy-c9="" class="checkbox-to-crect-sales-search-section">
+                    <div _ngcontent-xmy-c9="" class="form-check uper-dte-lbel-sales-sctn-new pl-0" >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                        <input type='checkbox' class="form-check-input" name="Date_checks" [(ngModel)]="Look_In_Date"   />
+                        <span _ngcontent-xmy-c9="" class="form-check-sign"><span _ngcontent-xmy-c9="" class="check">
+                        </span>
+                        </span>
+                        </label>
+                    </div>
+                    </div>    
+                </div>
+
+                
+                <label class="col-md-2 col-lg-1 col-form-label text-sm-right">From</label>
+                <div class="col-md-2 col-sm-2 mb-1">
+                    <mat-form-field class="pading_tab form-control mrgn-crct-input-text-div-tre-prt-sles1" 
+                    >
+                        <input matInput [matDatepicker]="dp1" placeholder=""[(ngModel)]="Search_FromDate" name="Search_FromDate"  > 
+                        <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                        <mat-datepicker #dp1></mat-datepicker>
+                        </mat-form-field>
+            </div> 
+               
+           
+
+                <label class="col-md-1 col-sm-1 col-form-label text-sm-right">To</label>
+                <div class="col-md-2 col-sm-2 mb-1">
+                   <mat-form-field class="pading_tab form-control mrgn-crct-input-text-div-tre-prt-sles1"
+                   >
+                   <input matInput [matDatepicker]="dpdate" placeholder=""  [(ngModel)]="Search_ToDate" name="Search_ToDate"> 
+                   <mat-datepicker-toggle matSuffix [for]="dpdate"></mat-datepicker-toggle>
+                   <mat-datepicker #dpdate></mat-datepicker>
+                   </mat-form-field>
+                 </div>
+                  
+                  <label class="col-md-2 col-lg-1 col-form-label text-sm-right"> Freelancer</label>
+                  <div class="col-md-2 col-sm-2 mb-1">
+                      <select [(ngModel)]="To_User_Search" class="form-control p-0 pl-1" id="simple-select">
+                          <option *ngFor="let User_T of Users_Data1" [ngValue]="User_T" >{{User_T.User_Details_Name}}
+                          </option>
+                        </select>
+                  </div>
+                 
+                  <label class="col-md-2 col-lg-1 col-form-label text-sm-right" style="margin-top: 14px;">Commission Type</label>
+                  <div class="col-md-2 col-sm-2 mb-1 mt-2">
+                    <select [(ngModel)]="Commission_Type_" class="form-control p-0 pl-2">
+                      <option value="0">All <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+                      <option value="1">Commission Not Set (Student) <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+                      <option value="2">Those Who Have Commission <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+                      </select> 
+                  </div>
+                  
+                
+
+                 
+                <button mat-raised-button type="submit"  style="background-color: #0caef7;"  id="Registration_Report" (click)="Search_Lead_button()" class="other-button-style btnflot pull-right mr-1 btn-pdng3 mobtn">Search</button>
+                <button mat-raised-button type="submit" style="background-color: #4bc859 !important;"  [hidden]="Export_View==false" (click)="Export()"class="other-button-style btnflot pull-right mr-1 btn-pdng3 mobtn"><i></i>EXPORT</button>
+                  <button  name="" mat-raised-button type="submit" (click)="Save_Freelancer_Commission_Management()" class="other-button-style btnflot pull-right mr-1 btn-pdng3 mobtn" style="background-color: #9d6b76;"> Update</button>
+                  
+            
+                 </div>
+
+<div>
+
+
+              
+            </div>
+        </div>  
+      </div>
+
+   
+  
+  <div class="col-md-12 pr-0  pl-0 " style="border: 1">
+    <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">    
+      <div class="card-body card-body-for-searchedit-lead-section">
+                <div class="table-responsive" [style.height.px]="myInnerHeight" style="overflow-y: scroll; font-size: 14px;">
+              
+                  <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format "style="width:100%;" >
+                    <thead>
+                      <th class="mb-1 crect-margin-width-table-header-title ">
+
+                      
+                        <div _ngcontent-xmy-c9="" class="col-md-2 form-check">
+                            <label _ngcontent-xmy-c9="" class="form-check-label p-0">
+                            <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                            [(ngModel)]="Select_Student" (click)="Student_View_Click()" type="checkbox" name="Select_View"
+                            [checked]="Select_View_Check" value="">
+                            <span _ngcontent-xmy-c9="" class="form-check-sign">
+                            <span _ngcontent-xmy-c9="" class="check mt-3"></span>
+                            </span>
+                            </label>
+                            </div>   
+                    
+                      </th>
+                      <th>
+                        No
+                      </th>
+                      <th >
+                       Application Created On
+                      </th>
+                      <th>
+                        Student Name
+                      </th>
+                      <th style="width: 200px;">
+                        Phone Number
+                      </th>
+                      <th>
+                        Amount
+                      </th>
+                      <th>
+                        Freelancer
+                      </th>
+                     
+                     
+                    </thead>
+                    <tbody *ngFor="let Lead of Student_Data_Search; let i = index" >
+                      <tr>
+                        <td class="crect-margin-width-table-header-title">
+                            <div _ngcontent-xmy-c9="" class="form-check">
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                [(ngModel)]="Lead.Check_Box_View"  type="checkbox" name="{{Lead.Student_Id}}"
+                                [checked]="Lead.Check_Box_View" value="">
+                                <span _ngcontent-xmy-c9="" class="form-check-sign">
+                                <span _ngcontent-xmy-c9="" class="check mt-2"></span>
+                                </span>
+                                </label>
+                                </div>
+                        
+                        </td>
+                        <td>
+                        {{i+1}}
+                        </td>
+                        <td style="width: 200px !important;">
+                        {{Lead["Application_Created_On"]}}
+                        </td>
+                      
+                        <td><a target="_blank" [routerLink]="['/Student']" (click)="Edit_Student_Notification(Lead.Student_Id,i)" 
+                          style="color: #357bfd; font-weight: 800;">{{ Lead["Student"] }}</a></td>
+
+                        <td>
+                        {{Lead["Mobile"]}}
+                        </td>
+                        <td>
+                          {{Lead["Influencer_Amount"]}}
+                          </td>
+                       
+                        <td>
+                          {{Lead["Created_User"]}}
+                          </td>
+                       
+                      
+                      </tr>
+                      </tbody>
+                    </table>
+          
+
+                  </div>
+           
+        </div>
+       
+       
+        </div>
+        <label style="margin-left: 10px;">Total Entries : <b>{{Total_Data}}</b></label>
+      </div>
+
+
+</div>  
+
+</div>
+</div>
+</div>
+
+
+
+

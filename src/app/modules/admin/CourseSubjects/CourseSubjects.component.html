@@ -1,0 +1,259 @@
+<div class="subjects-container">
+  <div class="subjects-header">
+    <h3>Course Qualification</h3>
+    <!-- <button type="button" class="btn btn-secondary btn-sm" (click)="closeDialogHandler()">
+      ×
+    </button> -->
+    
+  <span
+  class="icon-background3 mr-1 big-close-icon"
+  (click)="closeDialogHandler()"
+>
+  <mat-icon class="text-red">close</mat-icon>
+</span>
+
+
+  </div>
+
+  <div class="subjects-form">
+    <div class="form-group form-row">
+      <label for="qualification-select" class="col-md-3 col-lg-2 col-form-label text-sm-right">
+        Qualification
+      </label>
+      <div class="col-md-9 col-lg-10">
+      <select
+  [(ngModel)]="selectedQualification"
+  name="selectedQualification"
+  (change)="onQualificationChange()"
+  class="form-control p-0 pl-1"
+  id="qualification-select"
+>
+  <option [value]="0">Select Qualification</option>
+  <option *ngFor="let qual of qualifications" [value]="qual.Qualification_Id">
+    {{ qual.Qualification_Name }}
+  </option>
+</select>
+      </div>
+    </div>
+
+    <div class="form-group form-row">
+      <label for="state-select" class="col-md-3 col-lg-2 col-form-label text-sm-right">
+        State
+      </label>
+      <div class="col-md-9 col-lg-10">
+      <select
+  [(ngModel)]="selectedState"
+  name="selectedState"
+  (change)="onStateChange()"
+  class="form-control p-0 pl-1"
+  id="state-select"
+>
+  <option [value]="0">Select State</option>
+  <option *ngFor="let state of states" [value]="state.State_Id">
+    {{ state.State_Name }}
+  </option>
+</select>
+      </div>
+    </div>
+
+    <div class="form-group form-row">
+      <label for="university-select" class="col-md-3 col-lg-2 col-form-label text-sm-right">
+        University
+      </label>
+      <div class="col-md-9 col-lg-10">
+        <select
+  [(ngModel)]="selectedUniversity"
+  name="selectedUniversity"
+  (change)="onUniversityChange()"
+  class="form-control p-0 pl-1"
+  id="university-select"
+>
+  <option [value]="0">Select University</option>
+  <option *ngFor="let uni of universities" [value]="uni.University_Id">
+    {{ uni.University_Name }}
+  </option>
+</select>
+      </div>
+    </div>
+
+ <!-- <div class="form-group form-row">
+ <label for="stream-select" class="col-md-3 col-lg-2 col-form-label text-sm-right">
+   Stream
+ </label>
+ <div class="col-md-9 col-lg-10">
+   <select
+     [(ngModel)]="selectedStream"
+     name="selectedStream"
+     (change)="onStreamChange()"
+     class="form-control p-0 pl-1"
+     id="stream-select"
+   >
+     <option [value]="0">Select Stream</option>
+     <option *ngFor="let stream of streams" [value]="stream.Stream_Id">
+       {{ stream.Stream_Name }}
+     </option>
+   </select>
+ </div>
+</div> -->
+ <!-- <div class="form-group form-row">
+      <label for="subject-name" class="col-md-3 col-lg-2 col-form-label text-sm-right">
+        Subject Name
+      </label>
+      <div class="col-md-9 col-lg-10">
+        <input
+          type="text"
+          [(ngModel)]="subjectName"
+          name="subjectName"
+          class="form-control"
+          id="subject-name"
+          placeholder="Enter subject name"
+        />
+      </div>
+    </div> -->
+    <!-- <div class="form-group form-row">
+      <label for="subject-name" class="col-md-3 col-lg-2 col-form-label text-sm-right">
+        Subject Name
+      </label>
+      <div class="col-md-9 col-lg-10">
+        <input
+          type="text"
+          [(ngModel)]="subjectName"
+          name="subjectName"
+          class="form-control"
+          id="subject-name"
+          placeholder="Enter subject name"
+        />
+      </div>
+    </div> -->
+<div class="form-group form-row">
+ <label for="stream-select" class="col-md-3 col-lg-2 col-form-label text-sm-right">
+   Stream
+ </label>
+ <div class="col-md-9 col-lg-10">
+   <select
+     [(ngModel)]="selectedStream"
+     name="selectedStream"
+     (change)="onStreamChange()"
+     class="form-control p-0 pl-1"
+     id="stream-select"
+   >
+     <option [value]="0">Select Stream</option>
+     <option *ngFor="let stream of streams" [value]="stream.Stream_Id">
+       {{ stream.Stream_Name }}
+     </option>
+   </select>
+ </div>
+</div>
+
+<div class="form-group form-row" *ngIf="selectedStream > 0">
+ <label class="col-md-3 col-lg-2 col-form-label text-sm-right">
+   Subjects & Marks
+ </label>
+ <div class="col-md-9 col-lg-10">
+   <div class="table-responsive">
+     <table class="table table-bordered table-sm">
+       <thead class="thead-light">
+         <tr>
+           <th>Subject</th>
+           <th>Mark</th>
+           <!-- <th>Compulsory</th> -->
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let subject of availableSubjects; let i = index">
+           <td>{{ subject.Subject_Name }}</td>
+           <td>
+             <input
+               type="number"
+               [(ngModel)]="subject.Mark"
+               name="mark_{{i}}"
+               class="form-control form-control-sm"
+               min="0"
+               max="100"
+               placeholder="0"
+             />
+           </td>
+           <!-- <td>
+             <div class="form-check">
+               <input
+                 class="form-check-input"
+                 type="checkbox"
+                 [(ngModel)]="subject.Is_Compulsory"
+                 name="compulsory_{{i}}"
+                 id="compulsory_{{i}}"
+               />
+               <label class="form-check-label" for="compulsory_{{i}}">
+                 Yes
+               </label>
+             </div>
+           </td> -->
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   <div class="mt-2">
+     <strong>Total Marks: {{ getTotalMarks() }}</strong>
+   </div>
+ </div>
+</div>
+
+<div class="form-group form-row">
+ <div class="col-md-12 text-center">
+   <button 
+     type="button" 
+     class="btn btn-success" 
+     (click)="saveCourseSubjects()" 
+     [disabled]="!isFormValid() || issLoading"
+   >
+     <span *ngIf="issLoading" class="spinner-border spinner-border-sm mr-1"></span>
+     Save 
+   </button>
+ </div>
+</div>
+
+<!-- Saved Course Subjects List -->
+<div class="subjects-list" *ngIf="savedSubjects.length > 0">
+ <!-- <h4>Saved Course Subjects ({{savedSubjects.length}})</h4> -->
+ <div class="table-responsive">
+   <table class="table table-striped table-bordered">
+     <thead >
+       <tr>
+         <th>Qualification</th>
+         <th>State</th>
+         <th>University</th>
+         <th>Stream</th>
+         <th>Subjects & Marks</th>
+         <th>Actions</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let courseSubject of savedSubjects; let i = index">
+         <td>{{courseSubject.Qualification_Name}}</td>
+         <td>{{courseSubject.State_Name}}</td>
+         <td>{{courseSubject.University_Name}}</td>
+         <td>{{courseSubject.Stream_Name}}</td>
+         <td>
+           <div *ngFor="let subject of courseSubject.Subjects">
+             <span class="badge badge-primary mr-1">{{subject.Subject_Name}}</span>
+             <span class="badge badge-secondary mr-1">{{subject.Mark}}</span>
+             <span *ngIf="subject.Is_Compulsory" class="badge badge-success mr-1">Compulsory</span>
+           </div>
+           <!-- <div class="mt-1">
+             <strong>Total: {{courseSubject.Total_Marks}}</strong>
+           </div> -->
+         </td>
+         <td>
+           <button 
+             type="button" 
+             class="btn btn-danger btn-sm" 
+             (click)="removeSavedSubject(courseSubject,i)"
+           >
+             Delete
+           </button>
+            
+         </td>
+       </tr>
+     </tbody>
+   </table>
+ </div>
+</div>

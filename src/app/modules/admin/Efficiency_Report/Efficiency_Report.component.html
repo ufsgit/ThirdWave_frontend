@@ -1,0 +1,164 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+<div class="main-content" [hidden]="Search_Div">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 bg-set-leds-dtls">
+       <div class="row">
+           <!-- <div class="col-md-1 margin-crect-select-search-part to-crect-margin-select-leads-search-front">
+             <select [(ngModel)]="Search_By_" class="col-md-12 for-input-selct-tblelst">
+             <option value="1">Name <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+             </select>  
+           </div>
+ 
+           <div class="col-md-3 margin-down-tocrect-lead-textbox-front-section-oter">
+             <mat-form-field class="col-md-12 led-srch-sctn-nput-tb margin-down-to-input-acount-grp-search-part"> class="example-full-width"-->
+             <!-- <input matInput type="text" [(ngModel)]="Search_Name">class="for-input-leds-menlst-nme-tbs"
+             </mat-form-field>
+           </div>
+  -->
+        <div class="col-md-6 ">
+        <label class="col-md-3">By Staff<span  style="color:#ef071e; font-size:24px; vertical-align:  -webkit-baseline-middle;; margin-left:8px;">*</span></label>
+        <select [(ngModel)]="User_Search" required class="col-md-8 for-input-selct-tblelst ng-valid ng-dirty ng-touched">
+        <option *ngFor="let Users of Users_Data" [ngValue]="Users">{{Users.User_Details_Name}}</option>
+        </select> 
+        <!-- <input type="text" [(ngModel)]="User_Search" (click)="Search_User_Typeahead($event)"  (input)="Search_User_Typeahead($event)"  class="col-md-8 typer-heade-border" />
+  <mat-autocomplete #auto_User_Details="matAutocomplete" [displayWith]="display_Users">
+        <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
+        <ng-container *ngIf="!issLoading">
+        <mat-option *ngFor="let Users of Users_Data" [value]="Users">
+        <span>{{Users.User_Details_Name}}</span>
+        </mat-option>
+        </ng-container>
+        </mat-autocomplete> -->
+        <label class="col-md-3 label-crect-journal-entry-voucher-no"> Branch</label>
+          <select [(ngModel)]="Search_Branch" required class="col-md-8 for-input-selct-tblelst ng-valid ng-dirty ng-touched">
+          <option *ngFor="let Branch_TT of Branch_Data" [ngValue]="Branch_TT">{{Branch_TT.Branch_Name}}</option>
+          </select> 
+          <!-- <label class="col-md-3">Branch<span  style="color:#ef071e; font-size:24px; vertical-align:  -webkit-baseline-middle;; margin-left:8px;">*</span></label>
+          <input type="text" [matAutocomplete]="auto_Branch_Details" [(ngModel)]="Search_Branch" (click)="Search_Branch_Typeahead($event)"  (input)="Search_Branch_Typeahead($event)"  class="col-md-8 typer-heade-border" />
+          <mat-autocomplete #auto_Branch_Details="matAutocomplete" [displayWith]="display_Branch">
+          <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
+          <ng-container *ngIf="!issLoading">
+          <mat-option *ngFor="let Branch of Branch_Data" [value]="Branch">
+          <span>{{Branch.Branch_Name}}</span>
+          </mat-option>
+          </ng-container>
+          </mat-autocomplete> -->
+        </div>
+        
+          
+        <!-- <div class="col-md-6 ">
+          <label class="col-md-3">By Staff<span  style="color:#ef071e; font-size:24px; vertical-align:  -webkit-baseline-middle;; margin-left:8px;">*</span></label>
+          <input type="text" [matAutocomplete]="auto_User_Details" [(ngModel)]="User_Search" (click)="Search_User_Typeahead($event)"  (input)="Search_User_Typeahead($event)"  class="col-md-8 typer-heade-border" />
+          <mat-autocomplete #auto_User_Details="matAutocomplete" [displayWith]="display_Users">
+          <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
+          <ng-container *ngIf="!issLoading">
+          <mat-option *ngFor="let Users of Users_Data" [value]="Users">
+          <span>{{Users.User_Details_Name}}</span>
+          </mat-option>
+          </ng-container>
+          </mat-autocomplete>
+  
+          </div> -->
+        <!-- <div class="col-md-6 ">
+          <label class="col-md-3">By Branch<span  style="color:#ef071e; font-size:24px; vertical-align:  -webkit-baseline-middle;; margin-left:8px;">*</span></label>
+          <input type="text" [matAutocomplete]="auto_Branch_Details" [(ngModel)]="Search_Branch" (click)="Search_Branch_Typeahead($event)"  (input)="Search_Branch_Typeahead($event)"  class="col-md-8 typer-heade-border" />
+          <mat-autocomplete #auto_Branch_Details="matAutocomplete" [displayWith]="display_Users">
+          <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
+          <ng-container *ngIf="!issLoading">
+          <mat-option  *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">
+          <span>{{Branch_T.Branch_Name}}</span>
+          </mat-option>
+          </ng-container>
+          </mat-autocomplete>
+  
+          </div> -->
+              <div *ngIf="1>2" _ngcontent-xmy-c9="" class="col-md-1 lead-search-section-date-alighn"><!--for-leads-chckbx-men-lst-->
+             <div _ngcontent-xmy-c9="" class="form-check algyn-checkbx-lead-serch-scton margin-down-tocrect-lead-chckbox-date-front-section"><!--for-chck-bx-crcktng corcting-tabs-down-->
+               <label _ngcontent-xmy-c9="" class="form-check-label">
+               <input type='checkbox'class="form-check-input" placeholder='Search...' [(ngModel)]="Look_In_Date" />
+               <span _ngcontent-xmy-c9="" class="form-check-sign"><span _ngcontent-xmy-c9="" class="check"></span>
+               </span></label>
+             </div>
+           <label class="for-down-title-tabs-personal-details">Created</label>
+           </div>
+   
+           <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+             <label class="alighn-title-search-section-tab-lead-per-details">From </label>
+             <mat-form-field class="alighn-date-search-section-new-tab-lead-per-details">
+             <input matInput [matDatepicker]="dpFromDate" placeholder="" [(ngModel)]="Search_FromDate">
+             <mat-datepicker-toggle matSuffix [for]="dpFromDate"></mat-datepicker-toggle>
+             <mat-datepicker #dpFromDate></mat-datepicker>
+             </mat-form-field>
+           </div>
+ 
+            <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+             <label class="alighn-title-search-section-tab-lead-per-details">To</label>
+             <mat-form-field class="alighn-date-search-section-new-tab-lead-per-details">
+             <input matInput [matDatepicker]="dpToDate" placeholder="" [(ngModel)]="Search_ToDate">
+             <mat-datepicker-toggle matSuffix [for]="dpToDate"></mat-datepicker-toggle>
+             <mat-datepicker #dpToDate></mat-datepicker>
+             </mat-form-field>
+           </div>
+
+           <div class="col-md-2 buton-down-ward-lead-search-front">
+               <button mat-raised-button type="submit" (click)="Search_Efficiency_Report()" class="btn btn-danger change-colour-button buton-save-search-edit"><i class="	fa fa-bar-chart" aria-hidden="true"></i></button>
+               <button *ngIf="1>2" mat-raised-button type="submit"  (click)="Search_More_Options()"class="btn btn-danger change-colour-button buton-save-search-edit"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                 </div>
+     </div>
+ <div *ngIf="1>2" class="seperation-for-down-butons" [hidden]="More_Search_Options">
+    <div class="row alyghn-croect-row-table-lead-sctn">
+           <div class="col-md-4">
+             <label class="col-md-4 label-crect-journal-entry-voucher-no">Department</label>
+             <select [(ngModel)]="Department_Search" id="Department_" required  class="col-md-8 for-input-selct-tblelst">
+             <option *ngFor="let Department_T of Department_Data" [ngValue]="Department_T">{{Department_T.Department_Name}}</option>
+             </select> 
+           </div>
+ 
+           <div class="col-md-4">
+             <label class="col-md-4 label-crect-journal-entry-voucher-no"> Created By</label>
+             <select [(ngModel)]="User_Search" id="User_" required class="col-md-8 for-input-selct-tblelst ng-untouched ng-valid ng-dirty">
+             <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">{{User_T.User_Details_Name}}</option>
+             </select>  
+           </div>
+ 
+         <div  class="col-md-4">
+           <label class="col-md-4 label-crect-journal-entry-voucher-no"> Branch</label>
+           <select [(ngModel)]="Search_Branch" required class="col-md-8 for-input-selct-tblelst ng-valid ng-dirty ng-touched">
+           <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">{{Branch_T.Branch_Name}}</option>
+           </select> 
+         </div>           
+     </div>          
+ </div>    
+     </div>
+     </div>
+
+
+   <div  [style.height.px]="myInnerHeight">
+      <google-chart #chart 
+                            [title]='title'
+                            [type]="type"
+                            [data]="data" 
+                            [columnNames]="columnNames"
+                            [options]="options"
+                            [width]="width"
+                            >
+                            <!-- [height]="height" -->
+      </google-chart>
+    </div>
+
+    
+  </div>
+</div>

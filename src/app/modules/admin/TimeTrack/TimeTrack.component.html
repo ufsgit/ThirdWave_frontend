@@ -1,0 +1,122 @@
+<div
+  *ngIf="issLoading"
+  class="overlay"
+  style="margin-top: 21%; margin-left: 46%; background-color: transparent"
+  [style.left.px]="spinleft"
+>
+  <img src="/assets/img/spinner.gif" width="100px" />
+</div>
+
+<div class="main-content new-margin-T  dash_big_screen" [hidden]="Search_Div">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 mt-2 pl-0 pr-0" style="border: 1">
+        <div class="dt-card mb-0 pb-1 pt-3">
+          <div class="dt-card__body mb-0 pb-0">
+            <form class="mb-0">
+              <div class="form-row mt-0 mb-1">
+                <label class="col-form-label text-sm-right">By Staff</label>
+                <div class="col-md-3 col-sm-3 mb-1">
+                  <input
+                    type="text"
+                    [matAutocomplete]="auto_User_Details"
+                    [(ngModel)]="User_Search"
+                    (click)="Search_User_Typeahead_ByUser($event)"
+                    (input)="Search_User_Typeahead_ByUser($event)"
+                    class="form-control"
+                    name="User_Search"
+                  />
+                  <mat-autocomplete
+                    #auto_User_Details="matAutocomplete"
+                    [displayWith]="display_Users"
+                  >
+                    <mat-option *ngIf="issLoading"
+                      ><mat-spinner diameter="500"></mat-spinner
+                    ></mat-option>
+                    <ng-container *ngIf="!issLoading">
+                      <mat-option
+                        *ngFor="let Users of Users_Data"
+                        [value]="Users"
+                      >
+                        <span>{{ Users.User_Details_Name }}</span>
+                      </mat-option>
+                    </ng-container>
+                  </mat-autocomplete>
+                </div>
+
+                <div class="col-md-0 col-sm-0"></div>
+
+                <label class="col-md-1 col-sm-1 col-form-label text-sm-right"
+                  >Date</label
+                >
+                <div class="col-md-3 col-sm-3 mb-1">
+                  <mat-form-field
+                    class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
+                    style="padding-top: 9px !important"
+                  >
+                    <input
+                      matInput
+                      [matDatepicker]="dp1"
+                      placeholder=""
+                      [(ngModel)]="Search_FromDate"
+                      name="Search_FromDate"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="dp1"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #dp1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <label
+                  class="col-md-1 col-lg-1 col-form-label text-sm-right"
+                ></label>
+
+                <button
+                  style="height: 38px"
+                  mat-raised-button
+                  type="submit"
+                  id="Registration_Report"
+                  (click)="Search_Student_Report()"
+                  class="other-button-style btnflot pull-right mr-2"
+                >
+                  <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid p-0">
+    <div class="col-md-12 pl-0 pr-0 mt-0 mb-2">
+      <div
+        class="dt-card mt-2"
+        style="margin-left: 3px; background-color: #ffff"
+      >
+        <div
+          class=" set-height-scroll-bar-wole-block"
+          style="height: 100%"
+        >
+          <div
+            class="mb-0 mt-2 pl-3"
+            style="overflow: scroll; scrollbar-width: thin; overflow-y: hidden; border: none"
+          >
+            <google-chart
+              #chart
+              [title]="title"
+              [type]="type"
+              [data]="data"
+              [columnNames]="columnNames"
+              [options]="options"
+              [width]="width"
+            >
+            </google-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

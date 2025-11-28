@@ -1,0 +1,1547 @@
+<div *ngIf="issLoading" class="overlay" 
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+<img src="/assets/img/spinner.gif" width="100px" >
+</div>
+    
+    
+    
+    <div class="main-content screenfixed new-margin-T" >
+<div class="container-fluid2 right-sec">
+<div class="row " *ngIf="Entry_View"  style="overflow-y: scroll; scrollbar-width: thin;"[style.height.px]="myTotalHeight">
+
+<div class="col-md-12 ">
+<div class="dt-card" style="background-color:#ffff; padding: 0px;">
+<div class="card-body" style="padding:0px;">
+    <div
+    class="card-header card-nav border-bottom-0   pb-0 pr-0 mr-0"
+    *ngIf="tab_view">
+    <mat-button-toggle-group style="border:
+					none;width: 100%">
+        <ul class="card-header-tabs nav tab-student-entry-page tab-student-entry col-12" role="tablist" style="justify-content: end;
+        display: flex;
+    ">
+            <div class="col-md-11 col-sm-11 tab-student-entry">
+                
+        </div>
+        <div _ngcontent-oeu-c5=""  (click)="Close_Click()"><span class="mr-1 profile-close" ></span><span _ngcontent-oeu-c5="" class="main profile-close" ><mat-icon _ngcontent-oeu-c5="" class="text-red small mat-icon notranslate material-icons mat-icon-no-color" role="img" style="font-size: 32px; cursor: pointer" aria-hidden="true">close</mat-icon></span></div>
+    
+    </ul>
+</mat-button-toggle-group>
+    </div>
+<div class="row right-sec2" *ngIf="profile_View">
+ <div class="col-md-12 section-user-block-ne other-department-user-block">
+    <div class="row col-12">
+
+  
+        <div class="row col-md-4">
+            <label for="normal-input-4" class="col-md-3 col-lg-4 col-form-label text-sm-right">User Name<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+           <!-- <label class="col-md-1 label-down-alighn-supler-prhse-mstr-down">User Name</label>  -->
+            <div class="col-md-9 col-lg-8">
+                <input type="text" class="form-control"[(ngModel)]="User_Details_.User_Details_Name" name="User_Details_.User_Details_Name" id="normal-input-4" placeholder="User Name">
+            </div>
+        </div>
+        <div class="row col-md-4">
+            <label for="normal-input-4" class="col-md-3 col-lg-4 col-form-label text-sm-right">Password<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+            <div class="col-md-9 col-lg-8">
+                <input type="password" class="form-control"[(ngModel)]="User_Details_.Password" name="User_Details_.Password" id="normal-input-4" placeholder="Password">
+            </div>
+        </div>
+        <div class="row col-md-4">
+          
+            <div class="col-md-3 col-lg-4 text-sm-right">
+                <button  class="btn btn-danger view_button_style   text-sm-right" style="height: 40px;" type="button" (click)="Password_View_Click()">View password</button>
+            </div>
+           <div class="col-md-9 col-lg-8">
+                <input  type="text" [(ngModel)]="View_Password" name="ViewPassword" required class="form-control">
+            </div>
+        </div>
+    </div>
+    <div class="row col-12">
+
+        <div class="row col-md-4 ">
+            <label for="normal-input-4" class="col-md-3 col-lg-4 col-form-label text-sm-right">Email<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+            <div class="col-md-9 col-lg-8">
+                <input type="text" class="form-control"[(ngModel)]="User_Details_.Email" name="User_Details_.Email" id="normal-input-4" placeholder="Email">
+            </div>
+        </div>
+
+
+        <div class="row col-md-4">
+            <label for="normal-input-4" class="col-md-3 col-lg-4 col-form-label text-sm-right">Mobile<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+            <div class="col-md-9 col-lg-8">
+                <input type="number" [(ngModel)]="User_Details_.Mobile" name="User_Details_.Mobile" class="form-control" placeholder="" >
+            </div>
+        </div>
+
+         
+        <div class="row col-md-4">
+           
+            <label class="col-md-3 col-lg-4 col-form-label text-sm-right">User Type<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+                        <div class="col-md-9 col-lg-8 ">
+                            <select [(ngModel)]="User_Type_" name="User_Type_" required class="form-control p-0 pl-1">
+                                <option *ngFor="let User_Type_T of User_Type_Data" [ngValue]="User_Type_T">{{User_Type_T.User_Type_Name}}</option>
+                            </select>
+                        </div>  
+        </div>
+
+
+
+
+
+
+
+    </div>
+    <div class="row col-12"> 
+        <div class="row col-md-4">
+          
+            <label class="col-md-3 col-lg-4 col-form-label text-sm-right">Status<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+                        <div class="col-md-9 col-lg-8">
+                            <select [(ngModel)]="User_Status_" name="User_Status_" required class="form-control p-0 pl-1">
+                                <option *ngFor="let User_Status_T of User_Status_Data" [ngValue]="User_Status_T">{{User_Status_T.User_Status_Name}}</option>
+                            </select>
+                        </div> 
+        </div>
+       
+        
+        <!-- <div class="row col-md-4">
+           
+            <label class="col-md-3 col-lg-4 col-form-label text-sm-right">Commision Mode<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+                        <div class="col-md-9 col-lg-8">
+                            <select [(ngModel)]="Commision_Mode_" name="Commision_Mode_" required class="form-control p-0 pl-1">
+                                <option *ngFor="let Commision_Mode_T of Commision_Mode_Data" [ngValue]="Commision_Mode_T">{{Commision_Mode_T.Commision_Mode_Name}}</option>
+                            </select>
+                        </div> 
+        </div> -->
+       
+
+        <div class="row col-md-4">
+           
+           <label class="col-md-3 col-lg-4 col-form-label text-sm-right">Branch<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+           <div class="col-md-9 col-lg-8">
+               <select [(ngModel)]="Branch_" name="Branch_" required class="form-control p-0 pl-1">
+                <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">{{Branch_T.Branch_Name}}</option>
+            </select>
+           </div> 
+        </div>
+
+
+    </div>
+    <div class="row col-12"> 
+        <div class="col-md-4 row">
+          
+            <label class="col-md-3 col-lg-4 col-form-label text-sm-right">User Role<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+            <div class="col-md-9 col-lg-8">
+                <select [(ngModel)]="User_Role_" name="User_Role_" required class="form-control p-0 pl-1" 
+                (change)="User_Role_Change(User_Role_.User_Role_Id)" 
+                >
+                 <option *ngFor="let User_Role_T of User_Role_Data" [ngValue]="User_Role_T">{{User_Role_T.User_Role_Name}}</option>
+             </select>
+            </div> 
+         </div>
+ 
+        
+ 
+ 
+         <div class="col-md-4 row">
+            
+            <label class="col-md-3 col-lg-4 col-form-label text-sm-right ">Department<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+            <div class="col-md-9 col-lg-8">
+                <select [(ngModel)]="User_Profile_Department_" name="User_Profile_Department_" required class="form-control p-0 pl-1">
+                 <option *ngFor="let User_Profile_Department_T of User_Profile_Department_Data" [ngValue]="User_Profile_Department_T">{{User_Profile_Department_T.Department_Name}}</option>
+             </select>
+            </div> 
+         </div>
+ 
+<!--  
+         <div class="col-md-4 row">
+             <label class="col-md-3 col-lg-4 col-form-label text-sm-right">User Combination<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+             <div class="col-md-9 col-lg-8">
+                 <select [(ngModel)]="User_Combination_" name="User_Combination_" required class="form-control p-0 pl-1">
+                     <option *ngFor="let combination of User_Combinations" [ngValue]="combination">{{combination.UserCombination_Name}}</option>
+                 </select>
+             </div> 
+         </div> -->
+
+    </div>
+    <div class="row col-12"> 
+        <!-- <div class="col-md-4 row">
+            <label for="agent-management-dropdown" class="col-md-3 col-lg-4 col-form-label text-sm-right" >Agent Management</label>
+            <div class="col-md-9 col-lg-8" >
+                <select [(ngModel)]="agent_management_" name="agent_management_" class="form-control p-0 pl-1">
+                    <option *ngFor="let management of agent_managements" [ngValue]="management">{{management.AgentManagement_Name}}</option>
+                </select>
+            </div>
+        </div> -->
+
+ 
+
+
+       
+        <div class="col-md-4 row">
+        <label class="col-md-3 col-lg-4 col-form-label text-sm-right">Backup User</label>
+                <div class="col-md-9 col-lg-8 ">
+                <input type="text"  class="form-control"  id="Backup_User_" name="Backup_User_"  [matAutocomplete]="auto_Backup_User" 
+                [(ngModel)]="Backup_User_" (click)="Search_Backup_User_Typeahead($event)"(keyup)="Search_Backup_User_Typeahead($event)" /></div>  
+                <mat-autocomplete #auto_Backup_User="matAutocomplete" [displayWith]="display_Backup_User">
+                <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
+                <ng-container *ngIf="!issLoading">
+                <mat-option *ngFor="let Backup_User_ of Backup_User_Data1" [value]="Backup_User_">
+                <span>{{Backup_User_.User_Details_Name}}</span>
+                </mat-option>
+                </ng-container>
+                </mat-autocomplete>
+            </div>
+       
+        <!-- <div class="col-md-4 row">
+            <label for="normal-input-4" class="col-md-3 col-lg-4 col-form-label text-sm-right">Influencer Count<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+            <div class="col-md-9 col-lg-8">
+                <input type="number" class="form-control"[(ngModel)]="User_Details_.Influencer_Count" name="User_Details_.Influencer_Count" id="normal-input-4" placeholder="">
+            </div>
+        </div> -->
+
+    </div>
+
+
+
+
+     <div class="col-md-12 row ">
+        <div class="col-md-4 row" *ngIf="Enable_Call_Button">
+            <label for="normal-input-4" class="col-md-3 col-lg-4 col-form-label text-sm-right">Extension<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+            <div class="col-md-9 col-lg-8">
+                <input type="number" class="form-control"[(ngModel)]="User_Details_.FollowUp_Target" name="User_Details_.FollowUp_Target" id="normal-input-4" placeholder="">
+            </div>
+        </div>
+     </div>
+        
+           
+           
+
+<div class="form-group form-row">
+    <label for="normal-input-4" class="col-md-3 col-lg-2 col-form-label text-sm-right" hidden> Agent Management</label>
+    <div class="col-md-9 col-lg-10" hidden style="    margin-top: 12px;">
+     
+            <input
+                type="checkbox"
+                class="form-check-input"
+                placeholder=""
+                [(ngModel)]="Deparment_management_view"
+            />
+            <span
+                _ngcontent-xmy-c9=""
+                class="form-check-sign"
+                style="margin-top: 4px; margin-left: -15px"
+                ><span _ngcontent-xmy-c9="" class="check"></span>
+            </span>
+        
+    </div>
+</div>
+
+         
+<div class="row " style="gap: 60px;">
+
+
+
+            <div class="col-md-6 row">
+                <label for="normal-input-4" class="col-md-3 col-lg-2 col-form-label text-sm-right">All Time Department</label>
+                <div class="col-md-9 col-lg-10" style="    margin-top: 12px;">
+                    <!-- <label _ngcontent-xmy-c9="" class="form-check-label"> -->
+                        <input
+                            type="checkbox"
+                            class="form-check-input"
+                            placeholder=""
+                            [(ngModel)]="All_time_view"
+                        />
+                        <span
+                            _ngcontent-xmy-c9=""
+                            class="form-check-sign"
+                            style="margin-top: 4px; margin-left: -15px"
+                            ><span _ngcontent-xmy-c9="" class="check"></span>
+                        </span>
+                        <!-- <label class="">Created</label> -->
+                    <!-- </label> -->
+                </div>
+                <div class="table-responsive" [style.height.px]="myInnerHeightTwo" style="overflow-y: scroll; scrollbar-width: thin; min-height:150px;font-size: 15px;    font-size: 15px;
+         
+                border: solid 1px #dad0d0;" id="profile" *ngIf="All_time_view">                       
+                    <table class="table table-hover  " >
+                      <thead>                            
+                          <tr>
+                        
+                              <th> <label class="text-dark" style="margin-left: 1px;
+                                  margin-top: 26px;display: none;"><b>Select <br> Department<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></b></label> </th>
+                             
+                              <th style="text-align: right !important;"> <label class="text-dark" style="
+                                  margin-top: 0px; margin-left: 0;text-align: right;display: none;"><b>Select All</b></label> <br>
+                                   
+                                </th>
+                                <th>  <label class="text-dark" style="
+                                    margin-top: 0px; margin-left: 0;text-align: right;"><b>Select All</b></label>
+                                     <div _ngcontent-xmy-c9="" class="form-check" style="    position: absolute;
+                                     left: 56px;
+                                     top: 55%;;">
+                                      <label _ngcontent-xmy-c9="" class="form-check-label">
+                                      <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                      [(ngModel)]="Select_All_timeView_Department" (click)="Department_All_TimeView_Click()" type="checkbox" name="All_timeView_Department"
+                                      [checked]="Select_All_Department" value="">
+                                      <span _ngcontent-xmy-c9="" class="form-check-sign" style="   
+
+                                      ">
+                                      <span _ngcontent-xmy-c9="" class="check"></span>
+                                      </span>
+                                      </label>
+                                      </div>   
+                                  </th>
+                                  
+                         </tr>  
+                         <tr class="new-tr">
+                    
+                         <th class="crect-margin-width-table-header-title">
+                            Sl.No
+                        </th>             
+                        <th>
+                            Department
+                        </th>
+                        <th>
+                            View
+                        </th>    
+                    </tr>
+                                       
+                        
+                      </thead>
+                      <tbody *ngFor="let Profile_dept of Department_Data; let i = index"  >
+                          <tr>
+                              <td>
+                              {{i+1}}
+                              </td>
+                              <td>
+                                  {{Profile_dept["Department_Name"]}}
+                              </td>
+                                <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                  <div _ngcontent-xmy-c9="" class="form-check">
+                                  <label _ngcontent-xmy-c9="" class="form-check-label">
+                                  <input type="checkbox" name={{Profile_dept.Department_Id}}{{Profile_dept.checkbox_view}}
+                                  class="form-check-input"  [(ngModel)]="Profile_dept.checkbox_view" 
+                                  [checked]="Profile_dept.checkbox_view">
+                                  <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                  <span _ngcontent-xmy-c9="" class="check"></span>
+                                  </span>
+                                  </label>
+                                  </div>
+                                  </td>
+                            </tr>
+                        </tbody>
+                      </table> 
+                </div> 
+            </div>
+
+
+
+            <div class=" col-md-6 row">
+                <label for="normal-input-4" class="col-md-3 col-lg-2 col-form-label text-sm-right">Country View</label>
+                <div class="col-md-9 col-lg-10" style="    margin-top: 12px;">
+                    <!-- <label _ngcontent-xmy-c9="" class="form-check-label"> -->
+                        <input
+                            type="checkbox"
+                            class="form-check-input"
+                            placeholder=""
+                            [(ngModel)]="Country_time_view"
+                        />
+                        <span
+                            _ngcontent-xmy-c9=""
+                            class="form-check-sign"
+                            style="margin-top: 4px; margin-left: -15px"
+                            ><span _ngcontent-xmy-c9="" class="check"></span>
+                        </span>
+                        <!-- <label class="">Created</label> -->
+                    <!-- </label> -->
+                </div>
+                <div  *ngIf="Country_time_view" class="w-100" > 
+                <ng-container *ngFor="let User_Department_Data1 of User_Department_Data; let i = index"  class="w-100">
+
+              
+                <div class="table-responsive"     *ngIf="User_Department_Data1.Check_Box_View"   [style.height.px]="myInnerHeightTwo" style="overflow-y: scroll; font-size: 15px;    font-size: 15px;
+         
+                border: solid 1px #dad0d0; scrollbar-width: thin; min-height:150px;" id="profile" >                       
+                    {{User_Department_Data1["Department_Name"]}}
+                
+                <table class="table table-hover  " >   
+                      <thead>                            
+                          <tr>
+                              <th style="text-align: right;"> 
+                                    </th>
+                             
+                              <th>
+                                     
+                                </th>
+                               
+                                  
+                         </tr>  
+                         <tr class="new-tr">
+                         <th class="crect-margin-width-table-header-title">
+                            Sl.No
+                        </th>             
+                        <th>
+                            Country
+                        </th>
+                        <th>
+                            View
+                        </th>    
+                    </tr>                      
+                        
+                      </thead>
+                      <tbody *ngFor="let CountryD of User_Department_Data1.countryData; let j = index">
+                        <tr>
+                            <td>{{j + 1}}</td>
+                            <td>{{CountryD["Country_Name"]}}</td>
+                            <td class="crect-align-tblelst-view-user">
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input type="checkbox" [checked]="CountryD.Check_Box" name="{{User_Department_Data1.Department_Name}}{{CountryD.Country_Id}}z{{CountryD.Check_Box}}" class="form-check-input" 
+                                      (change)="countryChange(User_Department_Data1.Department_Id,j)">
+                                    <span class="form-check-sign" style="margin-top: 15px;">
+                                      <span class="check"></span>
+                                    </span>
+                                  </label>
+                                </div>
+                              </td>
+                        </tr>
+                    </tbody>
+                      </table> 
+                </div> 
+            </ng-container>
+        </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+            <div>  <table _ngcontent-xmy-c9="" class="table st-width2">
+                <tr _ngcontent-xmy-c9="" class="th-botm-bordr">
+                  <th
+                    class="crect-align-tblelst-srlno-department th-botm-bordr-top"
+                  >
+                    Sl.No
+                  </th>
+                  <th
+                    class="crect-align-tblelst-status-department th-botm-bordr-top"
+                  >
+                    Select
+                  </th>
+                  <th class="th-botm-bordr-top">Region </th>
+                </tr>
+                <tbody
+                  _ngcontent-xmy-c9=""
+                  *ngFor="
+                    let Region of Region_List;
+                    let i = index
+                  "
+                >
+                  <tr _ngcontent-xmy-c9="">
+                    <td class="crect-align-tblelst-srlno-branch">
+                      {{ i + 1 }}
+                    </td>
+                    <td
+                      _ngcontent-xmy-c9=""
+                      class="crect-align-tblelst-status-branch"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check mar-crect-for-check-bx-depart"
+                      >
+                        <label
+                          _ngcontent-xmy-c9=""
+                          class="form-check-label"
+                        >
+                          <input
+                            type="checkbox"
+                            name="{{
+                              Region.Region_Id
+                            }}"
+                            class="form-check-input"
+                            (click)="
+                              selectRegion(Region)
+                            "
+                            [checked]="
+                              isRegionCheckd(Region)
+                            " />
+                          <span
+                            _ngcontent-xmy-c9=""
+                            class="form-check-sign"
+                            style="margin-left: 8px; margin-top: 13px"
+                          >
+                            <span
+                              _ngcontent-xmy-c9=""
+                              class="check"
+                            ></span> </span
+                        ></label>
+                      </div>
+                    </td>
+                    <td class="crect-align-tblelst-select-branch">
+                      <span
+                        name="Region.Region_Name"
+                        >{{ Region.Region_Name }}
+                      </span>
+
+                      
+                    </td>
+                  </tr>
+                </tbody>
+              </table></div>
+      
+
+
+
+      
+       
+
+</div> 
+
+
+<div class="col-md-12 section-user-block-ne">
+ <!-- <div class="col-md-12">
+        <table _ngcontent-xmy-c9="" class="table">
+            <tbody _ngcontent-xmy-c9="">
+            <tr _ngcontent-xmy-c9="">
+                        <th class="crect-margin-width-table-header-title"></th>
+                      
+                        <th> <label class="slct-chck-al-bx-usr-nw-sctn"></label> </th>
+                        <th> <label class="slct-chck-al-bx-usr-nw-sctn" style="margin-left: 22%;
+                            margin-top: 21%;"></label> </th>
+                        <th class="crect-margin-width-table-header-title">
+                            <div _ngcontent-xmy-c9="" class="form-check">
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                [(ngModel)]="Select_View_Department" (click)="Department_View_Click()" type="checkbox" name="Select_View"
+                                [checked]="Select_View_Check" value="">
+                                <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 43px;  margin-left: -25px;">
+                                <span _ngcontent-xmy-c9="" class="check"></span>
+                                </span>
+                                </label>
+                                </div>   
+                        </th>
+                        <th class="crect-margin-width-table-header-title">
+                            <div _ngcontent-xmy-c9="" class="form-check">
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                [(ngModel)]="Select_View_All_Department" (click)="Department_View_All_Click()"  type="checkbox" name="Select_Save"
+                                [checked]="Select_Save_Check" value="">
+                                <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 43px;  margin-left: -6px;">
+                                <span _ngcontent-xmy-c9="" class="check"></span>
+                                </span>
+                                </label>
+                                </div>
+                        </th>
+            </tr>
+            </tbody>
+    </table>
+    </div>  -->
+  
+  
+
+
+<!-- 
+    <div class="row">
+    <div class="col-md-12 " style="border: 1">
+        <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">    
+          <div class="">
+                    <div class="table-responsive"  [style.height.px]="myInnerHeight" style="overflow-y: scroll;height:400px;" >
+                     
+                      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " >
+                        <thead>
+                   
+                <tr>
+               
+                <th> <label class="text-dark" style="    margin-left: 1px;
+                    margin-top: 26px;"><b>Select User Departments</b></label> </th>
+               
+                <th> <label class="text-dark" style="margin-left: 28%;
+                    margin-top: 28px;"><b>Select All</b></label> </th>
+               
+                <th class="crect-margin-width-table-header-title">
+                    <div _ngcontent-xmy-c9="" class="form-check">
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                        [(ngModel)]="Select_View_Department" (click)="Department_View_Click()" type="checkbox" name="Select_View"
+                        [checked]="Select_View_Check" value="">
+                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                        <span _ngcontent-xmy-c9="" class="check"></span>
+                        </span>
+                        </label>
+                        </div>   
+                </th>
+                <th class="crect-margin-width-table-header-title">
+                    <div _ngcontent-xmy-c9="" class="form-check">
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                        [(ngModel)]="Select_View_All_Department" (click)="Department_View_All_Click()"  type="checkbox" name="Select_Save"
+                        [checked]="Select_Save_Check" value="">
+                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                        <span _ngcontent-xmy-c9="" class="check"></span>
+                        </span>
+                        </label>
+                        </div>
+                </th>
+            
+    </tr>
+            
+                       <th>
+                            Sl.No
+                          </th>
+                          <th>
+                          Branch
+                          </th>
+                          <th>
+                           Department
+                          </th>
+                          <th style="padding-left: 60px;">
+                           View
+                          </th>
+                          <th style="padding-left: 49px;">
+                           View All
+                          </th>
+                     
+                        </thead>
+                        <tbody   *ngFor="let User_Department1 of User_Department_Data; let i = index" >
+                          <tr>
+                         
+                            <td>
+                            {{i+1}}
+                            </td>
+                            <td>
+                                {{User_Department1["Branch_Name"]}}
+                            </td>
+                            <td>
+                                {{User_Department1["Department_Name"]}}
+                              </td>
+                          
+                              <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                <div _ngcontent-xmy-c9="" class="form-check">
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                <input type="checkbox" name={{User_Department1.Department_Id}}{{User_Department1.Check_Box_View}}{{User_Department1.Branch_Id}} 
+                                class="form-check-input"  [(ngModel)]="User_Department1.Check_Box_View" 
+                                [checked]="User_Department1.Check_Box_View">
+                                <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; margin-left: 60px;">
+                                <span _ngcontent-xmy-c9="" class="check"></span>
+                                </span>
+                                </label>
+                                </div>
+                                </td>
+                                <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                <div _ngcontent-xmy-c9="" class="form-check">
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                <input type="checkbox" name={{User_Department1.Department_Id}}{{User_Department1.Check_Box_VIew_All}}{{User_Department1.Branch_Id}} 
+                                class="form-check-input"  [(ngModel)]="User_Department1.Check_Box_VIew_All" 
+                                [checked]="User_Department1.VIew_All">
+                                <span _ngcontent-xmy-c9="" class="form-check-sign"  style="margin-top: 15px; margin-left: 60px;">
+                                <span _ngcontent-xmy-c9="" class="check"></span>
+                                </span>
+                                </label>
+                                </div>
+                                </td>
+                           
+                          </tr>
+                          </tbody>
+                        </table>
+                      
+    
+                      </div>
+    
+            </div>
+           
+           
+            </div>
+    
+          </div>
+
+</div> -->
+
+
+
+
+<div class="row">
+    <div class="col-md-12 " style="border: 1">
+        <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">    
+          <div>
+                    <div class="table-responsive" [style.height.px]="myInnerHeight" style="overflow-y: scroll;  scrollbar-width: thin; min-height:150px;" id="profile">
+                        <!--  [style.height.px]="myInnerHeight" style="overflow-y: scroll;height: 600px;" -->
+                      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;">
+                        <thead>
+                            <!-- <div>  _ngcontent-xmy-c9=""-->
+                            <tr>
+                                <!-- <th class="crect-margin-width-table-header-title"></th> -->
+                                <th> <label class="text-dark" style="margin-left: 1px;
+                                    margin-top: 26px;"><b>Select User <br> Departments<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></b></label> </th>
+                               
+                                <th> <label class="text-dark" style="
+                                    margin-top: 28px;"><b>Select All</b></label> </th>
+                               
+                               <th class="crect-margin-width-table-header-title">
+                                <!-- <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                    <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                    [(ngModel)]="Select_View_All_Department" (click)="Department_View_All_Click()"  type="checkbox" name="Select_Save"
+                                    [checked]="Select_Save_Check" value="">
+                                    <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                                    <span _ngcontent-xmy-c9="" class="check"></span>
+                                    </span>
+                                    </label>
+                                    </div> -->
+                            </th>
+                             
+                                <th class="crect-margin-width-table-header-title">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                        [(ngModel)]="Select_View_Department" (click)="Department_View_Click()" type="checkbox" name="Select_View"
+                                        [checked]="Select_View_Check" value="">
+                                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                                        <span _ngcontent-xmy-c9="" class="check"></span>
+                                        </span>
+                                        </label>
+                                        </div>   
+                                </th>
+                               
+                                <th class="crect-margin-width-table-header-title">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                        [(ngModel)]="Select_View_All_Department" (click)="Department_View_All_Click()"  type="checkbox" name="Select_Save"
+                                        [checked]="Select_Save_Check" value="">
+                                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                                        <span _ngcontent-xmy-c9="" class="check"></span>
+                                        </span>
+                                        </label>
+                                        </div>
+                                </th>
+
+                           </tr>
+                <!-- </div> -->
+                          <th>
+                            Sl.No
+                          </th>
+                          <th>
+                          Branch
+                          </th>
+                          <th>
+                            Department
+                          </th>
+                          <th style="padding-left: 59px;">
+                           View
+                          </th>
+                          <th style="padding-left: 50px;">
+                        View All
+                          </th>
+                        
+                     
+                        </thead>
+                        <tbody *ngFor="let User_Department1 of User_Department_Data; let i = index"  >
+                            <tr>
+                         
+                                <td>
+                                {{i+1}}
+                                </td>
+                                <td>
+                                    {{User_Department1["Branch_Name"]}}
+                                </td>
+                                <td>
+                                    {{User_Department1["Department_Name"]}}
+                                  </td>
+                              
+                                  <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                    <input type="checkbox" name={{User_Department1.Department_Id}}{{User_Department1.Check_Box_View}}{{User_Department1.Branch_Id}} 
+                                    class="form-check-input" (change)="addCountryDepartment(User_Department1.Department_Id)" [(ngModel)]="User_Department1.Check_Box_View" 
+                                    [checked]="User_Department1.Check_Box_View">
+                                    <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; margin-left: 60px;">
+                                    <span _ngcontent-xmy-c9="" class="check"></span>
+                                    </span>
+                                    </label>
+                                    </div>
+                                    </td>
+                                    <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                    <input type="checkbox" name={{User_Department1.Department_Id}}{{User_Department1.Check_Box_VIew_All}}{{User_Department1.Branch_Id}} 
+                                    class="form-check-input" (change)="addCountryDepartment(User_Department1)" [(ngModel)]="User_Department1.Check_Box_VIew_All" 
+                                    [checked]="User_Department1.VIew_All">
+                                    <span _ngcontent-xmy-c9="" class="form-check-sign"  style="margin-top: 15px; margin-left: 60px;">
+                                    <span _ngcontent-xmy-c9="" class="check"></span>
+                                    </span>
+                                    </label>
+                                    </div>
+                                    </td>
+                               
+                              </tr>
+                          </tbody>
+                        </table>
+                      
+    
+                      </div>
+    
+            </div>
+           
+           
+            </div>
+    
+          </div>
+
+</div>
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12 " style="border: 1">
+        <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">    
+          <div class=" ">
+                    <div class="table-responsive" [style.height.px]="myInnerHeight" style="overflow-y: scroll; scrollbar-width: thin;  min-height:150px;" id="profile">
+                      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;">
+                        <thead>
+                            <tr>
+                                <th> <label class="text-dark" style="margin-left: 1px;
+                                    margin-top: 26px;"><b>Select Subordinates 
+                                       </b></label> </th>
+                               
+                                <th> <label class="text-dark" style="
+                                    margin-top: 28px;"><b>Select All</b></label> </th>
+                               
+                               <!-- <th class="crect-margin-width-table-header-title">
+                  
+                            </th> -->
+                             
+                                <th class="crect-margin-width-table-header-title">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                        [(ngModel)]="Select_View_User" (click)="UserName_View_Click()" type="checkbox" name="Select_NameView"
+                                        [checked]="Select_View_Check" value="">
+                                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                                        <span _ngcontent-xmy-c9="" class="check"></span>
+                                        </span>
+                                        </label>
+                                        </div>   
+                                </th>
+                               
+                          
+
+                           </tr>
+                          <th>
+                            Sl.No
+                          </th>
+                          <th>
+                          Users
+                          </th>
+                         
+                          <th style="padding-left: 59px;">
+                           View
+                          </th>
+                       
+                        
+                     
+                        </thead>
+                        <tbody *ngFor="let User_Details_Name1 of UserName_Details_Data; let i = index"  >
+                            <tr>
+                         
+                                <td>
+                                {{i+1}}
+                                </td>
+                                <td>
+                                    {{User_Details_Name1["User_Details_Name"]}}
+                                </td>
+                               
+                              
+                                  <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                    <input type="checkbox" name={{User_Details_Name1.Check_Box_View_New}}
+                                    class="form-check-input" [(ngModel)]="User_Details_Name1.Check_Box_View_New" 
+                                    [checked]="User_Details_Name1.Check_Box_View_New">
+                                    <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; margin-left: 60px;">
+                                    <span _ngcontent-xmy-c9="" class="check"></span>
+                                    </span>
+                                    </label>
+                                    </div>
+                                    </td>
+                                  
+                               
+                              </tr>
+                          </tbody>
+                        </table>
+                      
+    
+                      </div>
+    
+            </div>
+           
+           
+            </div>
+    
+          </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+    <div class="col-md-12">
+    <table _ngcontent-xmy-c9="" class="table">
+        <tbody _ngcontent-xmy-c9="">
+ <tr _ngcontent-xmy-c9="">
+                    <th class="crect-margin-width-table-header-title"></th>
+                    <th> <label class="slct-chck-al-bx-usr-nw-sctn"></label> </th>
+                   
+                    <th> <label class="slct-chck-al-bx-usr-nw-sctn" style="margin-left: 52%;"></label> </th>
+                   
+                    <th class="crect-margin-width-table-header-title">
+                        <!-- <div _ngcontent-xmy-c9="" class="form-check">
+                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                            <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                            [(ngModel)]="Select_View" (click)="View_Click()" type="checkbox" name="Select_View"
+                            [checked]="Select_View_Check" value="">
+                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 45px;margin-left: 1px;" >
+                            <span _ngcontent-xmy-c9="" class="check"></span>
+                            </span>
+                            </label>
+                            </div>    -->
+                    </th>
+                    <th class="crect-margin-width-table-header-title">
+                        <!-- <div _ngcontent-xmy-c9="" class="form-check">
+                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                            <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                            [(ngModel)]="Select_Save" (click)="Save_Click()"  type="checkbox" name="Select_Save"
+                            [checked]="Select_Save_Check" value="">
+                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 45px;margin-left: -6px;">
+                            <span _ngcontent-xmy-c9="" class="check"></span>
+                            </span>
+                            </label>
+                            </div> -->
+                    </th>
+                    <th class="crect-margin-width-table-header-title">
+                        <!-- <div _ngcontent-xmy-c9="" class="form-check">
+                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                            <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                            [(ngModel)]="Select_Edit" (click)="Edit_Click()"  type="checkbox" name= "Select_Edit"
+                            [checked]="Select_Edit_Check" value="">
+                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top:45px;margin-left:-15px;">
+                            <span _ngcontent-xmy-c9="" class="check"></span>
+                            </span>
+                            </label>
+                            </div>   -->
+                    </th>
+                    <th class="crect-margin-width-table-header-title">
+                        <!-- <div _ngcontent-xmy-c9="" class="form-check">
+                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                            <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                            [(ngModel)]="Select_Delete" (click)="Delete_Click()"  type="checkbox" name= "Select_Delete"
+                            [checked]="Select_Delete_Check" value="">
+                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top:45px;margin-left:-22px;">
+                            <span _ngcontent-xmy-c9="" class="check"></span>
+                            </span>
+                            </label>
+                            </div>     -->
+                    </th>
+        </tr>
+       
+    </tbody>
+</table>
+
+</div>
+
+
+<button (click)="addbar()" style="    font-weight: 500;
+color: #fff;
+border: none;
+border-radius: 5px;
+background: #34b95e;">Add</button>
+<div class="row col-12" *ngFor="let uni of Department_university;let i = index">
+    <div class="form-group form-row col-4">
+      <label class="col-md-3 col-lg-2 col-form-label text-sm-right">Department</label>
+      <div class="col-md-9 col-lg-10 mb-1">
+        <select [(ngModel)]="uni.Department_Id" name="department" required class="form-control p-0 pl-1"
+                (change)="onDepartmentChange(uni)">
+                <ng-container *ngFor="let userDepartment of User_Department_Data">
+
+                    <option    *ngIf="userDepartment.Check_Box_View"[ngValue]="userDepartment.Department_Id">
+                        {{ userDepartment.Department_Name }}
+                    </option>
+                </ng-container>
+        </select>
+      </div>
+    </div>
+    <div class="form-group form-row col-4">
+      <label class="col-md-3 col-lg-2 col-form-label text-sm-right">Country</label>
+      <div class="col-md-9 col-lg-10 mb-1">
+        <select [(ngModel)]="uni.Country_Id" name="country" required class="form-control p-0 pl-1"
+                (change)="onCountryChange(uni)">
+          <option *ngFor="let countryData of Country_Data" [ngValue]="countryData.Country_Id">
+            {{ countryData.Country_Name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group form-row col-3">
+        <label class="col-md-1 col-sm-1 col-form-label text-sm-right"
+        >University</label
+    >
+    <div class="col-md-12 col-sm-4 mb-1">
+    <input
+        type="text"
+        class="form-control"
+        [matAutocomplete]="autoc3"
+        placeholder="Search University"
+        [(ngModel)]="uni.University_Id"
+        name="University_"
+        (input)="University_Typeahead($event, uni)"
+        (click)="University_Typeahead($event, uni)"
+    />
+    <div class="form-group form-row col-1">
+<button (click)="removeuniversity(i)">Remove
+</button>
+    </div>
+</div>
+<mat-autocomplete #autoc3="matAutocomplete" [displayWith]="display_University">
+    <mat-option *ngIf="issLoading">
+        <mat-spinner diameter="500"></mat-spinner>
+    </mat-option>
+    <ng-container *ngIf="!issLoading">
+        <mat-option (click)="onUniversityChange(University_1)"
+            *ngFor="let University_1 of University_Data_Filter"
+            [value]="University_1"
+        >
+            <span name="University_1.University_Name">{{ University_1.University_Name }}</span>
+        </mat-option>
+    </ng-container>
+</mat-autocomplete>
+ 
+    </div>
+  </div>
+  
+
+<div class="row">
+    <div class="col-md-12 " style="border: 1">
+        <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">    
+          <div class=" ">
+                    <div class="table-responsive" [style.height.px]="myInnerHeight" style="overflow-y: scroll; scrollbar-width: thin;  min-height:150px;" id="profile">
+                        <!--  [style.height.px]="myInnerHeight" style="overflow-y: scroll;height: 600px;" -->
+                      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;">
+                        <thead>
+                            <!-- <div>  _ngcontent-xmy-c9=""-->
+                            <tr>
+                                <!-- <th class="crect-margin-width-table-header-title"></th> -->
+                                <th> <label class="text-dark" style="    margin-left: 1px;
+                                    margin-top: 26px;"><b>Select Menus<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></b></label> </th>
+                               
+                                <th> <label class="text-dark" style="
+                                    margin-top: 28px;"><b>Select All</b></label> </th>
+                               
+                                <th class="crect-margin-width-table-header-title">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                        [(ngModel)]="Select_View" (click)="View_Click()" type="checkbox" name="Select_View"
+                                        [checked]="Select_View_Check" value="">
+                                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 35px;margin-left: 10px;" >
+                                        <span _ngcontent-xmy-c9="" class="check"></span>
+                                        </span>
+                                        </label>
+                                        </div>   
+                                </th>
+                                <th class="crect-margin-width-table-header-title">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                        [(ngModel)]="Select_Save" (click)="Save_Click()"  type="checkbox" name="Select_Save"
+                                        [checked]="Select_Save_Check" value="">
+                                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 35px;margin-left: 11px;">
+                                        <span _ngcontent-xmy-c9="" class="check"></span>
+                                        </span>
+                                        </label>
+                                        </div>
+                                </th>
+                                <th class="crect-margin-width-table-header-title">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                        [(ngModel)]="Select_Edit" (click)="Edit_Click()"  type="checkbox" name= "Select_Edit"
+                                        [checked]="Select_Edit_Check" value="">
+                                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top:35px;margin-left:11px;">
+                                        <span _ngcontent-xmy-c9="" class="check"></span>
+                                        </span>
+                                        </label>
+                                        </div>  
+                                </th>
+                                <th class="crect-margin-width-table-header-title">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                        [(ngModel)]="Select_Delete" (click)="Delete_Click()"  type="checkbox" name= "Select_Delete"
+                                        [checked]="Select_Delete_Check" value="">
+                                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top:35px;margin-left:7px;">
+                                        <span _ngcontent-xmy-c9="" class="check"></span>
+                                        </span>
+                                        </label>
+                                        </div>    
+                                </th>
+                    </tr>
+                <!-- </div> -->
+                          <th>
+                            Sl.No
+                          </th>
+                          <th>
+                        Menu
+                          </th>
+                          <th>
+                          View
+                          </th>
+                          <th>
+                              Save
+                          </th>
+                          <th >
+                        Edit
+                          </th>
+                          <th >
+                         Delete
+                          </th>
+                     
+                        </thead>
+                        <tbody   *ngFor="let User_Menu_Selection1 of User_Menu_Selection_Data; let i = index" >
+                          <tr>
+                    
+                            <td>
+                            {{i+1}}
+                            </td>
+                            <td>
+                                {{User_Menu_Selection1["Menu_Name"]}}
+                            </td>
+                           
+                            <td _ngcontent-xmy-c9="" class="crect-margin-width-table-header-title"><!--class="crect-margin-width-table-header-title"-->
+                                <div _ngcontent-xmy-c9="" class="form-check">
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                [(ngModel)]="User_Menu_Selection1.IsView" type="checkbox" name={{User_Menu_Selection1.Menu_Id}}{{User_Menu_Selection1.IsView}} 
+                                [checked]="User_Menu_Selection1.IsView" value="">
+                                <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px;margin-left: 11px;">
+                                <span _ngcontent-xmy-c9="" class="check"></span>
+                                </span>
+                                </label>
+                                </div>
+                                </td>
+                                <td _ngcontent-xmy-c9="" class="crect-margin-width-table-header-title">
+                                <div _ngcontent-xmy-c9="" class="form-check" [hidden]="User_Menu_Selection1.Save_Check==false">
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                <input type="checkbox"  name={{User_Menu_Selection1.Menu_Id}}{{User_Menu_Selection1.IsSave}} 
+                                class="form-check-input"  [(ngModel)]="User_Menu_Selection1.IsSave" 
+                                [checked]="User_Menu_Selection1.IsSave" >
+                                <span _ngcontent-xmy-c9="" class="form-check-sign"  style="    margin-top: 15px;margin-left: 11px;">
+                                <span _ngcontent-xmy-c9="" class="check"></span>
+                                </span>
+                                </label>
+                                </div>
+                                </td>
+                                <td _ngcontent-xmy-c9="" class="crect-margin-width-table-header-title">
+                                <div _ngcontent-xmy-c9="" class="form-check"[hidden]="User_Menu_Selection1.Edit_Check==false" >
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                
+                                <input type="checkbox" name={{User_Menu_Selection1.Menu_Id}}{{User_Menu_Selection1.IsEdit}} 
+                                class="form-check-input"  [(ngModel)]="User_Menu_Selection1.IsEdit" 
+                                [checked]="User_Menu_Selection1.IsEdit">
+                                <span _ngcontent-xmy-c9="" class="form-check-sign"  style="    margin-top: 15px;margin-left: 11px;">
+                                <span _ngcontent-xmy-c9="" class="check"></span>
+                                </span>
+                                </label>
+                                </div>
+                                </td>
+                                <td _ngcontent-xmy-c9="" class="crect-margin-width-table-header-title">
+                                <div _ngcontent-xmy-c9="" class="form-check" [hidden]="User_Menu_Selection1.Delete_Check==false" >
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                <input type="checkbox" name={{User_Menu_Selection1.Menu_Id}}{{User_Menu_Selection1.IsDelete}} 
+                                class="form-check-input"  [(ngModel)]="User_Menu_Selection1.IsDelete" 
+                                [checked]="User_Menu_Selection1.IsDelete">
+                                <span _ngcontent-xmy-c9="" class="form-check-sign"  style="    margin-top: 15px;margin-left: 11px;">
+                                <span _ngcontent-xmy-c9="" class="check"></span>
+                                </span>
+                                </label>
+                                </div>
+                                </td>
+                           
+                          </tr>
+                          </tbody>
+                        </table>
+                      
+    
+                      </div>
+    
+            </div>
+           
+           
+            </div>
+    
+          </div>
+
+</div>
+
+
+
+
+
+
+</div>
+</div>
+<div class="row" *ngIf="Application_Tab_View">
+    <div class="col-md-12 section-user-block-ne other-department-user-block">
+        <div class="form-group form-row">
+            <label for="normal-input-4" class="col-md-3 col-lg-2 col-form-label text-sm-right">Application View</label>
+            <div class="col-md-9 col-lg-10">
+                <!-- <label _ngcontent-xmy-c9="" class="form-check-label"> -->
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        placeholder=""
+                        [(ngModel)]="Application_View"
+                    />
+                    <span
+                        _ngcontent-xmy-c9=""
+                        class="form-check-sign"
+                        style="margin-top: 4px; margin-left: -15px"
+                        ><span _ngcontent-xmy-c9="" class="check"></span>
+                    </span>
+                    <!-- <label class="">Created</label> -->
+                <!-- </label> -->
+            </div>
+        </div>
+        <div class="form-group form-row">
+        <label class="col-md-3 col-lg-2 col-form-label text-sm-right pl-0 pt-0">Default Application Status</label>                           
+        <div class="col-md-9 col-lg-10 mb-1">
+            <select [(ngModel)]="Default_Application_Status_" name="Default_Application_Status_" required class="form-control p-0 pl-1">
+                <option *ngFor="let default_App_Status_T of Default_Application_Status_Data" [ngValue]="default_App_Status_T">{{default_App_Status_T.Application_Status_Name}}</option>
+            </select>
+        </div>         
+        </div>
+        <div class="table-responsive" [style.height.px]="myInnerHeight" style="overflow-y: scroll;min-height:150px;" id="profile" *ngIf="Application_View">                       
+            <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;">
+                <thead>                            
+                    <tr>
+                        <!-- <th class="crect-margin-width-table-header-title"></th> -->
+                        <th> <label class="text-dark" style="margin-left: 1px;
+                            margin-top: 26px;"><b>Select Application Group<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></b></label> </th>
+                    
+                        <th> <label class="text-dark" style="
+                            margin-top: 28px;"><b>Select All</b></label> </th>
+                                     <th class="crect-margin-width-table-header-title">
+                                        <div _ngcontent-xmy-c9="" class="form-check">
+                                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                                            <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                            [(ngModel)]="Select_View_Application_Group" (click)="Application_Group_View_Click()" type="checkbox" name="Select_Group_View"
+                                            [checked]="Select_Group_View_Check" value="">
+                                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 32px;">
+                                            <span _ngcontent-xmy-c9="" class="check"></span>
+                                            </span>
+                                            </label>
+                                            </div>   
+                                    </th>
+                </tr>               
+                <th>
+                    Sl.No
+                </th>
+                <th>
+                Application Group
+                </th>                          
+                <th >
+                View
+                </th>
+                </thead>
+                <tbody *ngFor="let Application_G of Application_Group_Data; let i = index"  >
+                    <tr>
+                        <td>
+                        {{i+1}}
+                        </td>
+                        <td>
+                            {{Application_G["Application_Group_Name"]}}
+                        </td>
+                        <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                            <div _ngcontent-xmy-c9="" class="form-check">
+                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                            <input type="checkbox" name={{Application_G.Application_Group_Id}}{{Application_G.View}}
+                            class="form-check-input"  [(ngModel)]="Application_G.View" 
+                            [checked]="Application_G.View">
+                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                            <span _ngcontent-xmy-c9="" class="check"></span>
+                            </span>
+                            </label>
+                            </div>
+                            </td>
+                    </tr>
+                </tbody>
+                </table> 
+            </div> 
+    </div>
+    <div class="col-md-6 section-user-block-ne">     
+        <div class="row" *ngIf="Application_View">
+            <div class="col-md-12 " style="border: 1">
+                <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">    
+                <div class=" ">
+                            <div class="table-responsive" [style.height.px]="myInnerHeight" style="overflow-y: scroll;min-height:150px;" id="profile">                       
+                            <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;">
+                                <thead>                            
+                                    <tr>
+                                        <!-- <th class="crect-margin-width-table-header-title"></th> -->
+                                        <th> <label class="text-dark" style="margin-left: 1px;
+                                            margin-top: 26px;"><b>Select Application Status</b></label> </th>
+                                    
+                                        <th> <label class="text-dark" style="
+                                            margin-top: 28px;"><b>Select All</b></label> </th>
+                                                <th class="crect-margin-width-table-header-title">
+                                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                                                        <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                                        [(ngModel)]="Select_View_Application_Status" (click)="Application_Status_View_Click()" type="checkbox" name="Select_Status_View"
+                                                        [checked]="Select_Status_View_Check" value="">
+                                                        <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 32px;">
+                                                        <span _ngcontent-xmy-c9="" class="check"></span>
+                                                        </span>
+                                                        </label>
+                                                        </div>   
+                                                </th>
+                                </tr>               
+                                <th>
+                                    Sl.No
+                                </th>
+                                <th>
+                                Application Status
+                                </th>                          
+                                <th >
+                                View
+                                </th>
+                                </thead>
+                                <tbody *ngFor="let Application_S of Application_Status_Data; let i = index"  >
+                                    <tr>
+                                        <td>
+                                        {{i+1}}
+                                        </td>
+                                        <td>
+                                            {{Application_S["Application_Status_Name"]}}
+                                        </td>
+                                        <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                            <div _ngcontent-xmy-c9="" class="form-check">
+                                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                                            <input type="checkbox" name={{Application_S.Application_status_Id}}{{Application_S.View}}
+                                            class="form-check-input"  [(ngModel)]="Application_S.View" 
+                                            [checked]="Application_S.View">
+                                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                            <span _ngcontent-xmy-c9="" class="check"></span>
+                                            </span>
+                                            </label>
+                                            </div>
+                                            </td>
+                                    </tr>
+                                </tbody>
+                                </table> 
+                            </div>    
+                    </div>   
+                    </div>    
+                </div>
+        </div>
+    </div>   
+</div>
+<div class="form-row container-fluid">
+    <div class="col-lg-12 new-btm-btns">
+        <button mat-raised-button type="submit"class="close-button-style pull-right mr-1 mb-2 bb-1" (click)="Close_Click()">Close</button>
+
+        <button mat-raised-button type="submit" [hidden]="User_Details_Save==false" id="Save_Button" class="save-button-style pull-right mr-1 bb-2" (click)="Save_User_Details()">Save</button>
+ 
+        <button mat-raised-button type="submit" *ngIf="User_Id>0" id="Duplicate" class="save-button-style pull-right mr-1 bb-6" (click)="Save_Duplicate_User_Details()">Duplicate</button>
+    </div>
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="row mt-2 right-sec"  *ngIf="!Entry_View">
+
+  
+    <div class="col-md-12 pl-2 pr-2 mb-2">
+     <div class="dt-card mb-0 pb-1 pt-3">         
+         <div class="dt-card__body mb-0 pb-1">
+             <form class="mb-0">           
+             <!-- <div class="form-row"> -->
+                 <!-- <label class="col-md-2 col-sm-3 col-form-label text-sm-right">User Name</label>
+                 <div class="col-md-3 col-sm-3 mb-2">
+                     <input type="text" class="form-control" [(ngModel)]="Search_User_Name_" name="Search_User_Name_"  placeholder="User Name">
+                    
+                 </div> -->
+                 <div class="row  col-md-12">
+                    <div class="col-md-3 row">
+                        <label class="col-md-4 col-form-label text-sm-right">User Name</label>                  
+                        <div class="col-md-8 mb-1">
+                          <input type="text" class="form-control" [(ngModel)]="Search_User_Name_" name="Search_User_Name_"  placeholder="User Name">
+                      </div>
+                    </div>
+                      
+                                          
+                       <div class="col-md-3 row">
+                        <label class="col-md-4 col-form-label text-sm-right">Branch</label>
+                        <div class="col-md-8 mb-1">
+                     
+                        <select [(ngModel)]="Search_Branch_" name="Branch_" required class="form-control p-0 pl-1">
+                            <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">{{Branch_T.Branch_Name}}</option>
+                        </select>
+                    </div>
+                       </div>
+                       <div class="col-md-3 row">
+                        <label class="col-md-4  col-form-label text-sm-right">Department</label>
+                        <div class="col-md-8 mb-1">
+                      
+                        <select [(ngModel)]="Search_User_Profile_Department_" name="Search_User_Profile_Department_" required class="form-control p-0 pl-1">
+                            <option *ngFor="let dept_ser of User_Profile_Department_Data" [ngValue]="dept_ser">{{dept_ser.Department_Name}}</option>
+                        </select>
+                        </div>
+                       </div>
+               
+                 
+             
+                    <!-- </div>
+               
+                <div class="form-row"> -->
+                    <!-- <div class="col-md-0 col-sm-0"></div>   -->
+                     <div class="col-md-3 row">
+                        <label class="col-md-6 col-form-label text-sm-right">Working Status</label>
+
+                        <div class="col-md-6 mb-1">
+                 
+                            <select [(ngModel)]="Search_User_Status_" name="Search_User_Status_" required class="form-control p-0 pl-1">
+                                <option *ngFor="let user_status_D of User_Status_Data" [ngValue]="user_status_D">{{user_status_D.User_Status_Name}}</option>
+                            </select>
+                            </div>
+                     </div>
+               
+                <!-- </div> -->
+
+                <div class="col-md-3 row">
+                    <label class="col-md-4 col-form-label text-sm-right"> User Combination</label>
+                    <div class="col-md-8 mb-1">
+          
+                        <select [(ngModel)]="Search_UserCombination_" name="Search_UserCombination_" required class="form-control p-0 pl-1">
+                            <option *ngFor="let user_status_D of User_Combinations" [ngValue]="user_status_D">{{user_status_D.UserCombination_Name}}</option>
+                        </select>
+                        </div>
+                </div>
+
+                
+            
+               
+                 <div class="col-md-12 " style="display: flex;
+                 align-items: center;
+                 justify-content: end;">   
+                      <button (click)="Search_User_Details()" mat-raised-button type="submit"  class="other-button-style pull-left mr-1 btn-pdng2">Search</button>                 
+                      <button (click)="Create_New()" mat-raised-button type="submit" class="save-button-style pull-left mr-1 btn-pdng2">Create New</button>
+                     </div>
+                    </div>
+                
+
+             <!-- </div> -->
+         </form>
+         </div>
+     </div>        
+   </div> 
+   
+   
+   
+   
+   
+   <div class="col-md-12"   itemSize="10" >
+    <div class="dt-module" style="margin-top:0px !important;" [style.height.px]="myInnerHeight" >            
+        <div class="dt-module__container">
+            <!-- style="overflow: scroll;"[style.height.px]="myTotalHeight" -->
+            <div class="dt-module__content ps-custom-scrollbar">
+                <div class="dt-module__content-inner card-body set-height-scroll-bar-wole-block overflow-scroll-new" [style.height.px]="myInnerHeight3">   
+                    <div class="dt-module__list" 
+                    style="overflow-y: scroll"
+                    id="profile">
+                        <!-- <div class="card-body set-height-scroll-bar-wole-block"> -->
+                         <div class="dt-module__list-item pb-2 pt-2" *ngFor="let User_Menu1 of User_Details_Data; let i = index"> 
+                             <div class="dt-module__list-item-content">
+                                 <div class="user-detail">
+                                    <span class="icon-background2 mr-2" *ngIf="User_Details_Edit" (click)="Edit_User_Details(User_Menu1,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                    <span class="icon-background3 mr-2" *ngIf="User_Details_Delete" (click)="Delete_User_Details(User_Menu1.User_Details_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+
+ 
+                   
+                                     <span class="d-inline-block">{{User_Menu1["User_Details_Name"]}}</span>
+                                    <span class="dt-separator-v">&nbsp;</span> 
+                                    <!-- <span class="designation">{{User_Menu1["User_Status_Name"]}}</span> -->
+                                    <span class="d-inline-block">{{User_Menu1["User_Status_Name"]}}</span>
+                                    <span class="dt-separator-v">&nbsp;</span>
+                                    <span class="d-inline-block">{{User_Menu1["User_Type_Name"]}}</span>
+                                    <span class="dt-separator-v">&nbsp;</span>
+                                      <span class="d-inline-block">{{User_Menu1["Branch_Name"]}}</span> 
+                                      <span class="dt-separator-v">&nbsp;</span>
+                                      <span class="d-inline-block">{{User_Menu1["Department_Name"]}} Department</span>
+                                      <span class="dt-separator-v">&nbsp;</span>
+                                      <span class="d-inline-block">{{User_Menu1["UserCombination_Name"]}}</span> 
+                                        <span class="dt-separator-v">&nbsp;</span>
+  <!-- Option 1: Fixed height with better styling -->
+<div class="status-change-container d-inline-block position-relative">
+    <select 
+        [(ngModel)]="statusChangeTracker[User_Menu1.User_Details_Id]"
+        (ngModelChange)="onStatusChange(User_Menu1, $event)"
+        [disabled]="isChangingStatus[User_Menu1.User_Details_Id]"
+        class="form-control status-dropdown-fixed"
+        [class.loading]="isChangingStatus[User_Menu1.User_Details_Id]">
+        <option *ngFor="let status of User_Status_Data" [value]="status.User_Status_Id">
+            {{ status.User_Status_Name }}
+        </option>
+    </select>
+    
+    <div *ngIf="isChangingStatus[User_Menu1.User_Details_Id]" class="status-loading-overlay">
+        <i class="fa fa-spinner fa-spin"></i>
+        <small class="text-muted d-block">Updating...</small>
+    </div>
+</div>
+                                    
+                                 </div>
+                               
+                             </div>                                
+                         </div>
+                        
+                 </div>
+                   
+                      
+                     </div>
+                 </div>
+               
+             <!-- </div> -->
+               <!-- <div class="form-group">  
+                <div class="col-md-12" style="text-align: center;">                     
+            <button mat-raised-button type="submit" (click)="previous_Click()"  class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-left" aria-hidden="true" style="color:#5f6368;"></i></button>
+            <button mat-raised-button type="submit"  (click)="Next_Click()" class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #5f6368;"></i></button>
+            </div>
+        </div> -->
+         </div>
+        
+       </div>
+   </div>  
+   
+   </div>
+</div>

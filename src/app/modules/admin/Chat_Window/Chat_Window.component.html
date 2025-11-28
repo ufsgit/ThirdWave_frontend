@@ -1,0 +1,850 @@
+<script>
+	// Get the modal
+	var modal = document.getElementById("myModal");
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+
+	// Get the button that opens the modal
+	var Savebtn = document.getElementById("SBtn");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal
+	btn.onclick = function () {
+		modal.style.display = "block";
+	};
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function () {
+		modal.style.display = "none";
+	};
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	};
+
+
+
+	// window.onload = function() {
+	//   var element = document.getElementById('chatsec');
+	//   element.scrollTop = element.scrollHeight - element.offsetHeight;
+	// };
+</script>
+<div id="Topdiv"></div>
+
+<div class="chat-container" style="height: 100vh;margin-left: 5%;">
+	
+	<div style="bottom: 5px; position: relative">
+		<div>
+			<div class="row" style="margin-top: 72px">
+				<div
+					class="col-lg-4 div-a p-0"
+					style="
+							border: 1px solid #ccc;
+						overflow-y: scroll;
+						height: calc(100vh - 70px);
+						cursor: pointer;
+					"
+				>
+					<div
+						class="col-12 top-bar"
+						style="
+						position: relative;
+							height: 54px;
+							margin-top: 10px;
+							float: right;
+							cursor: pointer;
+							background: #f6f6f6;
+							margin-top: 6px;
+						"
+					>
+					
+						<button
+							[hidden]="Chat_View == false"
+							class="save-button-style btnflot mt-0"
+							style="
+								margin-right: 2px;
+								cursor: pointer;
+								height: 30px;
+								width: 90px;
+								padding: 5px 2px 2px 2px;
+								margin-right: 10px;
+								background-color: #3498db;
+							"
+							data-toggle="modal"
+							data-target="#InPerson"
+							(click)="Choose_Person()"
+						>
+							New Chat
+						</button>
+
+						<button
+							[hidden]="Chat_View == false"
+							class="save-button-style btnflot mt-0"
+							style="
+								margin-right: 2px;
+								cursor: pointer;
+								height: 30px;
+								width: 90px;
+								padding: 5px 2px 2px 2px;
+							"
+							data-toggle="modal"
+							data-target="#AddGroup"
+							(click)="Add_to_Group()"
+						>
+							New Group
+						</button>
+					
+
+						<!-- <span  data-toggle="modal"
+        data-target="#InPerson"><mat-icon class="text-green-dark small" (click)="Choose_Person()"  style="font-size: 26px;margin-right: 20px;">chat</mat-icon></span>  
+        <span      data-toggle="modal"
+        data-target="#AddGroup"><mat-icon class="text-green-dark small" (click)="Add_to_Group()" style="font-size: 26px;">group_add</mat-icon></span>      -->
+					</div>
+					<!-- message sidebar log starts -->
+					<div *ngFor="let Logs of Channel_Log">
+						<div
+							class="msg-header"
+							(click)="Get_Chats(Logs.Channel_Id, Logs.Msg_Count)"
+						>
+							<div class="container1">
+								<!-- <img src="./assets/img/user1.jpg" class="msgimg"> -->
+								<div class="active">
+									<div class="chat-person">
+										<div class="img">
+											<img src="/assets/img/user.png" alt="" />
+										</div>
+										<p
+											class="mb-0"
+											*ngIf="Logs.Channel_Name != Login_User_Name"
+										>
+											{{ Logs.Channel_Name }}
+										</p>
+										<p
+											class="mb-0"
+											*ngIf="
+												Logs.Channel_Type == 2 &&
+												Logs.Channel_Name == Login_User_Name
+											"
+										>
+											{{ Logs.User_Name }}
+										</p>
+									</div>
+								</div>
+
+								<!-- <div *ngFor="let Channel_Log_1 of Channel_Log"> -->
+								<div class="notification-bg">
+									<span class="notification" *ngIf="Logs.Msg_Count > 0">{{
+										Logs.Msg_Count
+									}}</span>
+								</div>
+								<!-- </div> -->
+							</div>
+						</div>
+					</div>
+					<!-- message sidebar log ends -->
+				</div>
+				<!-- Chat area starts -->
+				<div #chatsec>
+					<div
+						class="col-lg-8 div-b pl-0"
+						*ngIf="chat_view == true"
+						style="
+							overflow-y: scroll;
+							height: calc(100vh - 70px);
+							margin-top: 5px;
+							position: absolute;
+							right: 0px;
+							
+						"
+					>
+						<div class="chat-profile-container col-7">
+							<div class="row" style="align-items: center">
+								<div class="col-md-0">
+									<img src="/assets/img/chat.png" alt="" />
+								</div>
+								<div class="col-md-10">
+									<div class="caht-det-container chat-det-container-2">
+										<p class="chat-name">{{ Flag_Channel_Name_ }}</p>
+										<div class="chat-icons col-md-4" style="display: flex">
+											<p
+												*ngIf="Flag_Channel_Type_ === 1"
+												[hidden]="Chat_Edit == false"
+												style="margin-right: 10px; cursor: pointer"
+											>
+												<span class="icon-background2 mr-1">
+													<mat-icon
+														class="text-green small"
+														style="margin-right: 10px; cursor: pointer"
+														data-toggle="modal"
+														data-target="#EditChannel"
+														(click)="editclick(Flag_Channel_Name_)"
+														>edit</mat-icon
+													></span
+												>
+											</p>
+											<p
+												*ngIf="Flag_Channel_Type_ === 1"
+												[hidden]="Chat_Delete == false"
+											>
+												<span
+													*ngIf="Chat_Delete"
+													class="icon-background2 mr-1"
+													(click)="Delete_Channel()"
+												>
+													<mat-icon class="text-green small"
+														>delete</mat-icon
+													></span
+												>
+											</p>
+										</div>
+										<!-- <p class="members-no">Team Members</p> -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div
+							class="text-center"
+							style="position: relative; height: 135px; margin-top: 60px"
+						>
+							<button style="    position: fixed;" class="loading-button" (click)="Load_old_messages()">
+								Load more
+							</button>
+						</div>
+						<div>
+							<div *ngFor="let message of messages">
+								<!-- outgoing message container starts-->
+								<div
+									class="outgoing-chats"
+									*ngIf="
+										Login_User != message.From_User &&
+										message.Channel_Id == Channel_Id_Temp_
+									"
+								>
+									<div class="outgoing-msg">
+										<div class="outgoing-chats-msg">
+											<div class="chat-box">
+												<p class="multi-msg" *ngIf="message.File_Name != ''">
+													{{ message.Display_File }}
+													<span
+														><mat-icon
+															class="text-green small"
+															(click)="Download_Image(message.File_Name)"
+															>get_app</mat-icon
+														></span
+													>
+												</p>
+												<p class="multi-msg">
+													{{ message.Chats }}
+												</p>
+												<div class="l-line">
+													<label for="">{{ message.From_User_Name }}</label>
+													<span class="time">{{ message.Date }} </span>
+												</div>
+											</div>
+											<span class="time">{{ message.Tagged_Users_List }}</span>
+											<!-- <label for="">{{message.From_User_Name}}</label>   
+					<span class="time">{{message.Date}} </span> -->
+										</div>
+										<br />
+									</div>
+								</div>
+								<!-- outgoing message container ends-->
+								<!-- incoming message conatainer starts -->
+								<div class="received-chats">
+									<div
+										class="received-msg"
+										*ngIf="Login_User == message.From_User"
+									>
+										<div class="received-msg-inbox">
+											<div class="chat-box2">
+												<p class="multi-msg" *ngIf="message.File_Name != ''">
+													{{ message.Display_File }}
+													<span
+														><mat-icon
+															class="text-green small"
+															(click)="Download_Image(message.File_Name)"
+															style="cursor: pointer"
+															>get_app</mat-icon
+														></span
+													>
+												</p>
+												<p class="multi-msg">{{ message.Chats }}</p>
+												<div class="l-line">
+													<label for="">{{ message.From_User_Name }}</label>
+													<span class="time">{{ message.Date }} </span>
+												</div>
+											</div>
+											<span class="time">{{ message.Tagged_Users_List }}</span>
+										</div>
+									</div>
+								</div>
+								<!-- incoming message conatainer ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Chat area ends -->
+			</div>
+			<!-- message text area starts-->
+			<div class="chat-input" *ngIf="chat_view == true">
+				<input
+					type="text"
+					[(ngModel)]="messageText"
+					(keyup.enter)="sendMessage1(messageText)"
+					placeholder="Type your message..."
+				/>
+				<span class="tag-span">
+					<p *ngFor="let Tag_U of tagged_users; let j = index">
+						<ng-container
+							*ngFor="let char of Tag_U['User_Details_Name'].split('')"
+						>
+							<span *ngIf="char === '@'" class="blue">{{ char }}</span>
+							<ng-container *ngIf="char !== '@'">{{ char }}</ng-container>
+						</ng-container>
+					</p></span
+				>
+				<br />
+
+				<span class="tag-span tag-span-2">
+					<p>&nbsp;{{ Display_File_ }}</p></span
+				>
+				<span
+					*ngIf="Flag_Channel_Type_ === 1"
+					class="icon-background2 mr-1"
+					style="position: relative; background-color: transparent; right: 0px"
+					data-toggle="modal"
+					data-target="#User_View"
+					(click)="User_Click()"
+				>
+					<mat-icon class="text-green small" style="font-size: 23px"
+						>person_add</mat-icon
+					>
+				</span>
+				<span
+					class="icon-background2 mr-1"
+					style="position: relative; background-color: transparent; right: 0px"
+					(click)="fileInput.click()"
+				>
+					<input
+						#fileInput
+						type="file"
+						name="File"
+						[(ngModel)]="File"
+						(change)="File_Change($event)"
+						style="display: none"
+						hidden
+					/>
+					<mat-icon class="text-green small" style="font-size: 23px"
+						>attach_file</mat-icon
+					></span
+				>
+
+				<mat-icon
+					class="text-green small send-btn"
+					*ngIf="messageText != '' || Display_File_ !== undefined"
+					style="font-size: 28px; margin-right: 10px; cursor: pointer"
+					mat-button
+					matSuffix
+					(click)="sendMessage1(messageText)"
+					>send</mat-icon
+				>
+
+				<!-- <mat-form-field>
+  <mat-label>Type your message</mat-label>
+  <input matInput [(ngModel)]="messageText" (keyup.enter)="sendMessage1(messageText)">
+  <button mat-button matSuffix (click)="sendMessage1(messageText)">
+    <mat-icon>send</mat-icon>
+  </button>
+</mat-form-field> -->
+			</div>
+			<!-- message text area ends-->
+			<!-- message text area ends-->
+		</div>
+		<!-- modal for showing user list  starts -->
+		<div
+			class="modal fade-scale"
+			id="User_View"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div
+				class="modal-dialog"
+				role="document"
+				style="top: 142px; cursor: pointer"
+			>
+				<div class="modal-content newsletter" style="width: 100% !important">
+					<div class="modal-body">
+						<div>
+							<div id="User_View">
+								<div
+									class="card-body card-body-for-searchedit-lead-section p-0"
+									style="margin-top: -32px"
+								>
+									<div class="dt-card__header popupcolor">
+										<div class="dt-card__heading">
+											<h3 style="padding-top: 6px !important">
+												<p class="popuptitlecolor" style="color: #586ae9">
+													Users
+												</p>
+											</h3>
+											<div class="mb-2"></div>
+											<div *ngIf="User_Div">
+												<input
+													type="text"
+													class="form-control"
+													[(ngModel)]="User_Details_"
+													(click)="Load_User_Details($event)"
+													(keyup)="Load_User_Details($event)"
+													placeholder="tag user"
+												/>
+												<div
+													style="overflow-y: scroll"
+													[style.height.px]="myTotalHeight"
+													*ngIf="User_Details_Filter.length > 0"
+												>
+													<label
+														_ngcontent-xmy-c9=""
+														class="form-check-label p-0"
+													>
+														<label>Select All</label>
+
+														<input
+															_ngcontent-xmy-c9=""
+															checked=""
+															class="form-check-input"
+															[(ngModel)]="Select_TaggedUser"
+															(click)="Select_All_TaggedUser()"
+															type="checkbox"
+															name="Select_View"
+															[checked]="Select_View_Check"
+															value=""
+														/>
+														<span _ngcontent-xmy-c9="" class="form-check-sign">
+															<span
+																_ngcontent-xmy-c9=""
+																class="check mt-3"
+															></span>
+														</span>
+													</label>
+													<p
+														*ngFor="
+															let User_D of User_Details_Filter;
+															let i = index
+														"
+													>
+														<label
+															_ngcontent-xmy-c9=""
+															class="form-check-label"
+														>
+															<input
+																_ngcontent-xmy-c9=""
+																checked=""
+																class="form-check-input"
+																[(ngModel)]="User_D.Check_Box"
+																type="checkbox"
+																name="{{ User_D.User_Details_Id }}"
+																[checked]="User_D.Check_Box"
+																value=""
+																(ngModelChange)="
+																	Tagged_Users(User_D, User_D.Check_Box, i)
+																"
+															/>
+															<span
+																_ngcontent-xmy-c9=""
+																class="form-check-sign"
+															>
+																<span
+																	_ngcontent-xmy-c9=""
+																	class="check mt-2"
+																></span>
+															</span>
+														</label>
+														{{ User_D["User_Details_Name"] }}
+													</p>
+												</div>
+											</div>
+											<hr class="refundhr" />
+											<p *ngFor="let Tag_U2 of tagged_users; let j = index">
+												<ng-container
+													*ngFor="
+														let char of Tag_U2['User_Details_Name'].split('')
+													"
+												>
+													<span *ngIf="char === '@'" class="blue">{{
+														char
+													}}</span>
+													<ng-container *ngIf="char !== '@'">{{
+														char
+													}}</ng-container>
+												</ng-container>
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal for showing user list  ends -->
+		<!-- modal for Adding to Group  starts -->
+		<div
+			*ngIf="Group_User_full_View"
+			class="modal fade-scale"
+			id="AddGroup"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div
+				class="modal-dialog"
+				role="document"
+				style="top: 142px; cursor: pointer"
+			>
+				<div class="modal-content newsletter" style="width: 100% !important">
+					<div class="modal-body">
+						<div>
+							<div id="AddGroup">
+								<div
+									class="card-body card-body-for-searchedit-lead-section p-0"
+									style="margin-top: -32px"
+								>
+									<div class="dt-card__header popupcolor">
+										<div class="dt-card__heading">
+											<h3 style="padding-top: 6px !important">
+												<p
+													class="popuptitlecolor"
+													style="
+														color: #3498db;
+														font-size: 18px;
+														font-weight: 600;
+													"
+												>
+													New Group
+												</p>
+											</h3>
+											<div class="mb-2"></div>
+											<div *ngIf="Group_User_View">
+												<input
+													type="text"
+													class="form-control"
+													[(ngModel)]="User_Details_"
+													(click)="Load_User_Details($event)"
+													(keyup)="Load_User_Details($event)"
+													placeholder="Add Users"
+												/>
+												<span class="material-symbols-outlined">
+													<mat-icon
+														class="text-green small"
+														style="
+															font-size: 26px;
+															position: absolute;
+															right: 23px;
+															top: 67px;
+														"
+														>search</mat-icon
+													>
+												</span>
+												<label
+													_ngcontent-xmy-c9=""
+													class="form-check-label p-0"  style="    text-align: right;
+													width: 100%;margin: 20px 0;"
+												>
+													<label style="    font-size: 16px;
+													margin-right: 15px;">Select All</label>
+
+													<input
+														_ngcontent-xmy-c9=""
+														checked=""
+														class="form-check-input"
+														[(ngModel)]="Select_GroupedUser"
+														(click)="Select_All_GroupUser()"
+														type="checkbox"
+														name="Select_View"
+														[checked]="Select_View_Check"
+														value=""
+													/>
+													<span _ngcontent-xmy-c9="" class="form-check-sign">
+														<span
+															_ngcontent-xmy-c9=""
+															class="check mt-3"
+														></span>
+													</span>
+												</label>
+												<div
+													style="overflow-y: scroll"
+													[style.height.px]="myTotalHeight"
+												>
+													<p
+														(click)="Group_Users(UserG)"
+														*ngFor="
+															let UserG of User_Details_Filter;
+															let i = index
+														"
+													>
+														{{ UserG["User_Details_Name"] }}
+													</p>
+												</div>
+											</div>
+											<hr class="refundhr" />
+											<div style="overflow-y: scroll"
+											[style.height.px]="myInnerHeightTwo">
+
+											<p
+												class="box"
+												*ngFor="let Grp_U of GUsers; let k = index"
+											>
+												{{ Grp_U["User_Details_Name"] }}&nbsp;
+												<span>
+													<mat-icon
+														class="text-red small"
+														style="font-size: 14px"
+														(click)="Remove_User(k)"
+														>close</mat-icon
+													></span
+												>        
+											</p>
+										</div>
+
+											<!-- <button
+											class="save-button-style btnflot mt-0"
+											style="
+												margin-right: 2px;
+												cursor: pointer;
+												height: 30px;
+												width: 100%;
+												padding: 2px 2px;
+											"
+											(click)="Move_to_GroupSave()"
+										>
+											Add 
+										</button> -->
+											<p
+												[ngClass]="{
+													Four: alertValue === 2,
+													three: alertValue === 1
+												}"
+												style="font-weight: 300"
+											>
+												{{ Alert_Message }}
+											</p>
+											<span *ngIf="!GroupSave"
+												><mat-icon
+													class="text-green small"
+													(click)="Move_to_GroupSave()"
+													style="font-size: 26px;    display: flex;
+													justify-content: end;
+													width: 100%;"
+													>send</mat-icon
+												></span
+											>
+
+											<div *ngIf="GroupSave">
+												<input
+													style="margin-top: 15px !important"
+													type="text"
+													class="form-control"
+													[(ngModel)]="Group_Name_"
+													placeholder="Type Group Name here..."
+													(click)="GroupName_Click()"
+												/>
+
+												<button
+													class="save-button-style btnflot mt-0"
+													style="
+														margin-right: 2px;
+														cursor: pointer;
+														height: 30px;
+														width: 100%;
+														padding: 2px 2px;
+														margin-top: 20px !important;
+													"
+													(click)="Group_Save()"
+												>
+													Create
+												</button>
+
+												<!-- <span
+													>
+													
+													<mat-icon
+														class="text-green small"
+														(click)="Group_Save()"
+														style="font-size: 26px"
+														>done</mat-icon
+													></span
+												> -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal for Adding to Group  ends -->
+		<!-- modal for Invidual Users starts -->
+		<div
+			*ngIf="Group_User_View"
+			class="modal fade-scale"
+			id="InPerson"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div
+				class="modal-dialog"
+				role="document"
+				style="top: 142px; cursor: pointer"
+			>
+				<div class="modal-content newsletter" style="width: 100% !important">
+					<div class="modal-body">
+						<div>
+							<div id="InPerson">
+								<div
+									class="card-body card-body-for-searchedit-lead-section p-0"
+									style="margin-top: -32px"
+								>
+									<div class="dt-card__header popupcolor">
+										<div class="dt-card__heading">
+											<h3 style="padding-top: 6px !important">
+												<p class="popuptitlecolor" style="color: #586ae9"></p>
+											</h3>
+											<div class="mb-2"></div>
+											<div *ngIf="Group_User_View">
+												<input
+													type="text"
+													class="form-control"
+													[(ngModel)]="User_Details_"
+													(click)="Load_User_Details($event)"
+													(keyup)="Load_User_Details($event)"
+													placeholder="Search User Name"
+												/>
+												<span class="material-symbols-outlined">
+													<mat-icon
+														class="text-green small"
+														style="
+															font-size: 26px;
+															position: absolute;
+															right: 23px;
+															top: 33px;
+														"
+														>search</mat-icon
+													>
+												</span>
+												<div
+													style="overflow-y: scroll;margin-top: 20px;"
+													[style.height.px]="myTotalHeight"
+													*ngIf="User_Details_Filter.length > 0"
+												>
+													<p
+														(click)="In_Person_Click(UserP)"
+														*ngFor="
+															let UserP of User_Details_Filter;
+															let i = index
+														"
+													>
+														<span>{{ UserP["User_Details_Name"] }}</span>
+													</p>
+												</div>
+												<p
+													[ngClass]="{
+														Four: alertValue === 2,
+														three: alertValue === 1
+													}"
+													style="font-weight: 300"
+												>
+													{{ Message_Text }}
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- modal for Invidual Users  ends -->
+		<!-- Channel Name Edit starts -->
+		<div
+			class="modal fade-scale"
+			id="EditChannel"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="exampleModalLabel"
+			aria-hidden="true"
+		>
+			<div
+				class="modal-dialog"
+				role="document"
+				style="top: 142px; cursor: pointer"
+			>
+				<div class="modal-content newsletter" style="width: 100% !important">
+					<div class="modal-body">
+						<div>
+							<div id="AddGroup">
+								<div
+									class="card-body card-body-for-searchedit-lead-section p-0"
+									style="margin-top: -32px"
+								>
+									<div class="dt-card__header popupcolor">
+										<hr class="refundhr" />
+
+										<div>
+											<input
+												type="text"
+												class="form-control"
+												[(ngModel)]="Edited_Name_"
+												placeholder="Group Name"
+											/>
+											<!-- <span
+												><mat-icon
+													class="text-green small"
+													(click)="Edit_Channel()"
+													style="font-size: 26px"
+													>done</mat-icon
+												></span
+											> -->
+											<button
+												class="save-button-style btnflot mt-2"
+												style="
+													margin-right: 2px;
+													cursor: pointer;
+													height: 30px;
+													width: 90px;
+													padding: 5px 2px 2px 2px;
+												"
+												(click)="Edit_Channel()"
+											>
+												Save
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Channel Name Edit ends -->
+		<div id="Bottom1div"></div>
+	</div>
+</div>

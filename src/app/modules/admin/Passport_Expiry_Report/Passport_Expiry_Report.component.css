@@ -1,0 +1,9 @@
+.one { color: rgb(42, 11, 219) ; } 
+.three { color:green; } 
+.two { color: rgb(255, 0, 0); } 
+.Four { color: black; }
+.Five { color: rgb(165, 2, 151); }
+
+::ng-deep .mat-form-field-infix {
+    width: 100px !important;
+  }

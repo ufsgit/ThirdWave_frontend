@@ -1,0 +1,396 @@
+
+
+<div *ngIf="issLoading" class="overlay">
+    <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+    </mat-progress-spinner>
+</div>
+<div class="main-content" [style.height.px]="myInnerHeight" style="overflow: scroll;margin-top: 0px !important;" >
+    <div class="container-fluid"  >
+        <div class="row" *ngIf="Entry_View">
+            <div class="col-md-12 row">
+              
+                    
+            
+
+                      
+                  
+               
+                <!-- <div class="col-md-6"> -->
+                    <!-- ----------------------------Country----------------------------------------------------- -->
+               
+               <div class="table-responsive col-md-3 " style=" height: 400px; margin-top: 25px; " >                       
+                   <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format" style="font-size: 15px; background: #f1f1f1; border: solid 1px #dad0d0;">
+                       <thead>  
+                        <tr>
+                            <th> <label class="text-dark" style="
+                                    margin-top: 28px;"><b>Select All</b></label> </th>
+
+
+                                      <th class="crect-margin-width-table-header-title">
+                                        <div _ngcontent-xmy-c9="" class="form-check">
+                                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                                            <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                            [(ngModel)]="Select_View_Country" (click)="Country_View_Click()" type="checkbox" name="Select_View"
+                                            [checked]="Select_View_Check" value="">
+                                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                                            <span _ngcontent-xmy-c9="" class="check"></span>
+                                            </span>
+                                            </label>
+                                            </div>   
+                                    </th>
+
+                        </tr>                          
+                           <th class="crect-margin-width-table-header-title">Sl.No</th>             
+                           <th>Country  </th>
+                           <th>Select</th>                          
+                       </thead>
+                       <tbody *ngFor="let Country_1 of Country_Data; let i = index">
+                           <tr>
+                               <td>{{i+1}}</td>
+                               <td>{{Country_1["Country_Name"]}}</td>
+                               <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                   <div _ngcontent-xmy-c9="" class="form-check">
+                                       <label _ngcontent-xmy-c9="" class="form-check-label">
+                                           <input type="checkbox" name={{Country_1.Country_Id}}{{Country_1.Country_Data_view}}
+                                           class="form-check-input"     (change)="onJobSectorCheckboxChange($event,Country_1.Country_Id)" [(ngModel)]="Country_1.Country_Data_view" [checked]="Country_1.Country_Data_view">
+                                           <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px;">
+                                               <span _ngcontent-xmy-c9="" class="check"></span>
+                                           </span>
+                                       </label>
+                                   </div>
+                               </td>
+                           </tr>
+                       </tbody>
+                   </table> 
+               </div>
+       
+                    <!-- ----------------------------University----------------------------------------------------- -->
+       
+               <div class="table-responsive col-md-3" style=" height: 400px;  margin-top: 25px;  ">                       
+                   <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format" style="font-size: 15px; background: #f1f1f1; border: solid 1px #dad0d0;">
+                       <thead>  
+                        <tr>
+                            <th> <label class="text-dark" style="
+                                    margin-top: 28px;"><b>Select All</b></label> </th>
+
+
+                                      <th class="crect-margin-width-table-header-title">
+                                        <div _ngcontent-xmy-c9="" class="form-check">
+                                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                                            <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                            [(ngModel)]="Select_View_University" (click)="University_View_Click()" type="checkbox" name="Select_View"
+                                            [checked]="Select_View_Check1" value="">
+                                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                                            <span _ngcontent-xmy-c9="" class="check"></span>
+                                            </span>
+                                            </label>
+                                            </div>   
+                                    </th>
+
+                        </tr>                             
+                           <th class="crect-margin-width-table-header-title">Sl.No</th>             
+                           <th>University</th>
+                           <th>Select</th>                          
+                       </thead>
+                       <tbody *ngFor="let University_1 of University_Filer_Data; let i = index">
+                           <tr>
+                               <td>{{i+1}}</td>
+                               <td>{{University_1["University_Name"]}}</td>
+                               <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                   
+                                   <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                        <!-- <input type="checkbox" name={{University_1.University_Id}}{{University_1.University_View}}
+                                        class="form-check-input"      [(ngModel)]="University_1.University_View" (change)="onProcessCheckboxChange($event,University_1.University_Id)"
+                                         [checked]="University_1.University_View"> -->
+                                         <input type="checkbox" name={{University_1.University_Id}}{{University_1.University_View}}
+                                            class="form-check-input"      
+                                            [(ngModel)]="University_1.University_View" 
+                                            (change)="onProcessCheckboxChange($event,University_1.University_Id)" 
+                                            [checked]="University_1.University_View">
+                                           <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px;">
+                                            <span _ngcontent-xmy-c9="" class="check"></span>
+                                        </span>
+                                    </label>
+                                </div>
+                               </td>
+                           </tr>
+                       </tbody>
+                   </table> 
+               </div>
+       
+                    <!-- ----------------------------Mandatory Document----------------------------------------------------- -->
+               <div class="table-responsive col-md-3" style=" height: 400px; margin-top: 25px; ">                       
+                   <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format" style="font-size: 15px; background: #f1f1f1; border: solid 1px #dad0d0;">
+                       <thead> 
+                        <tr>
+                            <th> <label class="text-dark" style="
+                                    margin-top: 28px;"><b>Select All</b></label> </th>
+
+
+                                      <th class="crect-margin-width-table-header-title">
+                                        <div _ngcontent-xmy-c9="" class="form-check">
+                                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                                            <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                            [(ngModel)]="Select_View_Process" (click)="Process_View_Click()"   type="checkbox" name="Select_View"
+                                            [checked]="Select_View_Check2"  value="">
+                                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                                            <span _ngcontent-xmy-c9="" class="check"></span>
+                                            </span>
+                                            </label>
+                                            </div>   
+                                    </th>
+
+                        </tr>                              
+                           <th class="crect-margin-width-table-header-title">Sl.No</th>             
+                           <th>Process_View </th>
+                           <th>Select</th>                          
+                       </thead>
+                       <tbody *ngFor="let Process_1 of Process_Filer_Data; let i = index">
+                           <tr>
+                               <td>{{i+1}}</td>
+                               <td>{{Process_1["Process_Name"]}}</td>
+                               <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                   <div _ngcontent-xmy-c9="" class="form-check">
+                                       <label _ngcontent-xmy-c9="" class="form-check-label">
+                                           <input type="checkbox" name={{Process_1.Process_Id}}{{Process_1.Process_View}}
+                                           class="form-check-input" [(ngModel)]="Process_1.Process_View" [checked]="Process_1.Process_View"  (change)="onsubProcessCheckboxChange($event,Process_1.Process_Id)" >
+                                           <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px;">
+                                               <span _ngcontent-xmy-c9="" class="check"></span>
+                                           </span>
+                                       </label>
+                                   </div>
+                               </td>
+                           </tr>
+                       </tbody>
+                   </table> 
+               </div>
+
+               <!-- ------------------ -->
+
+
+                <!-- ----------------------------process Status----------------------------------------------------- -->
+                <div class="table-responsive col-md-3" style=" height: 400px; margin-top: 25px; ">                       
+                    <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format" style="font-size: 15px; background: #f1f1f1; border: solid 1px #dad0d0;">
+                        <thead> 
+                         <tr>
+                             <th> <label class="text-dark" style="
+                                     margin-top: 28px;"><b>Select All</b></label> </th>
+ 
+ 
+                                       <th class="crect-margin-width-table-header-title">
+                                         <div _ngcontent-xmy-c9="" class="form-check">
+                                             <label _ngcontent-xmy-c9="" class="form-check-label">
+                                             <input _ngcontent-xmy-c9="" checked="" class="form-check-input"
+                                             [(ngModel)]="Select_View_Process_Status" (click)="Process_Status_View_Click()" type="checkbox" name="Select_Process_StatusView"
+                                             [checked]="Select_Process_StatusView_Check2" value="">
+                                             <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: 11px;">
+                                             <span _ngcontent-xmy-c9="" class="check"></span>
+                                             </span>
+                                             </label>
+                                             </div>   
+                                     </th>
+ 
+                         </tr>                              
+                            <th class="crect-margin-width-table-header-title">Sl.No</th>             
+                            <th>Process  Status</th>
+                            <th>Select</th>                          
+                        </thead>
+                        <tbody *ngFor="let Process_Status_1 of Process_Status_Data; let i = index">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{Process_Status_1["Department_Status_Name"]}}</td>
+                                <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                                            <input type="checkbox" name={{Process_Status_1.Department_Status_Id}}{{Process_Status_1.Process_Status_View}}
+                                            class="form-check-input" [(ngModel)]="Process_Status_1.Process_Status_View" [checked]="Process_Status_1.Process_Status_View">
+                                            <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px;">
+                                                <span _ngcontent-xmy-c9="" class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+                </div>
+ 
+                <!-- ------------------ -->
+
+               <div class="col-md-6 row" >
+                <label class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label">Insert Not Found</label>
+              
+                <div class="col-md-8 col-sm-0 mb-1 x-tra-label-mob" style="padding-top: 6px">
+                  <div class="checkbox-to-crect-sales-search-section">
+                    <div class="form-check uper-dte-lbel-sales-sctn-new pl-0">
+                      <label class="form-check-label">
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          name="Process_Status_Details_.Insert_Not_Found"
+                          [(ngModel)]="Process_Status_Details_.Insert_Not_Found"
+                        />
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+       
+           <div class="col-md-12 row" style="justify-content: end;
+           margin-top: 30px;">
+                                 
+                                       <button mat-raised-button type="submit" style=" background-color: #4bc859 !important;
+                                       margin-left: 10px;   height: 38px;
+                                       width: 80px; "
+                                           [hidden]="Document_Save==false" id="Save_Button"
+                                           class="btn btn-danger pull-right" (click)="Save_Process_view()">Save</button>
+                                           <button mat-raised-button type="submit" style="height: 38px; background-color: #5d6071 !important; width: 80px;"
+                                           class="btn btn-danger pull-right" (click)="Close_Click()">Close</button>
+                                
+                               </div>
+
+                               <div *ngIf="progress_button==1">
+                                <p>Progress: {{ progress }}%</p>
+                                <div
+                                  style="
+                                    width: 100%;
+                                    background-color: #e0e0e0;
+                                    height: 20px;
+                                    border-radius: 5px;
+                                    overflow: hidden;
+                                  "
+                                >
+                                  <div
+                                    [style.width.%]="progress"
+                                    style="
+                                      height: 100%;
+                                      background-color: #4caf50; /* Green color */
+                                      transition: width 0.3s ease;
+                                    "
+                                  ></div>
+                                </div>
+                              </div>
+                              
+                    </div>
+        
+                       
+
+             
+                    
+                
+            <!-- </div> -->
+        </div>
+        <!-- <div class="row" *ngIf="!Entry_View">
+            <div class="col-md-12">
+                <div class="card">
+                    <form>
+                        <div class="row" style="margin-top: 20px !important;">
+                            <div class="col-md-6 alighyn-div-margin-search-item-group mt-3">
+                                <div class="row col-md-12 crect-allighyn-tdiv-one-by-one-div">
+                                    <label class="col-md-2 label-down-alighn-nvce-nmbr-prhse-mstr-br-cde" style="top: -1px !important; font-size: 17px !important;">Document</label>
+                                    <mat-form-field class="col-md-10 margin-lh-rh-to-crect-textbox" style="border: 1px solid darkgray;">
+                                        <input matInput type="text" [(ngModel)]="Document_Name_Search" name="Search_Name" 
+                                        class="margin-lh-rh-to-crect-textbox input-text-item-group-diary input-allighn-to-crect-wole-paddings">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                           
+
+                           
+                            <div class="col-md-4 col-sm-4 mt-2">   
+                             
+                                <button (click)="Search_Job_Specialisation()" mat-raised-button type="submit" class="other-button-style pull-left mr-1">Search</button>
+                                 <button (click)="Create_New()"  mat-raised-button type="submit"  class=" save-button-style pull-left mr-1 ">Create New</button>
+                                </div>
+                           
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-12 card-body">
+                <div class="card-plain set-height-scroll-bar-wole-block">
+                    <div class="table-responsive">
+                       
+                        <div class="row grid_header"  style="background-color: #ebeef0;color: black;">
+                            <div class="col-md-2">
+                                Sl No
+                            </div>
+                            <div class="col-md-2">
+                                Date
+                            </div>
+                            <div class="col-md-2">
+                                mandatory master details
+                            </div>
+                            <div class="col-md-1">
+                            Edit
+                            </div>
+                            <div class="col-md-1">
+                            Delete
+                            </div>
+                        </div>
+
+
+                        <cdk-virtual-scroll-viewport [style.height.px]="myInnerHeight" itemSize="90" >
+
+   
+                            <ng-container *cdkVirtualFor="let Document1 of Document_Data; let i = index">
+                                <div class="row grid_data">
+                            <div class="col-md-2">
+                                {{ i+1 }}
+                            </div>
+                            <div class="col-md-2">
+                                {{Document1["Entrydate"]}}
+                                
+                            </div>
+                            <div class="col-md-2">
+                                {{Document1["mandatory_master_details_id"]}}
+                                
+                            </div>
+                            
+                            <div class="col-md-1"   (click)="Edit_Document(Document1,i)">
+                            
+                             <button _ngcontent-gdi-c11="" [hidden]="Document_Edit==false" 
+                                    class="btn btn-danger2" style="font-size: 11px !important ; border-radius: 4px !important; color: #0ab33c !important; background-color: #dff5df !important;" 
+                                    mattooltip="Edit Task" type="button" aria-describedby="cdk-describedby-message-1"
+                                    cdk-describedby-host=""
+                                    ng-reflect-position="above" ng-reflect-message="Edit Task"><span class="mat-button-wrapper">
+                                        <i _ngcontent-gdi-c11="" class="material-icons" 
+                                         >edit</i></span>
+                                        <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                        ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                        <div class="mat-button-focus-overlay"></div></button>   
+                    
+                            </div>
+                    
+                            <div class="col-md-1"  (click)="Delete_Document(Document1.mandatory_master_details_id,i)">
+                                
+                                <button _ngcontent-gdi-c11="" [hidden]="Document_Delete==false" 
+                                class="btn btn-danger1" style="font-size: 11px !important ; border-radius: 4px !important;  color: #f3433d !important; background-color: #f7ecec !important;" 
+                                mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" cdk-describedby-host=""
+                                ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper">
+                                    <i _ngcontent-gdi-c11="" class="material-icons" 
+                                     >close</i></span>
+                                    <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                    ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                    <div class="mat-button-focus-overlay"  ></div></button>          
+                            </div>
+                        </div>
+                        </ng-container> 
+                    </cdk-virtual-scroll-viewport>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <label class="entry-num">Entries : {{Total_Entries}}</label>
+            </div>  
+        </div> -->
+    </div>
+</div>

@@ -1,0 +1,306 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>                                     
+
+
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+
+<div *ngIf="main_View" class="main-content" [hidden]="Search_Div">
+<div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12 bg-set-leds-dtls">
+      <div class="row">
+          <!-- <div class="col-md-2 margin-crect-select-search-part to-crect-margin-select-leads-search-front">
+            <select [(ngModel)]="Search_By_" class="col-md-12 input-allighn-to-crect-wole-paddings">
+            <option value="1">Name <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+            </select>  
+          </div>
+
+          <div class="col-md-2 margin-down-tocrect-lead-textbox-front-section-oter">
+            <mat-form-field class="col-md-12 input-allighn-to-crect-wole-paddings led-srch-sctn-nput-tb margin-down-to-input-acount-grp-search-part">
+            <input matInput type="text" [(ngModel)]="Search_Name">
+            </mat-form-field>
+          </div> -->
+
+          <div _ngcontent-xmy-c9="" class="col-md-1 lead-search-section-date-alighn label-down-alighn-stk-ad-mstr-prhse-rte">
+            <div _ngcontent-xmy-c9="" class="form-check algyn-checkbx-lead-serch-scton margin-down-tocrect-lead-chckbox-date-front-section">
+              <label _ngcontent-xmy-c9="" class="form-check-label">
+                <input type='checkbox'class="form-check-input" placeholder='Search...' [(ngModel)]="Look_In_Date" />
+                <span _ngcontent-xmy-c9="" class="form-check-sign"  style="margin-left: -25px; margin-top: 4px;"><span _ngcontent-xmy-c9="" class="check"></span>
+                </span>
+                <label class="">Created</label>
+              </label>              
+            </div>
+            <!-- <label class="for-down-title-tabs-personal-details">Created</label> -->
+          </div>
+  
+          <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+            <label class="col-md-4 alighn-title-search-section-tab-lead-per-details">From</label>
+            <mat-form-field class="col-md-8 input-allighn-to-crect-wole-paddings alighn-date-search-section-new-tab-lead-per-details">
+            <input matInput [matDatepicker]="dpFromDate" placeholder="" [(ngModel)]="Search_FromDate">
+            <mat-datepicker-toggle matSuffix [for]="dpFromDate"></mat-datepicker-toggle>
+            <mat-datepicker #dpFromDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+            <label class="col-md-4 alighn-title-search-section-tab-lead-per-details">To</label>
+            <mat-form-field class="col-md-8 input-allighn-to-crect-wole-paddings alighn-date-search-section-new-tab-lead-per-details">
+            <input matInput [matDatepicker]="dpToDate" placeholder="" [(ngModel)]="Search_ToDate">
+            <mat-datepicker-toggle matSuffix [for]="dpToDate"></mat-datepicker-toggle>
+            <mat-datepicker #dpToDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-2 buton-down-ward-lead-search-front">
+              <button mat-raised-button type="submit" id="Registration_Report" (click)="Search_Lead_button()" class="btn btn-danger change-colour-button buton-save-search-edit"><i class="fa fa-search" aria-hidden="true"></i></button>
+            
+              <button mat-raised-button type="submit"  [hidden]="Export_View==false" (click)="Export()"class="btn btn-danger change-colour-button buton-save-search-edit"><i></i>EXPORT</button>
+              <button  name="" _ngcontent-gdi-c11="" (click)="New_Followup()" class="btn btn-danger change-colour-button buton-save-search-edit">
+              Transfer
+              </button>
+            </div>
+    </div>
+   
+    
+<div class="seperation-for-down-butons" >
+   <div class="row col-md-12 alyghn-croect-row-table-lead-sctn">
+          <!-- <div class="row col-md-4">
+            <label class="col-md-3 label-to-crect-all-names-to-divs label-crect-journal-entry-voucher-no label-down-alighn-oter-carge-tal-gst-prhse-mstr-down-new-stcn">Department</label>
+            <select [(ngModel)]="Department_Search" id="Department_" required  class="col-md-9 input-allighn-to-crect-wole-paddings">
+            <option *ngFor="let Department_T of Department_Data" [ngValue]="Department_T">{{Department_T.Department_Name}}</option>
+            </select> 
+          </div>
+
+          <div class="col-md-4">
+            <label class="col-md-4 label-crect-journal-entry-voucher-no"> Created By</label>
+            <select [(ngModel)]="User_Search" id="User_" required class="col-md-8 input-allighn-to-crect-wole-paddings ng-untouched ng-valid ng-dirty">
+            <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">{{User_T.User_Details_Name}}</option>
+            </select>  
+          </div>
+
+        <div  class="col-md-4">
+          <label class="col-md-3 label-crect-journal-entry-voucher-no"> Branch</label>
+          <select [(ngModel)]="Search_Branch" required class="col-md-9 input-allighn-to-crect-wole-paddings ng-valid ng-dirty ng-touched">
+          <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">{{Branch_T.Branch_Name}}</option>
+          </select> 
+        </div>            -->
+    </div>          
+</div>    
+    </div>
+    </div>
+<div class="row div-to-down-margin-crect-allighn-wole-scton">
+  <div class="col-md-12 whole-portion-edit-section-lead-part" [style.height.px]="myInnerHeight" >
+  <div class="card card-plain">
+    <div class="card-body card-body-for-searchedit-lead-section">
+    <div class="table-responsive">
+    <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format">
+      <thead>
+       
+        <th>
+          No
+        </th>
+       
+        <th>
+        Branch
+        </th>
+        <th >
+         Amount
+        </th>
+       
+      </thead>
+      <tbody *ngFor="let Lead of Student_Data_Search; let i = index">
+        <tr>
+        
+          <td>
+          {{i+1}}
+          </td>
+         
+          <td>
+          {{Lead["Branch_Name"]}}
+          </td>
+          <td>             
+              {{Lead["Branch_Total"]}} 
+            </td>
+             <!-- <td>
+      <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button"><span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" _ngcontent-gxp-c5="" class="material-icons" (click)="Edit_Lead(Lead.Lead_Id,i)" >edit</i></span><div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay" ></div></button>
+  </td> -->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+</div>  
+
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="card card-chart">
+                  <div class="card-body">
+                      <h4 class="card-title">Branchwise Summary</h4>
+                  </div>
+              </div>
+              <google-chart #chart [title]='Branch_title' [type]="Branch_type" [data]="Branchwise_data" [columnNames]="Branchwise_columnNames" [options]="Branch_options" 
+              [width]="width" [height]="height">
+              
+              </google-chart>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+              <div class="card card-chart">
+                <div class="card-body">
+                    <h4 class="card-title">Branchwise Summary</h4>
+                </div>
+              </div>
+              <google-chart #chart [title]='Title_Bar' [type]="Type_Bar" [data]="Data_Bar" [columnNames]="columnNames_Bar" [options]="options_Bar"
+              [width]="width" [height]="height">
+              </google-chart>
+          </div>
+
+        </div>
+  </div>
+  <div class="main-content" >
+    <div class="container-fluid">
+        <div class="row">
+         <div class="col-md-12 bg-set-leds-dtls">
+          <div class="row">
+              <div *ngIf="1>2" class="col-md-2 margin-crect-select-search-part to-crect-margin-select-leads-search-front">
+                <select [(ngModel)]="Search_By_" class="col-md-12 input-allighn-to-crect-wole-paddings">
+                <option value="1">Name <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+                </select>  
+              </div>
+    
+              <div *ngIf="1>2" class="col-md-2 margin-down-tocrect-lead-textbox-front-section-oter">
+                <mat-form-field class="col-md-12 input-allighn-to-crect-wole-paddings led-srch-sctn-nput-tb margin-down-to-input-acount-grp-search-part">
+                <input matInput type="text" [(ngModel)]="Search_Name">
+                </mat-form-field>
+              </div>
+    
+              <div _ngcontent-xmy-c9="" class="col-md-1 lead-search-section-date-alighn label-down-alighn-stk-ad-mstr-prhse-rte">
+                <div _ngcontent-xmy-c9="" class="form-check algyn-checkbx-lead-serch-scton margin-down-tocrect-lead-chckbox-date-front-section">
+                  <label _ngcontent-xmy-c9="" class="form-check-label">
+                    <input type='checkbox'class="form-check-input" placeholder='Search...' [(ngModel)]="Look_In_Date" />
+                    <span _ngcontent-xmy-c9="" class="form-check-sign" ><span _ngcontent-xmy-c9="" class="check"></span>
+                    </span>
+                    <label class="">Created</label>
+                  </label>              
+                </div>
+                <!-- <label class="for-down-title-tabs-personal-details">Created</label> -->
+              </div>
+      
+              <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+                <label class="col-md-4 alighn-title-search-section-tab-lead-per-details">From</label>
+                <mat-form-field class="col-md-8 input-allighn-to-crect-wole-paddings alighn-date-search-section-new-tab-lead-per-details">
+                <input matInput [matDatepicker]="dpFromDate" placeholder="" [(ngModel)]="Search_FromDate">
+                <mat-datepicker-toggle matSuffix [for]="dpFromDate"></mat-datepicker-toggle>
+                <mat-datepicker #dpFromDate></mat-datepicker>
+                </mat-form-field>
+              </div>
+    
+              <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+                <label class="col-md-4 alighn-title-search-section-tab-lead-per-details">To</label>
+                <mat-form-field class="col-md-8 input-allighn-to-crect-wole-paddings alighn-date-search-section-new-tab-lead-per-details">
+                <input matInput [matDatepicker]="dpToDate" placeholder="" [(ngModel)]="Search_ToDate">
+                <mat-datepicker-toggle matSuffix [for]="dpToDate"></mat-datepicker-toggle>
+                <mat-datepicker #dpToDate></mat-datepicker>
+                </mat-form-field>
+              </div>
+    
+              <div class="col-md-2 buton-down-ward-lead-search-front">
+                  <button mat-raised-button type="submit" id="Registration_Report" (click)="Search_Lead_button()" class="btn btn-danger change-colour-button buton-save-search-edit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                
+                  <button mat-raised-button type="submit"  (click)="Export()"class="btn btn-danger change-colour-button buton-save-search-edit"><i></i>EXPORT</button>
+                  <!-- <button  name="" _ngcontent-gdi-c11="" [hidden]="Export_View==false"  (click)="New_Followup()" class="btn btn-danger change-colour-button buton-save-search-edit">
+                  Transfer
+                  </button> -->
+                </div>
+        </div>
+       
+        
+    <div class="seperation-for-down-butons" >
+       <div class="row col-md-12 alyghn-croect-row-table-lead-sctn">
+              <!-- <div class="row col-md-4">
+                <label class="col-md-3 label-to-crect-all-names-to-divs label-crect-journal-entry-voucher-no label-down-alighn-oter-carge-tal-gst-prhse-mstr-down-new-stcn">Department</label>
+                <select [(ngModel)]="Department_Search" id="Department_" required  class="col-md-9 input-allighn-to-crect-wole-paddings">
+                <option *ngFor="let Department_T of Department_Data" [ngValue]="Department_T">{{Department_T.Department_Name}}</option>
+                </select> 
+              </div> -->
+              <!-- <div class="col-md-4">
+                <label class="col-md-4 label-crect-journal-entry-voucher-no"> Created By</label>
+                <select [(ngModel)]="User_Search" id="User_" required class="col-md-8 input-allighn-to-crect-wole-paddings ng-untouched ng-valid ng-dirty">
+                <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">{{User_T.User_Details_Name}}</option>
+                </select>  
+              </div> -->
+    
+             
+    
+            <!-- <div  class="col-md-4">
+              <label class="col-md-3 label-crect-journal-entry-voucher-no"> Branch</label>
+              <select [(ngModel)]="Search_Branch" required class="col-md-9 input-allighn-to-crect-wole-paddings ng-valid ng-dirty ng-touched">
+              <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">{{Branch_T.Branch_Name}}</option>
+              </select> 
+            </div>            -->
+        </div>          
+    </div>    
+        </div>
+        </div>
+    <div class="row div-to-down-margin-crect-allighn-wole-scton">
+      <div class="col-md-12 whole-portion-edit-section-lead-part" [style.height.px]="myInnerHeight" >
+      <div class="card card-plain">
+        <div class="card-body card-body-for-searchedit-lead-section">
+        <div class="table-responsive">
+        <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format">
+          <thead>
+            <th>
+              No
+            </th>
+            <th>
+           Staff
+              </th>
+            <th>
+           No. of Registration
+            </th>
+            <th></th>
+          </thead>
+          <tbody *ngFor="let Lead of Student_Data_Search; let i = index">          
+              <tr>
+              <td>
+              {{i+1}}
+              </td>
+              <td>
+                {{Lead["User_Details_Name"]}}
+                </td>
+              <td>
+              {{Lead["Followup_Count"]}}
+              </td>
+             <td><div> <button mat-raised-button type="submit" id="Registration_Report" (click)="View_Details_Click(Lead.User_Details_Id)">
+              View Details</button></div>
+              </td>
+             
+                 <!-- <td>
+          <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button"><span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" _ngcontent-gxp-c5="" class="material-icons" (click)="Edit_Lead(Lead.Lead_Id,i)" >edit</i></span><div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay" ></div></button>
+      </td> -->
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    
+    </div>  
+    </div>
+
+
+           

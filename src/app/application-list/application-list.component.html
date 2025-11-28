@@ -1,0 +1,1315 @@
+
+                  <div class="dt-card__body mt-2" *ngIf="parent.Change_Status_View">
+                    <form class="mb-0">
+                      <div class="container-fluidprofile">
+                        <div class="dt-card mt-2" style="display: table; width: 100%">
+                          <div class="card-body card-body-for-searchedit-lead-section">
+                            <div class="dt-card__header">
+                              <div class="dt-card__heading">
+                                <h3 style="margin-top: 0px">
+                                  <i
+                                    class="icon icon-users icon-fw icon-lg material-icons mr-2"
+                                    style="color: #586ae9"
+                                  >
+                                    history </i
+                                  ><b
+                                    style="
+                                      margin-bottom: 20px;
+                                      margin-bottom: 20px;
+                                      color: #4b5cd5;
+                                      font-weight: 600;
+                                    "
+                                    >Change Status &nbsp;</b
+                                  >
+          
+                                  <b
+                                style="
+                                  margin-bottom: 20px;
+                                  margin-bottom: 20px;
+                                  color: #363636;
+                                  font-weight: 600;
+                                "
+                                >{{parent.App_List_Student_Name}}</b
+                              >
+                                </h3>
+                                <div class="mb-2"></div>
+                                <hr class="lineheader" />
+                              </div>
+                            </div>
+          
+                            <!-- new grid div -->
+                            <!-- <div class="card horizontal mb-1"> -->
+          
+                            <div class="form-row col-6">
+                              <!-- <label
+                                class="col-md-2 col-lg-1 col-form-label text-sm-right"
+                                >Status
+                                <span
+                                  style="
+                                    color: #ef071e;
+                                    font-size: 22px;
+                                    vertical-align: -webkit-baseline-middle;
+                                  "
+                                  >*</span
+                                ></label
+                              >
+          
+                              <div class="col-md-3 col-lg-3 mb-1">
+                                <select
+                            [(ngModel)]="Department_Status_Mode_"
+                            name="Department_Status_Mode_"
+                            required
+                            class="form-control p-0 pl-1"
+                          >
+                            <option *ngFor="let Department_Status_s of Department_Status_Mode_Data" [ngValue]="Department_Status_s">
+                              {{ Department_Status_s.Department_Status_Name }}
+                            </option>
+                          </select>
+                              </div> -->
+          
+          
+                              <label
+                            class="col-md-0 col-lg-4 text-sm-right col-form-label"
+                            style="
+                              font-size: 14px !important;
+                              
+                            "
+                            >Status<span
+                              style="
+                                color: #ef071e;
+                                font-size: 22px;
+                                vertical-align: -webkit-baseline-middle;
+                              "
+                              >*</span
+                            ></label
+                          >
+                          <div class="col-md-9 col-lg-8 mt-1" >
+                            <input
+                              Input
+                              type="text"
+                              class="form-control"
+                              [matAutocomplete]="autoc13"
+                              placeholder=""
+                              [(ngModel)]="parent.Department_Status_Mode1_"
+                              name="Department_Status_Mode1_"
+                              id="Department_Status_Mode1_"
+                              (click)="Search_Application_StatusforChangeStatus_Typeahead($event,1)"
+                              (keyup)="Search_Application_StatusforChangeStatus_Typeahead($event,2)" style="    border-color: #5062e738;"
+                            />
+                          </div>
+                          <mat-autocomplete
+                            #autoc13="matAutocomplete"
+                            [displayWith]="display_Application_Status"
+                          >
+                            <mat-option *ngIf="parent.issLoading">
+                              <mat-spinner diameter="500"></mat-spinner>
+                            </mat-option>
+                            <ng-container *ngIf="!parent.issLoading">
+                              <mat-option
+                              (click)="Document_change(Department_Status_s.Process_id,Department_Status_s.Department_Status_Id)"
+                            
+          
+                                *ngFor="let Department_Status_s of parent.Department_Status_Mode_Data1_Filter"
+                                [value]="Department_Status_s"
+                              >
+                                <span name="Department_Status_s.Department_Status_Name">{{
+                                  Department_Status_s.Department_Status_Name
+                                }} &nbsp;</span>
+          
+                                <span *ngIf="Department_Status_s.Transfer_Department_Name " style="color: #000000;"> - &nbsp;
+                                </span>
+          
+                                <span 
+                                 
+                                style="
+                                color: #ef071e;
+                                
+                              "
+                                 >
+                                {{
+                                  Department_Status_s.Transfer_Department_Name
+                                }}</span>
+                              </mat-option>
+                            </ng-container>
+                          </mat-autocomplete>
+                            </div>
+          
+                            <div class="form-row col-6">
+          
+                              <label
+                                class="col-md-0 col-lg-4 col-form-label text-sm-right"
+                                >Remark
+                                <span
+                                  style="
+                                    color: #ef071e;
+                                    font-size: 22px;
+                                    vertical-align: -webkit-baseline-middle;
+                                  "
+                                  >*</span
+                                ></label
+                              >
+                              <div class="col-md-5 col-lg-8">
+                                <textarea
+                                      rows="1"
+                                      cols="2"
+                                      class="form-control"
+                                      [(ngModel)]="parent.ApplicationDetails_.Bph_Remark"
+                                  name="ApplicationDetails_.Bph_Remark"
+                                      placeholder="" style="    border-color: #5062e738;"
+                                    >
+                                    </textarea>
+                              
+                              </div>
+          </div>
+                              <div class="form-row col-6" style="   margin-top: 8px;">
+                              <label
+                              class="col-md-4 col-sm-0 col-form-label text-sm-right" style="    padding-right: 10px;
+                              "
+                      
+                        >Followup</label
+                      >
+                      <div class="col-md-1 col-sm-0 mb-2" >
+                        <div
+                          _ngcontent-xmy-c9=""
+                          class="checkbox-to-crect-sales-search-section"
+                        >
+                          <div
+                            _ngcontent-xmy-c9=""
+                            class="form-check uper-dte-lbel-sales-sctn-new pl-0" style="    margin-top: 15px !important;"
+                          >
+                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                              <input
+                                type="checkbox"
+                                class="form-check-input"
+                                name="parent.ApplicationDetails_.Followup_Date_Check"
+                                [(ngModel)]="parent.ApplicationDetails_.Followup_Date_Check"
+                              />
+                              <span _ngcontent-xmy-c9="" class="form-check-sign"
+                                ><span _ngcontent-xmy-c9="" class="check"> </span>
+                              </span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-1 col-lg-7 mb-1" *ngIf="parent.ApplicationDetails_.Followup_Date_Check" style="            padding-right: 0px;
+                      margin-left: -5px;">
+                        <mat-form-field
+                          class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
+                          style=" padding-top: 12px !important;    border-color: #5062e738;"
+                        >
+                          <input
+                            matInput
+                            [matDatepicker]="dp131"
+                            placeholder=""
+                            [(ngModel)]="parent.ApplicationDetails_.Followup_Date"
+                            name="parentApplicationDetails_.Followup_Date" 
+                          />
+                          <mat-datepicker-toggle
+                            matSuffix
+                            [for]="dp131"
+                          ></mat-datepicker-toggle>
+                          <mat-datepicker #dp131></mat-datepicker>
+                        </mat-form-field>
+          
+          
+          
+                        <label for="">Deadline</label>
+           {{parent.ApplicationDetails_.Deadline_Date | date: 'EEE MMM-dd-yyyy HH:mm'}}
+          
+          
+                        <!-- <mat-form-field
+                          class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
+                          style=" padding-top: 12px !important;    border-color: #5062e738;"
+                        >
+                          <input
+                            matInput
+                            [matDatepicker]="dp132"
+                            placeholder=""
+                            [(ngModel)]="ApplicationDetails_.Deadline_Date"
+                            name="ApplicationDetails_.Deadline_Date" 
+                          />
+                          <mat-datepicker-toggle
+                            matSuffix
+                            [for]="dp132"
+                          ></mat-datepicker-toggle>
+                          <mat-datepicker #dp132></mat-datepicker>
+                        </mat-form-field> -->
+                      </div>
+                    </div>
+          
+          
+          
+          
+                    <div class="form-row">
+                      <label
+                                class="col-md-0 col-lg-0 col-form-label text-sm-right" style="visibility: hidden;"
+                                >Remark
+                                <span
+                                  style="
+                                    color: #ef071e;
+                                    font-size: 22px;
+                                    vertical-align: -webkit-baseline-middle;
+                                  "
+                                  >*</span
+                                ></label
+                              >
+          
+          
+                              <div class="form-row mb-0 col-12"  *ngIf="parent.document_view">
+          
+          <h3 class="col-12" style="    font-size: 20px !important;
+          font-weight: 600 !important;
+          color: #3a79c1 !important;">Documents</h3>
+          
+                                <div class="dt-module__list-item pb-2 pt-2 col-6 c-list"
+                                    *ngFor="let Document_data1 of parent.process_document_Data; let i = index" >
+                                  
+                                        <label
+                                        class="col-md-0 col-lg-4 col-form-label text-sm-right" style="       padding-left: 7px;padding-right: 5px;">{{ Document_data1["Document_Name"] }}
+                                        <span
+                                        *ngIf="Document_data1.Mandatory"
+                                        style="
+                                          color: #ef071e;
+                                          font-size: 22px;
+                                          vertical-align: -webkit-baseline-middle;    padding-right: 3px;
+                                        "
+                                        >*</span
+                                      ></label>
+                                      
+                                  <div class="col-md-8 col-sm-3 mb-1" style="    padding-left: 8px;" >
+                                    
+                                    <mat-form-field class="col-lg-12 col-md-7 input-allighn-typer-head-all-divs-matinputs" style="border: 1px solid #ced4da;height: 40px;    border-radius: 10px !important;">
+                                      <input readonly matInput type="text"
+                                       [(ngModel)]="Document_data1.Image_Photo"
+                                        name={{Document_data1.Document_Id}}a{{Document_data1.Document_Id}}
+                                        style="margin-top: 8px;">
+                                    </mat-form-field>
+          
+                                    <button  class="btn btn-danger mb-2  pl-2 pr-2 mt-2 close-button-style" 
+                                     type="button" style="background-color: #5d6071;    margin-left: 20px;    margin: 0 !important;
+                                     top: 4px !important;
+                                     border-radius: 0;
+                                     padding: 7px 9px !important;
+                                        border-radius: 2px;    background-color: #f0f1fc;
+                                        color: #000;    position: absolute;
+                                        right: 20px;
+                                    " 
+                                     (click)="fileInput5.click()" ><span>Choose File</span>
+          
+                                    <input  #fileInput5 type="file" 
+                                    name={{Document_data1.Document_Id}}a{{Document_data1.Document_Id}}
+                                    
+                                      (change)="application_File_Change_std_Doc(Document_data1,$event)"  
+                                       style="display:none;" /> 
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+          
+          
+                              <div class="form-row mb-0 col-12"  *ngIf="parent.Data_list_view">
+          
+          
+                                <div class="dt-module__list-item pb-2 pt-2 col-6 c-list"
+                                *ngFor=" let process_data_listdata1 of parent.process_data_list_Data; let i = index" >
+          
+          
+                                      <label
+                                  class="col-md-0 col-lg-4 col-form-label text-sm-right" style="       padding-left: 7px;padding-right: 5px;    padding-right: 3px;"
+                                  >{{ process_data_listdata1["Fields_Name"] }}
+                                  <span 
+                                  *ngIf="process_data_listdata1.Mandatory"
+                                  style="
+                                    color: #ef071e;
+                                    font-size: 22px;
+          
+          
+          
+                                    
+                                    vertical-align: -webkit-baseline-middle;
+                                  "
+                                  >*</span
+                                ></label>
+          
+                                <div class="col-md-8 col-sm-12 mb-1" style="    padding-left: 8px;">
+                                  <input 
+                                    type="text"
+                                    [(ngModel)]="process_data_listdata1.Data"
+                                    name={{process_data_listdata1.Fields_Id}}a{{process_data_listdata1.Fields_Id}} 
+                                    class="form-control"
+                                  />
+                                </div>
+          
+          
+                              <div *ngIf="process_data_listdata1.Mandatory ==1  && !process_data_listdata1.Data" style="color: #ef071e; font-size: 14px; margin-top: 5px;">
+                              {{ process_data_listdata1["Fields_Name"] }}: This field is mandatory.
+                                  </div>
+          
+                                </div>
+                              </div>
+          
+          
+          
+                              
+                              <div class="col-md-12" *ngIf="parent.Task_Details_view">
+          
+                                <h3 style="    font-size: 20px !important;
+                                font-weight: 600 !important;
+                                color: #3a79c1 !important;">Task Details</h3>
+          
+                                <div class="card-body" style="padding-left: 15px !important;padding-right: 0 !important;">
+                                  <div
+                                  class="table-responsive" [style.height.px]="myInnerHeightTwo" 
+                                  style="overflow-y: scroll; min-height: 80px;    border: solid 1px #dad0d0;"
+                                  >
+                                  <table
+                                    class="table table-hover table-for-sale-search-section-diary" style=""
+                                  >
+                                    <thead class="thead">
+                                    <th >Delete</th>
+                                    <!-- <th>No</th> -->
+                      
+                                    <th>Department </th>
+                                    <th>Task</th>
+                                    <th>Duration</th>
+          
+                                  
+                                    </thead>
+                                    <tbody
+                                    class="bk_tb_bg"
+                                    *ngFor="
+                                      let Task_Details_T of parent.process_Task_Data;
+                                      let i = index
+                                    "
+                                    >
+                                    
+                                    <td class="td-padding"  >
+                                      <span *ngIf="Task_Details_T.mandatory_Task_Item_Id ==null"
+                                      class="icon-background3 mr-1"
+                                      (click)="Delete_Task_Details(i)"
+                                      >
+                                      <mat-icon class="text-red small"
+                                        >close</mat-icon
+                                      ></span
+                                      >
+                                    </td>
+                                    <!-- <td>{{ i + 1 }}</td>						 -->
+                                    <td>{{ Task_Details_T["Department_Name"] }}</td>
+                                    <td>{{ Task_Details_T["Task_Item_Name"] }}</td>
+                                    <td>{{ Task_Details_T["Duration"] }}</td>
+                                    </tbody>
+                                  </table>
+                                  </div>
+                                </div>
+                                </div>
+          
+          
+          
+          
+                              <div class="col-md-12" style="
+                              display: flex;
+                              flex-direction: row-reverse;
+                              justify-content: end;
+                              align-items: center;    padding-right: 30px;
+                            ">
+                                
+                            <button
+                            class="other-button-style btnflot pull-right"
+                            style="height: 33px !important"
+                            (click)="Close_Click_Change_Status()"
+                            type="submit"
+                            style="background-color: #fff;color: #6d61da;border:solid 1px #6d61da;"
+                          >
+                            Close
+                          </button>
+          
+                          <button
+                            class="other-button-style btnflot pull-right mr-1"
+                            style="height: 33px !important"
+                            (click)="Save_Lodgemet()"
+                            type="submit"
+                            style="background-color: #6d61da;"
+                          >
+                            Save
+                          </button>
+                              </div>
+                            </div>
+          
+                            <!-- <button
+                              class="other-button-style btnflot pull-right"
+                              style="height: 33px !important"
+                              (click)="Close_Click_Change_Status()"
+                              type="submit"
+                              style="background-color: red"
+                            >
+                              Close
+                            </button>
+          
+                            <button
+                              class="other-button-style btnflot pull-right mr-1"
+                              style="height: 33px !important"
+                              (click)="Save_Lodgemet()"
+                              type="submit"
+                              style="background-color: rgb(41, 214, 119)"
+                            >
+                              Save
+                            </button> -->
+          
+                            <!-- <button
+                              class="save-button-style btnflot"
+                              (click)="Save_Bph_Status()"
+                              type="submit"
+                            >
+                              Save 
+                            </button> -->
+          
+                            <!-- </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+
+
+                  <div class="dt-card__body mt-2" *ngIf="parent.application_details_View">
+                    <div id="Topdiv"></div>
+                    <div id="Bottomdiv"></div>
+                    <form class="mb-0">
+                      <div class="container-fluidprofile">
+                        <div class="dt-card mt-2" style="padding-left: 7px;
+                        padding-right: 7px;">
+                          <div class="dt-card__heading">
+                            <div class="row" style="align-items: center;">
+                              <div class="col-md-4 col-lg-4 font-tab">
+                                <h3>
+                                  <i class="fa fa-list mr-2" aria-hidden="true" style="color: #586ae9;"></i>
+                                  <!-- <i class="fa fa-file-text mr-2" aria-hidden="true" style="color: #586ae9;"></i> -->
+                                  <!-- <i
+                                    class="icon icon-users icon-fw icon-lg material-icons mr-2"
+                                    style="color: #586ae9"
+                                  >
+                                    list_alt
+                                  </i> -->
+                                  <b style="color: #4b5cd5; font-weight: 600"
+                                    >Application List</b
+                                  >
+                                </h3>
+                              </div>
+                              <div class="col-md-8 col-lg-8">
+                                <div class="">
+                                
+                                  <button
+                                    class="save-button-style btnflot pull-right mt-0"
+                                    (click)="Create_Application()"
+                                    type="submit"
+                                    [hidden]="parent.cousellor_section_View == false"
+                                  >
+                                    Create new application
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                            <hr class="lineheader" />
+                          </div>
+          
+                          <div class="col-md-12 pr-0 pl-0">
+                            <div class="data col-lg-9 pl-3 mt-3">
+                              <h4 style="color: #145388; font-weight: bold"></h4>
+                            </div>
+                            <div
+                              class="dt-module__content ps-custom-scrollbar"
+                              [style.height.px]="myHeightsubtwo"
+                          style="overflow-y: scroll;overflow-x: hidden;"
+                            >
+                              <div
+                                class="card-body set-height-scroll-bar-wole-block"
+                                style="min-height: 150px; padding: 0px;"
+                              >
+                              <div class="new-card mt-2" *ngFor="
+                              let ApplicationDetails_d of ApplicationDetails_Data;
+                              let i = index
+                            ">
+                                <div class="row">
+                                  <div class="col-1" style="    display: flex;
+                                  align-items: baseline;
+                                  justify-content: center;    margin-top: 15px;
+                                "  >
+                                  
+                                  
+                                  <img src="../../../../assets/img/document.png" style="    width: 40%;
+                                  
+                                  padding: 5px;" alt=""></div>
+                                
+                                  <div class="col-11" >
+                                  
+                                  <div class="f-line row">
+                                    <div class="pr-1 lh">
+                                      <span class="text-dark" style="    font-weight: 600 !important;">
+                                        {{
+                                          ApplicationDetails_d["Country_Name"]
+                                        }}
+                                      </span>
+                                    </div>
+                                    <div class="pr-1 lh lh2">
+                                      <span class="text-dark" style="    font-weight: 600 !important;">
+                                        {{
+                                          ApplicationDetails_d["Course_Name"]
+                                        }}
+                                      </span>
+                                    </div>
+                                    <div class="pr-1 lh lh2">
+                                      <span class="text-dark" style="    font-weight: 600 !important;">
+                                        {{
+                                          ApplicationDetails_d["University_Name"]
+                                        }}
+                                      </span>
+                                    </div>
+                                    
+                                      <button> {{
+                                        ApplicationDetails_d[
+                                          "Application_Status_Name"
+                                        ]
+                                      }}</button>
+                                    
+                                  </div>
+                                  <div class="f-line row">
+                                    <div class="pr-1 lh">
+                                      Intake :
+                                      <span class="text-dark">
+                                        {{
+                                          ApplicationDetails_d["intake_Name"]
+                                        }}
+                                      </span>
+                                    </div>
+                                    <div class="pr-1 lh">
+                                      Year:
+                                      <span class="text-dark">
+                                        {{
+                                          ApplicationDetails_d["Intake_Year_Name"]
+                                        }}
+                                      </span>
+                                    </div>
+                                    <div class="pr-1 lh lh2">
+                                      Followup Date:
+                                      <span class="text-dark">
+                                        {{
+                                          ApplicationDetails_d[
+                                            "Followup_Date"
+                                          ]
+                                        }}
+                                      </span>
+                                    </div>
+                                    <div class="pr-1 lh lh2">
+                                      To Staff:
+                                      <span class="text-dark">
+                                        {{
+                                          ApplicationDetails_d[
+                                            "To_Staff_Name"
+                                          ]
+                                        }}
+                                      </span>
+                                    </div>
+                                    <div class="pr-1 lh lh2">
+                                      Remark :
+                                      <span class="text-dark">
+                                        {{ ApplicationDetails_d["Remark"] }}
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="f-line row" style="display: none;">
+                                    
+                                    <div class="pr-1 lh">
+                                      Application Fees:
+                                      <span class="text-dark">
+                                        {{
+                                          ApplicationDetails_d[
+                                            "Application_Fees"
+                                          ]
+                                        }}
+                                      </span>
+                                    </div>
+                                    <div class="pr-1 lh lh2">
+                                      Application Fees Paid:
+                                      <span class="text-dark">
+                                        {{
+                                          ApplicationDetails_d[
+                                            "Application_Fees_Paid"
+                                          ]
+                                        }}
+                                      </span>
+                                    </div>
+                                    
+                                    
+                                  </div>
+                                  <div class="s-line row" style="align-items: center;">
+                                    <div class="pr-1 lh mr-0">
+                                      <button style="color: #3a79c1;border: solid 1px #3a79c1;background-color: #fff;" (click)="
+                                      Get_ApplicationDetailswise_History(
+                                        ApplicationDetails_d.Application_details_Id,
+                                        ApplicationDetails_d.Application_Fees_Paid
+                                      )
+                                    ">History</button>
+                                    
+                                    </div>
+                                    
+                                    <div>
+                                      <button style="color: #3a79c1;border: solid 1px #3a79c1;background-color: #fff;" *ngIf="Applications_Details_Tab_Edit  "
+                                      (click)="
+                                        Edit_ApplicationDetails(
+                                          ApplicationDetails_d,
+                                          i
+                                        )
+                                      ">Edit</button>
+                                    </div>
+                                    <div class="ml-1">
+                                      <button style="color: #3a79c1;border: solid 1px #3a79c1;background-color: #fff;" *ngIf="Applications_Details_Tab_Delete"
+                                      (click)="
+                                        Delete_Application_Details(
+                                          ApplicationDetails_d.Application_details_Id,
+                                          i
+                                        )
+                                      ">Delete</button>
+                                    </div>
+                                    <div class="ml-1">
+                                      <button style="color: #fff;     background-color: #3a79c1 !important;
+                                      border: none !important;" *ngIf="Change_Status_Button_View && ApplicationDetails_d.To_User_Id == Login_User_Id "
+                                      class="other-button-style btnflot pull-right btn-cs new-btn"
+                                      (click)="Change_Bph_Status(ApplicationDetails_d,i)">Change Status</button>
+                                    </div>
+                                    
+                                    <!-- <span
+                                            
+          
+                                              class="icon-backgroundd ml-1" style="width: 78px; position: relative;"
+                                              *ngIf="Applications_Details_Tab_Delete"
+                                              (click)="
+                                                Delete_Application_Details(
+                                                  ApplicationDetails_d.Application_details_Id,
+                                                  i
+                                                )
+                                              "
+                                            >
+                                              <mat-icon class="text-red smalld" style="    position: absolute;
+                                              left: 50%;
+                                              top: 55%;
+                                              transform: translate(-50%, -50%);"
+                                                >close</mat-icon
+                                              ></span
+                                            > -->
+                                  </div>
+                                  </div>
+                                </div>
+                              </div>
+                                <div
+                                  class="card horizontal mb-0" style="display: none;"
+                                  *ngFor="
+                                    let ApplicationDetails_d of ApplicationDetails_Data;
+                                    let i = index
+                                  "
+                                >
+                                  <div class="card-stacked">
+                                    <div class="grid-container" [ngClass]="{
+                                      six: ApplicationDetails_d.To_User_Id != parent.Login_User_Id
+                                    }" 
+                                    
+                                    style="padding: 7px 10px !important;"   >
+                                      <div
+                                        class="d-flex flex-wrap mb-0  grid-item"
+                                        style="height: 50px !important;"
+                                      >
+                                        <img
+                                          *ngIf="
+                                            ApplicationDetails_d.Activation_Status == 1
+                                          "
+                                          src="assets/img/active.png"
+                                          width="50px"
+                                          height="50px"
+                                        />
+                                        <img
+                                          *ngIf="
+                                            ApplicationDetails_d.Activation_Status == 0
+                                          "
+                                          src="assets/img/fileimg.png"
+                                          width="50px"
+                                          height="50px"
+                                        />
+                                      </div>
+          
+                                      <div class="col-md-12 pr-0 "    [ngClass]="{
+                                        six: ApplicationDetails_d.To_User_Id != Login_User_Id
+                                      }" >
+                                        <div class="d-flex flex-wrap mb-1 grid-item"  [ngClass]="{
+                                          six: ApplicationDetails_d.To_User_Id != Login_User_Id
+                                        }">
+                                          <div class="pr-1 lh">
+                                            <span class="text-dark">{{
+                                              ApplicationDetails_d["Country_Name"]
+                                            }}</span>
+                                          </div>
+                                          <div class="pr-1 lh">
+                                            <span class="text-dark">
+                                              {{
+                                                ApplicationDetails_d["University_Name"]
+                                              }}</span
+                                            >
+                                          </div>
+                                          <div class="pr-1 lh">
+                                            <span class="text-dark">{{
+                                              ApplicationDetails_d["Course_Name"]
+                                            }}</span>
+                                          </div>
+                                          <div class="pr-1 lh">
+                                            Intake:
+                                            <span class="text-dark">
+                                              {{
+                                                ApplicationDetails_d["intake_Name"]
+                                              }}</span
+                                            >
+                                          </div>
+                                          <div class="pr-1 lh">
+                                            Year:
+                                            <span class="text-dark">{{
+                                              ApplicationDetails_d["Intake_Year_Name"]
+                                            }}</span>
+                                          </div>
+                                          <!-- <div *ngIf="Agent_View" class="pr-3">
+                                            Agent:
+                                            <span class="text-dark">
+                                              {{
+                                                ApplicationDetails_d["Agent_Name"]
+                                              }}</span
+                                            >
+                                          </div> -->
+                                          <div class="pr-1 lh">
+                                            Date of Applying:
+                                            <span class="text-dark">
+                                              {{
+                                                ApplicationDetails_d["Grid_Date"]
+                                              }}</span
+                                            >
+                                          </div>
+                                          <div class="pr-1 lh">
+                                            Remark:
+                                            <span class="text-dark"
+                                              >{{ ApplicationDetails_d["Remark"] }}
+                                            </span>
+                                          </div>
+                                          <div class="pr-1 lh">
+                                            Status:
+                                            <span class="text-dark">
+                                              {{
+                                                ApplicationDetails_d[
+                                                  "Application_Status_Name"
+                                                ]
+                                              }}</span
+                                            >
+                                          </div>
+          
+                                          <div class="pr-1 lh">
+                                            Application Fees:
+                                            <span class="text-dark">
+                                              {{
+                                                ApplicationDetails_d[
+                                                  "Application_Fees"
+                                                ]
+                                              }}</span
+                                            >
+                                          </div>
+          
+                                          <div class="pr-1 lh">
+                                            Application Fees Paid:
+                                            <span class="text-dark" *ngIf="
+                                            ApplicationDetails_d.Application_Fees_Paid >=0
+                                          ">
+                                              {{
+                                                ApplicationDetails_d[
+                                                  "Application_Fees_Paid"
+                                                ]
+                                              }}</span
+                                            >
+                                          </div>
+          
+                                          <div class="pr-1 lh" >
+                                            To Staff:
+                                            <span class="text-dark" >
+                                              {{
+                                                ApplicationDetails_d[
+                                                  "To_Staff_Name"
+                                                ]
+                                              }}</span
+                                            >
+                                          </div>
+          
+                                          <!-- <div class="pr-1 lh">
+                                            Class Name:
+                                            <span class="text-dark" >
+                                              {{
+                                                ApplicationDetails_d[
+                                                  "Class_Name"
+                                                ]
+                                              }}</span
+                                            >
+                                          </div> -->
+          
+                                          <div class="pr-1 lh">
+                                            Followup Date:
+                                            <span class="text-dark" >
+                                              {{
+                                                ApplicationDetails_d[
+                                                  "Followup_Date"
+                                                ]
+                                              }}</span
+                                            >
+                                          </div>
+          
+          
+                                          <div
+                                            class="pr-1"
+                                            *ngIf="
+                                              ApplicationDetails_d.Student_Approved_Status ==
+                                              true
+                                            "
+                                          >
+                                            <span
+                                              class="icon-backgroune mr-1 mb-1"
+                                              style="
+                                                width: 100%;
+                                                cursor: default !important;
+                                              "
+                                              *ngIf="Applications_Details_Tab_Edit"
+                                            >
+                                              <mat-icon
+                                                class="text-blue smalle"
+                                                style="font-weight: bold"
+                                                >check</mat-icon
+                                              >{{
+                                                ApplicationDetails_d[
+                                                  "Status_Name_Approval"
+                                                ]
+                                              }}</span
+                                            >
+                                          </div>
+          
+                                          <!-- <div
+                                            class="pr-1"
+                                            *ngIf="
+                                              ApplicationDetails_d.Student_Approved_Status ==
+                                              false && Student_approved_Status_View==true
+                                            "
+                                          >
+                                            <span
+                                              class="icon-backgroune mr-1 mb-1"
+                                              style="
+                                                width: 100%;
+                                                cursor: default !important;
+                                              "
+                                              *ngIf="Applications_Details_Tab_Edit"
+                                            >
+                                              <mat-icon
+                                                class="text-orange smalle"
+                                                style="font-weight: bold"
+                                                >warning</mat-icon
+                                              >{{
+                                                ApplicationDetails_d[
+                                                  "Status_Name_Approval"
+                                                ]
+                                              }}</span
+                                            >
+                                          </div> -->
+          
+          
+          
+                                          <div class="pr-3" 	*ngIf="ApplicationDetails_d.Bph_Approved_Status ==3 && Auditor_Status_View==true">
+                                            <span
+                                            class="icon-backgroune mr-1" style="width: 100%;cursor: default!important;"
+                                            
+                                            >
+                                            <mat-icon class="text-red smalle" style="font-weight: bold;">close</mat-icon>{{ApplicationDetails_d[
+                                              "Bph_Status_Name"
+                                            ]}}</span>
+                                          </div>
+          
+                                          <div class="pr-3" 	*ngIf="ApplicationDetails_d.Bph_Approved_Status ==2 && Auditor_Status_View==true">
+                                            <span
+                                            class="icon-backgroune mr-1 mb-1" style="width: 100%;cursor: default!important;font-weight: 900!important;
+                                            background-color: #a0ffac!important;"
+                                            
+                                            >
+                                            <mat-icon class="text-green smalle" style="font-weight: bold;">check</mat-icon>Auditor Approved</span>
+                                          </div>
+          
+                                          <div class="pr-3" *ngIf="ApplicationDetails_d.Bph_Approved_Status ==1 && Auditor_Status_View==true">
+                                            <span
+                                            class="icon-backgroune mr-1 mb-1" style="width: 100%;cursor: default!important;"
+                                            
+                                            >
+                                            <mat-icon class="text-orange smalle" style="font-weight: bold;">warning</mat-icon>Auditor Pending</span>
+                                          </div>
+          
+                                          <div class="pr-3" *ngIf="ApplicationDetails_d.Application_Fees_Paid >=0 && Payment_Status_View==true">
+                                            <span
+                                            class="icon-backgroune mr-1 mb-1" style="width: 100%;cursor: default!important;"
+                                            *ngIf="Applications_Details_Tab_Edit"
+                                            >
+                                            <mat-icon class="text-green smalle" style="font-weight: bold;">check</mat-icon>Paid</span>
+                                          </div>
+                                          <!-- <div class="pr-3" *ngIf="ApplicationDetails_d.Application_Fees_Paid ==-1 && Payment_Status_View==true">
+                                            <span
+                                            class="icon-backgroune mr-1 mb-1" style="width: 100%;cursor: default!important;"
+                                            *ngIf="Applications_Details_Tab_Edit"
+                                            >
+                                            <mat-icon class="text-orange smalle" style="font-weight: bold;">warning</mat-icon>Payment Pending</span>
+                                          </div> -->
+          
+          
+                                          <div>
+                                            <!-- <button class="other-button-style btnflot pull-right mr-1" 
+                                          (click)="Get_ApplicationDetailswise_History(ApplicationDetails_d.Application_details_Id)"
+                                          type="submit" style="
+                                          height: 33px !important;
+                                          background-color: #ffffff;
+                                          border: 1.5px solid red;
+                                          color: red;">Reject
+                                        </button> -->
+                                            <!-- <button
+                                              class="other-button-style btnflot pull-right btn-cs mb-1 m-btn"
+                                              *ngIf="
+                                                ApplicationDetails_d.Activation_Status ==
+                                                  false && Application_Active_Button_View
+                                              "
+                                              (click)="
+                                                Activate_Application(
+                                                  ApplicationDetails_d,
+                                                  i
+                                                )
+                                              "
+                                              type="submit"
+                                              style="
+                                                background-color: #ffffff;
+                                                border: 1.5px solid green;
+                                                color: green;
+                                              "
+                                            >
+                                              Activate
+                                            </button> -->
+          
+                                            <button
+                                              class="other-button-style btnflot pull-right btn-cs mb-1 m-btn" style="    height: 32px !important;"
+                                              *ngIf="
+                                                ApplicationDetails_d.Activation_Status ==
+                                                  true && Application_Deactive_Button_View
+                                              "
+                                              (click)="
+                                                Remove_Activity(
+                                                  ApplicationDetails_d.Application_details_Id,
+                                                  i
+                                                )
+                                              "
+                                              type="submit"
+                                            >
+                                              DeActivate
+                                            </button>
+                                            <button
+                                              class="other-button-style btnflot pull-right btn-cs m-btn new-btn"
+                                            
+                                              (click)="
+                                                Get_ApplicationDetailswise_History(
+                                                  ApplicationDetails_d.Application_details_Id,
+                                                  ApplicationDetails_d.Application_Fees_Paid
+                                                )
+                                              "
+                                              type="submit"
+                                            >
+                                              History
+                                            </button>
+                                          </div>
+                                          <!-- <div
+                                            class="d-flex flex-wrap mb-1 mr-2 grid-item"
+                                          > -->
+                                            <!-- <button
+                                              class="other-button-style btnflot pull-right btn-cs mb-1 m-btn new-btn"
+                                              *ngIf="
+                                                ApplicationDetails_d.Student_Approved_Status ==
+                                                  false && Student_Approve_Button_View
+                                              "
+                                              (click)="
+                                                Student_Approve(
+                                                  ApplicationDetails_d.Application_details_Id,
+                                                  i
+                                                )
+                                              "
+                                              type="submit"
+                                              
+                                            >
+                                              Student Approve
+                                            </button> -->
+          
+                                            <button
+                                              class="other-button-style btnflot pull-right btn-cs mb-1 new-btn"
+                                              *ngIf="
+                                                ApplicationDetails_d.Student_Approved_Status ==
+                                                  true && Remove_Approval_Button_View
+                                              "
+                                              (click)="
+                                                Remove_Student_Approval(
+                                                  ApplicationDetails_d.Application_details_Id,
+                                                  i
+                                                )
+                                              "
+                                              type="submit"
+                                              
+                                            >
+                                              Remove Student Approval
+                                            </button>
+          
+                                          <button 
+                                            *ngIf="Change_Status_Button_View && ApplicationDetails_d.To_User_Id == Login_User_Id "
+                                            class="other-button-style btnflot pull-right btn-cs new-btn"
+                                            (click)="Change_Bph_Status(ApplicationDetails_d,i)"
+                                            type="submit">Change Status</button> 
+          
+          
+                                            <span
+                                              style="
+                                                font-size: 20px;
+                                                padding: 10px;
+                                                line-height: 15px;
+                                              "
+                                              class="icon-backgroune ml-1" style="    position: relative;
+                                              border-radius: 50%;
+                                              height: 35px;
+                                              width: 35px;
+                                            "
+                                              *ngIf="parent.Applications_Details_Tab_Edit  "
+                                              (click)="
+                                                Edit_ApplicationDetails(
+                                                  ApplicationDetails_d,
+                                                  i
+                                                )
+                                              "
+                                            >
+                                              <mat-icon class="text-dblue smalle" style="    position: absolute;
+                                                  position: absolute;
+              left: 50%;
+              top: 46%;
+              transform: translate(-50%, -50%);height: auto !important;width: auto !important;"
+                                                >edit</mat-icon
+                                              ></span
+                                            >
+                                            <span
+                                            
+          
+                                              class="icon-backgroundd ml-1" style="width: 78px; position: relative;"
+                                              *ngIf="parent.Applications_Details_Tab_Delete"
+                                              (click)="
+                                                Delete_Application_Details(
+                                                  ApplicationDetails_d.Application_details_Id,
+                                                  i
+                                                )
+                                              "
+                                            >
+                                              <mat-icon class="text-red smalld" style="    position: absolute;
+                                              left: 50%;
+                                              top: 55%;
+                                              transform: translate(-50%, -50%);"
+                                                >close</mat-icon
+                                              ></span
+                                            >
+                                            <div></div>
+                                          </div>
+                                        </div>
+                                        <!-- <div class="grid-container col-md-12">	</div> -->
+          
+                                        <!-- <div
+                                          _ngcontent-xmy-c9=""
+                                          class="checkbox-to-crect-sales-search-section"
+                                        >
+                                          <div
+                                            _ngcontent-xmy-c9=""
+                                            class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                                          >
+                                            <label _ngcontent-xmy-c9="" class="form-check-label">
+                                              <input
+                                                type="checkbox"
+                                                class="form-check-input"
+                                                name="Visa_.Visa_Letter"
+                                                [(ngModel)]="Visa_.Visa_Letter"
+                                              />
+                                              <span _ngcontent-xmy-c9="" class="form-check-sign"
+                                                ><span _ngcontent-xmy-c9="" class="check"> </span>
+                                              </span>
+                                            </label>
+                                          </div>
+                                        </div> -->
+          
+                                        <!-- <button class="other-button-style btnflot pull-right"  style="height: 33px!important;"  [hidden]="Student_Save==false" id="Save_Button" data-toggle="modal"
+                                                      data-toggle="modal" id="myModal" (click)=" Get_ApplicationDetailswise_History(ApplicationDetails_d.Application_details_Id)" 
+                                                      type="submit">History</button> -->
+          
+                                        <!-- <button class="other-button-style btnflot pull-right" style="height: 33px!important;"  type="button" (click)="Edit_ApplicationDetails(ApplicationDetails_d,i)"><span>Edit</span></button>
+                                                      <button class="other-button-style btnflot pull-right" style="height: 33px!important;background-color: red;"  type="button" (click)="Delete_Application_Details(ApplicationDetails_d.Application_details_Id,i)"><span>Delete</span></button> -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <h3><b>Proceeding Details</b></h3><br>
+                            <div class="form-row mb-2">
+          
+                              
+                            <div class=""></div>
+                          
+                          <label
+                            class="col-form-label"
+                            style="
+                              font-size: 14px !important;
+                              
+                            "
+                            >Country</label>
+          
+                            <div class="col-md-2 col-sm-2 mt-1">
+                              <input
+                              readonly
+                                Input
+                                type="text"
+                                class="form-control"
+                                
+                                placeholder=""
+                                [(ngModel)]="Proceeding_.Country_Name"
+                                name="Proceeding_.Country_Name"
+                                
+                                />
+                            </div>
+                            
+          
+                          <div class="col-md-0 col-sm-0"></div>
+                          <label
+                            class="col-form-label"
+                            
+                            style="
+                              font-size: 14px !important;
+                              
+                            "
+                          >
+                          University
+                          </label>
+                          <div
+                            class="col-md-5 col-sm-5 mt-1"
+                            style="padding-right: 6px"
+                            
+                          >
+                          <input
+                          readonly
+                          Input
+                          type="text"
+                          class="form-control"
+                          
+                          placeholder=""
+                          [(ngModel)]="Proceeding_.University_Name"
+                          name="Proceeding_.University_Name"
+                          
+                        />
+                          </div>
+                          
+          
+          
+                        <div class="col-md-0 col-sm-0 ew-ew"></div>
+                        <label
+                          class="col-form-label"
+                          style="font-size: 14px !important"
+                          >Course</label
+                        >
+                        <div class="col-md-2 col-sm-2 mt-1">
+                          <input
+                          readonly
+                            Input
+                            type="text"
+                            class="form-control"
+                            
+                            placeholder=""
+                            [(ngModel)]="Proceeding_.Course_Name"
+                            name="Proceeding_.Course_Name"
+                            
+                          />
+                        </div>
+          
+                        
+          
+          
+                            </div> -->
+          
+                            <!-- 
+                            <div class="form-row mb-2">
+                              <div class=""></div>
+                              
+          
+                              <label
+                          class="col-form-label ml-1"
+                          style="font-size: 14px !important"
+                          >Intake</label
+                        >
+                        <div class="col-md-2 col-sm-2 mt-1">
+                          <input
+                          readonly
+                            Input
+                            type="text"
+                            class="form-control"
+                            
+                            placeholder=""
+                            [(ngModel)]="Proceeding_.Intake_Name"
+                            name="Proceeding_.Intake_Name"
+                            
+                          />
+                        </div>
+              
+                              <div class="col-md-0 col-sm-0"></div>
+                          
+          
+                              <label
+                          class="col-form-label ml-4"
+                          style="font-size: 14px !important"
+                          >Year</label
+                        >
+                        <div class="col-md-2 col-sm-2 mt-1">
+                          <input
+                          readonly
+                            Input
+                            type="text"
+                            class="form-control"
+                            
+                            placeholder=""
+                            [(ngModel)]="Proceeding_.Year_Name"
+                            name="Proceeding_.Year_Name"
+                            
+                          />
+                        </div>
+              
+                              <div class="col-md-0 col-sm-0"></div>
+              
+                        
+          
+                              <label
+                          class="col-form-label ml-4"
+                          style="font-size: 14px !important"
+                          >Preferred Partner</label
+                        >
+                        <div class="col-md-2 col-sm-2 mt-1">
+                          <input
+                          readonly
+                            Input
+                            type="text"
+                            class="form-control"
+                            
+                            placeholder=""
+                            [(ngModel)]="Proceeding_.Partner_Name"
+                            name="Proceeding_.Partner_Name"
+                            
+                          />
+                        </div>
+                            </div> -->
+                          </div>
+                        
+                      </div>
+                    </form>
+                  </div>

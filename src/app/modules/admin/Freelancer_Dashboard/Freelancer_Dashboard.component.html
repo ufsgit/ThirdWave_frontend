@@ -1,0 +1,528 @@
+
+<!-- <div *ngIf="issLoading" class="overlay">
+  <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+  </mat-progress-spinner> -->
+<!-- <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+ 
+      <div class="row">
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
+                  <span class="h2 font-weight-bold mb-0">350,897</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                    <i class="fas fa-chart-bar"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span class="text-nowrap">Since last month</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                  <span class="h2 font-weight-bold mb-0">2,356</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                    <i class="fas fa-chart-pie"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                <span class="text-nowrap">Since last week</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                  <span class="h2 font-weight-bold mb-0">924</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                    <i class="fas fa-users"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                <span class="text-nowrap">Since yesterday</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                  <span class="h2 font-weight-bold mb-0">49,65%</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                    <i class="fas fa-percent"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                <span class="text-nowrap">Since last month</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- [style.height.px]="myInnerHeight"  -->
+
+<div style="height:30px;"></div>
+
+
+
+
+
+
+
+<div class="main-content screenfixed mt-1 dash-board dash_big_screen" [style.height.px]="myInnerHeight"  style="     padding: 30px 91px !important; width:100%!important;overflow-y:scroll;overflow-x:hidden;">
+<div style="align-items: center;">
+  <div class="row">
+    <label class="col-md-2 col-lg-1 col-form-label text-sm-right pt-1 x-tra-label" style="padding-left: 14px;" >Search Date</label>  
+    <div class="col-md-1 col-lg-2 mb-1 x-tra-label">                    
+      <div _ngcontent-xmy-c9="" class="checkbox-to-crect-sales-search-section">
+      <div _ngcontent-xmy-c9="" class="form-check uper-dte-lbel-sales-sctn-new pl-0" >
+          <label _ngcontent-xmy-c9="" class="form-check-label">
+          <input type='checkbox' class="form-check-input" name="Date_checks" [(ngModel)]="Look_In_Date"   />
+          <span _ngcontent-xmy-c9="" class="form-check-sign"><span _ngcontent-xmy-c9="" class="check">
+          </span>
+          </span>
+          </label>
+      </div>
+      </div>    
+  </div>   
+  
+  <label class="col-md-2 col-lg-1 col-form-label text-sm-right">From</label>
+  <div class="col-md-2 col-sm-2 mb-1">
+      <mat-form-field class="pading_tab form-control mrgn-crct-input-text-div-tre-prt-sles1" 
+      >
+          <input matInput [matDatepicker]="dp1" placeholder=""[(ngModel)]="Search_FromDate" name="Search_FromDate"  > 
+          <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+          <mat-datepicker #dp1></mat-datepicker>
+          </mat-form-field>
+  </div> 
+  <label class="col-md-1 col-sm-1 col-form-label text-sm-right">To</label>
+  <div class="col-md-2 col-sm-2 mb-1">
+  
+     <mat-form-field class="pading_tab form-control mrgn-crct-input-text-div-tre-prt-sles1"
+     >
+     <input matInput [matDatepicker]="dpdate" placeholder=""  [(ngModel)]="Search_ToDate" name="Search_ToDate"> 
+     <mat-datepicker-toggle matSuffix [for]="dpdate"></mat-datepicker-toggle>
+     <mat-datepicker #dpdate></mat-datepicker>
+     </mat-form-field>
+   </div>           
+    
+
+
+  
+    <button mat-raised-button type="submit"  style="background-color: #0caef7; height: fit-content;"  id="Dashboard" (click)="Get_Dashboard_Count()" class="other-button-style btnflot pull-right mr-1 btn-pdng3 mobtn">Search</button>
+    <button
+    class="save-button-style btnflot pull-right ml-1 mr-1 mt-0 "
+    (click)="Freelancer_Entry_View_Click(1)"
+    type="submit"
+    style=" height: 36px"
+  >
+    Add Freelancer
+  </button>
+  
+  
+  
+  </div>
+
+
+<!-- <div [style.height.px]="myInnerHeight"  style="overflow-y: scroll;"> -->
+<div class="row">
+  <!-- <div class="col-lg-3 col-md-4 col-sm-3">
+    
+      <div class="card card-stats card-h card-1" (click)="Click_No1()">
+          <div class="card-header card-header-warning card-header-icon" >
+              <div class="dash-icon" style="background: #e2e2e240">
+                
+                  <i class="material-icons" style="color: #8a85bc">person_add_alt</i>
+              </div>
+              <p class="card-category"> Enquiries in this Month</p>
+              <h3 class="" >{{Dashboard_Count}}</h3>
+          </div>
+          <div class="card-footer">
+              <div class="stats">
+                   <button style=" background-color:#8a85bc" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+                  > 
+                     View
+                  </button>
+                   </div>
+          </div>
+      </div>
+     
+  </div> -->
+  <div class="col-lg-3 col-md-4 col-sm-3">
+    <!-- <a href=""> -->
+      <div class="card card-stats card-h card-2" (click)="Click_No2()">
+          <div class="card-header card-header-success card-header-icon" >
+              <div class="dash-icon" style="background: #4d9790;">
+                <!-- store -->
+            <i class="material-icons"  style="color: #98d2cc;">beenhere</i>
+              </div>
+              <p class="card-category"> Enrollment in this Month</p>
+              <h3 class="">{{Dashboard_Count1}}</h3>
+          </div>
+          <div class="card-footer">
+              <div class="stats">
+                  <!-- <i class="material-icons">date_range</i> Last 24 Hours -->
+                  <button style=" background-color: #98d2cc;" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+                  (click)="Click_No2()" > View</button>
+              </div>
+          </div>
+      </div>
+      <!-- </a> -->
+  </div>
+  
+ 
+
+
+ 
+
+
+
+
+  <div class="col-lg-3 col-md-4 col-sm-3">
+    <!-- <a href=""> -->
+      <div class="card card-stats card-h card-5" (click)="Click_No4()">
+          <div class="card-header card-header-info card-header-icon" >
+              <div class="dash-icon" style="background:#be343440;">
+                  <!-- <i class="fa fa-twitter"></i> -->
+                  <i class="material-icons"  style="color:  #ff721b">
+                  attach_money
+                  </i>
+              </div>
+              <p class="card-category">Receipt in this Month</p>
+              <h3 class="">{{Dashboard_Count3}}</h3>
+          </div>
+          <div class="card-footer">
+              <div class="stats">
+                <button style=" background-color: #E6A57E" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+                (click)="Click_No4()" > View</button>
+              </div>
+          </div>
+      </div>
+      <!-- </a> -->
+  </div>
+
+  
+
+
+
+
+<div class="col-lg-3 col-md-4 col-sm-3 " >
+  <!-- <a href=""> -->
+  <div class="card card-stats card-6" (click)="Click_No10()">
+      <div class="card-header card-header-info card-header-icon" >
+          <div class="dash-icon" style="background: #adf3fc;">
+              <!-- <i class="fa fa-twitter"></i> -->
+              <i class="material-icons"  style="color: #17b7cc">
+              receipt_long
+              </i>
+          </div>
+          <p class="card-category">Freelancer</p>
+          <h3 class="">{{Dashboard_Count9}}</h3>
+      </div>
+      <div class="card-footer">
+          <div class="stats">
+            <button style=" background-color: #F27348" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+            (click)="Click_No10()" > View</button>
+          </div>
+      </div>
+  </div>
+  <!-- </a> -->
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-3 " >
+  <!-- <a href=""> -->
+  <div class="card card-stats card-7" (click)="Click_No11()">
+      <div class="card-header card-header-info card-header-icon" >
+          <div class="dash-icon" style="background: #e4acfa;">
+              <!-- <i class="fa fa-twitter"></i> -->
+              <i class="material-icons"  style="color: #801ea7">
+              receipt_long
+              </i>
+          </div>
+          <p class="card-category">Freelancer Amount</p>
+          <h3 class="">{{Dashboard_Count10}}</h3>
+      </div>
+      <div class="card-footer">
+          <div class="stats">
+            <button style=" background-color: #F27348" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+            (click)="Click_No11()" > View</button>
+          </div>
+      </div>
+  </div>
+  <!-- </a> -->
+</div>
+
+
+<div class="col-lg-3 col-md-4 col-sm-3 " >
+  <!-- <a href=""> -->
+  <div class="card card-stats card-8" (click)="Click_No12()">
+      <div class="card-header card-header-info card-header-icon" >
+          <div class="dash-icon" style="background: #a5b2f8;">
+              <!-- <i class="fa fa-twitter"></i> -->
+              <i class="material-icons"  style="color: #3450f3">
+              receipt_long
+              </i>
+          </div>
+          <p class="card-category">Freelancer User Amount</p>
+          <h3 class="">{{Dashboard_Count11}}</h3>
+      </div>
+      <div class="card-footer">
+          <div class="stats">
+            <button style=" background-color: #F27348" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+            (click)="Click_No12()" > View</button>
+          </div>
+      </div>
+  </div>
+  <!-- </a> -->
+</div>
+
+
+
+
+<!-- <div class="col-lg-3 col-md-4 col-sm-3 " >
+
+  <div class="card card-stats card-6" (click)="Click_No13()">
+      <div class="card-header card-header-info card-header-icon" >
+          <div class="dash-icon" style="background: #e2e2e240;">
+            
+              <i class="material-icons"  style="color: #F27348">
+              receipt_long
+              </i>
+          </div>
+          <p class="card-category">Freelancer Manager</p>
+          <h3 class="">{{Dashboard_Count12}}</h3>
+      </div>
+      <div class="card-footer">
+          <div class="stats">
+            <button style=" background-color: #F27348" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+            (click)="Click_No13()" > View</button>
+          </div>
+      </div>
+  </div>
+
+</div> -->
+
+<!-- <div class="col-lg-3 col-md-4 col-sm-3 ">
+  <div class="card card-stats card-7">
+      <div class="card-header card-header-info card-header-icon">
+          <div class="dash-icon" style="background: #e2e2e240;">
+        
+              <i class="material-icons"  style="color: #8DA47E;">
+                person_add
+              </i>
+          </div>
+          <p class="card-category">Telecaller Positive Count</p>
+          <h3 class="">{{Dashboard_Count7}}</h3>
+      </div>
+      <div class="card-footer">
+          <div class="stats">
+            <button style=" background-color: #8DA47E;" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+            (click)="Click_No8()" > View</button>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+
+
+<!-- <div class="col-lg-3 col-md-4 col-sm-3 ">
+  <div class="card card-stats card-8">
+      <div class="card-header card-header-info card-header-icon">
+          <div class="dash-icon" style="background:#e2e2e240;">
+             
+              <i class="material-icons"  style="color: #AF8C72;">
+                person_remove
+              </i>
+          </div>
+          <p class="card-category">Telecaller Negative Count</p>
+          <h3 class="">{{Dashboard_Count8}}</h3>
+      </div>
+      <div class="card-footer">
+          <div class="stats">
+            <button style=" background-color: #AF8C72" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+            (click)="Click_No8()" > View</button>
+          </div>
+      </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-lg-3 col-md-4 col-sm-3 pr-7">
+  <div class="card card-stats">
+      <div class="card-header card-header-info card-header-icon">
+          <div class="dash-icon" style="background: linear-gradient(60deg,#dfeb36,#ecee7b);">
+            
+              <i class="material-icons"  style="color: #ffff;">
+              receipt_long
+              </i>
+          </div>
+          <p class="card-category">Pending Task</p>
+          <h3 class="">{{Dashboard_Count6}}</h3>
+      </div>
+      <div class="card-footer">
+          <div class="stats">
+            <button style=" background-color: #dfeb36;" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+            (click)="Click_No8()" > View</button>
+          </div>
+      </div>
+  </div>
+</div> -->
+</div> 
+
+
+
+
+
+
+
+
+<div  class="row">
+ <div class="col-md-2">
+
+ </div>
+  <div *ngIf="1>2" class="col-md-4">
+      <div class="card card-chart">
+          <div class="card-header card-header-warning">
+              <div class="ct-chart" id="websiteViewsChart"></div>
+          </div>
+          <div class="card-body">
+              <h4 class="card-title">Email Subscriptions</h4>
+              <p class="card-category">Last Campaign Performance</p>
+          </div>
+          <div class="card-footer">
+              <div class="stats">
+                  <i class="material-icons">access_time</i> campaign sent 2 days ago
+              </div>
+          </div>
+      </div>
+  </div>
+  <div *ngIf="1>2" class="col-md-4">
+     <div class="card card-chart">
+            <div class="card-header card-header-danger">
+                <div class="ct-chart" id="completedTasksChart"></div>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Completed Tasks</h4>
+                <p class="card-category">Last Campaign Performance</p>
+            </div>
+            <div class="card-footer">
+                <div class="stats">
+                    <i class="material-icons">access_time</i> campaign sent 2 days ago
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- <div class="row" > -->
+        <div class="container-Dash">
+          <div class="col-md-12 mt-0" style="border: 1;padding: 0;">
+            <div class=" mb-0 pb-1 " style="border:none;">         
+                   <div class="form-row"> 
+          <!-- <div class="col-md-1"></div> -->
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <!-- <div class="card card-chart" style="background-color:transparent; border:none">
+                <div >
+                    <label style="background-color:transparent ;border:none">Enquiries</label>
+                  
+                </div>
+              
+            </div> -->
+            
+            <div class="g-scroll">
+            <div class="cardnew ">
+              <div  class="card-headernew" >
+                <h4 class=""><b>Enquiries in this Month</b></h4>
+              </div>
+            <google-chart #chart [title]='Enquiry_Source_title' [type]="Enquiry_Source_type" [data]="Enquiry_Source_data" [columnNames]="Enquiry_Source_columnNames" [options]="Enquiry_Source_options" 
+            [width]="width" [height]="height">
+            
+            </google-chart>
+            
+            <!-- <button style=" background-color: #26c6da;" mat-raised-button type="submit" class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+          (click)="Click_No5()" > View</button> --> 
+          </div>
+        </div>
+
+         </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" >
+          <div class="g-scroll">
+          <div class="cardnew ">
+            <div class="card-headernew">
+              <h4 class=""><b>Enquiries in this Month</b></h4>
+            </div>
+            <!-- <div class="card card-chart" style="background-color: transparent; border:none" >
+              <div  >
+                <label style="background-color:transparent; border:none">Enquiries</label>
+              </div>
+            </div> -->
+
+            <google-chart #chart [title]='Title_Bar' [type]="Type_Bar" [data]="Data_Bar" [columnNames]="columnNames_Bar" [options]="options_Bar"
+            [width]="width" [height]="height">
+            </google-chart>
+            </div>
+           </div>
+        </div>
+
+        <!-- <div class="col-md-12 b-0 mt-1 mb-0 pb-0 pr-3">
+       
+        <button class="view-button-style btnflot" type="submit" style="
+        font-weight: 600;background-color: #8a85bc;;" (click)="Click_No5()">View</button>
+
+        </div> -->
+    </div>
+</div>
+</div>
+   
+
+  
+</div>
+
+
+</div>
+</div>
+</div>
+<!-- </div> -->

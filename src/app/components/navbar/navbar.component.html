@@ -1,0 +1,937 @@
+<nav [hidden]="getView()" class="navbar navbar-expand-lg topnav  pl-5 right-sec mb-3" style="height: 39px;">
+	<div class="container-fluid">
+		<img src="/assets/img/metxlogo.png" style="object-fit: cover; display: none" width="150px" height="auto"
+			*ngIf="isDesktopMenu()" />
+
+		<div class="navbar-wrapper" *ngIf="isDesktopMenu()">
+			<a class="navbar-brand bg-brand ml-0" href="javascript:void(0)"
+				style="pointer-events: none">{{ getTitle() }}</a>
+		</div>
+		<button *ngIf="isMobileMenu()" mat-raised-buttons class="navbar-toggler btn-rht-mda-qury" type="button"
+			(click)="sidebarToggle()">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="navbar-toggler-icon icon-bar"></span>
+			<span class="navbar-toggler-icon icon-bar"></span>
+			<span class="navbar-toggler-icon icon-bar"></span>
+		</button>
+
+		<ul class="navbar-nav" style="float: right; margin: 0; width: auto" *ngIf="isDesktopMenu()">
+			<li class="nav-item dropdown" style="float: right; margin-right: 4px; margin-top: 4px">
+				<a class="nav-link pr-3" id="navbarDropdownMenuLink" href="javascript:void(0)" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false" style="display: flex; align-items: center">
+					<i class="fa fa-user" style="color: #f5bac7"></i>{{ uname }}
+					<span class="login-user" style="color: #fff; padding: 0"></span>
+				</a>
+				<div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+					style="left: -6rem; min-width: 10rem">
+					<a class="dropdown-item" (click)="logout()" href="javascript:void(0)">Logout</a>
+
+			<li>
+				<a (click)="submenus = false" class="dropdown-item" href="javascript:void(0)"
+					*ngIf="menuArray[140] > -1"
+					[routerLink]="[menuItems[menuArray[140]].path]">{{ [menuItems[menuArray[140]].title] }}</a>
+			</li>
+	</div>
+	</li>
+	</ul>
+	<ul class="navbar-nav mr-0" style="text-align: right">
+		<li class="nav-item dropdown">
+			<a class="nav-link pr-0 icon-container" href="javascript:void(0)" id="navbarDropdownMenuLink"
+				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="Reset_Notification_Count()">
+				<div class="ringing-bell">
+					<span [hidden]="More_Search_Options"><i class="fa fa-bell faa-ring fa-5x"></i></span>
+					<span [hidden]="!More_Search_Options"><i class="fa fa-bell faa-ring animated fa-5x"></i></span>
+				</div>
+
+				<span class="notification" (click)="Reset_Notification_Count()"
+					[hidden]="Count_Notification">{{ Notification_Count }}</span>
+				<p class="notification-p">
+					<span class="d-lg-none d-md-block">Some Actions</span>
+				</p>
+			</a>
+
+			<div class="dropdown-menu dropdown-menu-right scroll-dropdown-notifi home-component notification-box"
+				aria-labelledby="navbarDropdownMenuLink" style="
+            height: 250px;
+            overflow-y: scroll;
+            padding-left: 25px;
+            background: #e0e4e8;
+          " [hidden]="Count_Notification">
+				<div class="notification-portion" style="color: #080808">
+					<h5>
+						<b>
+							<i class="fa fa-bell" style="color: #86beb9; margin-right: 20px"></i>
+							Notifications
+						</b>
+					</h5>
+				</div>
+				<div *ngFor="let Notification_T of Notification_Data; let i = index">
+					<div *ngFor="let Notification_T of Notification_Data; let i = index">
+						<ul class="list-unstyled team-members" (click)="Notification_Item_Click(Notification_T)"
+							style="border-bottom: solid 1px #f8f8f8; cursor: pointer">
+							<li>
+								<div class="row">
+									<div class="col-md-2 col-2">
+										<div class="avatar">
+											<i class="fa fa-envelope" style="color: #7aaba6; font-size: 18px"></i>
+										</div>
+									</div>
+									<div class="col-md-8 col-7" style="color: black; font-size: 13px">
+										<b style="font-weight: bold; color: #8a85bc">{{
+                        Notification_T["Student_Name"]
+                      }}</b>
+										<br />
+										{{ Notification_T["Notification_Type_Name"] }}
+										<br />
+										<span class="text-muted" *ngIf="Notification_T['From_User_Name']">
+											<b style="color: black">{{
+                          Notification_T["From_User_Name"]
+                        }}</b><span *ngIf="
+                            Notification_T['Task_Item_Name'] ||
+                            Notification_T['Status_Name'] ||
+                            Notification_T['Task_Details']
+                          ">,</span><br />
+										</span>
+										<span class="text-muted" *ngIf="Notification_T['Task_Item_Name']">
+											<b style="color: black">{{
+                          Notification_T["Task_Item_Name"]
+                        }}</b><span *ngIf="
+                            Notification_T['Status_Name'] ||
+                            Notification_T['Task_Details']
+                          ">,</span><br />
+										</span>
+										<span class="text-muted" *ngIf="Notification_T['Status_Name']">
+											<b style="color: black">{{
+                          Notification_T["Status_Name"]
+                        }}</b><span *ngIf="Notification_T['Task_Details']">,</span><br />
+										</span>
+										<span class="text-muted" *ngIf="Notification_T['Task_Details']">
+											<b style="color: black">{{
+                          Notification_T["Task_Details"]
+                        }}</b><br />
+										</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<p class="v-btn mt-5" style="font-size: 14px; position: relative; top: 15px"
+					(click)="Get_Notification()">
+					View All
+				</p>
+			</div>
+		</li>
+	</ul>
+	</div>
+</nav>
+
+<nav [hidden]="getView()" class="navbar navbar-expand-lg topnav pt-2 pl-5 side-bar" style="
+    height: 100vh;
+    width: 4%;
+    padding: 0 !important;
+    border-right: solid 1px #767c8324;
+  " (mouseenter)="Hover_Name_On()" (mouseleave)="Hover_Name_Off()">
+	<div class="container-fluid">
+		<div style="text-align: center">
+			<img src="/assets/img/empire.png" style="
+          object-fit: cover;
+          width: 35px;
+          padding-top: 7px;
+          padding-bottom: 20px;
+        " width="150px" height="auto" *ngIf="isDesktopMenu()" />
+		</div>
+
+		<button *ngIf="isMobileMenu()" mat-raised-buttons class="navbar-toggler btn-rht-mda-qury" type="button"
+			(click)="sidebarToggle()">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="navbar-toggler-icon icon-bar"></span>
+			<span class="navbar-toggler-icon icon-bar"></span>
+			<span class="navbar-toggler-icon icon-bar"></span>
+		</button>
+
+		<ul ngcontent-irw-c3="" class="inline-menu ng-star-inserted"
+			style="padding-left: 3px; padding: 0 !important; margin: 0 !important" *ngIf="isDesktopMenu()">
+			<li class="nav-item dropdown" *ngIf="hasStudentMenuItems()" style="margin-left: 20px; position: relative">
+				<a (mouseenter)="showDropdown()" class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="../../../assets/img/icons/user-128.png" alt="" style="height: 26px" />
+					<i style="white-space: nowrap" *ngIf="Is_Hover_Name">Students</i>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+					[ngStyle]="{ display: isDropdownVisible ? 'block' : 'none' }"
+					style="top: 0; left: 100%; position: absolute; z-index: 1000" (mouseenter)="showDropdown()"
+					(mouseleave)="hideDropdown()">
+					<a *ngIf="menuArray[158] > -1" (mouseover)="submenu_click()" class="nav-link"
+						href="javascript:void(0)" (click)="Non_Registered_Lead_click()"
+						[routerLink]="[menuItems[menuArray[158]].path]" aria-haspopup="true" aria-expanded="false">
+						<img src="../../../assets/img/icons/user-128.png" alt="" style="height: 26px" />
+						<i style="white-space: nowrap">{{
+              [menuItems[menuArray[158]].title]
+            }}</i>
+					</a>
+					<a *ngIf="menuArray[4] > -1" (mouseover)="submenu_click()" class="nav-link"
+						href="javascript:void(0)" (click)="Lead_click()" [routerLink]="[menuItems[menuArray[4]].path]"
+						aria-haspopup="true" aria-expanded="false">
+						<img src="../../../assets/img/icons/user-128.png" alt="" style="height: 26px" />
+						<i style="white-space: nowrap">{{
+              [menuItems[menuArray[4]].title]
+            }}</i>
+					</a>
+				</div>
+			</li>
+
+			<li class="nav-item dropdown" style="display: none" *ngIf="menuArray[125] > -1">
+				<a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+					[routerLink]="[menuItems[menuArray[125]].path]" aria-haspopup="true" aria-expanded="false">
+					<img src="../../../assets/img/icons/free-file-icon-1453-thumb.png" alt="" style="height: 26px" />
+
+					<i style="white-space: nowwrap" *ngIf="Is_Hover_Name">{{
+            [menuItems[menuArray[125]].title]
+          }}</i>
+				</a>
+			</li>
+
+			<li class="nav-item dropdown" style="display: none" *ngIf="menuArray[128] > -1">
+				<a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+					[routerLink]="[menuItems[menuArray[128]].path]" aria-haspopup="true" aria-expanded="false">
+					<img src="../../../assets/img/icons/reports.png" alt="" style="height: 24px" />
+					<i style="white-space: nowwrap" *ngIf="Is_Hover_Name">{{
+            [menuItems[menuArray[128]].title]
+          }}</i>
+				</a>
+			</li>
+
+			<!-- ////////////////////////Application////////////////////////// -->
+<!-- 
+			<li class="nav-item dropdown" *ngIf="hasApplicationMenuItems()" style="margin-left: 20px; position: relative">
+				<a (mouseenter)="showDropdown()" class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="../../../assets/img/icons/reports.png" alt="" style="height: 24px" />
+					<i style="white-space: nowrap" *ngIf="Is_Hover_Name">Applications</i>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+					[ngStyle]="{ display: isDropdownVisible ? 'block' : 'none' }"
+					style="top: 0; left: 100%; position: absolute; z-index: 1000" (mouseenter)="showDropdown()"
+					(mouseleave)="hideDropdown()">
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						(click)="Application_click()" *ngIf="menuArray[137] > -1"
+						[routerLink]="[menuItems[menuArray[137]].path]">
+						<img src="../../../assets/img/icons/Application_list.png" alt="" style="height: 26px" />
+						<i style="white-space: nowrap">Applications</i>
+					</a>
+
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						(click)="Agent_Application_click()" *ngIf="menuArray[159] > -1"
+						[routerLink]="[menuItems[menuArray[159]].path]">
+						<img src="../../../assets/img/icons/Application_list.png" alt="" style="height: 26px" />
+						<i style="white-space: nowrap">Agent Applications</i>
+					</a>
+				</div>
+			</li> -->
+
+			<!-- /////////////////////////dashboard///////////////////////// -->
+
+			<li class="nav-item dropdown"  *ngIf="hasDashboardMenuItems()"  style="margin-left: 20px; position: relative">
+				<a (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()" class="nav-link"
+					href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">
+					<img src="../../../assets/img/icons/dashboard.svg" alt="" style="height: 24px" />
+					<i style="white-space: nowrap" *ngIf="Is_Hover_Name">Dashboard</i>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="
+            top: 0;
+            left: 100%;
+            position: absolute;
+            z-index: 1000;
+            display: none;
+          " [ngStyle]="{ display: isDropdownVisible ? 'block' : 'none' }" (mouseenter)="showDropdown()"
+					(mouseleave)="hideDropdown()">
+					<a *ngIf="menuArray[8] > -1" (mouseover)="submenu_click()" class="dropdown-item"
+						href="javascript:void(0)" [routerLink]="[menuItems[menuArray[8]].path]" aria-haspopup="true"
+						aria-expanded="false">
+						<img src="../../../assets/img/icons/dashboard.svg" alt="" style="height: 26px" />
+						<i style="white-space: nowrap" *ngIf="Is_Hover_Name">Dashboard</i>
+					</a>
+					<a *ngIf="menuArray[147] > -1" (mouseover)="submenu_click()" class="dropdown-item"
+						href="javascript:void(0)" [routerLink]="[menuItems[menuArray[147]].path]" aria-haspopup="true"
+						aria-expanded="false">
+						<img src="../../../assets/img/icons/agent.svg" alt="" style="height: 26px" />
+						<i style="white-space: nowrap">Agent Dashboard</i>
+					</a>
+					<a *ngIf="menuArray[148] > -1" (mouseover)="submenu_click()" class="dropdown-item"
+						href="javascript:void(0)" [routerLink]="[menuItems[menuArray[148]].path]" aria-haspopup="true"
+						aria-expanded="false">
+						<svg id="Layer_1" style="height: 26px;"      viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="m56.752 2h-49.504c-2.894 0-5.248 2.354-5.248 5.248v49.504c0 2.894 2.354 5.248 5.248 5.248h49.504c2.894 0 5.248-2.354 5.248-5.248v-49.504c0-2.894-2.354-5.248-5.248-5.248zm-52.752 5.248c0-1.791 1.457-3.248 3.248-3.248h49.504c1.791 0 3.248 1.457 3.248 3.248v4.644h-56zm52.752 52.752h-49.504c-1.791 0-3.248-1.457-3.248-3.248v-42.86h56v42.86c0 1.791-1.457 3.248-3.248 3.248z"/><path d="m10.326 6.946h-.907c-.553 0-1 .448-1 1s.447 1 1 1h.907c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m15.524 6.946h-.907c-.553 0-1 .448-1 1s.447 1 1 1h.907c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m20.724 6.946h-.908c-.553 0-1 .448-1 1s.447 1 1 1h.908c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m55.288 5.754c-.391-.391-1.023-.391-1.414 0l-.777.777-.777-.777c-.391-.391-1.023-.391-1.414 0s-.391 1.023 0 1.414l.777.777-.777.777c-.391.391-.391 1.023 0 1.414.195.195.451.293.707.293s.512-.098.707-.293l.777-.777.777.777c.195.195.451.293.707.293s.512-.098.707-.293c.391-.391.391-1.023 0-1.414l-.777-.777.777-.777c.391-.391.391-1.023 0-1.414z"/><path d="m9.419 33.523h13.065c.553 0 1-.448 1-1v-3.079c0-2.513-1.74-4.611-4.073-5.197.47-.68.749-1.501.749-2.388 0-2.321-1.889-4.21-4.21-4.21s-4.211 1.889-4.211 4.21c0 .888.279 1.709.75 2.389-2.332.587-4.07 2.684-4.07 5.196v3.079c0 .552.447 1 1 1zm6.531-13.873c1.219 0 2.21.991 2.21 2.21s-.991 2.21-2.21 2.21-2.211-.992-2.211-2.21.992-2.21 2.211-2.21zm-5.531 9.795c0-1.86 1.514-3.374 3.374-3.374h4.317c1.86 0 3.374 1.514 3.374 3.374v2.079h-11.065z"/><path d="m35.55 37.606h-5.227c-.553 0-1 .448-1 1v6.599h-3.226v-3.566c0-.552-.447-1-1-1h-5.227c-.553 0-1 .448-1 1v3.566h-4.227c-.553 0-1 .448-1 1v2.952h-4.226c-.553 0-1 .448-1 1v5.093c0 .552.447 1 1 1h26.131c.553 0 1-.448 1-1v-16.644c0-.552-.447-1-1-1zm-25.131 13.551h3.226v3.093h-3.226zm5.226-1v-2.952h3.227v7.044h-3.227v-4.093zm5.226-3.951v-3.566h3.227v11.61h-3.227zm5.227 1h3.226v7.044h-3.226zm8.452 7.044h-3.227v-14.644h3.227z"/><path d="m55.444 17.444h-27c-.553 0-1 .448-1 1v14.167c0 .552.447 1 1 1h27c.553 0 1-.448 1-1v-14.167c0-.552-.447-1-1-1zm-1 14.167h-25v-12.167h25z"/><path d="m42.556 36.778h-1.111c-.553 0-1 .448-1 1s.447 1 1 1h1.111c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m46.777 38.778h7.223c.553 0 1-.448 1-1s-.447-1-1-1h-7.223c-.553 0-1 .448-1 1s.447 1 1 1z"/><path d="m42.556 41.146h-1.111c-.553 0-1 .448-1 1s.447 1 1 1h1.111c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m55.444 41.146h-8.667c-.553 0-1 .448-1 1s.447 1 1 1h8.667c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m42.556 45.514h-1.111c-.553 0-1 .448-1 1s.447 1 1 1h1.111c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m46.777 47.514h6.778c.553 0 1-.448 1-1s-.447-1-1-1h-6.778c-.553 0-1 .448-1 1s.447 1 1 1z"/><path d="m42.556 49.882h-1.111c-.553 0-1 .448-1 1s.447 1 1 1h1.111c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m55.444 49.882h-8.667c-.553 0-1 .448-1 1s.447 1 1 1h8.667c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m42.556 54.25h-1.111c-.553 0-1 .448-1 1s.447 1 1 1h1.111c.553 0 1-.448 1-1s-.447-1-1-1z"/><path d="m53.556 54.25h-6.778c-.553 0-1 .448-1 1s.447 1 1 1h6.778c.553 0 1-.448 1-1s-.447-1-1-1z"/></svg>
+						<i style="white-space: nowrap">Freelancer Dashboard</i>
+					</a>
+					<a *ngIf="menuArray[164] > -1" (mouseover)="submenu_click()" class="dropdown-item"
+						href="javascript:void(0)" [routerLink]="[menuItems[menuArray[164]].path]" aria-haspopup="true"
+						aria-expanded="false">
+						<svg style="height: 26px;" id="Layer_1" enable-background="new 0 0 450 450"  viewBox="0 0 450 450"  xmlns="http://www.w3.org/2000/svg"><g><g clip-rule="evenodd" fill="rgb(0,0,0)" fill-rule="evenodd"><path d="m403.8 391.2h-159.3c-3.2 0-5.8-2.6-5.8-5.8v-42.7c0-35.7 26.7-66 62.1-70.4 1.9-.2 3.9.5 5.1 2 5.5 6.5 12 10.2 18.1 10.2h.1c6.1 0 12.5-3.6 18.1-10.2 1.3-1.5 3.2-2.2 5.1-2 35.5 4.3 62.3 34.6 62.3 70.4v42.7c0 3.2-2.6 5.8-5.8 5.8zm-153.5-11.5h147.8v-36.9c0-29-21-53.7-49.2-58.5-7.3 7.6-15.9 11.8-24.6 11.8-.1 0-.1 0-.2 0-8.7 0-17.4-4.2-24.7-11.8-28.2 4.9-49 29.6-49 58.5z"/><path d="m324.1 268.9c-5.8 0-11.5-1.8-16.9-5.3-4.7-3-9-7.2-12.8-12.5-7.2-10-11.4-22.4-11.4-33.4 0-22.7 18.4-41.1 41.1-41.1h.1c11 0 21.3 4.3 29 12.1s12 18.1 12 29-4.3 23.4-11.4 33.4c-3.8 5.3-8.1 9.5-12.8 12.5-5.5 3.5-11.1 5.3-16.9 5.3zm.1-80.7c-16.4 0-29.7 13.3-29.7 29.6 0 8.5 3.6 18.7 9.3 26.6 5.9 8.2 13.3 13 20.3 13s14.4-4.7 20.3-13c5.7-8 9.3-18.2 9.3-26.6 0-16.3-13.3-29.6-29.5-29.6z"/><path d="m243.4 349.3h-196.7c-3.2 0-5.8-2.6-5.8-5.8v-277.4c0-3.2 2.6-5.8 5.8-5.8h277.5c3.2 0 5.8 2.6 5.8 5.8v116c0 3.2-2.6 5.8-5.8 5.8s-5.8-2.6-5.8-5.8v-110.3h-266v266h191c3.2 0 5.8 2.6 5.8 5.8 0 3.1-2.6 5.7-5.8 5.7z"/><path d="m101.4 320.5h-17.9c-3.2 0-5.8-2.6-5.8-5.8v-67.4c0-3.2 2.6-5.8 5.8-5.8h17.9c3.2 0 5.8 2.6 5.8 5.8v67.4c-.1 3.3-2.7 5.8-5.8 5.8zm-12.2-11.5h6.4v-55.8h-6.4z"/><path d="m141.8 320.5h-17.9c-3.2 0-5.8-2.6-5.8-5.8v-45.2c0-3.2 2.6-5.8 5.8-5.8h17.9c3.2 0 5.8 2.6 5.8 5.8v45.2c-.1 3.3-2.6 5.8-5.8 5.8zm-12.2-11.5h6.4v-33.7h-6.4z"/><path d="m182.2 320.5h-17.9c-3.2 0-5.8-2.6-5.8-5.8v-90.2c0-3.2 2.6-5.8 5.8-5.8h17.9c3.2 0 5.8 2.6 5.8 5.8v90.2c0 3.3-2.6 5.8-5.8 5.8zm-12.2-11.5h6.4v-78.7h-6.4z"/><path d="m222.6 320.5h-17.9c-3.2 0-5.8-2.6-5.8-5.8v-67.4c0-3.2 2.6-5.8 5.8-5.8h17.9c3.2 0 5.8 2.6 5.8 5.8v67.4c0 3.3-2.6 5.8-5.8 5.8zm-12.2-11.5h6.4v-55.8h-6.4z"/><path d="m212.9 189.7c-27.8 0-50.4-22.6-50.4-50.4s22.6-50.4 50.4-50.4 50.4 22.6 50.4 50.4c.1 27.8-22.6 50.4-50.4 50.4zm0-89.4c-21.5 0-38.9 17.5-38.9 38.9s17.5 38.9 38.9 38.9c21.5 0 38.9-17.5 38.9-38.9s-17.4-38.9-38.9-38.9z"/><path d="m212.9 145.3c-.7 0-1.5-.1-2.2-.4-2.2-.9-3.6-3-3.6-5.3v-44.4c0-3.2 2.6-5.8 5.8-5.8s5.8 2.6 5.8 5.8v30.5l21.4-21.4c2.3-2.2 5.9-2.2 8.1 0 2.2 2.3 2.2 5.9 0 8.1l-31.2 31.2c-1.1 1.1-2.6 1.7-4.1 1.7z"/><path d="m138.1 106.7h-54.6c-3.2 0-5.8-2.6-5.8-5.8s2.6-5.8 5.8-5.8h54.6c3.2 0 5.8 2.6 5.8 5.8s-2.6 5.8-5.8 5.8z"/><path d="m138.1 125.9h-54.6c-3.2 0-5.8-2.6-5.8-5.8s2.6-5.8 5.8-5.8h54.6c3.2 0 5.8 2.6 5.8 5.8-.1 3.2-2.6 5.8-5.8 5.8z"/><path d="m138.1 145.1h-54.6c-3.2 0-5.8-2.6-5.8-5.8s2.6-5.8 5.8-5.8h54.6c3.2 0 5.8 2.6 5.8 5.8-.1 3.2-2.6 5.8-5.8 5.8z"/><path d="m138.1 164.3h-54.6c-3.2 0-5.8-2.6-5.8-5.8s2.6-5.8 5.8-5.8h54.6c3.2 0 5.8 2.6 5.8 5.8-.1 3.2-2.6 5.8-5.8 5.8z"/><path d="m138.1 183.5h-54.6c-3.2 0-5.8-2.6-5.8-5.8s2.6-5.8 5.8-5.8h54.6c3.2 0 5.8 2.6 5.8 5.8-.1 3.2-2.6 5.8-5.8 5.8z"/></g></g></svg>
+						<i style="white-space: nowrap">Freelancer Manager Dashboard</i>
+					</a>
+				</div>
+			</li>
+
+			<li class="nav-item dropdown" style="margin-left: 20px" *ngIf="menuArray[94] > -1">
+				<a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+					[routerLink]="[menuItems[menuArray[94]].path]" aria-haspopup="true" aria-expanded="false">
+					<div class="ringing-bell" style="display: flex">
+						<img src="../../../assets/img/icons/task.png" alt="" style="height: 29px" />
+						<i style="white-space: nowwrap" *ngIf="Is_Hover_Name">{{
+              [menuItems[menuArray[94]].title]
+            }}</i>
+						<span [hidden]="More_Search_Options1" *ngIf="Is_Hover_Name" class="fa fa-bell faa-ring"
+							style="color: red">({{ Student_Task_Count }})</span>
+					</div>
+				</a>
+			</li>
+
+			<li class="nav-item dropdown" style="margin-left: 20px; position: relative">
+				<a (mouseover)="submenu_click()" class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<img src="../../../assets/img/icons/reports.png" alt="" style="height: 24px" />
+					<i style="white-space: nowwrap" *ngIf="Is_Hover_Name">Reports</i>
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+					style="top: -100px; left: 100%; position: absolute; z-index: 1000">
+					<li class="dropdown-submenu c-dropdownp" *ngIf="menuArray[166] > -1 || menuArray[167] > -1">
+						<a (click)="studentSubmenus = false" class="dropdown-item c-dropdown-item" href="javascript:void(0)"
+							(mouseover)="studentSubmenu()">Candidate Reports</a>
+						<ul class="nav-item dropdown c-dropdown1" *ngIf="studentSubmenus">
+							<li *ngIf="menuArray[166] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[166]].path]">
+									{{ [menuItems[menuArray[166]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[167] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[167]].path]">
+									{{ [menuItems[menuArray[167]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[177] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[177]].path]">
+									{{ [menuItems[menuArray[177]].title] }}
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="dropdown-submenu c-dropdownp" *ngIf="menuArray[172] > -1 || menuArray[171] > -1">
+						<a (click)="applicationSubmenus = false" class="dropdown-item c-dropdown-item" href="javascript:void(0)"
+							(mouseover)="applicationSubmenu()">Application Report</a>
+						<ul class="nav-item dropdown c-dropdown1" *ngIf="applicationSubmenus">
+
+							<li *ngIf="menuArray[66] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[66]].path]">
+									{{ [menuItems[menuArray[66]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[172] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[172]].path]">
+									{{ [menuItems[menuArray[172]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[171] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[171]].path]">
+									{{ [menuItems[menuArray[171]].title] }}
+								</a>
+							</li>
+						</ul>
+					</li>
+		
+					<li class="dropdown-submenu c-dropdownp" *ngIf="menuArray[18] > -1 || menuArray[57] > -1 || menuArray[20] > -1 || menuArray[144] > -1|| menuArray[27] > -1">
+						<a (click)="applicationSubmenus = false" class="dropdown-item c-dropdown-item" href="javascript:void(0)"
+							(mouseover)="reportsSubmenu()">Work</a>
+						<ul class="nav-item dropdown c-dropdown1" *ngIf="reportsSubmenus">
+							
+							<li *ngIf="menuArray[18] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[18]].path]">
+									{{ [menuItems[menuArray[18]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[57] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[57]].path]">
+									{{ [menuItems[menuArray[57]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[20] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[20]].path]">
+									{{ [menuItems[menuArray[20]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[144] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[144]].path]">
+									{{ [menuItems[menuArray[144]].title] }}
+								</a>
+							</li>
+							 
+							<li *ngIf="menuArray[27] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[27]].path]">
+									{{ [menuItems[menuArray[27]].title] }}
+								</a>
+							</li>
+
+
+						</ul>
+					</li>
+		
+					<li class="dropdown-submenu c-dropdownp" *ngIf="
+					  menuArray[34] > -1 || menuArray[52] > -1 || menuArray[125] > -1
+					">
+						<a (click)="applicationSubmenus = false" class="dropdown-item c-dropdown-item" href="javascript:void(0)"
+							(mouseover)="summarySubmenu()">Summary</a>
+						<ul class="nav-item dropdown c-dropdown1" *ngIf="summarySubmenus">
+							<li *ngIf="menuArray[34] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[34]].path]">
+									{{ [menuItems[menuArray[34]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[52] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[52]].path]">
+									{{ [menuItems[menuArray[52]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[125] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[125]].path]">
+									{{ [menuItems[menuArray[125]].title] }}
+								</a>
+							</li>
+
+							<li *ngIf="menuArray[174] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[174]].path]">
+									{{ [menuItems[menuArray[174]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[175] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[175]].path]">
+									{{ [menuItems[menuArray[175]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[176] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[176]].path]">
+									{{ [menuItems[menuArray[176]].title] }}
+								</a>
+							</li>
+							
+						</ul>
+					</li>
+		
+					<li class="dropdown-submenu c-dropdownp"  *ngIf="
+					menuArray[127] > -1 || menuArray[128] > -1 || menuArray[129] > -1
+				  ">
+						<a (click)="applicationSubmenus = false" class="dropdown-item c-dropdown-item" href="javascript:void(0)"
+							(mouseover)="statusubmenu()">Status Report</a>
+						<ul class="nav-item dropdown c-dropdown1" *ngIf="statusSubmenus">
+							<li *ngIf="menuArray[127] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[127]].path]">
+									{{ [menuItems[menuArray[127]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[128] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[128]].path]">
+									{{ [menuItems[menuArray[128]].title] }}
+								</a>
+							</li>
+							<li *ngIf="menuArray[129] > -1">
+								<a class="dropdown-item" [routerLink]="[menuItems[menuArray[129]].path]">
+									{{ [menuItems[menuArray[129]].title] }}
+								</a>
+							</li>
+							
+						</ul>
+					</li>
+
+					<!-- Intake Report -->
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+					*ngIf="menuArray[179] > -1"
+					[routerLink]="[menuItems[menuArray[179]].path]">{{ [menuItems[menuArray[179]].title] }}</a>
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+					*ngIf="menuArray[181] > -1"
+					[routerLink]="[menuItems[menuArray[181]].path]">{{ [menuItems[menuArray[181]].title] }}</a>
+
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+					*ngIf="menuArray[182] > -1"
+					[routerLink]="[menuItems[menuArray[182]].path]">{{ [menuItems[menuArray[182]].title] }}</a>
+
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[93] > -1"
+						[routerLink]="[menuItems[menuArray[93]].path]">{{ [menuItems[menuArray[93]].title] }}</a>
+				
+					
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[165] > -1"
+						[routerLink]="[menuItems[menuArray[165]].path]">{{ [menuItems[menuArray[165]].title] }}</a>
+
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[16] > -1"
+						[routerLink]="[menuItems[menuArray[16]].path]">{{ [menuItems[menuArray[16]].title] }}</a>
+
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[160] > -1"
+						[routerLink]="[menuItems[menuArray[160]].path]">{{ [menuItems[menuArray[160]].title] }}</a>
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[90] > -1"
+						[routerLink]="[menuItems[menuArray[90]].path]">{{ [menuItems[menuArray[90]].title] }}</a>
+
+					
+
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[145] > -1"
+						[routerLink]="[menuItems[menuArray[145]].path]">{{ [menuItems[menuArray[145]].title] }}</a>
+
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[25] > -1"
+						[routerLink]="[menuItems[menuArray[25]].path]">{{ [menuItems[menuArray[25]].title] }}</a>
+
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[32] > -1"
+						[routerLink]="[menuItems[menuArray[32]].path]">{{ [menuItems[menuArray[32]].title] }}</a>
+				
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[33] > -1"
+						[routerLink]="[menuItems[menuArray[33]].path]">{{ [menuItems[menuArray[33]].title] }}</a>
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[35] > -1"
+						[routerLink]="[menuItems[menuArray[35]].path]">{{ [menuItems[menuArray[35]].title] }}</a>
+
+					<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)"
+						*ngIf="menuArray[56] > -1"
+						[routerLink]="[menuItems[menuArray[56]].path]">{{ [menuItems[menuArray[56]].title] }}</a>
+
+					
+
+		
+
+			<li class="dropdown-submenu c-dropdownp" *ngIf="
+              menuArray[31] > -1 ||
+              menuArray[51] > -1 ||
+              menuArray[50] > -1 ||
+              menuArray[58] > -1 ||
+              menuArray[49] > -1 ||
+              menuArray[95] > -1
+            ">
+				<a (click)="submenus = false" class="dropdown-item c-dropdown-item" href="javascript:void(0)"
+					(mouseover)="submenu()">MIS Report</a>
+				<ul class="nav-item dropdown c-dropdown1" *ngIf="submenus">
+					<li>
+						<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[31] > -1"
+							[routerLink]="[menuItems[menuArray[31]].path]">{{ [menuItems[menuArray[31]].title] }}</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[51] > -1"
+							[routerLink]="[menuItems[menuArray[51]].path]">{{ [menuItems[menuArray[51]].title] }}</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[50] > -1"
+							[routerLink]="[menuItems[menuArray[50]].path]">{{ [menuItems[menuArray[50]].title] }}</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[58] > -1"
+							[routerLink]="[menuItems[menuArray[58]].path]">{{ [menuItems[menuArray[58]].title] }}</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[49] > -1"
+							[routerLink]="[menuItems[menuArray[49]].path]">{{ [menuItems[menuArray[49]].title] }}</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[95] > -1"
+							[routerLink]="[menuItems[menuArray[95]].path]">{{ [menuItems[menuArray[95]].title] }}</a>
+					</li>
+				</ul>
+			</li>
+	</div>
+	</li>
+
+	<li class="nav-item dropdown" *ngIf="hasMenuItems()" style="margin-left: 20px; position: relative" >
+		<a (mouseenter)="showDropdown()" class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink"
+			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<img src="../../../assets/img/icons/Settings.png" alt="" style="height: 24px" />
+			<i style="white-space: nowrap" *ngIf="Is_Hover_Name" >Settings</i>
+		</a>
+		<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+			[ngStyle]="{ display: isDropdownVisible ? 'block' : 'none' }"
+			style="top: -50px; left: 100%; position: absolute; z-index: 1000" (mouseenter)="showDropdown()"
+			(mouseleave)="hideDropdown()">
+	<li class="dropdown-submenu c-dropdownp">
+		<a (click)="submenus1 = false" (mouseover)="submenu_click()" class="dropdown-item c-dropdown-item"
+			href="javascript:void(0)" (mouseover)="submenuz()">Follow Up</a>
+		<ul class="nav-item dropdown c-dropdown" *ngIf="submenus1">
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[126] > -1"
+					[routerLink]="[menuItems[menuArray[126]].path]">{{ [menuItems[menuArray[126]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[135] > -1"
+					[routerLink]="[menuItems[menuArray[135]].path]">{{ [menuItems[menuArray[135]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[15] > -1"
+					[routerLink]="[menuItems[menuArray[15]].path]">{{ [menuItems[menuArray[15]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[13] > -1"
+					[routerLink]="[menuItems[menuArray[13]].path]">{{ [menuItems[menuArray[13]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[14] > -1"
+					[routerLink]="[menuItems[menuArray[14]].path]">{{ [menuItems[menuArray[14]].title] }}</a>
+			</li>
+			<!-- <li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[170] > -1"
+					[routerLink]="[menuItems[menuArray[170]].path]">{{ [menuItems[menuArray[170]].title] }}</a>
+			</li> -->
+			<!-- <li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[171] > -1"
+					[routerLink]="[menuItems[menuArray[171]].path]">{{ [menuItems[menuArray[171]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[172] > -1"
+					[routerLink]="[menuItems[menuArray[172]].path]">{{ [menuItems[menuArray[172]].title] }}</a>
+			</li> -->
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[142] > -1"
+					[routerLink]="[menuItems[menuArray[142]].path]">{{ [menuItems[menuArray[142]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[184] > -1"
+					[routerLink]="[menuItems[menuArray[184]].path]">{{ [menuItems[menuArray[184]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[186] > -1"
+					[routerLink]="[menuItems[menuArray[186]].path]">{{ [menuItems[menuArray[186]].title] }}</a>
+			</li>
+				<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[188] > -1"
+					[routerLink]="[menuItems[menuArray[188]].path]">{{ [menuItems[menuArray[188]].title] }}</a>
+			</li>
+		</ul>
+	</li>
+
+	<li class="dropdown-submenu c-dropdownp">
+		<a (click)="submenus2 = false" (mouseover)="submenu_click()" class="dropdown-item c-dropdown-item"
+			href="javascript:void(0)" (mouseover)="submenuz2()">Users</a>
+		<ul class="nav-item dropdown c-dropdown" *ngIf="submenus2">
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[53] > -1"
+					[routerLink]="[menuItems[menuArray[53]].path]">{{ [menuItems[menuArray[53]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[0] > -1"
+					[routerLink]="[menuItems[menuArray[0]].path]">{{ [menuItems[menuArray[0]].title] }}</a>
+			</li>
+		</ul>
+	</li>
+
+	<li class="dropdown-submenu c-dropdownp">
+		<a (click)="submenus21 = false" (mouseover)="submenu_click()" class="dropdown-item c-dropdown-item"
+			href="javascript:void(0)" (mouseover)="submenuz5()">Profile</a>
+		<ul class="nav-item dropdown c-dropdown" *ngIf="submenus21">
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[19] > -1"
+					[routerLink]="[menuItems[menuArray[19]].path]">{{ [menuItems[menuArray[19]].title] }}</a>
+			</li>
+			<!-- <li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[132] > -1"
+					[routerLink]="[menuItems[menuArray[132]].path]">{{ [menuItems[menuArray[132]].title] }}</a>
+			</li> -->
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[17] > -1"
+					[routerLink]="[menuItems[menuArray[17]].path]">{{ [menuItems[menuArray[17]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[28] > -1"
+					[routerLink]="[menuItems[menuArray[28]].path]">{{ [menuItems[menuArray[28]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[119] > -1"
+					[routerLink]="[menuItems[menuArray[119]].path]">{{ [menuItems[menuArray[119]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[3] > -1"
+					[routerLink]="[menuItems[menuArray[3]].path]">{{ [menuItems[menuArray[3]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[100] > -1"
+					[routerLink]="[menuItems[menuArray[100]].path]">{{ [menuItems[menuArray[100]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[136] > -1"
+					[routerLink]="[menuItems[menuArray[136]].path]">{{ [menuItems[menuArray[136]].title] }}</a>
+			</li>
+		</ul>
+	</li>
+
+	<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[47] > -1"
+		[routerLink]="[menuItems[menuArray[47]].path]">{{ [menuItems[menuArray[47]].title] }}</a>
+	<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[45] > -1"
+		[routerLink]="[menuItems[menuArray[45]].path]">{{ [menuItems[menuArray[45]].title] }}</a>
+	<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[46] > -1"
+		[routerLink]="[menuItems[menuArray[46]].path]">{{ [menuItems[menuArray[46]].title] }}</a>
+
+	<li class="dropdown-submenu c-dropdownp">
+		<a (click)="submenus3 = false" (mouseover)="submenu_click()" class="dropdown-item c-dropdown-item"
+			href="javascript:void(0)" (mouseover)="submenuz3()">Application</a>
+		<ul class="nav-item dropdown c-dropdown2" *ngIf="submenus3">
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[143] > -1"
+					[routerLink]="[menuItems[menuArray[143]].path]">{{ [menuItems[menuArray[143]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[156] > -1"
+					[routerLink]="[menuItems[menuArray[156]].path]">{{ [menuItems[menuArray[156]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[65] > -1"
+					[routerLink]="[menuItems[menuArray[65]].path]">{{ [menuItems[menuArray[65]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[1] > -1"
+					[routerLink]="[menuItems[menuArray[1]].path]">{{ [menuItems[menuArray[1]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[6] > -1"
+					[routerLink]="[menuItems[menuArray[6]].path]">{{ [menuItems[menuArray[6]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[2] > -1"
+					[routerLink]="[menuItems[menuArray[2]].path]">{{ [menuItems[menuArray[2]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[69] > -1"
+					[routerLink]="[menuItems[menuArray[69]].path]">{{ [menuItems[menuArray[69]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[161] > -1"
+					[routerLink]="[menuItems[menuArray[161]].path]">{{ [menuItems[menuArray[161]].title] }}</a>
+			</li>
+
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[183] > -1"
+					[routerLink]="[menuItems[menuArray[183]].path]">{{ [menuItems[menuArray[183]].title] }}</a>
+			</li>
+
+			<!-- <li>
+				new
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[187] > -1"
+					[routerLink]="[menuItems[menuArray[187]].path]">{{ [menuItems[menuArray[187]].title] }}</a>
+			</li> -->
+
+		</ul>
+	</li>
+
+	<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[47] > -1"
+		[routerLink]="[menuItems[menuArray[47]].path]">{{ [menuItems[menuArray[47]].title] }}</a>
+	<a (mouseover)="submenu_click()" class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[10] > -1"
+		[routerLink]="[menuItems[menuArray[10]].path]">{{ [menuItems[menuArray[10]].title] }}</a>
+
+	<li class="dropdown-submenu c-dropdownp">
+		<a (click)="submenus4 = false" (mouseover)="submenu_click()" class="dropdown-item c-dropdown-item"
+			href="javascript:void(0)" (mouseover)="submenuz4()">Software Settings</a>
+		<ul class="nav-item dropdown c-dropdown" *ngIf="submenus4">
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[54] > -1"
+					[routerLink]="[menuItems[menuArray[54]].path]">{{ [menuItems[menuArray[54]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[55] > -1"
+					[routerLink]="[menuItems[menuArray[55]].path]">{{ [menuItems[menuArray[55]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[104] > -1"
+					[routerLink]="[menuItems[menuArray[104]].path]">{{ [menuItems[menuArray[104]].title] }}</a>
+			</li>
+
+			<!-- <li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[180] > -1"
+					[routerLink]="[menuItems[menuArray[180]].path]">{{ [menuItems[menuArray[180]].title] }}</a>
+			</li> -->
+
+		</ul>
+	</li>
+
+	<li class="dropdown-submenu c-dropdownp">
+		<a (click)="submenus = false" (mouseover)="submenu_click()" class="dropdown-item c-dropdown-item"
+			href="javascript:void(0)" (mouseover)="submenuz6()">Data</a>
+		<ul class="nav-item dropdown c-dropdown" *ngIf="submenus">
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[26] > -1"
+					[routerLink]="[menuItems[menuArray[26]].path]">{{ [menuItems[menuArray[26]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[122] > -1"
+					[routerLink]="[menuItems[menuArray[122]].path]">{{ [menuItems[menuArray[122]].title] }}</a>
+			</li>
+				<li>
+					<a
+					  
+					  class="dropdown-item"
+					  href="javascript:void(0)"
+					  *ngIf="menuArray[9] > -1"
+					  [routerLink]="[menuItems[menuArray[9]].path]"
+					  >{{ [menuItems[menuArray[9]].title] }}</a
+					>
+				  </li>
+
+				  	<li>
+					<a
+					  
+					  class="dropdown-item"
+					  href="javascript:void(0)"
+					  *ngIf="menuArray[190] > -1"
+					  [routerLink]="[menuItems[menuArray[190]].path]"
+					  >{{ [menuItems[menuArray[190]].title] }}</a
+					>
+				  </li>
+		</ul>
+	</li>
+
+	<!-- <li class="dropdown-submenu c-dropdownp">
+		<a (mouseover)="submenu_click()" class="dropdown-item c-dropdown-item" href="javascript:void(0)"
+			(mouseover)="submenuz8()">Holiday</a>
+		<ul class="nav-item dropdown c-dropdown" *ngIf="submenus8">
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[138] > -1"
+					[routerLink]="[menuItems[menuArray[138]].path]">{{ [menuItems[menuArray[138]].title] }}</a>
+			</li>
+			<li>
+				<a class="dropdown-item" href="javascript:void(0)" *ngIf="menuArray[139] > -1"
+					[routerLink]="[menuItems[menuArray[139]].path]">{{ [menuItems[menuArray[139]].title] }}</a>
+			</li>
+		</ul>
+	</li> -->
+	</div>
+	</li>
+<!-- 
+	<li class="nav-item dropdown" *ngIf="menuArray[132] > -1">
+		<a
+			class="nav-link"
+			href="javascript:void(0)"
+			id="navbarDropdownMenuLink"
+			data-toggle="dropdown"
+			[routerLink]="[menuItems[menuArray[132]].path]"
+			aria-haspopup="true"
+			aria-expanded="false"
+		>
+			<span class="label-name-crect-stck-ad-nw-sctn-unt">
+				<i
+					class="fa fa-comment"
+					style="color: #79e4a9"
+					aria-hidden="true"
+				></i
+			></span>
+			<i>{{ [menuItems[menuArray[132]].title] }}</i> </a
+		><span 
+			*ngIf="chat_count_view == true"
+			class="notification"
+			style="margin-top: 0px; margin-right: 27px"
+			[hidden]="Count_Notification"
+			>{{ Chat_Count_ }}</span
+		>
+	</li>
+ -->
+
+
+
+
+	<li class="nav-item dropdown" style="margin-left: 20px" *ngIf="menuArray[132] > -1">
+		<a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+			[routerLink]="[menuItems[menuArray[132]].path]" aria-haspopup="true" aria-expanded="false">
+			<span class="label-name-crect-stck-ad-nw-sctn-unt">
+			<img src="../../../assets/img/icons/chat1.png" style="height: 25px" alt=""></span>
+			<i style="white-space: nowwrap" *ngIf="Is_Hover_Name">{{
+            [menuItems[menuArray[132]].title]
+          }}</i>
+		</a>
+		<span 
+			*ngIf="chat_count_view == true"
+			class="notification"
+			style="margin-top: 0px; margin-right: 27px"
+			[hidden]="Count_Notification"
+			>{{ Chat_Count_ }}</span
+		>
+	</li>
+
+
+
+
+	<li class="nav-item dropdown" style="margin-left: 20px" *ngIf="menuArray[36] > -1">
+		<a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+			[routerLink]="[menuItems[menuArray[36]].path]" aria-haspopup="true" aria-expanded="false">
+			<img src="../../../assets/img/icons/Student_search.png" alt="" style="height: 29px" />
+			<i style="white-space: nowwrap" *ngIf="Is_Hover_Name">{{
+            [menuItems[menuArray[36]].title]
+          }}</i>
+		</a>
+	</li>
+
+	<li class="nav-item dropdown" style="margin-left: 20px;" *ngIf="menuArray[189] > -1">
+			<a
+			  class="nav-link"
+			  href="javascript:void(0)"
+			  id="navbarDropdownMenuLink"
+			  data-toggle="dropdown"
+			  [routerLink]="[menuItems[menuArray[189]].path]"
+			  aria-haspopup="true"
+			  aria-expanded="false"
+			>
+			  
+				<img src="../../../assets/img/icons/course_search.png" alt="" style="height: 29px;">
+				<i  style="white-space: nowwrap;" *ngIf="Is_Hover_Name">{{ [menuItems[menuArray[189]].title] }}</i>
+  
+			</a>
+			
+		  </li>
+	<li class="nav-item dropdown" style="margin-left: 20px">
+		<a class="nav-link" id="navbarDropdownMenuLink" href="javascript:void(0)" data-toggle="dropdown"
+			aria-haspopup="true" aria-expanded="false">
+			<i class="fa fa-power-off" aria-hidden="true" style="
+              height: 20px;
+              color: #3c3c3c !important;
+
+              font-size: 20px;
+              margin-left: 6px !important;
+            "></i>
+			<i style="white-space: nowwrap" *ngIf="Is_Hover_Name">Logout</i>
+		</a>
+		<div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+			style="left: -1rem; min-width: 10rem">
+			<a class="dropdown-item" (click)="logout()" href="javascript:void(0)">Logout</a>
+		</div>
+	</li>
+	</ul>
+
+	<ul class="navbar-nav" style="
+        float: left;
+        margin: 0;
+        width: auto;
+        padding-left: 3px;
+        display: none;
+      " *ngIf="isDesktopMenu()">
+		<li class="nav-item dropdown" style="float: right; margin-right: 4px; margin-top: 4px">
+			<a class="nav-link pr-3" id="navbarDropdownMenuLink" href="javascript:void(0)" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false"
+				style="display: flex; align-items: center; padding-left: 23px">
+				<svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+					<rect width="33" height="33" rx="16.5" fill="#F2ECFF" />
+					<mask id="mask0_41_19" style="mask-type: alpha" maskUnits="userSpaceOnUse" x="5" y="4" width="24"
+						height="24">
+						<rect x="5" y="4" width="24" height="24" fill="#D9D9D9" />
+					</mask>
+					<g mask="url(#mask0_41_19)">
+						<path
+							d="M6 24V21.2C6 20.6333 6.14583 20.1125 6.4375 19.6375C6.72917 19.1625 7.11667 18.8 7.6 18.55C8.63333 18.0333 9.68333 17.6458 10.75 17.3875C11.8167 17.1292 12.9 17 14 17C15.1 17 16.1833 17.1292 17.25 17.3875C18.3167 17.6458 19.3667 18.0333 20.4 18.55C20.8833 18.8 21.2708 19.1625 21.5625 19.6375C21.8542 20.1125 22 20.6333 22 21.2V24H6ZM24 24V21C24 20.2667 23.7958 19.5625 23.3875 18.8875C22.9792 18.2125 22.4 17.6333 21.65 17.15C22.5 17.25 23.3 17.4208 24.05 17.6625C24.8 17.9042 25.5 18.2 26.15 18.55C26.75 18.8833 27.2083 19.2542 27.525 19.6625C27.8417 20.0708 28 20.5167 28 21V24H24ZM14 16C12.9 16 11.9583 15.6083 11.175 14.825C10.3917 14.0417 10 13.1 10 12C10 10.9 10.3917 9.95833 11.175 9.175C11.9583 8.39167 12.9 8 14 8C15.1 8 16.0417 8.39167 16.825 9.175C17.6083 9.95833 18 10.9 18 12C18 13.1 17.6083 14.0417 16.825 14.825C16.0417 15.6083 15.1 16 14 16ZM24 12C24 13.1 23.6083 14.0417 22.825 14.825C22.0417 15.6083 21.1 16 20 16C19.8167 16 19.5833 15.9792 19.3 15.9375C19.0167 15.8958 18.7833 15.85 18.6 15.8C19.05 15.2667 19.3958 14.675 19.6375 14.025C19.8792 13.375 20 12.7 20 12C20 11.3 19.8792 10.625 19.6375 9.975C19.3958 9.325 19.05 8.73333 18.6 8.2C18.8333 8.11667 19.0667 8.0625 19.3 8.0375C19.5333 8.0125 19.7667 8 20 8C21.1 8 22.0417 8.39167 22.825 9.175C23.6083 9.95833 24 10.9 24 12ZM8 22H20V21.2C20 21.0167 19.9542 20.85 19.8625 20.7C19.7708 20.55 19.65 20.4333 19.5 20.35C18.6 19.9 17.6917 19.5625 16.775 19.3375C15.8583 19.1125 14.9333 19 14 19C13.0667 19 12.1417 19.1125 11.225 19.3375C10.3083 19.5625 9.4 19.9 8.5 20.35C8.35 20.4333 8.22917 20.55 8.1375 20.7C8.04583 20.85 8 21.0167 8 21.2V22ZM14 14C14.55 14 15.0208 13.8042 15.4125 13.4125C15.8042 13.0208 16 12.55 16 12C16 11.45 15.8042 10.9792 15.4125 10.5875C15.0208 10.1958 14.55 10 14 10C13.45 10 12.9792 10.1958 12.5875 10.5875C12.1958 10.9792 12 11.45 12 12C12 12.55 12.1958 13.0208 12.5875 13.4125C12.9792 13.8042 13.45 14 14 14Z"
+							fill="#7838FF" />
+					</g>
+				</svg>
+			</a>
+			<div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenuLink"
+				style="left: -1rem; min-width: 10rem">
+				<a class="dropdown-item" (click)="logout()" href="javascript:void(0)">Logout</a>
+			</div>
+		</li>
+	</ul>
+	<ul class="navbar-nav mr-0" style="width: 100%"></ul>
+	</div>
+</nav>

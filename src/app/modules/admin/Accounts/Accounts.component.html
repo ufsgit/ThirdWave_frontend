@@ -1,0 +1,224 @@
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+  <div class="main-content screenfixed new-margin-T dash_big_screen">
+  <div class="container-fluid2 ">
+  
+  
+  <div class="row" *ngIf="Entry_View">
+  
+    <div class="col-md-12 pr-0 pl-0 pt-2">
+      <div class="dt-card mb-0 pb-1 pt-3">         
+          <div class="dt-card__body mb-0 pb-0">
+              <form class="mb-0">           
+              <div class="form-row">
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Accounts Name<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                  <div class="col-md-3 col-sm-3 mb-2">
+                      <input type="text" class="form-control" [(ngModel)]="Accounts_.Client_Accounts_Name"  name="Accounts_.Client_Accounts_Name"   placeholder="Accounts Name">
+                     
+                  </div>
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Accounts Group<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+                
+                  <div class="col-md-3 col-sm-3 mb-1">
+                 <select
+                  [(ngModel)]="Accounts_Group_" 
+                  name="Accounts_Group_"
+                
+                  required 
+                  class="form-control p-0 pl-1">
+                        <option *ngFor="let Accounts_G of Accounts_Data_Dropdown" [ngValue]="Accounts_G">
+                            {{Accounts_G.Group_Name}}
+                        </option>
+                    </select>
+                </div>
+                  
+                  <div class="col-md-3 col-sm-4 mt-0">    
+                   
+                       <button (click)="Save_Accounts()" *ngIf="Accounts_Save" mat-raised-button type="submit" class="save-button-style pull-left mr-1">Save</button>
+                       <button (click)="Close_Click()" mat-raised-button type="submit" class="close-button-style pull-left mr-1 ">Close</button> 
+                      </div>
+              </div>
+          </form>
+          </div>
+      </div>        
+    </div> 
+  
+  
+  
+  </div>
+  
+  <div class="row" *ngIf="!Entry_View">
+   <div class="col-md-12 pl-0 pr-0 pt-2 mb-1">
+    <div class="dt-card mb-0 pb-1 pt-3">         
+        <div class="dt-card__body mb-0 pb-0">
+            <form class="mb-0">           
+            <div class="form-row">
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Accounts Name</label>
+                <div class="col-md-3 col-sm-3 mb-2">
+                    <input type="text" class="form-control" [(ngModel)]="Client_Accounts_Name_Search" name="Client_Accounts_Name"  placeholder="Accounts Name">
+                   
+                </div>
+                
+                <div class="col-md-4 col-lg-4 mt-0">                    
+                     <button (click)="Search_Accounts()" mat-raised-button type="submit"  class="other-button-style pull-left mr-1">Search</button>
+                     <button (click)="Create_New()" mat-raised-button type="submit" class="save-button-style pull-left mr-1 ">Create New</button>
+
+                    </div>
+            </div>
+        </form>
+        </div>
+    </div>        
+  </div> 
+  
+  
+  
+  <!-- <div class="col-md-12 pl-0" *ngFor="let Remarks of Remarks_Data; let i = index">
+    <div class="dt-module">            
+        <div class="dt-module__container">
+            <div class="dt-module__content ps-custom-scrollbar">
+                <div class="dt-module__content-inner">   
+                    <div class="dt-module__list">
+                        <div class="dt-module__list-item"> 
+                            <div class="dt-module__list-item-content">
+                                <div class="user-detail">
+                                <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" 
+                                 class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" 
+                                 mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button">
+                                 <span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" 
+                                     _ngcontent-gxp-c5="" class="material-icons save-material-style" (click)="Edit_Remarks(Remarks,i)" >edit</i></span>
+                                     <div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                     ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" 
+                                     class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" 
+                                     ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                     <div class="mat-button-focus-overlay"></div></button>                                   
+                                    <span class="user-name">{{Remarks["Remarks_Name"]}}</span>
+                                    <span class="dt-separator-v">&nbsp;</span>
+                                    <span class="designation">Graphic Design / Logo Design / UI &amp; UX</span>
+  
+                                </div>
+                                <div class="text-light-gray">
+                                    <button _ngcontent-gdi-c11="" class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button" 
+                                    mat-raised-button="" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" 
+                                    cdk-describedby-host="" ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper">
+                                    <i _ngcontent-gdi-c11="" class="material-icons delete-material-style"  (click)="Delete_Remarks(Remarks.Remarks_Id,i)" >close</i></span>
+                                    <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" 
+                                    ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"></div></button>
+                                    <span class="d-inline-block mr-3">chris.harris@example.com</span>
+                                    <span class="d-inline-block">+168214854</span>
+                                </div>
+                            </div>                                
+                        </div>
+                
+                   
+  
+                        
+                       
+                      
+                       
+                   
+          
+                     
+               
+   
+           
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+       
+      </div>
+  </div> -->
+  
+  
+  
+  <div class="col-md-12 pr-0 pl-0 mt-1">
+    <div class="dt-module">            
+        <div class="dt-module__container" >
+            <!-- style="overflow: scroll;"[style.height.px]="myTotalHeight" -->
+            <div class="dt-module__content ps-custom-scrollbar">
+                <div class="dt-module__content-inner pl-0 pr-0 card-body set-height-scroll-bar-wole-block">   
+                    <div class="dt-module__list pl-0 pr-0"  [style.height.px]="myInnerHeight"
+                    style="overflow-y: scroll"
+                    id="profile">
+                        <!-- <div class="card-body set-height-scroll-bar-wole-block"> -->
+                        <div class="dt-module__list-item pb-2 pt-2" *ngFor="let Accounts of Accounts_Data; let i = index"> 
+                            <div class="dt-module__list-item-content">
+                                <div class="user-detail">
+
+                                    <span class="icon-background2 mr-1" *ngIf="Accounts_Edit" (click)="Edit_Accounts(Accounts,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                    <span class="icon-background3 mr-1" *ngIf="Accounts_Delete" (click)="Delete_Accounts(Accounts.Client_Accounts_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+        
+
+                                <!-- <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" 
+                                    class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" 
+                                    mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button">
+                                    <span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" 
+                                     _ngcontent-gxp-c5="" class="material-icons save-material-style" (click)="Edit_Accounts(Accounts,i)" >edit</i></span>
+                                     <div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                     ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" 
+                                     class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" 
+                                     ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                     <div class="mat-button-focus-overlay"></div>
+                                </button>  
+                                     <button _ngcontent-gdi-c11="" class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button" 
+                                     mat-raised-button="" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" 
+                                     cdk-describedby-host="" ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper">
+                                     <i _ngcontent-gdi-c11="" class="material-icons delete-material-style"  (click)="Delete_Accounts(Accounts.Client_Accounts_Id,i)">close</i></span>
+                                     <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" 
+                                     ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"></div>
+                                    </button>                                  -->
+                                    <span class="user-name">{{Accounts["Client_Accounts_Name"]}}</span>
+                                  
+                                </div>
+                              
+                            </div>                                
+                        </div>
+                       
+                
+<!-- </div> -->
+                     
+                    </div>
+                </div>
+                <!-- <div class="form-group">                       
+                    <button type="submit" (click)="Search_Client_Accounts()" class="btn btn-primary">Previous</button>
+                    <button type="submit" (click)="Create_New()" class="btn btn-primary">Next</button>                             
+                </div> -->
+            </div>
+            <!-- <div class="form-group">  
+                <div class="col-md-6" style="float: right;">                     
+            <button mat-raised-button type="submit" (click)="previous_Click()"  class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-left" aria-hidden="true" style="color:#5f6368;"></i></button>
+            <button mat-raised-button type="submit"  (click)="Next_Click()" class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #5f6368;"></i></button>
+            </div>
+        </div> -->
+        </div>
+       
+      </div>
+  </div>  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  </div>
+    

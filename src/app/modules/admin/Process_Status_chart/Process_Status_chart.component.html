@@ -1,0 +1,114 @@
+<div class="process-status-manager" *ngIf="!edit">
+  <!-- Loading Spinner -->
+  <div class="loading-overlay" *ngIf="issLoading">
+    <div class="spinner-container">
+      <img src="/assets/img/spinner.gif" alt="Loading..." width="100px" />
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-container">
+    <!-- Header Card -->
+    <div class="header-card">
+      <div class="header-content">
+        <h2 class="page-title">{{Edit_Process_Status_Name}}</h2>
+        
+        <div class="search-controls">
+          <div class="search-field">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              class="form-control search-input"
+              [(ngModel)]="Process_status_Name_Search"
+              name="Department_Name"
+              placeholder="Search by status name..."
+            />
+          </div>
+          
+          <button
+            class="btn btn-secondary close-btn"
+            (click)="goBackToDepartmentDetails()"
+          >
+            <i class="fas fa-times"></i>
+            <span>Close</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status List -->
+    <div class="status-list-container" [style.height.px]="myInnerHeight" style="overflow: scroll;">
+      <div class="status-list">
+        <!-- Status Item -->
+        <div class="status-card" 
+             *ngFor="let status of processStatusList | filter: Process_status_Name_Search; let i = index"
+             [class.expanded]="status.isExpanded">
+          
+          <!-- Status Header -->
+          <!-- <div class="status-header" (click)="toggleExpansion(status)"> -->
+          <div class="status-header">
+            <div class="status-info">
+              <div class="expand-icon" [class.rotated]="status.isExpanded">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+              
+              <div class="status-details">
+                <div class="status-name">
+                  <span class="label">Status:</span>
+                  <span class="value">{{status.Department_Status_Name}}</span>
+                </div>
+                
+                <div class="status-type">
+                  <span class="label">Type:</span>
+                  <span class="value">{{status.Dept_Status_Type_Name}}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="status-actions">
+              <button class="btn btn-icon edit-btn" 
+                      (click)="editStatus(status); $event.stopPropagation()">
+                <i class="fas fa-edit"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Expanded Content -->
+          <div class="status-content" [class.visible]="status.isExpanded">
+            <div class="table-container" *ngIf="status.subStatusList">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th class="col-number">No.</th>
+                    <th class="col-select">Select</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let subStatus of status.subStatusList; let j = index">
+                    <td class="col-number">{{j + 1}}</td>
+                    <td class="col-select">
+                      <label class="custom-checkbox">
+                        <input
+                          type="checkbox"
+                          [name]="'checkbox_' + i + '_' + j"
+                          [(ngModel)]="subStatus.checkbox_view"
+                          (change)="onCheckboxChange(subStatus, j)"
+                          [disabled]="true"
+                        />
+                        <span class="checkmark"></span>
+                      </label>
+                    </td>
+                    <td>{{subStatus.Department_Status_Name}}</td>
+                    <td>{{subStatus.Dept_Status_Type_Name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

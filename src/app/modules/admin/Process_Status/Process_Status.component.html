@@ -1,0 +1,1644 @@
+<div *ngIf="!edit">
+  <div
+  *ngIf="issLoading"
+  class="overlay"
+  style="margin-top: 21%; margin-left: 46%; background-color: transparent"
+  [style.left.px]="spinleft"
+>
+  <img src="/assets/img/spinner.gif" width="100px" />
+</div>
+<div class="main-content screenfixed new-margin-T">
+  <div class="container-fluid2 right-sec right-sec col-12" style="margin-left: auto">
+    <div class="row">
+      <div class="col-md-12 pl-0 pr-0 mb-2 mt-3">
+        <div class="dt-card mb-0 pb-3 pt-3">
+          <div class="dt-card__body mb-0 pb-0">
+            {{Edit_Process_Status_Name}}
+            <form class="mb-0" style="display: flex;">
+              <!-- <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                >Status</label
+              > -->
+              
+
+              <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+              >Status Name</label
+            >
+            <div class="col-md-3 col-sm-3 mb-2">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="Process_status_Name_Search"
+                name="Department_Name"
+                placeholder="Status Name"
+              />
+            </div>
+            
+            <!-- <div class="col-md-4 col-lg-3 mt-0">
+              <button
+                (click)="Search_Process_status()"
+                mat-raised-button
+                type="submit"
+                class="other-button-style pull-left mr-1"
+              >
+                Search
+              </button>
+              </div> -->
+              
+              <div class="form-row" style="padding-left: 10px">
+                <div class="col-md-3 col-lg-2 mt-0">
+                  <button
+                    (click)="goBackToDepartmentDetails()"
+                    mat-raised-button
+                    type="submit"
+                    class="close-button-style ull-left mr-1"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 pl-0 pr-0" itemSize="10">
+        <div class="dt-module">
+          <div class="dt-module__container">
+            <div class="dt-module__content ps-custom-scrollbar">
+              <div class="dt-module__content-inner card-bodyk">
+                <div
+                  class="dt-module__list"
+                  [style.height.px]="myInnerHeight"
+                  style="overflow-y: scroll"
+                  id="profile"
+                >
+                  <div
+                    class="dt-module__list-item pb-2 pt-2"
+                    *ngFor="
+                      let Department_Status of processStatusList | filter : Process_status_Name_Search ;
+                      let i = index
+                    "
+                  >
+                    <div class="dt-module__list-item-content d-flex">
+                      <div class="user-detail">
+                        <span
+                          class="icon-background2 mr-1"
+                          (click)="editProcessStatus(Department_Status)"
+                        >
+                          <mat-icon class="text-green small"
+                            >edit</mat-icon
+                          ></span
+                        >
+
+                        <span style="color: #000000"> Status - &nbsp; </span>
+
+                        <span class="user-name" style="color: #ef071e"
+                          >{{ Department_Status.Department_Status_Name }} &nbsp;
+                        </span>
+
+
+                        <span style="color: #000000"> Status Type - &nbsp; </span>
+
+                        <span class="user-name" style="color: #ef071e"
+                          >{{ Department_Status.Dept_Status_Type_Name }} &nbsp;
+                        </span>
+                        <!-- <span
+                          *ngIf="Department_Status.Transfer_Department_Name"
+                          style="color: #000000"
+                        >
+                          Transfer Department - &nbsp;
+                        </span>
+
+                        <span style="color: #ef071e">
+                          {{ Department_Status.Transfer_Department_Name }}
+                          &nbsp;</span
+                        > -->
+
+                        <!-- <span
+                          *ngIf="Department_Status.Class_Name"
+                          style="color: #000000"
+                        >
+                          Class - &nbsp;
+                        </span>
+
+                        <span style="color: #ef071e">
+                          {{ Department_Status.Class_Name }}</span
+                        >
+
+                        <span
+                          *ngIf="Department_Status.Status_Order"
+                          style="color: #000000"
+                        >
+                          Order - &nbsp;
+                        </span>
+
+                        <span
+                          *ngIf="Department_Status.Status_Order"
+                          style="color: #ef071e"
+                        >
+                          {{ Department_Status.Status_Order }}</span
+                        > -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div *ngIf="edit">
+  <div
+  *ngIf="issLoading"
+  class="overlay"
+  style="margin-top: 21%; margin-left: 46%; background-color: transparent"
+  [style.left.px]="spinleft"
+>
+  <img src="/assets/img/spinner.gif" width="100px" />
+</div>
+<div class="main-content screenfixed new-margin-T" >
+  <div class="container-fluid2 right-sec right-sec col-12" style="margin-left: auto;">
+    <div class="row">
+      <div class="col-md-12 pl-0 pr-0 " *ngIf="!showChildComponent">
+        <div class="dt-card mb-0 pb-1 " [style.height.px]="myInnerHeightThree" style="overflow-y: scroll;">
+          <div class="dt-card__body mb-0 pb-0" style="padding-right: 80px">
+            <form class="mb-0">
+              {{Edit_Process_Status_Name}}
+              <div class="form-row" style="padding-left: 10px">
+                <div class="col-md-6 row">
+                  <label class="col-md-4 col-sm-0 col-form-label text-sm-right"
+                    >Department Status
+                    <span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+                  <div class="col-md-8 col-sm-3 mb-2">
+
+
+                    <!-- <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="editingDepartmentStatus.Department_Status_Name"
+                    [value]="editingDepartmentStatus.Department_Status_Name"
+                    name="Process_Status_Details_.Department_Status_Name"
+                    placeholder="Department Status"
+                  />-->
+
+                    <input disabled
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="editingDepartmentStatus.Department_Status_Name"
+                      [value]="editingDepartmentStatus.Department_Status_Name"
+                      name="Process_Status_Details_.Department_Status_Name"
+                      placeholder="Department Status"
+                    />
+
+                  </div>
+                </div>
+
+                <div class="col-md-6 row">
+                  <label
+                    for="normal-input-4"
+                    class="col-md-4 col-sm-3 col-form-label text-sm-right"
+                    style="background: transparent"
+                    >FollowUp</label
+                  >
+                  <div class="col-md-8 col-sm-9">
+                    <select
+                      name="Status_Followup"
+                      [(ngModel)]="editingDepartmentStatus.Followup"
+                      [value]="editingDepartmentStatus.Followup"
+                      required
+                      class="form-control p-0 pl-1"
+                      id="normal-input-4"
+                    >
+                      <option value="1">yes</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6 row">
+                  <!-- <label class="col-md-4 col-sm-0 col-form-label text-sm-right"
+                    >Class</label
+                  > -->
+                  <!-- <div class="col-md-8 col-sm-3 mb-1">
+                    <select
+                      [(ngModel)]="Class_Mode_"
+                      name="Class_Mode_"
+                      required
+                      class="form-control p-0 pl-1"
+                    >
+                      <option
+                        *ngFor="let Class_Data_T of Class_Data"
+                        [ngValue]="Class_Data_T.Class_Id"
+                      >
+                        {{ Class_Data_T.Class_Name }}
+                      </option>
+                    </select>
+                  </div> -->
+                  <!-- [(ngModel)]="editingDepartmentStatus.Class_Id" -->
+
+                  <!-- <div class="col-md-8 col-sm-3 mb-1">
+
+
+
+                    <select
+                    [(ngModel)]="Class_Mode_"
+                    name="Class_Mode_"
+                    class="form-control p-0 pl-1"
+                  >
+                    <option
+                      *ngFor="let Class_Data_T of Class_Data"
+                      [ngValue]="Class_Data_T"
+                    >
+                      {{ Class_Data_T.Class_Name }}
+                    </option>
+                  </select>
+                  </div> -->
+                </div>
+
+                <!-- Select notification department -->
+                <!-- <div class="col-md-7 row">
+                  <label class="col-md-4 col-sm-0 col-form-label text-sm-right"
+                    >Notification</label
+                  >
+                  <div 
+                    class="col-md-8 col-sm-3 mb-1" 
+                    style="max-height: 45px;"
+                    [ngStyle]="{'overflow': showDropdow === true ? 'visible' : 'hidden'}">
+                    <div class="form-control p-0 pl-1" (click)="toggleNotificationDropdown()">Select</div>
+                    <div 
+                      style="z-index: 100; position: relative; background-color: white;">
+                      <div 
+                      style="padding: 5px;"  
+                      *ngFor="let department of departmentList">
+                      <input 
+                        type="checkbox" 
+                        [checked]="checkNotificationDefaultly(department.Department_Id)"
+                        style="margin-right: 10px;"
+                        (click)="addNotificationToArray($event, department)">
+                          {{ department.Department_Name }}
+                    </div>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- /Select notification department -->
+
+                <div class="col-md-6 row" *ngIf="Enable_Registration_Checkbox">
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Enrollment</label
+                  >
+
+                  <div
+                    class="col-md-6 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Registration"
+                            [(ngModel)]="Process_Status_Details_.Registration"
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 row">
+                  <label class="col-md-4 col-sm-0 col-form-label text-sm-right"
+                    >Duration (in hour) 
+                    <span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+                  <div class="col-md-8 col-sm-3 mb-2">
+           
+
+                    <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="Process_Status_Details_.Status_Order"
+                    [value]="Process_Status_Details_.Status_Order"
+                    name="Process_Status_Details_.Status_Order"
+                    placeholder="Duration"
+                  />
+                  </div>
+                </div>
+                <div class="col-md-6 row">
+                  <!-- *ngIf="Enable_Transfer_Status" -->
+                  <label
+                    
+                    class="col-md-4 col-lg-0 col-form-label text-sm-right x-tra-label"
+                    >Transfer</label
+                  >
+                  <!-- *ngIf="Enable_Transfer_Status" -->
+                  <div
+                   
+                    _ngcontent-xmy-c9=""
+                    class="checkbox-to-crect-sales-search-section col-md-1"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                    >
+                      <label _ngcontent-xmy-c9="" class="form-check-label">
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          name="Process_Status_Details_.Transfer_Status"
+                          [(ngModel)]="Process_Status_Details_.Transfer_Status"
+                        />
+                        <span _ngcontent-xmy-c9="" class="form-check-sign"
+                          ><span _ngcontent-xmy-c9="" class="check"> </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <label
+                    class="col-md-3 col-sm-2 col-form-label text-sm-right"
+                    *ngIf="Process_Status_Details_.Transfer_Status"
+                    >Transfer Department<span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+
+                  <div
+                    class="col-md-4 col-sm-3 mb-1"
+                    *ngIf="Process_Status_Details_.Transfer_Status"
+                  >
+                    <select
+                      [(ngModel)]="Transfer_Department_"
+                      name="Transfer_Department_"
+                      required
+                      class="form-control p-0 pl-1"
+                    >
+                      <option
+                        *ngFor="let Automatic_T1 of Transfer_Department_Data"
+                        [ngValue]="Automatic_T1"
+                      >
+                        {{ Automatic_T1.Department_Name }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <br />
+
+                  <label
+                    class="col-md-4 col-sm-2 col-form-label text-sm-right"
+                    *ngIf="Process_Status_Details_.Notification_Status"
+                    >Notification Department</label
+                  >
+
+                  <div
+                    class="col-md-2 col-sm-3 mb-1"
+                    *ngIf="Process_Status_Details_.Notification_Status"
+                  >
+                    <select
+                      [(ngModel)]="Notification_Department_"
+                      name="Notification_Department_"
+                      required
+                      class="form-control p-0 pl-1"
+                    >
+                      <option
+                        *ngFor="let Automatic_T of Automatic_Department_Data"
+                        [ngValue]="Automatic_T"
+                      >
+                        {{ Automatic_T.Department_Name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- <div class="col-md-6 row">
+                  <label
+                    for="normal-input-4"
+                    class="col-md-4 col-sm-3 col-form-label text-sm-right"
+                    style="background: transparent"
+                    >Display In</label
+                  >
+                  <div class="col-md-8 col-sm-9">
+                    <select
+                      name="Display_In"
+                      [(ngModel)]="Display_In"
+                      required
+                      class="form-control p-0 pl-1"
+                      id="normal-input-4"
+                    >
+                      <option value="0">All</option>
+                      <option value="1">Application</option>
+                      <option value="2">FollowUp</option>
+                    </select>
+                  </div>
+                </div> -->
+                <div class="col-1"></div>
+
+                <div class="col-md-6 row">
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Enrollment Mandatory</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Registration_Mandatory"
+                            [(ngModel)]="
+                              Process_Status_Details_.Registration_Mandatory
+                            "
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <label
+  class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+>
+  Activation Status
+</label>
+
+<div
+  class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+  style="padding-top: 6px"
+>
+  <div class="checkbox-to-crect-sales-search-section">
+    <div class="form-check uper-dte-lbel-sales-sctn-new pl-0">
+      <label class="form-check-label">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="Process_Status_Details_.Activation_Status"
+          [(ngModel)]="Process_Status_Details_.Activation_Status"
+        />
+        <span class="form-check-sign">
+          <span class="check"> </span>
+        </span>
+      </label>
+    </div>
+  </div>
+</div>
+
+                  <label
+                    class="col-md-2 col-lg-7 col-form-label x-tra-label pl-0 pr-0"
+                    style="color: #ef071e"
+                    >Note:Student must be enrolled to use this status</label
+                  >
+                </div>
+
+                
+                <div class="col-md-6 row" *ngIf="Display_In == 1">
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Update in Profile</label
+                  >
+
+                  <div
+                    class="col-md-8 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Update_in_Profile"
+                            [(ngModel)]="Process_Status_Details_.Update_in_Profile"
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-md-6 row">
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Fees Mandatory</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Fees_Mandatory"
+                            [(ngModel)]="
+                            Process_Status_Details_.Fees_Mandatory
+                            "
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+                  <label 
+                  class="col-md-3 col-sm-2 col-form-label text-sm-right"
+                  *ngIf="Process_Status_Details_.Fees_Mandatory"
+                  >Fees<span
+                    style="
+                      color: #ef071e;
+                      font-size: 22px;
+                      vertical-align: -webkit-baseline-middle;
+                    "
+                    >*</span
+                  ></label
+                >
+
+                <div
+                  class="col-md-4 col-sm-3 mb-1"
+                  *ngIf="Process_Status_Details_.Fees_Mandatory"
+                >
+                  <select
+                    [(ngModel)]="Fees_"
+                    name="Fees_"
+                    required
+                    class="form-control p-0 pl-1"
+                  >
+                    <option
+                      *ngFor="let Fees_Data_T1 of Fees_Data"
+                      [ngValue]="Fees_Data_T1"
+                    >
+                      {{ Fees_Data_T1.Fees_Name }}
+                    </option>
+                  </select>
+                </div>
+               
+                </div>
+                <!-- <div class="col-1"></div> -->
+
+
+
+                <div class="col-md-6 row">
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Next Status</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  > 
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Sub_Status"
+                            [(ngModel)]="
+                              Process_Status_Details_.Sub_Status
+                            "
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-7"  *ngIf="Process_Status_Details_.Sub_Status==true">
+                    <div class="row full-box-contents-select-status-department p-0" style="overflow: scroll;     width: fit-content;height: 350px;">
+                      <!-- <div class="col-lg-12 crect-title-table  pb-1">
+               
+                      </div> -->
+                     
+  
+                      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;    font-size: 15px;
+                      background: #fff;
+                      border: solid 1px #dad0d0;">
+                        <thead>              
+                          <th>
+                            Sl.No
+                          </th>
+                          <th>
+                            Select
+                           </th>
+                          <th style="    width: 300px;
+                          ">
+                                 Status
+                          </th>                          
+                          <th style="    width: 300px;
+                          ">
+                                 Status Type
+                          </th>                          
+                    
+                        </thead>
+                        <tbody *ngFor="let Department_Status_Data1 of Process_sub_status_Data; let i = index"  >
+                            <tr>
+                                <td>
+                                {{i+1}}
+                                </td>
+                            
+                                  <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                    <input type="checkbox" name={{Department_Status_Data1.Department_Status_Id}}{{Department_Status_Data1.checkbox_view}}{{y}}
+                                    class="form-check-input"  [(ngModel)]="Department_Status_Data1.checkbox_view"
+                                    (change)="onCheckboxChange(Department_Status_Data1, i)" 
+                                    [checked]="Department_Status_Data1.checkbox_view">
+                                    <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                    <span _ngcontent-xmy-c9="" class="check"></span>
+                                    </span>
+                                    </label>
+                                    </div>
+                                    </td>
+                                    <td>
+                                      {{Department_Status_Data1["Department_Status_Name"]}}
+                                  </td>
+                                  <td>
+                                    {{Department_Status_Data1["Dept_Status_Type_Name"]}}
+                                </td>
+                              </tr>
+                          </tbody>
+                        </table> 
+                    </div>
+                  </div>
+               
+                </div>
+
+
+
+                 
+
+            
+
+
+                <div class="col-md-6 row" >
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Notification</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Notification"
+                            [(ngModel)]="
+                              Process_Status_Details_.Notification
+                            "
+                            (change)="clearAllCheckBox1('Notification')"
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-7 mt-2"  *ngIf="Process_Status_Details_.Notification ==true">
+                    <div class="row full-box-contents-select-status-department p-0" [style.height.px]="myInnerHeightTwo" style="overflow: scroll;     width: fit-content;">
+                      <div class="col-lg-12 crect-title-table  pb-1">
+                       
+                      </div>
+                    
+                   
+  
+                      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;    font-size: 15px;
+                      background: #fff;
+                      border: solid 1px #dad0d0;">
+                        <thead>              
+                          <th>
+                            Sl.No
+                          </th>
+                          <th>
+                            Select
+                           </th>
+                          <th style="    width: 300px;
+                          ">
+                         Department 
+                          </th>                          
+                        
+                        </thead>
+                        <tbody *ngFor="let Department_Data_s of Process_Department_Data; let i = index"  >
+                            <tr>
+                                <td>
+                                {{i+1}}
+                                </td>
+                            
+                                  <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                    <input type="checkbox" name={{Department_Data_s.Department_Id}}{{Department_Data_s.checkbox_view3}}{{t}}
+                                    class="form-check-input"  [(ngModel)]="Department_Data_s.checkbox_view3" 
+                                    (change)="onCheckboxChangeNotification(Department_Data_s, i)" 
+                                    [checked]="Department_Data_s.checkbox_view3">
+                                    <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                    <span _ngcontent-xmy-c9="" class="check"></span>
+                                    </span>
+                                    </label>
+                                    </div>
+                                    </td>
+                                    <td>
+                                      {{Department_Data_s["Department_Name"]}}
+                                  </td>
+                              </tr>
+                          </tbody>
+                        </table> 
+                    </div>
+                  </div>
+               
+                </div>
+
+
+
+             
+
+
+
+               
+
+
+
+              
+
+
+
+
+                <div class="col-md-6 row mt-2" >
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Document</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Document_view"
+                            [(ngModel)]="
+                              Process_Status_Details_.Document_view
+
+
+                            "
+                            (change)="clearAllCheckBox2('Document')"
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-7"  *ngIf="Process_Status_Details_.Document_view == true">
+                    <div class="row full-box-contents-select-status-department p-0"    style="overflow: scroll;     width: fit-content;height: 350px;">
+                      <div class="col-lg-12 crect-title-table  pb-1">
+                     
+                      </div>
+                      
+                   
+                      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;    font-size: 15px;
+                      background: #fff;
+                      border: solid 1px #dad0d0;">
+                        <thead>              
+                          <th>
+                            Sl.No
+                          </th>
+                          <th>
+                            Optional
+                           </th>
+                           <th>
+                            Mandatory
+                           </th>
+                          <th style="    width: 300px;
+                          ">
+                            Dcoument 
+                          </th>                          
+                        
+                        </thead>
+                        <tbody *ngFor="let Document_Data_d of Process_Notification_Data; let i = index"  >
+                            <tr>
+                                <td>
+                                {{i+1}}
+                                </td>
+                            
+                                  <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                    <input type="checkbox" name={{Document_Data_d.Document_Id}}{{Document_Data_d.checkbox_view4}}{{i}}
+                                    class="form-check-input"  [(ngModel)]="Document_Data_d.checkbox_view4" 
+                                    (change)="onCheckboxChangeDcoument(Document_Data_d, i)" 
+                                    [checked]="Document_Data_d.checkbox_view4">
+                                    <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                    <span _ngcontent-xmy-c9="" class="check"></span>
+                                    </span>
+                                    </label>
+                                    </div>
+                                    </td>
+  
+                                    <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                      <div _ngcontent-xmy-c9="" class="form-check">
+                                      <label _ngcontent-xmy-c9="" class="form-check-label">
+                                      <input type="checkbox" name={{Document_Data_d.Document_Id}}{{Document_Data_d.checkbox_view_new5}}{{i}}
+                                      class="form-check-input"  [(ngModel)]="Document_Data_d.checkbox_view_new5" 
+                                      (change)="onCheckboxChangeDcoument(Document_Data_d, i)" 
+                                      [checked]="Document_Data_d.checkbox_view_new5">
+                                      <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                      <span _ngcontent-xmy-c9="" class="check"></span>
+                                      </span>
+                                      </label>
+                                      </div>
+                                      </td>
+  
+                                    <td>
+                                      {{Document_Data_d["Document_Name"]}}
+                                  </td>
+                              </tr>
+                          </tbody>
+                        </table> 
+                    </div>
+                  </div>
+
+
+
+               
+                </div>
+
+
+
+               
+
+
+
+
+
+
+                <!-- <div class="col-md-6 row mt-2">
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Check List</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.CheckList"
+                            [(ngModel)]="
+                              Process_Status_Details_.CheckList
+                            "
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-7"  *ngIf="Process_Status_Details_.CheckList == true">
+                    <div class="row full-box-contents-select-status-department p-0" [style.height.px]="myInnerHeightTwo" style="overflow-y: scroll;">
+                      <div class="col-lg-12 crect-title-table  pb-1">
+                       
+                      </div>
+                    
+  
+                      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;    font-size: 15px;
+                      background: #fff;
+                      border: solid 1px #dad0d0;">
+                        <thead>              
+                          <th>
+                            Sl.No
+                          </th>
+                          <th>
+                            Select
+                           </th>
+                          
+                          <th style="    width: 300px;
+                          ">
+                            Check List 
+                          </th>                          
+                        
+                        </thead>
+                        <tbody *ngFor="let Process_Check_List_Data1 of Process_Check_List_Data; let i = index"  >
+                            <tr>
+                                <td>
+                                {{i+1}}
+                                </td>
+                            
+                                  <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                    <input type="checkbox" name={{Process_Check_List_Data1.Document_Id}}{{Process_Check_List_Data1.checkbox_view}}
+                                    class="form-check-input"  [(ngModel)]="Process_Check_List_Data1.checkbox_view" 
+                                    [checked]="Process_Check_List_Data1.checkbox_view">
+                                    <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                    <span _ngcontent-xmy-c9="" class="check"></span>
+                                    </span>
+                                    </label>
+                                    </div>
+                                    </td>
+  
+                                    <td>
+                                      {{Process_Check_List_Data1["Document_Name"]}}
+                                  </td>
+                              </tr>
+                          </tbody>
+                        </table> 
+                    </div>
+                  </div>
+
+
+
+               
+                </div> -->
+
+
+
+              
+
+
+
+
+
+                <div class="col-md-6 row mt-2">
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Data Field</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Data_Fields"
+                            [(ngModel)]="
+                              Process_Status_Details_.Data_Fields
+                            "
+                            (change)="clearAllCheckBox3('DataField')"
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-7"  *ngIf="Process_Status_Details_.Data_Fields == true">
+                    <div class="row full-box-contents-select-status-department p-0" [style.height.px]="myInnerHeightTwo" style="overflow: scroll;     width: fit-content;
+">
+                      <!-- <div class="col-lg-12 crect-title-table  pb-1">
+                     
+                      </div> -->
+                      
+                   
+                      <table class="table table-hover " style="font-size: 15px;    font-size: 15px;
+                      background: #fff;
+                          width: fit-content;
+
+                      border: solid 1px #dad0d0;">
+                        <thead>              
+                          <th>
+                            Sl.No
+                          </th>
+                          <th>
+                            Optional
+                           </th>
+                           <th>
+                            Mandatory
+                           </th>
+                          <th style="    width: 300px;
+                          ">
+                            Field 
+                          </th>                          
+                        
+                        </thead>
+                        <tbody *ngFor="let Document_Data_k of Process_Fields_Data; let i = index"  >
+                            <tr>
+                                <td>
+                                {{i+1}}
+                                </td>
+                            
+                                  <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                    <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label _ngcontent-xmy-c9="" class="form-check-label">
+                                    <input type="checkbox" name={{Document_Data_k.Fields_Id}}{{Document_Data_k.checkbox_view1}}{{w}}
+                                    class="form-check-input"  [(ngModel)]="Document_Data_k.checkbox_view1" 
+                                    (change)="onCheckboxChangeField(Document_Data_k, i)" 
+                                    [checked]="Document_Data_k.checkbox_view1">
+                                    <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                    <span _ngcontent-xmy-c9="" class="check"></span>
+                                    </span>
+                                    </label>
+                                    </div>
+                                    </td>
+  
+                                    <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                      <div _ngcontent-xmy-c9="" class="form-check">
+                                      <label _ngcontent-xmy-c9="" class="form-check-label">
+                                      <input type="checkbox" name={{Document_Data_k.Fields_Id}}{{Document_Data_k.checkbox_view_new2}}{{w}}
+                                      class="form-check-input"  [(ngModel)]="Document_Data_k.checkbox_view_new2" 
+                                      (change)="onCheckboxChangeField(Document_Data_k, i)" 
+                                      [checked]="Document_Data_k.checkbox_view_new2">
+                                      <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                      <span _ngcontent-xmy-c9="" class="check"></span>
+                                      </span>
+                                      </label>
+                                      </div>
+                                      </td>
+  
+                                    <td>
+                                      {{Document_Data_k["Fields_Name"]}}
+                                  </td>
+                              </tr>
+                          </tbody>
+                        </table> 
+                    </div>
+                  </div>
+
+
+               
+                </div>
+
+                <div class="col-md-12 row mt-1">
+                  <label
+                    class="  col-md-2 col-form-label text-sm-right x-tra-label"
+                    >Task</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Task_new"
+                            (change)="clearAllCheckBox('Task')"
+                            [(ngModel)]="
+                              Process_Status_Details_.Task_new
+                            "
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row mb-2 col-9" *ngIf="Process_Status_Details_.Task_new == true">
+                    <div class="col-5 row">
+                    <label class="col-md-5 col-form-label text-sm-right" style="align-items: center; text-align: left !important;"
+                      >Department
+                      <!-- <span
+                        style="
+                          color: #ef071e;
+                          font-size: 22px;
+                          vertical-align: -webkit-baseline-middle;
+                        "
+                        >*</span
+                      > -->
+                      </label
+                    >
+                    <div class="col-md-7 col-sm-3 mb-1">
+                      <select
+                        [(ngModel)]="Department_"
+                        name="Department_"
+                        class="form-control p-0 pl-1"
+                      >
+                        <option
+                          *ngFor="let Department_Type_T of Department_Data"
+                          [ngValue]="Department_Type_T"
+                        >
+                          {{ Department_Type_T.Department_Name }}
+                        </option>
+                      </select>
+                    </div>
+                    </div>
+               
+                    <div class="col-5 row">
+  
+                    <label class="col-md-5 col-form-label text-sm-right" style="align-items: center;text-align: left !important;"
+                    >Task<span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+                  <div class="col-md-7 col-sm-3 mb-1">
+                    <select
+                      [(ngModel)]="Task_"
+                      name="Task_"
+                      class="form-control p-0 pl-1"
+                      (change)="onTaskChange($event)"
+                    >
+                      <option
+                        *ngFor="let Task_Type_T of Task_Data"
+                        [ngValue]="Task_Type_T"
+                      >
+                        {{ Task_Type_T.Task_Item_Name }}
+                      </option>
+                    </select>
+                  </div>
+                 </div>
+
+
+                 <!-- <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                 >Notification Department
+                 </label
+               >
+               <div class="col-md-3 col-sm-3 mb-2">
+                 <select
+                   [(ngModel)]="Department_Notification_"
+                   name="Department_Notification_"
+                   class="form-control p-0 pl-1"
+                 >
+                   <option
+                     *ngFor="let Department_Type_T of Department_Data"
+                     [ngValue]="Department_Type_T"
+                   >
+                     {{ Department_Type_T.Department_Name }}
+                   </option>
+                 </select>
+               </div> -->
+               <div class="col-md-5 row">
+                <label class="col-md-5 col-form-label text-sm-right">Notification Department</label>
+                <div class="col-md-7 col-sm-3 mb-2">
+                  <select [(ngModel)]="Department_Notification_" name="Department_Notification_" class="form-control p-0 pl-1">
+                    <option *ngFor="let department of filteredNotificationDepartments" [ngValue]="department">
+                      {{ department.Department_Name }}
+                    </option>
+                  </select>
+                </div>
+               </div>
+             
+
+              <div class="col-md-5 row">
+                <label class="col-md-5 col-sm-0 col-form-label text-sm-right" style="text-align: left !important;"
+                  >Duration
+                  <span
+                    style="
+                      color: #ef071e;
+                      font-size: 22px;
+                      vertical-align: -webkit-baseline-middle;
+                    "
+                    >*</span
+                  ></label
+                >
+                <div class="col-md-7 col-sm-3 mb-2">
+                  <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="Task_Detrails_.Duration"
+                  [value]="Task_Detrails_.Duration"
+                  name="Task_Detrails_.Duration"
+                />
+                </div>
+              </div>
+                  <div class="col-2" style="display: flex;justify-content: end;align-items: end;">
+                    <button
+                    type="submit"
+                    (click)="Add_Task_Details()"
+                    class="other-button-style"
+                    style="background-color: #42c242 !important"
+                    [hidden]="Hotel_Modify == true"
+                  >
+                    Add
+                  </button>
+                  </div>
+  
+  
+  
+  
+  
+              
+                    <div class="col-md-12" style="">
+                      <div class="card-body" style="padding-left: 15px !important;padding-right: 0 !important;">
+                        <div
+                          class="table-responsive" [style.height.px]="myInnerHeightTwo" 
+                          style="overflow-y: scroll; min-height: 80px;    border: solid 1px #dad0d0;"
+                        >
+                          <table
+                            class="table table-hover table-for-sale-search-section-diary" style=""
+                          >
+                            <thead class="thead">
+                              <th>Edit</th>
+                              <th>Delete</th>
+                              <th>No</th>
+  
+                              <th>Department </th>
+                              <th>Task</th>
+                              <th>Duration</th>
+                              <th>Notification Department Name</th>
+
+                          
+                            </thead>
+                            <tbody
+                              class="bk_tb_bg"
+                              *ngFor="
+                                let Task_Details_T of Task_Details_Sub_Data;
+                                let i = index
+                              "
+                            >
+                              <td class="td-padding">
+                                <span
+                                  class="icon-background2 mr-1"
+                                  (click)="Edit_Task_Details(Task_Details_T, i)"
+                                >
+                                  <mat-icon class="text-green small"
+                                    >edit</mat-icon
+                                  ></span
+                                >
+                              </td>
+                              <td class="td-padding">
+                                <span
+                                  class="icon-background3 mr-1"
+                                  (click)="Delete_Task_Details(i)"
+                                >
+                                  <mat-icon class="text-red small"
+                                    >close</mat-icon
+                                  ></span
+                                >
+                              </td>
+                              <td>{{ i + 1 }}</td>
+  
+                              <!-- <td>{{ Task_Details_T["Department_Name"] }}</td> -->
+                              <td>{{ Task_Details_T['Department_Name'] === 'Select' ? '' : Task_Details_T['Department_Name'] }}</td>
+                              <td>{{ Task_Details_T["Task_Item_Name"] }}</td>
+                              <td>{{ Task_Details_T["Duration"] }}</td>
+                              <td>{{ Task_Details_T["Notification_Department_Name"] === 'Select' ? '' : Task_Details_T['Notification_Department_Name'] }}</td>
+                              
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               
+                </div>
+
+
+                
+
+
+                <div class="col-md-12 row mt-1">
+                  <label
+                    class="col-md-2 col-lg-2 col-form-label text-sm-right x-tra-label"
+                    >Mandatory Task</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Process_Status_Details_.Mandatory_Task"
+                            (change)="clearAllCheckBox('MandatoryTask')"
+                            [(ngModel)]="
+                              Process_Status_Details_.Mandatory_Task
+                            "
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row mb-2 col-9" *ngIf="Process_Status_Details_.Mandatory_Task == true">
+            
+                    <!-- <div class="col-md-6 row">
+                      <label class="col-md-4 col-sm-0 col-form-label text-sm-right"
+                        >Duration
+                        <span
+                          style="
+                            color: #ef071e;
+                            font-size: 22px;
+                            vertical-align: -webkit-baseline-middle;
+                          "
+                          >*</span
+                        ></label
+                      >
+                      <div class="col-md-8 col-sm-3 mb-2">
+                        <input
+                        type="number"
+                        class="form-control"
+                        [(ngModel)]="Mandatory_Task_Detrails_.Duration"
+                        [value]="Mandatory_Task_Detrails_.Duration"
+                        name="Mandatory_Task_Detrails_.Duration"
+                      />
+                      </div>
+                    </div> -->
+               
+                    <div class="col-5 row" style="align-items: center;">
+  
+                    <label class="col-md-2 col-lg-4 col-form-label text-sm-right" style="align-items: center;text-align: left !important;"
+                    >Mandatory Task<span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+                  <div class="col-md-8 col-sm-3 mb-1">
+                    <select
+                      [(ngModel)]="Mandatory_Task_"
+                      name="Mandatory_Task_"
+                      class="form-control p-0 pl-1"
+                    >
+                      <option
+                        *ngFor="let Mandatory_Task_Type_T of Mandatory_Task_Data"
+                        [ngValue]="Mandatory_Task_Type_T"
+                      >
+                        {{ Mandatory_Task_Type_T.Task_Item_Name }}
+                      </option>
+                    </select>
+                  </div>
+  </div>
+                  <div class="col-2" style="display: flex;justify-content: end;align-items: end;">
+                    <button
+                    type="submit"
+                    (click)="Add_Mandatory_Task_Details()"
+                    class="other-button-style"
+                    style="background-color: #42c242 !important"
+                    [hidden]="Hotel_Modify == true"
+                  >
+                    Add
+                  </button>
+                  </div>
+  
+  
+  
+  
+  
+              
+                    <div class="col-md-12" style="">
+                      <div class="card-body" style="padding-left: 15px !important;padding-right: 0 !important;">
+                        <div
+                          class="table-responsive" [style.height.px]="myInnerHeightTwo" 
+                          style="overflow-y: scroll; min-height: 80px;    border: solid 1px #dad0d0;"
+                        >
+                          <table
+                            class="table table-hover table-for-sale-search-section-diary" style=""
+                          >
+                            <thead class="thead">
+                              <th>Edit</th>
+                              <th>Delete</th>
+                              <th>No</th>
+  
+                              <th>Mandatory Task</th>
+                              <!-- <th>Duration</th> -->
+
+                          
+                            </thead>
+                            <tbody
+                              class="bk_tb_bg"
+                              *ngFor="
+                                let Task_Details_Mandatory of MTask_Details_Sub_Data;
+                                let i = index
+                              "
+                            >
+                              <td class="td-padding">
+                                <span
+                                  class="icon-background2 mr-1"
+                                  (click)="Edit_Mandatory_Task_Details(Task_Details_Mandatory, i)"
+                                >
+                                  <mat-icon class="text-green small"
+                                    >edit</mat-icon
+                                  ></span
+                                >
+                              </td>
+                              <td class="td-padding">
+                                <span
+                                  class="icon-background3 mr-1"
+                                  (click)="Delete_MandatoryTask_Details(i)"
+                                >
+                                  <mat-icon class="text-red small"
+                                    >close</mat-icon
+                                  ></span
+                                >
+                              </td>
+                              <td>{{ i + 1 }}</td>
+  
+                              <td>{{ Task_Details_Mandatory["Task_Item_Name"] }}</td>
+                              <!-- <td>{{ Task_Details_Mandatory["Duration"] }}</td> -->
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               
+                </div>
+
+
+                
+             
+
+             
+              </div>
+            </form>
+          </div>
+        </div>
+        <div
+        class="col-md-12 row mt-1"
+        style="
+          align-items: center;
+          justify-content: end;
+          padding-right: 15px;
+          margin-top: 46px !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+        "
+      >
+        <!-- <button
+          mat-raised-button
+          type="submit"
+          id="Save_Button"
+          [hidden]="Department_Status_Save == false"
+          class="save-button-style pull-left mr-1"
+          (click)="Save_Department_Status()"
+        >
+          Save
+        </button> -->
+        <button
+        mat-raised-button
+        type="submit"
+        id="Save_Button"
+        [hidden]="Department_Status_Save == false"
+        class="save-button-style pull-left mr-1"
+        (click)="Show_Process_update()"
+    >
+        Save
+    </button>
+      
+        <button
+          mat-raised-button
+          type="submit"
+          class="close-button-style pull-left mr-1"
+          (click)="Close_Click()" style="margin-right: 0 !important;"
+        >
+          Close
+        </button>
+      </div>
+      </div>
+    </div>
+
+    <!-- <app-Process_update ></app-Process_update> -->
+    <app-Process_update *ngIf="showChildComponent" (close)="onClose()" (processStatusDetails)="handleProcessStatusDetails($event)"></app-Process_update>
+    <!-- <app-Process_update *ngIf="showChildComponent" (closeEvent)="handleCloseEvent()"></app-Process_update> -->
+  
+  </div>
+</div>
+</div>

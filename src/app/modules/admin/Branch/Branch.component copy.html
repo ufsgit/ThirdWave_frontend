@@ -1,0 +1,353 @@
+<div *ngIf="issLoading" class="overlay" 
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+<img src="/assets/img/spinner.gif" width="100px" >
+</div>
+    
+    <div class="main-content new-margin-T">
+    <div class="container-fluid2 right-sec">
+    <div class="row" *ngIf="Entry_View">
+    <div class="col-md-12 pl-1 pr-1" >
+    
+    <div class="card-body">
+    <form>
+    <div class="row">
+    <div class="col-md-6 pl-2 pr-2">
+    <!-- <div class="col-md-12">
+    <label class="col-md-3 label-crect-ledger-to-date-srch-sctn">Branch Name<span  style="color:#ef071e; font-size:24px; vertical-align: -webkit-baseline-middle; margin-left:8px;">*</span></label>
+    <mat-form-field class="col-md-9 led-srch-sctn-nput-tb margin-inputs-edit-portion-jouranl-section">
+    <input matInput type="text" maxlength="50" [(ngModel)]="Branch_.Branch_Name" name="Branch_.Branch_Name" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+    </mat-form-field>
+    </div> -->
+    
+
+    <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right" style="background: transparent;">Branch Name<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+        <div class="col-md-10 col-sm-9">
+            <input type="text" class="form-control"  [(ngModel)]="Branch_.Branch_Name" name="Branch_.Branch_Name" id="normal-input-4" placeholder="Branch Name">
+        </div>
+    </div>
+    
+    
+    <!-- <div class="col-md-12">
+    <label class="col-md-3 label-crect-ledger-to-date-srch-sctn">Address</label>
+    <mat-form-field class="col-md-9 led-srch-sctn-nput-tb margin-inputs-edit-portion-jouranl-section">
+    <input matInput type="text" maxlength="50" [(ngModel)]="Branch_.Address" name="Branch_.Address" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+    </mat-form-field>
+    </div>  -->
+    
+    
+    <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right" style="background: transparent;">Address</label>
+        <div class="col-md-10 col-sm-9">
+            <input type="text" class="form-control"  [(ngModel)]="Branch_.Address" name="Branch_.Address" id="normal-input-4" placeholder="Address">
+        </div>
+    </div>
+    
+    <!-- <div class="col-md-12">
+    <label class="col-md-3 label-crect-ledger-to-date-srch-sctn">Location</label>    
+    <mat-form-field class="col-md-9 led-srch-sctn-nput-tb margin-inputs-edit-portion-jouranl-section">
+    <input matInput type="text" maxlength="50" [(ngModel)]="Branch_.Location" name="Branch_.Location" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+    </mat-form-field>
+    </div>  -->
+    
+    <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right"style="background: transparent;">Location</label>
+        <div class="col-md-10 col-sm-9">
+            <input type="text" class="form-control"  [(ngModel)]="Branch_.Location" name="Branch_.Location" id="normal-input-4" placeholder="Location">
+        </div>
+    </div>
+    
+    
+    
+    <!-- <div class="col-md-12">
+        <label class="col-md-3 label-crect-ledger-to-date-srch-sctn">District</label>  
+    <mat-form-field class="col-md-9 led-srch-sctn-nput-tb margin-inputs-edit-portion-jouranl-section">
+    <input matInput type="text" maxlength="50" [(ngModel)]="Branch_.District" name="Branch_.District" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+    </mat-form-field>
+    </div>  -->
+    
+    <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right"style="background: transparent;">District</label>
+        <div class="col-md-10 col-sm-9">
+            <input type="text" class="form-control"  [(ngModel)]="Branch_.District" name="Branch_.District" id="normal-input-4" placeholder="District">
+        </div>
+    </div>
+    
+    
+    <!-- <div class="col-md-12">
+    <label class="col-md-3 label-crect-ledger-to-date-srch-sctn">State</label>   
+    <mat-form-field class="col-md-9 led-srch-sctn-nput-tb margin-inputs-edit-portion-jouranl-section">
+    <input matInput type="text" maxlength="50" [(ngModel)]="Branch_.State" name="Branch_.State" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+    </mat-form-field>
+    </div> -->
+    
+    <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right"style="background: transparent;">State</label>
+        <div class="col-md-10 col-sm-9">
+            <input type="text" class="form-control"  [(ngModel)]="Branch_.State" name="Branch_.State" id="normal-input-4" placeholder="State">
+        </div>
+    </div>
+    
+    
+    
+    <!-- <div class="col-md-12">
+    <label class="col-md-3 label-crect-ledger-to-date-srch-sctn">Country</label>   
+    <mat-form-field class="col-md-9 led-srch-sctn-nput-tb margin-inputs-edit-portion-jouranl-section">
+    <input matInput type="text" maxlength="50" [(ngModel)]="Branch_.Country" name="Branch_.Country" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+    </mat-form-field>
+    </div> -->
+    
+    <!-- <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right"style="background: transparent;">Country</label>
+        <div class="col-md-10 col-sm-9">
+            <input type="text" class="form-control" [(ngModel)]="Branch_.Country" name="Branch_.Country" id="normal-input-4" placeholder="Country">
+        </div>
+    </div> -->
+    
+    
+    <!-- <div class="col-md-12">
+    <label class="col-md-3 label-crect-ledger-to-date-srch-sctn">PinCode</label>  
+    <mat-form-field class="col-md-9 led-srch-sctn-nput-tb margin-inputs-edit-portion-jouranl-section">
+    <input matInput type="text" maxlength="50" [(ngModel)]="Branch_.PinCode" name="Branch_.PinCode" style="border: 1px solid #949494 !important;padding: 8px 3px !important;"> 
+    </mat-form-field>
+    </div> -->
+    
+    
+    <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right"style="background: transparent;">PinCode</label>
+        <div class="col-md-10 col-sm-9">
+            <input type="text" class="form-control" [(ngModel)]="Branch_.PinCode" name="Branch_.PinCode" id="normal-input-4" placeholder="PinCode">
+        </div>
+    </div>
+    
+    <!-- <div class="col-md-12">
+    <label class="col-md-3 label-crect-ledger-to-date-srch-sctn">Phone</label>   
+    <mat-form-field class="col-md-9 led-srch-sctn-nput-tb margin-inputs-edit-portion-jouranl-section">
+    <input matInput type="text" maxlength="50" [(ngModel)]="Branch_.Phone_Number" name="Branch_.Phone_Number" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+    </mat-form-field>
+    </div> -->
+    
+    <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right"style="background: transparent;">Phone</label>
+        <div class="col-md-10 col-sm-9">
+            <input type="number" class="form-control" [(ngModel)]="Branch_.Phone_Number" name="Branch_.Phone_Number" id="normal-input-4" placeholder="Phone">
+        </div>
+    </div>
+    
+    
+    <!-- <div class="col-md-12">
+    <label class="col-md-3 label-crect-ledger-to-date-srch-sctn">Email</label>   
+    <mat-form-field class="col-md-9 led-srch-sctn-nput-tb margin-inputs-edit-portion-jouranl-section">
+    <input matInput type="text" maxlength="50" [(ngModel)]="Branch_.Email" name="Branch_.Email" style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+    </mat-form-field>
+    </div> -->
+    
+    <div class="form-group form-row">
+        <label for="normal-input-4" class="col-md-2 col-sm-3 col-form-label text-sm-right"style="background: transparent;">Email</label>
+        <div class="col-md-10 col-sm-9">
+            <input type="text" class="form-control" [(ngModel)]="Branch_.Email" name="Branch_.Email" id="normal-input-4" placeholder="Email">
+        </div>
+    </div>
+    
+    <!-- <div class="col-md-12">
+    <button mat-raised-button type="submit"id="Save_Button"[hidden]="Branch_Save==false"  class="btn btn-danger pull-right" (click)="Save_Branch()">Save</button>
+    <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="Close_Click()">Close</button>
+    </div> -->
+    <div class="form-row mb-2">
+        <div class="col-lg-12">
+     
+            <button mat-raised-button type="submit" [hidden]="Branch_Save==false" id="Save_Button" class="save-button-style pull-right mr-1"(click)="Save_Branch()">Save</button>
+            <button mat-raised-button type="submit"  class="close-button-style pull-right mr-1 " (click)="Close_Click()">Close</button>
+        </div>
+    </div>
+    </div>
+    
+    <div class="col-md-6 pl-2 pr-2">
+    <div class="row full-box-contents-select-status-department">
+    <div class="col-lg-12 crect-title-table"><span _ngcontent-xmy-c9="" class="nav-tabs-title"> Select Department</span><span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></div>
+    <div _ngcontent-xmy-c9="" class="card" style="border:none;overflow-y: scroll;">
+    
+    <div _ngcontent-xmy-c9="" class="nav-tabs-navigation">
+    <table _ngcontent-xmy-c9="" class="table table-accounts-colour-text">
+    <tbody _ngcontent-xmy-c9=""><tr _ngcontent-xmy-c9="">
+    <th class="crect-align-tblelst-srlno-branch-oter">Sl.No</th>
+    <th class="crect-align-tblelst-status-branch-oter">Select</th>
+    <th>Department</th> 
+    </tr></tbody></table>
+    </div>
+    <div _ngcontent-xmy-c9="" class="card-body" style.height.px]="myTotalHeight"style="overflow-y: scroll;"><div _ngcontent-xmy-c9="" class="tab-content">
+    <div _ngcontent-xmy-c9="" class="tab-pane active" id="profile">
+    <table _ngcontent-xmy-c9="" class="table">
+    <tbody _ngcontent-xmy-c9="" *ngFor="let Department1 of Department_Data; let i = index">
+    <tr _ngcontent-xmy-c9="">
+    <td class="alighn-corrected-srl-no-branch-search-section">{{ i+1 }}</td>
+    <td _ngcontent-xmy-c9="" class="alighn-corrected-check-box-branch-search-section">  
+    <div _ngcontent-xmy-c9="" class="form-check mar-crect-for-check-bx-depart">
+    <label _ngcontent-xmy-c9="" class="form-check-label">
+    <input type="checkbox" name={{Department1.Department_Id}} class="form-check-input"  [(ngModel)]="Department1.Check_Box" [checked]="Department1.Check_Box">
+    <span _ngcontent-xmy-c9="" class="form-check-sign"  style="padding-left: 146px;
+    margin-top: 14px;"><span _ngcontent-xmy-c9="" class="check"></span>
+    </span></label></div></td>
+    <td style="padding-left: 229px;">{{Department1["Department_Name"]}}</td>
+    </tr>
+    </tbody></table></div>
+    </div></div></div>
+    <!--button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>-->
+    </div>
+    </div>
+    </div>
+    <div class="clearfix"></div>
+    </form>
+    </div>
+    
+    </div>
+    </div>
+    </div>
+    <!-- <div class="row" *ngIf="!Entry_View">
+    <div class="col-md-12">
+    <button mat-raised-button type="submit" (click)="Create_New()" class="btn btn-danger pull-right button-to-right-enquiry-for change-colour-button buton-save-search-edit"><i class="fa fa-plus" aria-hidden="true"></i></button>   
+    <button mat-raised-button type="submit" id="Search_Branch" (click)="Search_Branch()" class="btn btn-danger pull-right change-colour-button buton-save-search-edit"><i class="fa fa-search" aria-hidden="true"></i></button>
+    
+    </div>
+    <div class="col-md-12">
+    <div class="card card-plain"  [style.height.px]="myInnerHeight">
+    
+    <div class="card-body set-height-scroll-bar-wole-block">
+    <div class="table-responsive">
+    <table class="table table-hover heading-styles-as-gmail-format">
+    <thead class="">
+    <th class="srl-no-wdth-rdce-wle-pge">
+    Sl No
+    </th>
+    <th>
+    Branch Name
+    </th>
+    <th [hidden]="Branch_Edit==false" class="edit-delete-wdth-rdce-wle-pge">
+    Edit
+    </th>
+    <th [hidden]="Branch_Delete==false" class="edit-delete-wdth-rdce-wle-pge">
+    Delete
+    </th>
+    </thead>
+    <tbody class="bk_tb_bg" *ngFor="let Branch1 of Branch_Data; let i = index">
+    <tr>
+    <td style="padding-left:5px;">{{ i+1 }}</td>
+    <td>{{Branch1["Branch_Name"]}}</td>
+    <td>
+    <button _ngcontent-jry-c5="" _ngcontent-gxp-c5=""[hidden]="Branch_Edit==false"  aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button"><span class="material-icons-oulined"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" _ngcontent-gxp-c5="" class="material-icons" style = "font-weight: 900;font-size: 30px;" (click)="Edit_Branch(Branch1,i)" >create</i></span><div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay" ></div></button>
+    </td>
+    <td> 
+    <button style="border-width: 0ch;" _ngcontent-gdi-c11=""[hidden]="Branch_Delete==false"  class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" cdk-describedby-host="" ng-reflect-position="above" ng-reflect-message="Remove">
+        <span class="material-icons-two-tone"><i _ngcontent-gdi-c11="" class="material-icons"  style = "font-weight: 900;font-size: 30px;" (click)="Delete_Branch(Branch1,i)" >delete_outline</i></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"  ></div></button>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    
+    <label class="entry-num">Entries : {{Total_Entries}}</label>
+    
+    </div>
+    </div>
+    </div> -->
+    <div class="row" *ngIf="!Entry_View">
+        <div class="col-md-12 pt-2 mb-5">
+            <div class="dt-card mb-0 pb-1 pt-3">         
+                <div class="dt-card__body mb-0 pb-0">
+                    <form class="mb-0">           
+                    <div class="form-row" style="padding-left: 10px;">
+                        <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Branch Name</label>
+                        <div class="col-md-3 col-sm-3 mb-2">
+                            <input type="text" class="form-control" [(ngModel)]="Branch_Name_Search" name="Branch_Name"  placeholder="Branch Name">
+                           
+                        </div>
+                        
+                        <div class="col-md-4 col-lg-3 mt-0">                    
+                             <button (click)="Search_Branch()" mat-raised-button type="submit"  class="other-button-style pull-left mr-1">Search</button>
+                             <button (click)="Create_New()" mat-raised-button type="submit" class="save-button-style pull-left mr-1 ">Create New</button>
+        
+                            </div>
+                    </div>
+                </form>
+                </div>
+            </div>        
+          </div> 
+    
+        <!-- <div class="col-md-12 pl-0  mb-3">
+        
+                <form>           
+                <div class="form-row mb-0">
+                    <div class="col-md-11 mt-2">
+                        <button mat-raised-button type="submit" (click)="Create_New()" class="save-button-style pull-right mr-1 ">Create New</button>    
+                      <button mat-raised-button type="submit" (click)="Search_Branch()"  class="other-button-style pull-right mr-1">Search</button>    
+                    </div>
+                </div>
+            </form>
+        
+      </div>  -->
+      
+      
+      <div class="col-md-12  pr-2 pl-2" >
+        <div class="dt-module">             
+            <div class="dt-module__container" >
+                <!-- style="overflow: scroll;"[style.height.px]="myTotalHeight" -->
+                <div class="dt-module__content ps-custom-scrollbar">
+                    <div class="dt-module__content-inner card-body set-height-scroll-bar-wole-block">   
+                        <div class="dt-module__list">
+                            <!-- <div class="card-body set-height-scroll-bar-wole-block"> -->
+                            <div class="dt-module__list-item pb-2 pt-2" *ngFor="let Branch1 of Branch_Data; let i = index"> 
+                                <div class="dt-module__list-item-content">
+                                    <div class="user-detail">
+    
+                                        <span class="icon-background2 mr-1" *ngIf="Branch_Edit"  (click)="Edit_Branch(Branch1,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                        <span class="icon-background3 mr-1" *ngIf="Branch_Delete" (click)="Delete_Branch(Branch1,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+    
+    
+                                    <!-- <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" 
+                                        class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" 
+                                        mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button">
+                                        <span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" 
+                                         _ngcontent-gxp-c5="" class="material-icons save-material-style" (click)="Edit_Branch(Branch1,i)">edit</i></span>
+                                         <div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                         ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" 
+                                         class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" 
+                                         ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                         <div class="mat-button-focus-overlay"></div>
+                                    </button>   
+                                    <button _ngcontent-gdi-c11="" class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button" 
+                                        mat-raised-button="" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" 
+                                        cdk-describedby-host="" ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper">
+                                        <i _ngcontent-gdi-c11="" class="material-icons delete-material-style" (click)="Delete_Branch(Branch1,i)" >close</i></span>
+                                        <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" 
+                                        ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"></div>
+                                    </button> -->
+                                                               
+                                        <span class="user-name">{{Branch1["Branch_Name"]}}</span>
+                                       
+                                    </div>
+                                 
+                                </div>                                
+                            </div>
+                           
+                    
+                       <!-- </div> -->
+                         
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">                       
+                        <button type="submit" (click)="Search_Client_Accounts()" class="btn btn-primary">Previous</button>
+                        <button type="submit" (click)="Create_New()" class="btn btn-primary">Next</button>                             
+                    </div> -->
+                </div>
+            </div>
+           
+          </div>
+      </div>  
+      </div>
+    
+    
+    
+    </div>

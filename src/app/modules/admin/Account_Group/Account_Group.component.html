@@ -1,0 +1,128 @@
+
+
+<div *ngIf="issLoading" class="overlay" 
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+<img src="/assets/img/spinner.gif" width="100px" >
+</div>
+    <div class="main-content">
+    <div class="container-fluid">
+    <div class="row" *ngIf="Entry_View">
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-body">
+    <form>
+    <div class="row">
+    <div class="col-md-6">
+    <div class="col-md-12">
+    <label class="col-md-3 label-down-alighn-adrs-tre-prhse-mstr-down">Account Group <span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+    <mat-form-field class="col-md-8">
+    <input matInput type="text" [(ngModel)]="Account_Group_.Group_Name" name="Account_Group_.Group_Name" class=" input-text-item-group-diary" 
+    style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+   </mat-form-field>
+</div>
+   
+    </div>
+    <div class="col-md-6">
+            <div class="col-md-10">
+                <label class="col-md-3 label-to-crect-all-names-to-divs name-label-margin-down-employer-details-name">Under Group</label>
+                <input type="text" [matAutocomplete]="auto3" [(ngModel)]="Under_Group_" name="Under_Group_"
+                (click)="Load_Account_Group($event)" (input)="Load_Account_Group($event)" class="col-md-8 input-allighn-typer-head-all-divs"/>
+                <mat-autocomplete #auto3="matAutocomplete" [displayWith]="display_Under_Group">
+                <mat-option *ngIf="isLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
+                <ng-container *ngIf="!isLoading">
+                <mat-option *ngFor="let Account_Group_ of Account_Group_Typeahead_Data" [value]="Account_Group_">
+                <span>{{Account_Group_.Group_Name}}</span>
+                </mat-option>
+                </ng-container>
+                </mat-autocomplete>
+            </div>
+
+            <div class="col-md-12 margin-to-corect-search-sections">
+                    <button mat-raised-button type="submit" [hidden]="Account_Group_Save==false"id="Save_Button"class="btn btn-danger pull-right"(click)="Save_Account_Group()">Save</button>
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="Close_Click()">Close</button>
+            </div>
+
+    </div>
+   
+    </div>
+    <div class="clearfix"></div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="row" *ngIf="!Entry_View">
+        <div class="col-md-12">
+            <div class="card">
+           
+            <div class="card-body">
+            <form>
+            <div class="row">
+            <div class="col-md-6">
+            <div class="col-md-12 padding-allighn-corect-label-bank-reconcilation">
+            <label class="col-md-3 padding-allighn-corect-label-bank-reconcilation mrgin-alghn-label-text-otrs-nxt-one">Account Group</label>
+            <mat-form-field class="col-md-9 margin-lh-rh-to-crect-textbox ">
+            <input matInput type="text" [(ngModel)]="Search_Account_Group_" name="Search_Account_Group_" class="input-text-item-group-diary" 
+            style="border: 1px solid #949494 !important;padding: 8px 3px !important;">
+           </mat-form-field>
+        </div>
+            </div>
+
+        <div class="col-md-3">
+            <button mat-raised-button type="submit" (click)="Search_Account_Group()" class="btn btn-danger"><i class="fa fa-search" aria-hidden="true"></i></button> 
+            <button mat-raised-button type="submit" (click)="Create_New()" class="btn btn-danger"><i class="fa fa-plus" aria-hidden="true"></i></button> 
+        </div>
+            </div>
+            <div class="clearfix"></div>
+            </form>
+            </div>
+            </div>
+            </div>
+   
+        <div class="col-md-12 card-body">
+            <div class="card-plain ">
+                <div class="table-responsive">
+                    <div class="row grid_header"  style="background-color: #ebeef0;color: black;">
+                        <div class="col-md-2">Sl No</div>
+                        <div class="col-md-2">Item Group</div>
+                        <div class="col-md-1">Edit</div>
+                        <div class="col-md-1">Delete</div>
+                    </div>
+
+
+        <cdk-virtual-scroll-viewport [style.height.px]="myInnerHeight" itemSize="90" >
+            <ng-container *cdkVirtualFor="let Account_Group_1 of Account_Group_Data; let i = index">
+                <div class="row grid_data">
+                       <div class="col-md-2">{{ i+1 }}</div>
+                       <div class="col-md-2">{{Account_Group_1["Group_Name"]}}</div>      
+                       <div class="col-md-1" (click)="Edit_Account_Group(Account_Group_1,i)">
+                            <button _ngcontent-gdi-c11=""  [hidden]="Account_Group_Edit==false" class="btn btn-danger2"mattooltip="Edit Task" type="button" aria-describedby="cdk-describedby-message-1"
+                                    cdk-describedby-host=""ng-reflect-position="above" ng-reflect-message="Edit Task"><span class="mat-button-wrapper"><i _ngcontent-gdi-c11="" class="material-icons" 
+                                     >edit</i></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                    ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"></div>
+                            </button>   
+    
+                        </div>
+    
+                        <div class="col-md-1"  (click)="Delete_Account_Group(Account_Group_1.Account_Group_Id,i)">  
+                                <button _ngcontent-gdi-c11="" [hidden]="Account_Group_Delete==false" class="btn btn-danger1" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" cdk-describedby-host=""
+                                       ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper"><i _ngcontent-gdi-c11="" class="material-icons" 
+                                        >close</i></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                        ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay" ></div>
+                                </button>          
+                        </div>
+                </div>
+            </ng-container> 
+        </cdk-virtual-scroll-viewport>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-4">
+        <label class="entry-num">Entries : {{Total_Entries}}</label>
+    </div>
+    </div>
+    </div>
+    </div>
+    

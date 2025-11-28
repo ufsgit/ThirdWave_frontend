@@ -1,0 +1,1247 @@
+<div
+  *ngIf="issLoading"
+  class="overlay"
+  style="margin-top: 21%; margin-left: 46%; background-color: transparent"
+  [style.left.px]="spinleft"
+>
+  <img src="/assets/img/spinner.gif" width="100px" />
+</div>
+<div class="main-content screenfixed new-margin-T dash_big_screen">
+  <div class="container-fluid2  ">
+    <div class="row" *ngIf="!showChildComponent && !Status_View">
+      <div class="col-md-12 pl-0 pr-0 pt-3">
+        <div class="dt-card mb-0 pb-1 pt-4 right-new-width inner-dtcard" style="margin-right: 20px;">
+          <div class="dt-card__body mb-0 pb-0" style="padding-right: 80px">
+            <form class="mb-0">
+              <div class="form-row" style="padding-left: 10px">
+                <div class="col-md-7 row">
+                  <label class="col-md-4 col-sm-0 col-form-label text-sm-right"
+                    >Department Status
+                    <span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+                  <div class="col-md-8 col-sm-3 mb-2">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="Department_Status_.Department_Status_Name"
+                      name="Department_Status_.Department_Status_Name"
+                      placeholder="Department Status"
+                    />
+                  </div>
+                </div>
+
+                <!-- <div class="col-md-6 row">
+                    <label class="col-md-4 col-sm-0 col-form-label text-sm-right">Status Type</label>                           
+                   <div class="col-md-8 col-sm-3 mb-1">
+           
+                    <select [(ngModel)]="Status_Type_" name="Status_Type_" required class="form-control p-0 pl-1">
+                        <option *ngFor="let Status_Type_T of Status_Type_Mode_Data " [ngValue]="Status_Type_T">{{Status_Type_T.Status_Type_Name}}</option>
+                        </select>
+                    
+            
+                   </div> 
+                   </div> -->
+
+                <div class="col-md-5 row">
+                  <label
+                    for="normal-input-4"
+                    class="col-md-6 col-sm-3 col-form-label text-sm-right"
+                    style="background: transparent"
+                    >FollowUp</label
+                  >
+                  <div class="col-md-6 col-sm-9">
+                    <select
+                      name="Status_Followup"
+                      [(ngModel)]="Status_Followup"
+                      required
+                      class="form-control p-0 pl-1"
+                      id="normal-input-4"
+                    >
+                      <option value="1">yes</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-5 row">
+                  <label
+                    for="normal-input-4"
+                    class="col-md-6 col-sm-3 col-form-label text-sm-right"
+                    style="background: transparent"
+                    >Application Status</label
+                  >
+                  <div class="col-md-6 col-sm-9">
+                    <select
+                      name="Application_Status_Followup"
+                      [(ngModel)]="Application_Status_Followup"
+                      required
+                      class="form-control p-0 pl-1"
+                      id="normal-input-4"
+                    >
+                      <option value="1">yes</option>
+                      <option value="0">No</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-7 row">
+                  <label class="col-md-4 col-sm-0 col-form-label text-sm-right"
+                    >Class</label
+                  >
+                  <div class="col-md-8 col-sm-3 mb-1">
+                    <select
+                      [(ngModel)]="Class_Mode_"
+                      name="Class_Mode_"
+                      required
+                      class="form-control p-0 pl-1"
+                    >
+                      <option
+                        *ngFor="let Class_Data_T of Class_Data"
+                        [ngValue]="Class_Data_T"
+                      >
+                        {{ Class_Data_T.Class_Name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Select notification department -->
+                <!-- <div class="col-md-7 row">
+                  <label class="col-md-4 col-sm-0 col-form-label text-sm-right"
+                    >Notification</label
+                  >
+                  <div 
+                    class="col-md-8 col-sm-3 mb-1" 
+                    style="max-height: 45px;    padding: 7px !important;"
+                    [ngStyle]="{'overflow': showDropdow === true ? 'visible' : 'hidden'}">
+                    <div class="form-control p-0 pl-1" (click)="toggleNotificationDropdown()">Select</div>
+                    <div 
+                      style="z-index: 100; position: relative; background-color: white;">
+                      <div 
+                      style="padding: 5px;"  
+                      *ngFor="let department of departmentList">
+                      <input 
+                        type="checkbox" 
+                        [checked]="checkNotificationDefaultly(department.Department_Id)"
+                        style="margin-right: 10px;"
+                        (click)="addNotificationToArray($event, department)">
+                          {{ department.Department_Name }}
+                    </div>
+                    </div>
+                  </div>
+                </div> -->
+                <!-- /Select notification department -->
+
+                <!-- <div class="col-md-5 row" *ngIf="Enable_Registration_Checkbox">
+                  <label
+                    class="col-md-2 col-lg-6 col-form-label text-sm-right x-tra-label"
+                    >Enrollment</label
+                  >
+
+                  <div
+                    class="col-md-6 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Department_Status_.Registration"
+                            [(ngModel)]="Department_Status_.Registration"
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="col-md-7 row">
+                  <label class="col-md-4 col-sm-0 col-form-label text-sm-right"
+                    >Status Order
+                    <span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+                  <div class="col-md-3 col-sm-3 mb-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      [(ngModel)]="Department_Status_.Status_Order"
+                      name="Department_Status_.Status_Order"
+                      placeholder="Status Order"
+                    />
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+           
+
+  <!-- Pictorial Representation Order -->
+  <div class="col-md-7 row">
+  <label class="col-md-4 col-sm-0 col-form-label text-sm-right">
+    Pictorial Representation Order
+    <span
+      style="
+        color: #ef071e;
+        font-size: 22px;
+        vertical-align: -webkit-baseline-middle;
+      "
+      >*</span
+    >
+  </label>
+  <div class="col-md-3 col-sm-3 mb-2">
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="Department_Status_.Pictorial_Representation_Order"
+      name="Department_Status_.Pictorial_Representation_Order"
+      placeholder="Pictorial Representation Order"
+    />
+  </div>
+  </div>
+
+  <!-- Sub Order -->
+  <div class="col-md-7 row">
+  <label class="col-md-4 col-sm-0 col-form-label text-sm-right">
+    Sub Order
+    <span
+      style="
+        color: #ef071e;
+        font-size: 22px;
+        vertical-align: -webkit-baseline-middle;
+      "
+      >*</span
+    >
+  </label>
+  <div class="col-md-3 col-sm-3 mb-2">
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="Department_Status_.Sub_Order"
+      name="Department_Status_.Sub_Order"
+      placeholder="Sub Order"
+    />
+  </div>
+  </div>
+
+                <div class="col-md-7 row">
+                  <!-- *ngIf="Enable_Transfer_Status" -->
+                  <label
+                    
+                    class="col-md-4 col-lg-0 col-form-label text-sm-right x-tra-label"
+                    >Transfer Status</label
+                  >
+                  <div                  
+                    _ngcontent-xmy-c9=""
+                    class="checkbox-to-crect-sales-search-section col-md-1"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                    >
+                      <label _ngcontent-xmy-c9="" class="form-check-label">
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          name="Department_Status_.Transfer_Status"
+                          [(ngModel)]="Department_Status_.Transfer_Status"
+                        />
+                        <span _ngcontent-xmy-c9="" class="form-check-sign"
+                          ><span _ngcontent-xmy-c9="" class="check"> </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  
+
+
+                  <label class="col-md-4 col-lg-0 col-form-label text-sm-right x-tra-label">Intake Date and Year</label>
+<div class="checkbox-to-crect-sales-search-section col-md-1">
+  <div class="form-check uper-dte-lbel-sales-sctn-new pl-0">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input" name="Department_Status_.Intake_Date_Year" [(ngModel)]="Department_Status_.Intake_Date_Year" />
+      <span class="form-check-sign"><span class="check"></span></span>
+    </label>
+  </div>
+</div>
+
+<label class="col-md-4 col-lg-0 col-form-label text-sm-right x-tra-label">Public Status</label>
+<div class="checkbox-to-crect-sales-search-section col-md-1">
+  <div class="form-check uper-dte-lbel-sales-sctn-new pl-0">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input" name="Department_Status_.Public_Status" [(ngModel)]="Department_Status_.Public_Status" />
+      <span class="form-check-sign"><span class="check"></span></span>
+    </label>
+  </div>
+</div>
+
+
+
+                  <label
+                    class="col-md-3 col-sm-2 col-form-label text-sm-right"
+                    *ngIf="Department_Status_.Transfer_Status"
+                    >Transfer Department<span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+
+                  <div
+                    class="col-md-4 col-sm-3 mb-1"
+                    *ngIf="Department_Status_.Transfer_Status"
+                  >
+                    <select
+                      [(ngModel)]="Automatic_Department_"
+                      name="Automatic_Department_"
+                      required
+                      class="form-control p-0 pl-1"
+                    >
+                      <option
+                        *ngFor="let Automatic_T1 of Automatic_Department_Data"
+                        [ngValue]="Automatic_T1"
+                      >
+                        {{ Automatic_T1.Department_Name }}
+                      </option>
+                    </select>
+                  </div>
+
+
+
+
+
+
+
+
+                  <!-- New Status Type dropdown -->
+                  <!-- <label class="col-md-3 col-sm-2 col-form-label text-sm-right">
+                    Status Type
+                  </label>
+                  <div class="col-md-2 col-sm-3 mb-1">
+                    <select
+                      [(ngModel)]="SelectedStatusType_"
+                      name="SelectedStatusType_"
+                      required
+                      class="form-control p-0 pl-1"
+                    >
+                      <option *ngFor="let status of StatusTypes" [ngValue]="status">
+                        {{ status.Status_Type_Name }}
+                      </option>
+                    </select>
+                  </div> -->
+                  
+    <div class="form-group form-row">
+      <label class="col-md-3 col-sm-2 col-form-label text-sm-right">Status Type</label>                           
+     <div class="col-md-9 col-sm-9 mb-1">
+         <select [(ngModel)]="SelectedStatusType_" name="SelectedStatusType_" required class="form-control p-0 pl-1">
+          <option *ngFor="let status of StatusTypes" [ngValue]="status">{{status.Status_Type_Name}}</option>
+      </select>
+     </div> 
+  </div>
+                  <br />
+
+                  <!-- <label
+              class="col-md-0 col-lg-2  col-form-label text-sm-right x-tra-label" 
+              
+              >Notification Status</label
+          >
+                 
+     
+              <div
+                  _ngcontent-xmy-c9=""
+                  class="checkbox-to-crect-sales-search-section"
+              >
+                  <div
+                      _ngcontent-xmy-c9=""
+                      class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                  >
+                      <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                              type="checkbox"
+                              class="form-check-input"
+                              name="Department_Status_.Notification_Status"
+                              [(ngModel)]="Department_Status_.Notification_Status"
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                              ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                      </label>
+                  </div>
+              </div> -->
+
+                  <label
+                    class="col-md-4 col-sm-2 col-form-label text-sm-right"
+                    *ngIf="Department_Status_.Notification_Status"
+                    >Notification Department</label
+                  >
+
+                  <div
+                    class="col-md-2 col-sm-3 mb-1"
+                    *ngIf="Department_Status_.Notification_Status"
+                  >
+                    <select
+                      [(ngModel)]="Notification_Department_"
+                      name="Notification_Department_"
+                      required
+                      class="form-control p-0 pl-1"
+                    >
+                      <option
+                        *ngFor="let Automatic_T of Automatic_Department_Data"
+                        [ngValue]="Automatic_T"
+                      >
+                        {{ Automatic_T.Department_Name }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-5 row">
+                  <label
+                    for="normal-input-4"
+                    class="col-md-6 col-sm-3 col-form-label text-sm-right"
+                    style="background: transparent"
+                    >Display In</label
+                  >
+                  <div class="col-md-6 col-sm-9">
+                    <select
+                      name="Display_In"
+                      [(ngModel)]="Display_In"
+                      required
+                      class="form-control p-0 pl-1"
+                      id="normal-input-4"
+                    >
+                      <option value="0">All</option>
+                      <option value="1">Application</option>
+                      <option value="2">FollowUp</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- <div class="col-md-7 row">
+                  <label
+                    class="col-md-2 col-lg-4 col-form-label text-sm-right x-tra-label"
+                    >Enrollment Mandatory</label
+                  >
+
+                  <div
+                    class="col-md-1 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Department_Status_.Registration_Mandatory"
+                            [(ngModel)]="
+                              Department_Status_.Registration_Mandatory
+                            "
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <label
+                    class="col-md-2 col-lg-7 col-form-label x-tra-label pl-0 pr-0"
+                    style="color: #ef071e"
+                    >Note:Student must be enrolled to use this status</label
+                  >
+                </div> -->
+
+                <div class="col-md-5 row" *ngIf="Display_In == 1">
+                  <label
+                    class="col-md-2 col-lg-6 col-form-label text-sm-right x-tra-label"
+                    >Update in Profile</label
+                  >
+
+                  <div
+                    class="col-md-6 col-sm-0 mb-1 x-tra-label-mob"
+                    style="padding-top: 6px"
+                  >
+                    <div
+                      _ngcontent-xmy-c9=""
+                      class="checkbox-to-crect-sales-search-section"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check uper-dte-lbel-sales-sctn-new pl-0"
+                      >
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            name="Department_Status_.Update_in_Profile"
+                            [(ngModel)]="Department_Status_.Update_in_Profile"
+                          />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"
+                            ><span _ngcontent-xmy-c9="" class="check"> </span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <label class="col-md-3 col-sm-2 col-form-label text-sm-right">Color</label>                           
+  <div class="col-md-5 col-sm-2 mb-1">
+    <input type="color" id="Department_Status_.Color_Type_Name"    class="form-control p-0 pl-1"
+    [(ngModel)]="Department_Status_.Color_Type_Name"   name="Department_Status_.Color_Type_Name"
+    value="#fffff">
+</div>
+
+                <div
+                  class="col-md-12 row"
+                  style="
+                    align-items: center;
+                    justify-content: end;
+                    padding-right: 15px;
+                    padding-right: 40px;
+                  "
+                >
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    id="Save_Button"
+                    [hidden]="Department_Status_Save == false"
+                    class="save-button-style pull-left mr-1"
+                    (click)="Show_Process_update()"
+                  >
+                    Save
+                  </button>
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    class="close-button-style pull-left mr-1"
+                    (click)="Close_Click()"
+                  >
+                    Close
+                  </button>
+                </div>
+
+                <!--                   
+                  <div class="col-md-4 col-lg-12 mt-0" style="    display: flex;
+                  justify-content: end;">                    
+                  
+                    <button mat-raised-button type="submit"id="Save_Button" [hidden]="Department_Status_Save==false"  class="save-button-style pull-left mr-1"(click)="Save_Department_Status()">Save</button> 
+                    <button mat-raised-button type="submit" class="close-button-style pull-left mr-1 " (click)="Close_Click()">Close</button>
+                      </div> -->
+              </div>
+            </form>
+          </div>
+        </div>
+          <!-- <app-Department_Status_Process_update ></app-Department_Status_Process_update> -->
+
+      </div>
+    </div>
+
+    <div>  <app-Department_Status_Process_update *ngIf="showChildComponent"  [progress]="progress"  (close)="onClose()" (processStatusDetails)="handleProcessStatusDetails($event)"></app-Department_Status_Process_update></div>
+   <!-- <div><Department_Status_Process_update [progress]="progress"></Department_Status_Process_update></div>  -->
+    <div class="row" *ngIf="!Entry_View">
+      <div class="col-md-12 pl-0 pr-0 ">
+        <div class="dt-card mb-0 new-dt-card">
+          <div class="dt-card__body new-dt-cardbody mb-0 pb-0">
+            <form class="mb-0">
+              <div class="form-row" style="padding-left: 10px;    padding-left: 10px;
+              align-items: center;
+              justify-content: space-between;">
+                
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                  >Department Status</label
+                >
+                <div class="col-md-2 col-sm-3 ">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="Department_Status_Name_Search"
+                    name="Department_Status_Name"
+                    placeholder="Department Status"
+                  />
+                </div>
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                  >Department</label
+                >
+                <div class="col-md-2 col-sm-2 ">
+                  <!-- <input type="text" class="form-control" [(ngModel)]="Department_Status_Name_Search" name="Department_Status_Name"  placeholder="Department Status"> -->
+                  <select
+                    [(ngModel)]="Search_Department1_"
+                    name="Search_Department1_"
+                    required
+                    class="form-control p-0 pl-1"
+                  >
+                    <option
+                      *ngFor="let Automatic_T1 of Automatic_Department_Data"
+                      [ngValue]="Automatic_T1"
+                    >
+                      {{ Automatic_T1.Department_Name }}
+                    </option>
+                  </select>
+                </div>
+
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                  >Transfer Department</label
+                >
+                <div class="col-md-2 col-sm-2 ">
+                  <select
+                    [(ngModel)]="Search_Transfer_Department_"
+                    name="Search_Transfer_Department_"
+                    required
+                    class="form-control p-0 pl-1"
+                  >
+                    <option
+                      *ngFor="let Automatic_T1 of Automatic_Department_Data"
+                      [ngValue]="Automatic_T1"
+                    >
+                      {{ Automatic_T1.Department_Name }}
+                    </option>
+                  </select>
+                </div>
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Order</label>
+                <div class="col-md-3 col-sm-3 ">
+                    <input type="text" class="form-control" [(ngModel)]="Order_Name_Search_" name="Order_Name_Search_"  placeholder="Order">
+                   
+                </div>
+                <div class="col-md-11 col-lg-12 mt-2" style="display: flex;align-items: center;justify-content: end;">
+                  <button
+                    (click)="Search_Department_Status()"
+                    mat-raised-button
+                    type="submit"
+                    style="height: 37px !important;"
+                    class="other-button-style pull-left mr-1 search-btn"
+                  >
+                    Search
+                  </button>
+                  <button
+                  style="height: 37px !important;"
+                    (click)="Create_New_Department_Status()"
+                    mat-raised-button
+                    type="submit"
+                    class="save-button-style pull-left mr-1 new-btn"
+                  >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none" style="    background: #fff;
+                  border-radius: 50%;">
+                    <mask id="mask0_41_83" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="17" height="17">
+                      <rect width="17" height="17" fill="#D9D9D9"/>
+                    </mask>
+                    <g mask="url(#mask0_41_83)">
+                      <path d="M7.79175 9.20832H3.54175V7.79166H7.79175V3.54166H9.20842V7.79166H13.4584V9.20832H9.20842V13.4583H7.79175V9.20832Z" fill="#1C1B1F"/>
+                    </g>
+                    </svg>
+                    Create New
+                  </button>
+                  <li class="nav-item dropdown col-0" style="display: flex;justify-content: end;    padding-left: 20px;    padding-right: 0px;">
+                    <a
+                      class="nav-link pr-0 icon-container"
+                      href="javascript:void(0)"
+                      id="navbarDropdownMenuLink"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      (click)="Reset_Notification_Count()" style="    padding: 0;
+                      padding-top: 10px;
+                      font-size: 20px;    font-size: 20px;
+    vertical-align: 0;
+    margin-top: 6px;
+    padding: 0 !important;
+                    "
+                    >
+                      <!-- <i class="fa fa-bell-o" style="margin-top: -4px; color: #7838ff"></i> -->
+                      <span
+                      class="notification"
+                      (click)="Reset_Notification_Count()"
+                      [hidden]="Count_Notification"
+                      >{{ Notification_Count }}</span
+                      >
+                      <p class="notification-p">
+                      <span class="d-lg-none d-md-block">Some Actions</span>
+                      </p>
+                    </a>
+                
+                    <div
+                      class="dropdown-menu dropdown-menu-right scroll-dropdown-notifi home-component notification-box"
+                      aria-labelledby="navbarDropdownMenuLink"
+                      style="
+                      height: 250px;
+                      overflow-y: scroll;
+                      padding-left: 25px;
+                      background: #e0e4e8;
+                      "
+                      [hidden]="Count_Notification"
+                    >
+                      <div class="notification-portion" style="color: #080808">
+                      <h5>
+                        <b>
+                        <i
+                          class="fa fa-bell"
+                          style="color: #86beb9; margin-right: 20px"
+                        ></i>
+                        Notifications
+                        </b>
+                      </h5>
+                
+                      <!-- <a class="close close-notification" href="javascript:void(0)">
+                              &times;</a> -->
+                      </div>
+                      <div *ngFor="let Notification_T of Notification_Data; let i = index">
+                      <!-- <a	 (click)="Notification_Item_Click(Notification_T )">
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;By&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 							 
+                            </a> -->
+                      <!-- <a href=""> -->
+                      <ul
+                        class="list-unstyled team-members"
+                        (click)="Notification_Item_Click(Notification_T)"
+                        style="border-bottom: solid 1px #f8f8f8; cursor: pointer"
+                      >
+                        <li>
+                        <div class="row">
+                          <div class="col-md-2 col-2">
+                          <div class="avatar">
+                            <i
+                            class="fa fa-envelope"
+                            style="color: #7aaba6; font-size: 18px"
+                            ></i>
+                          </div>
+                          </div>
+                          <div
+                          class="col-md-8 col-7"
+                          style="color: black; font-size: 13px"
+                          >
+                          <b style="font-weight: bold; color: #8a85bc">{{
+                            Notification_T["Student_Name"]
+                          }}</b>
+                          <br />
+                          {{ Notification_T["Notification_Type_Name"] }} <br />
+                          <span class="text-muted">
+                            <b style="color: black">{{
+                            Notification_T["From_User_Name"]
+                            }}</b>
+                          </span>
+                          </div>
+                          <!-- <div class="col-md-3 col-3 text-right">
+                                  <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></button>
+                                </div> -->
+                        </div>
+                        </li>
+                      </ul>
+                      <!-- </a> -->
+                      <!-- <a
+                              *ngIf="
+                                Notification_T.Entry_Type == 1 ||
+                                Notification_T.Entry_Type == 2 ||
+                                Notification_T.Entry_Type == 3
+                              "
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Student']"
+                              (click)="Edit_Lead(Notification_T.Student_Id, i)"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;By&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                               
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type == 4"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              
+                              [routerLink]="['/Receipt_Confirmation']"
+                              
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type == 5"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Student']"
+                              (click)="Edit_Lead(Notification_T.Student_Id, i)"
+                            >
+                             
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 6"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Student']"
+                              (click)="Edit_Lead(Notification_T.Student_Id, i)"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 7"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Refund_Confirmation']"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 8"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Student_Task']"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 9"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Refund_Approval']"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 10"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Refund_Approval']"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 11"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Refund_Confirmation']"
+                            >
+                              <i class="fa fa-calendar"></i>&nbsp;
+                              {{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a> -->
+                      </div>
+                      <!-- <a href=""> -->
+                      <p
+                      class="v-btn mt-5"
+                      style="font-size: 14px; position: relative; top: 15px"
+                      (click)="Get_Notification()"
+                      >
+                      View All
+                      </p>
+                      <!-- </a>		 -->
+                    </div>
+                    </li>
+                </div>
+              
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-11 mt-2 mb-6">
+          <button (click)="Create_New_Department_Status()" mat-raised-button type="submit" class="save-button-style pull-right ">Create New</button>
+          <button (click)="Search_Department_Status()" mat-raised-button type="submit"  class="other-button-style pull-right mr-1">Search</button>
+  
+      </div> -->
+
+      <div class="col-md-12 pl-0 pr-0 new-scroll" itemSize="10">
+        <div class="dt-module second-section main-new-card  pt-0"  [style.height.px]="myInnerHeight"     style="overflow-y: scroll">
+          <div class="dt-module__container">
+            <!-- style="overflow: scroll;"[style.height.px]="myTotalHeight" -->
+            <div class="dt-module__content ps-custom-scrollbar">
+              <div class="dt-module__content-inner card-bodyk">
+                <!-- <div class="dt-module__list"  [style.height.px]="myInnerHeight " style="overflow-y: scroll"> -->
+                <div
+                  class="dt-module__list "
+                
+              
+                  id="profile"
+                >
+                  <!-- <div class="card-body set-height-scroll-bar-wole-block"> -->
+                  <div
+                    class="dt-module__list-item pb-2 pt-2 new-card"
+                    *ngFor="
+                      let Department_Status of Department_Status_Data;
+                      let i = index
+                    "
+                  >
+                    <div class="dt-module__list-item-content d-flex">
+                      <div class="user-detail">
+                        <span
+                          class="icon-background2 mr-1"
+                          *ngIf="Department_Status_Edit"
+                          (click)="Edit_Department_Status(Department_Status, i)"
+                        >
+                          <mat-icon class="text-green small"
+                            >edit</mat-icon
+                          ></span
+                        >
+                        <span
+                          class="icon-background3 mr-1"
+                          *ngIf="Department_Status_Delete"
+                          (click)="
+                            Delete_Department_Status(
+                              Department_Status.Department_Status_Id,
+                              i
+                            )
+                          "
+                        >
+                          <mat-icon class="text-red small"
+                            >close</mat-icon
+                          ></span
+                        >
+
+                        <!-- <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" 
+                                    class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" 
+                                    mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button">
+                                    <span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" 
+                                     _ngcontent-gxp-c5="" class="material-icons save-material-style" (click)="Edit_Department_Status(Department_Status,i)" >edit</i></span>
+                                     <div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                     ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" 
+                                     class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" 
+                                     ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                     <div class="mat-button-focus-overlay"></div>
+                                </button>     
+                                     <button _ngcontent-gdi-c11="" class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button" 
+                                     mat-raised-button="" mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" 
+                                     cdk-describedby-host="" ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper">
+                                     <i _ngcontent-gdi-c11="" class="material-icons delete-material-style"  (click)="Delete_Department_Status(Department_Status.Department_Status_Id,i)" >close</i></span>
+                                     <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" 
+                                     ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay"></div>
+                                    </button>                               -->
+                        <!-- <span class="user-name">{{Department_Status["Department_Status_Name"]}}</span> -->
+
+                        <span style="color: #000000"> Status - &nbsp; </span>
+
+                        <span class="user-name" style="color: #ef071e"
+                          >{{ Department_Status.Department_Status_Name }} &nbsp;
+                        </span>
+
+                        <!-- <span
+                          *ngIf="Department_Status.Transfer_Department_Name"
+                          style="color: #000000"
+                        >
+                          Transfer Department - &nbsp;
+                        </span>
+
+                        <span style="color: #ef071e">
+                          {{
+                            Department_Status.Transfer_Department_Name
+                          }}
+                          &nbsp;</span
+                        > -->
+
+                        <!-- <span
+                          *ngIf="Department_Status.Class_Name"
+                          style="color: #000000"
+                        >
+                          Class - &nbsp;
+                        </span>
+
+                        <span style="color: #ef071e">
+                          {{ Department_Status.Class_Name }}</span
+                        > -->
+                        <span
+                        
+                        style="color: #000000"
+                      >
+                      Status Type
+                      - &nbsp;
+                      </span>
+
+                      <span style="color: #ef071e">
+                        {{ Department_Status.Dept_Status_Type_Name }}</span
+                      > 
+
+                      &nbsp;&nbsp;
+                         <span
+                          *ngIf="Department_Status.Status_Order"
+                          style="color: #000000"
+                        >
+                          Order - &nbsp;
+                        </span>
+                        &nbsp;
+                        <span
+                          *ngIf="Department_Status.Status_Order"
+                          style="color: #ef071e"
+                        >
+                          {{ Department_Status.Status_Order }}</span >
+                      
+<!-- 
+                        <span 
+                        class="other-button-style pull-left mr-1 mr-6 ml-3" 
+                        (click)="redirectToCreateStatusTask(Department_Status.Department_Status_Id, Department_Status)">
+                        View Tasks
+                      </span> -->
+
+                        <!-- <span class="dt-separator-v">&nbsp;</span> -->
+                        <!-- <button (click)="Add_Sub_Status(Department_Status,i)"   mat-raised-button type="submit"  class="save-button-style pull-left mr-1 ">Add Sub Status</button> -->
+                      </div>
+                      <!-- <span 
+                        class="other-button-style pull-left mr-1 mr-6" 
+                        (click)="redirectToCreateStatusTask(Department_Status.Department_Status_Id, Department_Status)">
+                        View Tasks
+                      </span> -->
+                    </div>
+                  </div>
+
+                  <!-- </div> -->
+                </div>
+              </div>
+              <!-- <div class="form-group">                       
+                    <button type="submit" (click)="Search_Client_Accounts()" class="btn btn-primary">Previous</button>
+                    <button type="submit" (click)="Create_New()" class="btn btn-primary">Next</button>                             
+                </div> -->
+            </div>
+            <!-- <div class="form-group">  
+                <div class="col-md-6" style="float: right;">                     
+            <button mat-raised-button type="submit" (click)="previous_Click()"  class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-left" aria-hidden="true" style="color:#5f6368;"></i></button>
+            <button mat-raised-button type="submit"  (click)="Next_Click()" class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2" style="background: none;"><i class="fa fa-chevron-right" aria-hidden="true" style="color: #5f6368;"></i></button>
+            </div>
+        </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!Sub_Status_View">
+    <div class="col-md-12 mt-2 pl-0">
+      <div class="dt-card mb-0 pb-1">
+        <div class="dt-card__body mt-1 mb-0 pb-0">
+          <form class="mb-0">
+            <div class="form-row">
+              <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                >Department Status</label
+              >
+              <div class="col-md-3 col-lg-3 col-xl-2 mb-2">
+                <input
+                  readonly
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="Department_Status_.Department_Status_Name"
+                  name="Department_Status_.Department_Status_Name"
+                  placeholder=""
+                />
+              </div>
+              <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                >Sub Status<span
+                  style="
+                    color: #ef071e;
+                    font-size: 22px;
+                    vertical-align: -webkit-baseline-middle;
+                  "
+                  >*</span
+                ></label
+              >
+              <div class="col-md-3 col-sm-3 col-xl-2 mb-2">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="Sub_Status_.Sub_Status_Name"
+                  name="Sub_Status_.Sub_Status_Name"
+                  placeholder=""
+                />
+              </div>
+
+              <label
+                for="normal-input-4"
+                class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                style="background: transparent"
+                >FollowUp<span
+                  style="
+                    color: #ef071e;
+                    font-size: 22px;
+                    vertical-align: -webkit-baseline-middle;
+                  "
+                  >*</span
+                ></label
+              >
+              <div class="col-md-1 col-lg-2">
+                <select
+                  name="FollowUp_Department"
+                  [(ngModel)]="Sub_Status_.FollowUp"
+                  required
+                  class="form-control p-0 pl-1"
+                  id="normal-input-4"
+                >
+                  <option value="1">yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+
+              <label
+                for="normal-input-4"
+                class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                style="background: transparent"
+                >Duration<span
+                  style="
+                    color: #ef071e;
+                    font-size: 22px;
+                    vertical-align: -webkit-baseline-middle;
+                  "
+                  >*</span
+                ></label
+              >
+              <div class="col-md-2 col-lg-1">
+                <input
+                  type="number"
+                  class="form-control"
+                  [(ngModel)]="Sub_Status_.Duration"
+                  name="Sub_Status_.Duration"
+                  id="normal-input-4"
+                  placeholder=""
+                />
+              </div>
+              <div class="col-md-0 col-lg-0 col-xl-0">
+                <button
+                  (click)="Close_Click()"
+                  mat-raised-button
+                  type="submit"
+                  class="close-button-style pull-left btnflot mr-1"
+                >
+                  Close
+                </button>
+                <button
+                  *ngIf="Department_Status_Save"
+                  (click)="Save_Sub_Status()"
+                  [hidden]="Department_Status_Save == false"
+                  id="Save_Button"
+                  mat-raised-button
+                  type="submit"
+                  class="save-button-style btnflot pull-left mr-1"
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="dt-card__heading">
+          <!-- <h4><b style="color: #3f6ad8;">District </b></h4> -->
+        </div>
+        <div class="col-md-12 pl-0 pr-0 mt-3" style="border: 1">
+          <div class="container-import p-0 mr-0 ml-0">
+            <div class="dt-card mb-0 pb-1" style="background-color: #ffff">
+              <div
+                class="table-responsive"
+                [style.height.px]="myInnerHeight"
+                style="
+                  overflow: scroll;
+                  height: 300px;
+                  overflow-x: hidden !important;
+                "
+              >
+                <table
+                  class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format"
+                >
+                  <thead>
+                    <th>Sub Status</th>
+                    <th [hidden]="Department_Status_Edit == false">Edit</th>
+                    <th [hidden]="Department_Status_Delete == false">Delete</th>
+                    <th></th>
+                  </thead>
+                  <tbody
+                    *ngFor="
+                      let Sub_Status_ of Department_Status_Data1;
+                      let i = index
+                    "
+                  >
+                    <tr>
+                      <td>{{ Sub_Status_["Sub_Status_Name"] }}</td>
+                      <td>
+                        <span
+                          class="icon-background2 mr-1"
+                          [hidden]="Department_Status_Edit == false"
+                          *ngIf="Department_Status_Edit"
+                          (click)="Edit_Sub_Status(Sub_Status_, i)"
+                        >
+                          <mat-icon class="text-green small"
+                            >edit</mat-icon
+                          ></span
+                        >
+                      </td>
+                      <td class="td-padding">
+                        <span
+                          class="icon-background3 mr-1"
+                          [hidden]="Department_Status_Delete == false"
+                          *ngIf="Department_Status_Delete"
+                          (click)="
+                            Delete_Sub_Status(Sub_Status_.Sub_Status_Id, i)
+                          "
+                        >
+                          <mat-icon class="text-red small"
+                            >close</mat-icon
+                          ></span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

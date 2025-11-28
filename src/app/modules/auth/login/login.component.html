@@ -1,0 +1,48 @@
+<div class="row" style="align-items: center;    padding: 10px 10px;">
+  <div class="col-md-6">
+  <img
+    src="assets/img/black-trackbox.png"
+    class="img-fluid login-logo-to-corect"
+    alt="Responsive image"/>
+    <!-- <h3 class="login-title">TRACK BOX</h3> -->
+  </div>
+  <!-- </div>
+  <div class="row"> -->
+    <div class="col-md-6" style="text-align: right;">
+      <label class="name-login-version">Version 5</label>
+    </div>
+  </div>
+  <form class="login-form2" [formGroup]="loginForm" (submit)="login()">
+    <h3 style="    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: black;
+    margin-bottom: 20px;">Welcome!</h3>
+    <div class="row">
+      <div class="col-md-12 mb-2">    
+        <label for="">Login Name</label>  
+          <input formControlName="userName" class="form-control"   type="text"/>  
+      </div>
+
+      <div class="col-md-12">  
+        <label for="">Password</label>      
+          <input  formControlName="password" class="form-control"     type="password" />      
+      </div>
+      <div _ngcontent-xmy-c9="" class="col-md-12 for-leads-chckbx login-remember-chckbox" style="margin-top: 10px;
+      margin-bottom: 10px;">
+        <div _ngcontent-xmy-c9="" class="form-check for-chck-bx-crcktng-login form-check for-chck-bx-crcktng-led-titl-bx" style="    margin-top: 23px !important;
+        margin-right: 10px;">     
+          <label _ngcontent-xmy-c9="" class="form-check-label">
+            <input _ngcontent-xmy-c9="" checked="" class="form-check-input" type="checkbox" value=""/>
+            <span _ngcontent-xmy-c9="" class="form-check-sign lead-title-box-check"><span _ngcontent-xmy-c9="" class="check" style="    border-radius: 50%;
+              "></span> </span></label>
+        </div>
+        <label class="name-login-remember" style="margin-top: 10px; margin-left: -35px;">Remember Me</label>
+      </div>
+      <div class="col-md-12">
+        <button  [disabled]='loginForm.invalid' mat-raised-button type="submit" class="other-button-style btnflot pull-right login-btn">
+          Login
+        </button>
+      </div>
+    </div>
+  </form>

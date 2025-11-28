@@ -1,0 +1,342 @@
+
+
+<div *ngIf="issLoading" class="overlay">
+    <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+    </mat-progress-spinner>
+</div>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row right-sec2" *ngIf="Entry_View">
+            <div class="col-md-12 pr-0 pl-0 pt-2 pt-3">
+                <div class="dt-card  mb-0 pb-1 pt-4">
+                    <div class="dt-card__body mb-0 pb-0">
+                <form>
+                    <div class="row" style="align-items: center;">
+                        <div class="col-md-4">
+                            <label
+                                class="col-md-3  col-form-label">Document<span
+                                    style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span>
+                            </label>
+                            <mat-form-field
+                                class="col-md-9 " style="    background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;height: 38px;">
+                                <input matInput type="text" [(ngModel)]="Document_.Document_Name"
+                                    name="Document_.Document_Name" class="input-text-item-group-diary" >
+                            </mat-form-field>
+                          
+                        </div>
+                        <div class="col-md-4 row">
+                            <label
+                              for="normal-input-4"
+                              class="col-md-5 col-sm-3 col-form-label text-sm-right"
+                              style="background: transparent"
+                              >Document Type<span
+                              style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label
+                            >
+                            <div class="col-md-7 col-sm-9">
+                           
+                              <select
+												[(ngModel)]="Document_Type"
+												name="Document_Type"
+												required
+												class="form-control p-0 pl-1"
+											>
+												<option
+													*ngFor="let Search_Document_Type_Data_T of Search_Document_Type_Data"
+													[ngValue]="Search_Document_Type_Data_T"
+												>
+													{{ Search_Document_Type_Data_T.Document_Type_Name }}
+												</option>
+											</select>
+                            </div>
+                          </div>
+
+
+
+                          <div class="col-md-4 row">
+                            <label
+                                for="agency-document-type"
+                                class="col-md-5 col-sm-3 col-form-label text-sm-right"
+                                style="background: transparent"
+                            >
+                                Agency Document Type
+                                <span
+                                    style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;"
+                                >*</span>
+                            </label>
+                            <div class="col-md-7 col-sm-9">
+                                <select
+                                    [(ngModel)]="agency_document_type"
+                                    name="agency_document_type"
+                                    required
+                                    class="form-control p-0 pl-1"
+                                  
+                                >
+                                    <option
+                                        *ngFor="let agencydocumentType of agencyDocumentTypes_Data"
+                                        [ngValue]="agencydocumentType"
+                                    >
+                                        {{ agencydocumentType.agency_documents_name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                          <div class="col-md-4">
+                            <label
+                                class="col-md-3  col-form-label">Document Order<span
+                                    style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span>
+                            </label>
+                            <mat-form-field
+                                class="col-md-9 " style="    background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;height: 38px;">
+                                <input matInput type="number" [(ngModel)]="Document_.Document_Order"
+                                    name="Document_.Document_Order" class="input-text-item-group-diary" >
+                            </mat-form-field>
+                          
+                        </div>
+                          
+
+                        <div class="table-responsive col-md-12 mb-4"  style="overflow-y: scroll;height: 100%;"  >                       
+                            <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format " style="font-size: 15px;    font-size: 15px;
+                            background: #f1f1f1;
+                            border: solid 1px #dad0d0;">
+                              <thead>                            
+                                
+                                 <th class="crect-margin-width-table-header-title">
+                                    Sl.No
+                                </th>             
+                                <th>
+                                    File Type
+                                </th>
+                                <th>
+                                    Select
+                                </th>                          
+                                
+                              </thead>
+                              <tbody *ngFor="let Document_type_1 of FileTypeData; let i = index"  >
+                                  <tr>
+                                      <td>
+                                      {{i+1}}
+                                      </td>
+                                      <td>
+                                          {{Document_type_1["File_Type_Name"]}}
+                                      </td>
+                                        <td _ngcontent-xmy-c9="" class="crect-align-tblelst-view-user">
+                                          <div _ngcontent-xmy-c9="" class="form-check">
+                                          <label _ngcontent-xmy-c9="" class="form-check-label">
+                                          <input type="checkbox" [ngModelOptions]="{standalone: true}"
+                                          class="form-check-input"  [(ngModel)]="Document_type_1.Selected" 
+                                          [checked]="Document_type_1.Selected">
+                                          <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 15px; ">
+                                          <span _ngcontent-xmy-c9="" class="check"></span>
+                                          </span>
+                                          </label>
+                                          </div>
+                                          </td>
+                                    </tr>
+                                </tbody>
+                              </table> 
+                        </div> 
+                        <div class="col-md-4 ">
+                            <button mat-raised-button type="submit"
+                                [hidden]="Document_Save==false" id="Save_Button"
+                                class="save-button-style pull-left mr-1" (click)="Save_Document()">Save</button>
+                            <button mat-raised-button type="submit"
+                                class="close-button-style pull-left mr-1" (click)="Close_Click()">Close</button>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                           
+                        </div>
+
+                    </div>
+                   
+                    <div class="clearfix"></div>
+                </form>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row right-sec2" *ngIf="!Entry_View">
+            <div class="col-md-12 mb-2 mt-3">
+                <div class="dt-card mb-0">
+                    <div class="dt-card__body">
+                    <form style="    margin-top: 10px;
+                    margin-bottom: 10px;
+                ">
+                        <div class="row">
+                            <div class="col-md-4 alighyn-div-margin-search-item-group row">
+                                
+                                    <label class="col-md-3 ">Document</label>
+                                    <div class="col-9">
+                                    <mat-form-field class="margin-lh-rh-to-crect-textbox width" style="background-color: #fff;
+                                    background-clip: padding-box;
+                                    border: 1px solid #ced4da;width: 100%;height: 38px;">
+                                        <input matInput type="text" [(ngModel)]="Document_Name_Search" name="Search_Name" 
+                                        class="margin-lh-rh-to-crect-textbox input-text-item-group-diary input-allighn-to-crect-wole-paddings">
+                                    </mat-form-field>
+                               
+                            </div>
+                        </div>
+
+                            <div class="col-md-4 alighyn-div-margin-search-item-group row ">
+                               
+                                    <label class="col-md-5">Document Type</label>
+                                    <div class="col-md-7">
+                                       
+
+                                        <select
+												[(ngModel)]="Search_Document_Type"
+												name="Search_Document_Type"
+												required
+												class="form-control p-0 pl-1"
+											>
+												<option
+													*ngFor="let Search_Document_Type_Data_T of Search_Document_Type_Data"
+													[ngValue]="Search_Document_Type_Data_T"
+												>
+													{{ Search_Document_Type_Data_T.Document_Type_Name }}
+												</option>
+											</select>
+                                    </div>
+                                </div>
+                         
+
+                 
+
+                           
+                            <div class="col-md-3">
+                                <button mat-raised-button type="submit" (click)="Search_Document()" class=" other-button-style pull-left mr-1">
+                                   Search
+                                </button> 
+                                <button mat-raised-button type="submit" (click)="Create_New()" class="save-button-style pull-left mr-1">
+                                  Create New
+                                </button> 
+                                </div>
+                           
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--  -->
+            <div class="col-md-12 "  [style.height.px]="myInnerHeight" itemSize="10">
+                <div class="dt-module" >            
+                    <div class="dt-module__container" >
+                       
+                        <div class="dt-module__content ps-custom-scrollbar">
+                            <div class="dt-module__content-inner pl-0 pr-0 card-body set-height-scroll-bar-wole-block">   
+                                <div class="dt-module__list pl-0 pr-0" [style.height.px]="myInnerHeight"
+                                style="overflow-y: scroll"
+                                id="profile">
+                                   
+                                        <div class="dt-module__list-item pb-2 pt-2" *ngFor="let Document1 of Document_Data; let i = index"> 
+                                            <div class="dt-module__list-item-content">
+                                                <div class="user-detail">
+                
+                                                    <span class="icon-background2 mr-1" (click)="Edit_Document(Document1,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                                    <span class="icon-background3 mr-1"  (click)="Delete_Document(Document1.Document_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+                        
+                
+                                           
+                                                    <span class="user-name"> {{Document1["Document_Name"]}}</span>  
+                                                   
+                                                  
+                                                </div>
+                                              
+                                            </div>                                
+                                        </div>
+                                   
+                            
+       
+                                 
+                                </div>
+                            </div>
+                            
+                        </div>
+                    
+                    </div>
+                   
+                  </div>
+              </div>  
+
+            <div class="col-md-12 card-body" style="display: none;">
+                <div class="card-plain set-height-scroll-bar-wole-block">
+                    <div class="table-responsive">
+                       
+                        <div class="row grid_header"  style="background-color: #ebeef0;color: black;">
+                            <div class="col-md-2">
+                                Sl No
+                            </div>
+                            <div class="col-md-2">
+                                Document  
+                            </div>
+                            <div class="col-md-1">
+                            Edit
+                            </div>
+                            <div class="col-md-1">
+                            Delete
+                            </div>
+                        </div>
+
+
+                        <cdk-virtual-scroll-viewport [style.height.px]="myInnerHeight" itemSize="90" >
+
+   
+                            <ng-container *cdkVirtualFor="let Document1 of Document_Data; let i = index">
+                                <div class="row grid_data">
+                            <div class="col-md-2">
+                                {{ i+1 }}
+                            </div>
+                            <div class="col-md-2">
+                                {{Document1["Document_Name"]}}
+                                
+                            </div>
+                            
+                            <div class="col-md-1"   (click)="Edit_Document(Document1,i)">
+                            
+                             <button _ngcontent-gdi-c11="" [hidden]="Document_Edit==false" 
+                                    class="btn btn-danger2" 
+                                    mattooltip="Edit Task" type="button" aria-describedby="cdk-describedby-message-1"
+                                    cdk-describedby-host=""
+                                    ng-reflect-position="above" ng-reflect-message="Edit Task"><span class="mat-button-wrapper">
+                                        <i _ngcontent-gdi-c11="" class="material-icons" 
+                                         >edit</i></span>
+                                        <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                        ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                        <div class="mat-button-focus-overlay"></div></button>   
+                    
+                            </div>
+                    
+                            <div class="col-md-1"  (click)="Delete_Document(Document1.Document_Id,i)">
+                                
+                                <button _ngcontent-gdi-c11="" [hidden]="Document_Delete==false" 
+                                class="btn btn-danger1" 
+                                mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1" cdk-describedby-host=""
+                                ng-reflect-position="above" ng-reflect-message="Remove"><span class="mat-button-wrapper">
+                                    <i _ngcontent-gdi-c11="" class="material-icons" 
+                                     >close</i></span>
+                                    <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                                    ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                                    <div class="mat-button-focus-overlay"  ></div></button>          
+                            </div>
+                        </div>
+                        </ng-container> 
+                    </cdk-virtual-scroll-viewport>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row col-md-12" style="display: none;">
+                <label class="entry-num">Entries : {{Total_Entries}}</label>
+            </div>  
+        </div>
+    </div>
+    </div>

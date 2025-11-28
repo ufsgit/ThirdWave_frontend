@@ -1,0 +1,265 @@
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+  <div class="main-content new-margin-T" screenfixed>
+  <div class="container-fluid">
+  
+  
+  <div class="row right-sec" *ngIf="Entry_View">
+   
+    <div class="col-md-12 pl-0 pr-0">
+      <div class="dt-card mb-0 pb-1 mt-2 pt-0">         
+          <div class="dt-card__body mb-0 pb-0 pt-3">
+              <form class="mb-0">           
+              <div class="form-row">
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Webhook Name<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                  <div class="col-md-3 col-sm-3 mb-2">
+                      <input type="text" class="form-control" [(ngModel)]="outgoing_webhook_.Webhook_Name"  name="outgoing_webhook_.Webhook_Name"  placeholder="">
+                     
+                  </div>
+
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Webhook Link<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                  <div class="col-md-3 col-sm-3 mb-2">
+                      <input type="text" class="form-control" [(ngModel)]="outgoing_webhook_.Webhook_Link"  name="outgoing_webhook_.Webhook_Link"  placeholder="">
+                     
+                  </div>
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Description </label>
+                  <div class="col-md-3 col-sm-3 mb-2">
+                      <textarea type="text" class="form-control" [(ngModel)]="outgoing_webhook_.Description"  name="outgoing_webhook_.Description"  placeholder="">
+                     </textarea>
+                  </div>
+                  
+                 
+              </div>
+          </form>
+          </div>
+
+          <div class="col-md-12 mt-2 pl-0">
+            <div class="dt-card mb-3 pb-1">         
+            <div class="dt-card__body mt-1 mb-0 pb-0">
+                <form class="mb-0">  
+                <div class="dt-card__heading">
+                    <h3><i class="icon icon-users icon-fw icon-lg"></i><b style="margin-bottom:20px;">System Webhook Fields</b></h3>
+                    <div classs="mb-2"></div><hr class="lineheader">
+                </div>
+                    <div class="form-row" style="padding-left: 10px;">
+                    <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Field<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                    <div class="col-md-2 col-sm-2 mb-2">
+                    <select [(ngModel)]="fields_" id="fields_" name="fields_" required class="form-control p-0 pl-1">
+                    <option *ngFor="let fields_Data_d_ of fields_Data" [ngValue]="fields_Data_d_">{{fields_Data_d_.Fields_Name}}
+                    </option>
+                    </select>                           
+                    </div>
+                    <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Field Map</label>
+                    <div class="col-md-2 col-sm-2 mb-2">
+                    <input type="text" class="form-control" [(ngModel)]="system_webhook_fields_.Field_Map"  name="system_webhook_fields_.Field_Map"  placeholder="">
+                    </div>
+                   
+                    <div class="col-md-1" class="addbutton-style"> 
+                        <button  type="submit" (click)="Plus_System_webhook_Field($event)"  class="other-button-style ">Add</button>     
+                    </div>  
+    
+                    </div>
+                      
+                </form>
+            </div>
+    
+            <div class="col-md-12" >
+            <div class="card-body">
+           <div class="table-responsive" style="overflow-y:scroll;height: 150px;">
+            <table class="table table-hover table-for-sale-search-section-diary">
+            <thead class="thead">
+            <th>Field</th>   
+            <th>Field Map</th>    
+            <th [hidden]="Webhook_Edit==false">Edit</th>
+            <th [hidden]="Webhook_Delete==false">Delete</th>
+            </thead>
+            <tbody class="bk_tb_bg" *ngFor="let smflsdta_ of system_webhook_fields_Data; let i = index">
+            <td class="td-padding">{{smflsdta_["Fields_Name"]}}</td>
+            <td class="td-padding">{{smflsdta_["Field_Map"]}}</td>
+            
+                <td  class="td-padding">
+                <span class="icon-background2 mr-1"     (click)="Edit_System_Webhook_Fields(smflsdta_,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                </td>
+                <td class="td-padding"> 
+                <span class="icon-background3 mr-1"   (click)="Delete_System_Webhook_Fields(smflsdta_,i)"  > <mat-icon class="text-red small" >close</mat-icon></span>
+                </td>
+            </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-12 mt-2 pl-0">
+        <div class="dt-card mb-3 pb-1">         
+        <div class="dt-card__body mt-1 mb-0 pb-0">
+            <form class="mb-0">  
+            <div class="dt-card__heading">
+                <h3><i class="icon icon-users icon-fw icon-lg"></i><b style="margin-bottom:20px;">Custom Webhook Fields</b></h3>
+                <div classs="mb-2"></div><hr class="lineheader">
+            </div>
+                <div class="form-row" style="padding-left: 10px;">
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Field<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                <div class="col-md-2 col-sm-2 mb-2">
+                    <input type="text" class="form-control" [(ngModel)]="custom_webhook_fields_.Field_Name"  name="custom_webhook_fields_.Field_Name"  placeholder="">
+                                          
+                </div>
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Field Map</label>
+                <div class="col-md-2 col-sm-2 mb-2">
+                <input type="text" class="form-control" [(ngModel)]="custom_webhook_fields_.Field_Map"  name="custom_webhook_fields_.Field_Map"  placeholder="">
+                </div>
+               
+                <div class="col-md-1" class="addbutton-style"> 
+                    <button  type="submit" (click)="Plus_Custom_webhook_Field($event)"  class="other-button-style ">Add</button>     
+                </div>  
+                </div>
+                   
+            </form>
+        </div>
+
+        <div class="col-md-12" >
+        <div class="card-body">
+       <div class="table-responsive" style="overflow-y:scroll;height: 150px;">
+        <table class="table table-hover table-for-sale-search-section-diary">
+        <thead class="thead">
+        <th>Field</th>   
+        <th>Field Map</th>    
+        <th [hidden]="Webhook_Edit==false">Edit</th>
+        <th [hidden]="Webhook_Delete==false">Delete</th>
+        </thead>
+        <tbody class="bk_tb_bg" *ngFor="let cmflsdta_ of custom_webhook_fields_Data; let i = index">
+        <td class="td-padding">{{cmflsdta_["Field_Name"]}}</td>
+        <td class="td-padding">{{cmflsdta_["Field_Map"]}}</td>
+        
+            <td  class="td-padding">
+            <span class="icon-background2 mr-1"     (click)="Edit_Custom_Webhook_Fields(cmflsdta_,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+            </td>
+            <td class="td-padding"> 
+            <span class="icon-background3 mr-1"   (click)="Delete_Custom_Webhook_Fields(cmflsdta_,i)"  > <mat-icon class="text-red small" >close</mat-icon></span>
+            </td>
+        </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="col-md-12 mt-2 pl-0">
+   
+                                    
+            <button (click)="Save_Outgoing_Webhook()" mat-raised-button type="submit" class="save-button-style pull-left mr-1">Save</button>    
+            <button (click)="Close_Click()" mat-raised-button type="submit" class="close-button-style pull-left mr-1 ">Close</button>                     
+          
+</div>
+
+
+
+
+
+      </div>        
+    </div> 
+  
+  
+  
+  </div>
+  <div class="row right-sec" *ngIf="!Entry_View">
+  
+  
+   <div class="col-md-12 pr-0 pl-0 mb-0 mt-2">
+    <div class="dt-card mb-2 pb-1 pt-0">         
+        <div class="dt-card__body mb-0 pb-0 pt-3">
+            <form class="mb-0">           
+            <div class="form-row" style="padding-left: 10px;">
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right mr-0">Webhook Name</label>
+            
+                <div class="col-md-3 col-sm-3 mb-2">  
+                    <input type="text" class="form-control" [(ngModel)]="Webhook_Name_Search" name="Search_Name"  placeholder="">
+                  
+                </div>
+                
+                <div class="col-md-4 col-lg-3 mt-0" >                    
+                     <button (click)="Search_Outgoing_Webhook()" mat-raised-button type="submit" class="other-button-style pull-left mr-1">Search</button>
+                     <button (click)="Create_New()" mat-raised-button type="submit"  class="save-button-style pull-left mr-1 ">Create New</button>
+
+                    </div>
+            </div>
+        </form>
+        </div>
+    </div>        
+  </div> 
+  
+  
+  
+  
+  
+  <div class="col-md-12 pl-0 pr-0 mt-0" [style.height.px]="myInnerHeight" itemSize="10">
+    <div class="dt-module ">            
+        <div class="dt-module__container"  >
+            <div class="dt-module__content ps-custom-scrollbar">
+                <div class="dt-module__content-inner pl-0 pr-0 card-body set-height-scroll-bar-wole-block">   
+                    <div class="dt-module__list pl-0 pr-0" [style.height.px]="myInnerHeight"
+                    style="overflow-y: scroll"
+                    id="profile">
+                        <!-- <div class="card-body set-height-scroll-bar-wole-block"> -->
+                        <div class="dt-module__list-item pb-2 pt-2" *ngFor="let outgoing_webhook_Data_d of outgoing_webhook_Data; let i = index"> 
+                            <div class="dt-module__list-item-content">
+                                <div class="user-detail">
+
+                                    <span class="icon-background2 mr-1"  (click)="Edit_Outgoing_Webhook(outgoing_webhook_Data_d,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                    <span class="icon-background3 mr-1"  (click)="Delete_Outgoing_Webhook(outgoing_webhook_Data_d.Webhook_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+        
+
+                             <span class="user-name">{{outgoing_webhook_Data_d["Webhook_Name"]}}</span>
+                        
+                                </div>
+                         
+                            </div>                                
+                        </div>
+                       
+               
+                   
+                     
+                    </div>
+                </div>
+              
+            </div>
+          
+        </div>
+       
+      </div>
+  </div>  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  </div>

@@ -1,0 +1,370 @@
+<div *ngIf="issLoading" class="overlay">
+  <mat-progress-spinner
+    class="spinner"
+    [color]="color"
+    [mode]="mode"
+    [value]="value"
+  >
+  </mat-progress-spinner>
+</div>
+<!-- <div
+  *ngIf="issLoading"
+  class="overlay"
+  style="margin-top: 21%; margin-left: 46%; background-color: transparent"
+  [style.left.px]="spinleft"
+>
+  <img src="/assets/img/spinner.gif" width="100px" />
+</div> -->
+
+<div class="main-content screenfixed new-margin-T dash_big_screen" >
+  <div class="container-fluid2  " style="width: 95%;">
+    <div class="row" *ngIf="Entry_View">
+      <div class="col-md-12 pl-0 pr-0 pt-4" style="display: flex">
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div
+                style="min-width: 550px"
+                class="col-md-6 section-user-block-ne other-department-user-block"
+              >
+                <div class="form-group form-row">
+                  <label
+                    for="normal-input-4"
+                    class="col-md-3. col-sm-3 col-form-label text-sm-right"
+                    style="background: transparent"
+                    >Process Name<span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+                  <div class="col-md-9 col-sm-9">
+                    <input
+                      type="text"
+                      class="form-control"
+                      [(ngModel)]="newProcess.Process_Name"
+                      name="Department_.Department_Name"
+                      id="normal-input-4"
+                      placeholder="Process Name"
+                    />
+                  </div>
+                </div>
+
+                <!-- <div class="form-group form-row">
+                  <label
+                    for="normal-input-4"
+                    class="col-md-3 col-sm-3 col-form-label text-sm-right"
+                    style="background: transparent"
+                    >Order
+                    <span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    ></label
+                  >
+                  <div class="col-md-9 col-sm-9">
+                    <input
+                      type="number"
+                      class="form-control"
+                      [(ngModel)]="newProcess.Order_IN"
+                      name="Department_.Department_Order"
+                      id="normal-input-4"
+                      placeholder=""
+                    />
+                  </div>
+                </div> -->
+
+                <div class="form-group form-row">
+                  <!-- <label class="col-md-3 col-sm-2 col-form-label text-sm-right"
+                    >Color</label
+                  >
+                  <div class="col-md-5 col-sm-2 mb-1">
+                    <input
+                      type="color"
+                      id="Department_.Color_Type_Name"
+                      class="form-control p-0 pl-1"
+                      [(ngModel)]="newProcess.Color"
+                      name="Department_.Color_Type_Name"
+                      value="#fffff"
+                    />
+                  </div> -->
+                  <div class="col-md-12 mt-0">
+                    <button
+                      mat-raised-button
+                      type="submit"
+                      class="close-button-style pull-right mr-1"
+                      (click)="Close_Click()"
+                    >
+                      Close
+                    </button>
+                    <button
+                      mat-raised-button
+                      type="submit"
+                      [hidden]="Department_Save == false"
+                      id="Save_Button"
+                      class="save-button-style pull-right mr-1"
+                      (click)="Save_Process()"
+                    >
+                      Save
+                    </button>
+                  </div>
+                </div>
+                <div class="form-row mt-2"></div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+        <div class="col-md-6" style="margin-right: 92px">
+          <div class="row full-box-contents-select-status-department p-0">
+            <div class="col-lg-12 crect-title-table pt-2 pb-1">
+              <span _ngcontent-xmy-c9="" class="nav-tabs-title"
+                >Select Status</span
+              ><span
+                style="
+                  color: #ef071e;
+                  font-size: 22px;
+                  vertical-align: -webkit-baseline-middle;
+                "
+                >*</span
+              >
+            </div>
+            <div _ngcontent-xmy-c9="" class="card margin-corect-card">
+              <div
+                _ngcontent-xmy-c9=""
+                class="card-body"
+                [style.height.px]="myTotalHeight"
+                style="overflow-y: scroll"
+              >
+                <div _ngcontent-xmy-c9="" class="tab-content">
+                  <div
+                    _ngcontent-xmy-c9=""
+                    class="tab-pane active"
+                    id="profile"
+                  >
+                    <table _ngcontent-xmy-c9="" class="table st-width2">
+                      <tr _ngcontent-xmy-c9="" class="th-botm-bordr">
+                        <th
+                          class="crect-align-tblelst-srlno-department th-botm-bordr-top"
+                        >
+                          Sl.No
+                        </th>
+                        <th
+                          class="crect-align-tblelst-status-department th-botm-bordr-top"
+                        >
+                          Select
+                        </th>
+                        <th class="th-botm-bordr-top">Status</th>
+                      </tr>
+                      <tbody
+                        _ngcontent-xmy-c9=""
+                        *ngFor="
+                          let Department_Status1 of Department_Status_Data;
+                          let i = index
+                        "
+                      >
+                        <tr _ngcontent-xmy-c9="">
+                          <td class="crect-align-tblelst-srlno-branch">
+                            {{ i + 1 }}
+                          </td>
+                          <td
+                            _ngcontent-xmy-c9=""
+                            class="crect-align-tblelst-status-branch"
+                          >
+                            <div
+                              _ngcontent-xmy-c9=""
+                              class="form-check mar-crect-for-check-bx-depart"
+                            >
+                              <label
+                                _ngcontent-xmy-c9=""
+                                class="form-check-label"
+                              >
+                                <input
+                                  type="checkbox"
+                                  name="{{
+                                    Department_Status1.Department_Status_Id
+                                  }}"
+                                  class="form-check-input"
+                                  (click)="
+                                    selectDepartmentStatus(Department_Status1)
+                                  "
+                                  [checked]="
+                                    isDepartmentStatusCheckd(Department_Status1)
+                                  " />
+                                <span
+                                  _ngcontent-xmy-c9=""
+                                  class="form-check-sign"
+                                  style="margin-left: 8px; margin-top: 13px"
+                                >
+                                  <span
+                                    _ngcontent-xmy-c9=""
+                                    class="check"
+                                  ></span> </span
+                              ></label>
+                            </div>
+                          </td>
+                          <td class="crect-align-tblelst-select-branch">
+                            <span
+                              name="Department_Status1.Department_Status_Name"
+                              >{{ Department_Status1.Department_Status_Name }}
+                            </span>
+
+                            <!-- <span
+                              *ngIf="
+                                Department_Status1.Transfer_Department_Name
+                              "
+                              style="color: #000000"
+                              >-
+                            </span>
+
+                            <span style="color: #ef071e">
+                              {{
+                                Department_Status1.Transfer_Department_Name
+                              }}</span
+                            > -->
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!Entry_View">
+      <div class="col-md-12 pl-0 pr-0 mb-2 mt-2">
+        <div class="dt-card mb-0 pb-1 pt-3">
+          <div class="dt-card__body mb-0 pb-0">
+            <form class="mb-0">
+              <div class="form-row" style="padding-left: 10px">
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                  >Process Name</label
+                >
+                <div class="col-md-3 col-sm-3 mb-2">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="searchString"
+                    name="Department_Name"
+                    placeholder="Process Name"
+                  />
+                </div>
+
+                <div class="col-md-4 col-lg-3 mt-0">
+                  <button
+                    (click)="searchProcess()"
+                    mat-raised-button
+                    type="submit"
+                    class="other-button-style pull-left mr-1"
+                  >
+                    Search
+                  </button>
+                  <!-- <button
+                    (click)="Create_New()"
+                    issLoa
+                    mat-raised-button
+                    type="submit"
+                    class="save-button-style pull-left mr-1"
+                  >
+                    Create New
+                  </button> -->
+                  <!-- <button
+                  (click)="Create_New121()"
+                  issLoa
+                  mat-raised-button
+                  type="submit"
+                  class="save-button-style pull-left mr-1"
+                >
+             process
+                </button> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 pl-0 pr-0 mt-0">
+        <div class="dt-module">
+          <div class="dt-module__container">
+            <div class="dt-module__content ps-custom-scrollbar">
+              <div
+                class="dt-module__content-inner card-body " [style.height.px]="myInnerHeight" style="overflow: scroll"
+              >
+                <div
+                  class="dt-module__list"
+                  
+                  
+                  id="profile"
+                >
+                  <div
+                    class="dt-module__list-item pb-2 pt-2"
+                    *ngFor="let process of Process_Data; let i = index"
+                  >
+                    <div class="dt-module__list-item-content d-flex justify-content-between">
+                      <div style="display: flex; padding-right: 50px">
+                        <div class="user-detail">
+                          <!-- <span
+                            class="icon-background2 mr-1"
+                            *ngIf="Department_Edit"
+                            (click)="eidtProcess(process, process.Process_Id,'edit')"
+                          >
+                            <mat-icon class="text-green small"
+                              >edit</mat-icon
+                            ></span
+                          > -->
+                          <!-- <span
+                            class="icon-background3 mr-1"
+                            *ngIf="Department_Delete"
+                            (click)="deleteProcess(process.Process_Id)"
+                          >
+                            <mat-icon class="text-red small"
+                              >close</mat-icon
+                            ></span
+                          > -->
+
+                          <span class="user-name">
+                            {{ process["Process_Name"] }}
+                          </span>
+                          <button
+                          (click)="showStatusByProcessId(process.Process_Id,process.Process_Name)"
+                          mat-raised-button
+                          type="submit"
+                          class="other-button-style pull-left mr-2 ml-2"
+                        >
+                          View Status
+                        </button>
+
+                        <!-- <button
+                          (click)="Duplicate_process(process.Process_Id)"
+                          mat-raised-button
+                          type="submit"
+                          class="other-button-style pull-left mr-2 ml-2"
+                        >
+                          Duplicate
+                        </button> -->
+                        </div>
+                     
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

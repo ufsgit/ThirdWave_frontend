@@ -1,0 +1,589 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+
+<div *ngIf="issLoading" class="overlay">
+    <mat-progress-spinner
+        class="spinner"
+        [color]="color"
+        [mode]="mode"
+        [value]="value"
+    >
+    </mat-progress-spinner>
+</div>
+
+<div class="main-content" *ngIf="Search_Div">
+    <!-- <div class="container-fluid1 mt-2">
+        
+        <div class="col-md-12 pl-0 mt-2" style="border: 1">
+            <div class="dt-card mb-0 pb-1" style="background-color: #ffff">
+                
+                <div class="card-body card-body-for-searchedit-lead-section">
+                    
+                    <div
+                        class="table-responsive"
+                        style="overflow-y: scroll"
+                        [style.height.px]="myTotalHeight"
+                    >
+                    <div class="col-md-12 ">
+                        <label class="col-md-3 col-lg-1 col-form-label text-sm-right"
+                            >Notification Type</label
+                        >
+                        <div class="col-md-4 col-lg-3 mb-1">
+                            <select
+                                [(ngModel)]="Notification_Type_"
+                                name="Notification_Type_"
+                                required
+                                class="form-control p-0 pl-1"
+                            >
+                                <option
+                                    *ngFor="let Notification_Type_T of Notification_Type_Data"
+                                    [ngValue]="Notification_Type_T"
+                                >
+                                    {{ Notification_Type_T.Notification_Type_Name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <label class="col-md-3 col-lg-1 col-form-label text-sm-right">Sort by</label>
+                        <div class="col-md-2 col-sm-2 mb-1">
+                            <select  [(ngModel)]="Search_Notification_By_" class="form-control p-0 pl-2">
+                              <option value="1">Unread  <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+                              <option value="2">View All <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+                              </select> 
+                          </div>
+
+
+
+
+                        <div>
+                            <button
+                                mat-raised-button
+                                type="submit"
+                                (click)="Search_Notification()"
+                                class="other-button-style"
+                            >
+                                Search
+                            </button>
+                            <button
+                                *ngIf="markall_button_view"
+                                mat-raised-button
+                                type="submit"
+                                (click)="Mark_All_Read()"
+                                class="other-button-style"
+                                style="margin-left: 6px;"
+                            >
+                                Mark All Read
+                            </button>
+                        </div>
+                    </div>
+
+                        <table
+                            class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format"
+                            style="width: 100% !important"
+                        >
+                            <thead>
+                                
+                                <th>No</th>
+                                <th>To Staff</th>
+                                <th>Date</th>
+                                <th>Remark</th>
+                                <th>By Staff</th>
+                                <th>Student Name</th>
+                                <th>Notification Type</th>
+                                <th>View</th>
+                            </thead>
+                            <tbody *ngFor="let Lead of Notification_Details; let i = index">
+                                <tr>
+                                    
+                                    <td>{{ Black_Start + i }}</td>
+                                    <td>{{ Lead["To_User_Name"] }}</td>
+                                    <td>{{ Lead["Entry_Date"] }}</td>
+                                    <td>{{ Lead["Remark"] }}</td>
+                                    <td>{{ Lead["From_User_Name"] }}</td>
+
+                                    <td>
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Student']"
+                                            (click)="Edit_Student_Notification(Lead.Student_Id, i)"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >{{ Lead["Student_Name"] }}</a
+                                        >
+                                    </td>
+
+                                    <td>{{ Lead["Description"] }}</td>
+
+                                    <td
+                                        *ngIf="
+                                            Lead.Entry_Type == 1 ||
+                                            Lead.Entry_Type == 2 ||
+                                            Lead.Entry_Type == 3
+                                        "
+                                    >
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Student']"
+                                            (click)="Edit_Student_Notification(Lead.Student_Id, i)"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >View</a
+                                        >
+                                    </td>
+                                    <td *ngIf="Lead.Entry_Type == 4">
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Receipt_Confirmation']"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >View</a
+                                        >
+                                    </td>
+                                    <td *ngIf="Lead.Entry_Type == 5">
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Receipt_Confirmation']"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >View</a
+                                        >
+                                    </td>
+                                    <td *ngIf="Lead.Entry_Type === 6">
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Student']"
+                                            (click)="Edit_Student_Notification(Lead.Student_Id, i)"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >View</a
+                                        >
+                                    </td>
+                                    <td *ngIf="Lead.Entry_Type === 7">
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Refund_Confirmation']"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >View</a
+                                        >
+                                    </td>
+                                    <td *ngIf="Lead.Entry_Type === 8">
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Student_Task']"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >View</a
+                                        >
+                                    </td>
+                                    <td *ngIf="Lead.Entry_Type === 9">
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Student']"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >View</a
+                                        >
+                                    </td>
+                                    <td *ngIf="Lead.Entry_Type === 10">
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Refund_Approval']"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >View</a
+                                        >
+                                    </td>
+                                    <td *ngIf="Lead.Entry_Type === 11">
+                                        <a
+                                            target="_blank"
+                                            [routerLink]="['/Refund_Approval']"
+                                            style="color: #357bfd; font-weight: 800"
+                                            >View</a
+                                        >
+                                    </td>
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+
+            
+        </div>
+    </div>
+
+    <div class="row" style="text-align: center">
+        <div class="col-md-12 buttons-next-previous">
+            <button
+                mat-raised-button
+                type="submit"
+                (click)="previous_Click()"
+                class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
+                style="background: none"
+            >
+                <i
+                    class="fa fa-chevron-left"
+                    aria-hidden="true"
+                    style="color: #5f6368"
+                ></i>
+            </button>
+            <button
+                mat-raised-button
+                type="submit"
+                (click)="Next_Click()"
+                class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
+                style="background: none"
+            >
+                <i
+                    class="fa fa-chevron-right"
+                    aria-hidden="true"
+                    style="color: #5f6368"
+                ></i>
+            </button>
+        </div>
+        <label style="margin-left: 21px; margin-top: -46px"
+            >Total Data :<b style="color: green">{{ Total_Data }} </b>
+        </label>
+    </div> -->
+
+
+
+    <div class="container-fluid1">
+   
+        <div class="col-md-12 pl-0 pr-0 mt-2" style="border: 1">
+          <div class="dt-card mb-0 pb-2 pt-1 ">         
+              <div class="dt-card__body  m-0">
+                  <div class="mb-0">           
+                  <div class="form-row">
+               
+                           
+                      <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2">Notification Type</label>
+                      <div class="col-md-3 col-lg-2 mb-1 mt-2">
+                        <select
+                        [(ngModel)]="Notification_Type_"
+                        name="Notification_Type_"
+                        required
+                        class="form-control p-0 pl-1"
+                    >
+                        <option
+                            *ngFor="let Notification_Type_T of Notification_Type_Data"
+                            [ngValue]="Notification_Type_T"
+                        >
+                            {{ Notification_Type_T.Notification_Type_Name }}
+                        </option>
+                    </select>
+                        </div>
+    
+                        <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2">Sort by</label>
+                        <div class="col-md-3 col-lg-2 mb-1 mt-2">
+                            <select  [(ngModel)]="Search_Notification_By_" class="form-control p-0 pl-2">
+                                <option value="1">Unread  <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+                                <option value="2">View All <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+                                </select> 
+                          </div>
+
+                          <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2">Student Name</label>
+                          <div class="col-md-3 col-sm-3 mb-1 mt-2">
+                            <input type="text" id="searchName" [(ngModel)]="Search_Name" name="searchName" class="form-control" >
+                          </div>
+                          
+
+    
+                        <div class="col-md-0 col-md-0 mt-2">         
+                            <button
+                            mat-raised-button
+                            type="submit"
+                            (click)="Search_Notification()"
+                            class="other-button-style"
+                        >
+                            Search
+                        </button>
+                        <!-- <button
+                            *ngIf="markall_button_view"
+                            mat-raised-button
+                            type="submit"
+                            (click)="Mark_All_Read()"
+                            class="other-button-style"
+                            style="margin-left: 6px;"
+                        >
+                            Mark All Read
+                        </button> -->
+                        </div>
+                   
+                  </div>
+                
+              </div>
+              </div>
+          </div>        
+          </div>
+    
+    
+    
+    
+        <div class="col-md-12 pl-0 mt-2 pr-0"  style="border: 1">
+          <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">  
+    
+        <div class="card-body card-body-for-searchedit-lead-section">
+        <div class="table-responsive"  style="overflow-y: scroll;"[style.height.px]="myInnerHeight">
+        <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format">
+            <thead>
+                <th></th>
+                <th>No</th>
+                <th>To Staff</th>
+                <th>Date</th>
+                <th>Remark</th>
+                <th>By Staff</th>
+                <th>Student Name</th>
+                <th>Notification Type</th>
+                <th>View</th>
+            </thead>
+            <tbody *ngFor="let Lead of Notification_Details; let i = index">
+                <tr>
+                    <!-- <td>
+    
+                        <button
+                            style="border-width: 0ch"
+                            name=""
+                            _ngcontent-gdi-c11=""
+                            class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button"
+                            mat-raised-button=""
+                            mattooltip="Remove"
+                            type="button"
+                            aria-describedby="cdk-describedby-message-1"
+                            cdk-describedby-host=""
+                            ng-reflect-position="above"
+                            ng-reflect-message="Remove"
+                        >
+                            <span class="mat-button-wrapper">
+                                <i
+                                    
+                                    class="fa fa-calendar-minus-o two"
+                                    style="font-weight: 800; font-size: 18px"
+                                    aria-hidden="true"
+                                    
+                                ></i
+                            ></span>
+                            <div
+                                class="mat-button-ripple mat-ripple"
+                                matripple=""
+                                ng-reflect-centered="false"
+                                ng-reflect-disabled="false"
+                                ng-reflect-trigger="[object HTMLButtonElement]"
+                            ></div>
+                            <div class="mat-button-focus-overlay"></div>
+                        </button>
+
+                         <button class="other-button-style btnflot pull-right"
+                      *ngIf="Lead.Fees_Receipt_Status ==2 "
+                      (click)="Remove_Receipt_Approval(Lead.Fees_Receipt_Id,i)"
+                      type="submit" style="
+                      height:auto !important;
+                      background-color: #ffffff;
+                      border: 1.5px solid rgb(221, 27, 27);
+                      color: rgb(221, 27, 27);">Remove Approval</button>
+    
+                    
+                    </td> -->
+                    <td > <div class="avatar">
+                        <i *ngIf = "Lead.Read_Status==0" class="fa fa-envelope" style="color: red;"></i>
+                        <i *ngIf = "Lead.Read_Status==1" class="fa fa-envelope-open" style="color: #23d539;"></i>
+                      </div>
+                    </td>
+                      
+                    <td>{{ Black_Start + i }}</td>
+                    <td>{{ Lead["To_User_Name"] }}</td>
+                    <td>{{ Lead["Entry_Date"] }}</td>
+                    <!-- <td>{{Lead["File_No"]}}</td> -->
+                    <td>{{ Lead["Remark"] }}</td>
+                    <!-- <td ><div>{{ Lead["From_User_Name"] }}</div></td> -->
+                    <td>{{ Lead["From_User_Name"] }}</td>
+    
+                    <td>
+                        <a
+                            target="_blank"
+                            [routerLink]="['/Student']"
+                            (click)="Edit_Student_Notification(Lead.Student_Id, i)"
+                            style="color:  lightseagreen; font-weight: 800"
+                            >{{ Lead["Student_Name"] }}</a
+                        >
+                    </td>
+    
+                    <td>{{ Lead["Description"] }}</td>
+    
+                    <td
+                        *ngIf="
+                            Lead.Entry_Type == 1 ||
+                            Lead.Entry_Type == 2 ||
+                            Lead.Entry_Type == 3
+                        "
+                    >
+                    <button class="other-button-style"  type="submit" style="
+                    height:auto !important;
+                    background-color: #ffffff;
+                    border: 1.5px solid lightseagreen;
+                    color: lightseagreen;"> <a
+                            target="_blank"
+                            [routerLink]="['/Student']"
+                            (click)="Edit_Student_Notification(Lead.Student_Id, i)"
+                            style="color:lightseagreen; font-weight: 800"
+                            >View</a
+                        ></button>
+                    </td>
+                    <td *ngIf="Lead.Entry_Type == 4">
+                        <button class="other-button-style"  type="submit" style="
+                       height:auto !important;
+                       background-color: #ffffff;
+                       border: 1.5px solid lightseagreen;
+                       color: lightseagreen;"><a
+                            target="_blank"
+                            [routerLink]="['/Receipt_Confirmation']"
+                            style="color:lightseagreen; font-weight: 800"
+                            >View</a
+                        ></button>
+                    </td>
+                    <td *ngIf="Lead.Entry_Type == 5">
+                        <button class="other-button-style"  type="submit" style="
+                       height:auto !important;
+                       background-color: #ffffff;
+                       border: 1.5px solid lightseagreen;
+                       color: lightseagreen;"><a
+                            target="_blank"
+                            [routerLink]="['/Receipt_Confirmation']"
+                            style="color: lightseagreen; font-weight: 800"
+                            >View</a
+                        ></button>
+                    </td>
+                    <td *ngIf="Lead.Entry_Type === 6">
+                        <button class="other-button-style"  type="submit" style="
+                        height:auto !important;
+                        background-color: #ffffff;
+                        border: 1.5px solid lightseagreen;
+                        color: lightseagreen;"> <a
+                            target="_blank"
+                            [routerLink]="['/Student']"
+                            (click)="Edit_Student_Notification(Lead.Student_Id, i)"
+                            style="color: lightseagreen; font-weight: 800"
+                            >View</a
+                        ></button>
+                    </td>
+                    <td *ngIf="Lead.Entry_Type === 7">
+                        <button class="other-button-style"  type="submit" style="
+                        height:auto !important;
+                        background-color: #ffffff;
+                        border: 1.5px solid lightseagreen;
+                        color: lightseagreen;"> <a
+                            target="_blank"
+                            [routerLink]="['/Refund_Confirmation']"
+                            style="color: lightseagreen; font-weight: 800"
+                            >View</a
+                        ></button>
+                    </td>
+                    <td *ngIf="Lead.Entry_Type === 8">
+                        <button class="other-button-style"  type="submit" style="
+                       height:auto !important;
+                       background-color: #ffffff;
+                       border: 1.5px solid lightseagreen;
+                       color: lightseagreen;"><a
+                            target="_blank"
+                            [routerLink]="['/Student_Task']"
+                            style="color: lightseagreen; font-weight: 800"
+                            >View</a
+                        ></button>
+                    </td>
+                    <td *ngIf="Lead.Entry_Type === 9">
+                        <button class="other-button-style"  type="submit" style="
+                        height:auto !important;
+                        background-color: #ffffff;
+                        border: 1.5px solid lightseagreen;
+                        color: lightseagreen;">  <a
+                            target="_blank"
+                            [routerLink]="['/Student']"
+                            style="color: lightseagreen; font-weight: 800"
+                            >View</a
+                        ></button>
+                    </td>
+                    <td *ngIf="Lead.Entry_Type === 10">
+                        <button class="other-button-style"  type="submit" style="
+                        height:auto !important;
+                        background-color: #ffffff;
+                        border: 1.5px solid lightseagreen;
+                        color: lightseagreen;"> <a
+                            target="_blank"
+                            [routerLink]="['/Refund_Approval']"
+                            style="color: lightseagreen; font-weight: 800"
+                            >View</a
+                        ></button>
+                    </td>
+                    <td *ngIf="Lead.Entry_Type === 11">
+                        <button class="other-button-style"  type="submit" style="
+                        height:auto !important;
+                        background-color: #ffffff;
+                        border: 1.5px solid lightseagreen;
+                        color: lightseagreen;"> <a
+                            target="_blank"
+                            [routerLink]="['/Refund_Approval']"
+                            style="color: lightseagreen; font-weight: 800"
+                            >View</a
+                        ></button>
+
+                    </td>
+
+
+
+                    <!-- <td>
+                <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" 
+                cdk-describedby-host="" class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" 
+                mat-raised-button="" mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button">
+                <span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper">
+                    <i _ngcontent-jry-c5="" _ngcontent-gxp-c5="" class="material-icons" (click)="Edit_Lead(Lead.Lead_Id,i)" >edit</i></span>
+                    <div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" 
+                    ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" 
+                    class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" 
+                    ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                    <div class="mat-button-focus-overlay" ></div></button>
+            </td> -->
+                </tr>
+            </tbody>
+          </table>
+          
+        </div>
+        <div class="row">
+         <div class="col-lg-12">
+         
+         </div>
+        </div>
+     
+      </div>
+      
+      </div>
+    </div>
+    <div class="row" style="text-align: center">
+        <div class="col-md-12 buttons-next-previous">
+            <button
+                mat-raised-button
+                type="submit"
+                (click)="previous_Click()"
+                class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
+                style="background: none"
+            >
+                <i
+                    class="fa fa-chevron-left"
+                    aria-hidden="true"
+                    style="color: #5f6368"
+                ></i>
+            </button>
+            <button
+                mat-raised-button
+                type="submit"
+                (click)="Next_Click()"
+                class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
+                style="background: none"
+            >
+                <i
+                    class="fa fa-chevron-right"
+                    aria-hidden="true"
+                    style="color: #5f6368"
+                ></i>
+            </button>
+        </div>
+        <label style="margin-left: 21px; margin-top: -46px"
+            >Total Data :<b style="color: green">{{ Total_Data }} </b>
+        </label>
+    </div>
+     
+    </div>
+
+</div>

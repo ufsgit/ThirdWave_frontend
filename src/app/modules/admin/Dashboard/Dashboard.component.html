@@ -1,0 +1,375 @@
+<div style="height: 30px"></div>
+
+<div
+  class="main-content screenfixed mt-1 dash-board"
+  [style.height.px]="myInnerHeight"
+  style="width: 100% !important; overflow-y: scroll;     scrollbar-width: none;
+ overflow-x: hidden"
+>
+  <div class=" dash_big_screen" style="align-items: center">
+    <div class="container-fluid">
+      <div class="row gy-3 align-items-center">
+        <!-- Search Date Checkbox -->
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="row align-items-center">
+            <label class="col-8 col-sm-6 col-form-label">
+              Search Date
+            </label>
+            <div class="col-4 col-sm-6">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="Date_checks"
+                    [(ngModel)]="Look_In_Date"
+                  />
+                  <span class="form-check-sign">
+                    <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <!-- From Date -->
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="row align-items-center">
+            <label class="col-3 col-sm-2 col-form-label">From</label>
+            <div class="col-9 col-sm-10" style="border: 1px solid #cecece !important ; border-radius: 10px !important;">
+              <mat-form-field class="w-100">
+                <input
+                  matInput
+                  [matDatepicker]="dp1"
+                  placeholder=""
+                  [(ngModel)]="Search_FromDate"
+                  name="Search_FromDate"
+                />
+                <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                <mat-datepicker #dp1></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+    
+        <!-- To Date -->
+        <div class="col-12 col-sm-6 col-md-3">
+          <div class="row align-items-center">
+            <label class="col-3 col-sm-2 col-form-label">To</label>
+            <div class="col-9 col-sm-10" style="border: 1px solid #cecece !important ; border-radius: 10px !important;">
+              <mat-form-field class="w-100">
+                <input
+                  matInput
+                  [matDatepicker]="dpdate"
+                  placeholder=""
+                  [(ngModel)]="Search_ToDate"
+                  name="Search_ToDate"
+                />
+                <mat-datepicker-toggle matSuffix [for]="dpdate"></mat-datepicker-toggle>
+                <mat-datepicker #dpdate></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+              <div class="col-12 col-sm-6 col-md-3">
+          <div class="row align-items-center">
+            <label class="col-3 col-sm-2 col-form-label">To Staff</label>
+                <div  class="col-9 col-sm-10" >
+                  <select
+                    class="form-control p-0 pl-1"
+                    [(ngModel)]="User_Search"
+                    id="User_"
+                    id="simple-select"
+                  >
+                    <option
+                      *ngFor="let User_T of Users_Data"
+                      [ngValue]="User_T"
+                    >
+                      {{ User_T.User_Details_Name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              </div>
+             
+    
+        <!-- Search Button -->
+        <div class="col-12 col-sm-6 col-md-3 d-flex align-items-center justify-content-start">
+          <button
+            mat-raised-button
+            type="submit"
+            class="btn w-100"
+            style="
+              background-color: #0caef7;
+              max-width: 110px;
+              border-radius: 5px;
+              height: 36px;
+            "
+            id="Dashboard"
+            (click)="Get_Dashboard_Count()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-3">
+        <div class="card card-stats card-h card-1" (click)="Click_No1()">
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="dash-icon" style="background: #2934bb40">
+              <i class="material-icons" style="color: #1507a4"
+                >person_add_alt</i
+              >
+            </div>
+            <p class="card-category">Enquiries <br> in this Month</p>
+            <h3 class="">{{ Dashboard_Count }}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <button
+                style="background-color: #8a85bc"
+                mat-raised-button
+                type="submit"
+                class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+              >
+                View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-3">
+        <div class="card card-stats card-h card-2" (click)="Click_No2()">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="dash-icon" style="background: #26ffae40">
+              <i class="material-icons" style="color: #98d2cc">beenhere</i>
+            </div>
+            <p class="card-category">Enrollment <br> in this Month</p>
+            <h3 class="">{{ Dashboard_Count1 }}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <button
+                style="background-color: #98d2cc"
+                mat-raised-button
+                type="submit"
+                class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+                (click)="Click_No2()"
+              >
+                View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-3">
+        <div class="card card-stats card-h card-3" (click)="Click_No3()">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="dash-icon" style="background: #ff191940">
+              <i class="material-icons" style="color: #872617"
+                >pending_actions</i
+              >
+            </div>
+            <p class="card-category">Pending <br> Follow Ups</p>
+            <h3 class="">{{ Dashboard_Count2 }}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <button
+                style="background-color: #ca9c95"
+                mat-raised-button
+                type="submit"
+                class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+                (click)="Click_No3()"
+              >
+                View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-3">
+        <div class="card card-stats card-h card-4" (click)="Click_No6()">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="dash-icon" style="background: #d18b0840">
+              <i class="material-icons" style="color: #454705"
+                >pending_actions</i
+              >
+            </div>
+            <p class="card-category">Applications <br> in this Month</p>
+            <h3 class="">{{ Dashboard_Count4 }}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <button
+                style="background-color: #aaab7c"
+                mat-raised-button
+                type="submit"
+                class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+                (click)="Click_No6()"
+              >
+                View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-3">
+        <div class="card card-stats card-h card-5" (click)="Click_No4()">
+          <div class="card-header card-header-info card-header-icon">
+            <div class="dash-icon" style="background: #146e9c40">
+              <i class="material-icons" style="color: #185d58">
+                attach_money
+              </i>
+            </div>
+            <p class="card-category">Receipt <br> in this Month</p>
+            <h3 class="">{{ Dashboard_Count3 }}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <button
+                style="background-color: #e6a57e"
+                mat-raised-button
+                type="submit"
+                class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+                (click)="Click_No4()"
+              >
+                View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-4 col-sm-3">
+        <div class="card card-stats card-6" (click)="Click_No7()">
+          <div class="card-header card-header-info card-header-icon">
+            <div class="dash-icon" style="background: #bd56ca40">
+              <i class="material-icons" style="color: #631e07">
+                receipt_long
+              </i>
+            </div>
+            <p class="card-category">Pending <br> Task</p>
+            <h3 class="">{{ Dashboard_Count5 }}</h3>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <button
+                style="background-color: #f27348"
+                mat-raised-button
+                type="submit"
+                class="btn pull-right btn-danger div-rspnsv-pstn-crct-sls-mstr"
+                (click)="Click_No7()"
+              >
+                View
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div *ngIf="1 > 2" class="col-md-4">
+        <div class="card card-chart">
+          <div class="card-header card-header-warning">
+            <div class="ct-chart" id="websiteViewsChart"></div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Email Subscriptions</h4>
+            <p class="card-category">Last Campaign Performance</p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> campaign sent 2 days ago
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="1 > 2" class="col-md-4">
+        <div class="card card-chart">
+          <div class="card-header card-header-danger">
+            <div class="ct-chart" id="completedTasksChart"></div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">Completed Tasks</h4>
+            <p class="card-category">Last Campaign Performance</p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> campaign sent 2 days ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-Dash">
+        <div class="col-md-12 mt-0" style="border: 1; padding: 0">
+          <div class="mb-0 pb-1" style="border: none">
+            <div class="form-row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="g-scroll">
+                  <div class="cardnew">
+                    <div class="card-headernew">
+                      <h4 class=""><b>Enquiries in this Month</b></h4>
+                    </div>
+                    <google-chart
+                      #chart
+                      [title]="Enquiry_Source_title"
+                      [type]="Enquiry_Source_type"
+                      [data]="Enquiry_Source_data"
+                      [columnNames]="Enquiry_Source_columnNames"
+                      [options]="Enquiry_Source_options"
+                      [width]="width"
+                      [height]="height"
+                    >
+                    </google-chart>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="g-scroll">
+                  <div class="cardnew">
+                    <div class="card-headernew">
+                      <h4 class=""><b>Enquiries in this Month</b></h4>
+                    </div>
+
+                    <google-chart
+                      #chart
+                      [title]="Title_Bar"
+                      [type]="Type_Bar"
+                      [data]="Data_Bar"
+                      [columnNames]="columnNames_Bar"
+                      [options]="options_Bar"
+                      [width]="width"
+                      [height]="height"
+                    >
+                    </google-chart>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12 b-0 mt-1 mb-0 pb-0 pr-3">
+                <button
+                  class="view-button-style btnflot"
+                  type="submit"
+                  style="font-weight: 600; background-color: #8a85bc"
+                  (click)="Click_No5()"
+                >
+                  View
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    display: none;
+  }
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0 !important;
+  }
+  ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-infix {
+    padding: 0;
+    border: 0;
+}
+@media only screen and (min-width: 1281px) {
+  .dash_big_screen{
+  margin-left: 90px;
+  }
+}
+@media only screen and (max-width: 1280px) {
+      .dash_big_screen{
+          margin-left: 60px;
+      }
+}

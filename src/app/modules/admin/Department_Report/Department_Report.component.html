@@ -1,0 +1,386 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>                                     
+
+
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+
+
+<div class="main-content screenfixed new-margin-T" *ngIf="Search_Div">
+<div class=" container-fluid1 mt-2 right-sec">
+  <!-- container-grapht -->
+ 
+    <div class="col-md-12  pl-0 pr-0" style="border: 1">
+      <div class="dt-card mb-0 pb-1 pt-1">         
+          <div class="dt-card__body mb-0 mt-0">
+              <div class="mb-0">           
+              <div class="form-row pb-1">
+            
+          <!-- <label class="col-md-1 col-sm-1 col-form-label text-sm-right" style="margin-top: 14px;padding-left: 0px;margin-right: -82px;" >Search By</label> -->
+          <!-- <label class="col-md-0 col-lg-0 col-form-label text-sm-right" style="margin-top: 8px;">Search By</label>
+          <div class="col-md-2 col-lg-1 mb-1 mt-1">
+            <select [(ngModel)]="Search_By_" class="form-control p-0 pl-1">
+              <option value="1">Name <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+              <option value="1">Email <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+              <option value="1">Mobile <i class="fa fa-caret-down" aria-hidden="true"></i> </option>
+              </select>
+          </div> -->
+
+          <div class="col-md-3 col-lg-2 mb-1 mt-1 ">
+            <!-- <mat-form-field class="col-md-12 input-allighn-to-crect-wole-paddings led-srch-sctn-nput-tb margin-down-to-input-acount-grp-search-part"> -->
+            <input  type="text" [(ngModel)]="Search_Name" class="form-control p-0 pl-1" placeholder="Enter Name or Phone Number">
+            <!-- </mat-form-field> -->
+          </div>
+
+          <label class=" col-form-label  text-sm-right mt-1" style="padding-left: 6px;">Entry Date</label>  
+          <div class=" mb-1 ew-7">
+          <div _ngcontent-xmy-c9="" class="col-md-1 lead-search-section-date-alighn label-down-alighn-stk-ad-mstr-prhse-rte">
+            <div _ngcontent-xmy-c9="" class="form-check algyn-checkbx-lead-serch-scton margin-down-tocrect-lead-chckbox-date-front-section">
+              <label _ngcontent-xmy-c9="" class="form-check-label">
+                <input type='checkbox'class="form-check-input" placeholder='Search...' [(ngModel)]="Look_In_Date" />
+                <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-top: 11px;
+                margin-left: -26px;"><span _ngcontent-xmy-c9="" class="check"></span>
+                </span>
+                <!-- <label class="">Created</label> -->
+              </label>              
+            </div>
+            <!-- <label class="for-down-title-tabs-personal-details">Created</label> -->
+          </div>
+        </div>  
+
+                  <label class="col-form-label text-sm-right mt-1">From</label>
+                  <div class="col-md-1 col-sm-2  mt-1  mb-1">
+                      <!-- <input type="date" class="form-control p-0 pl-1 mt-2" placeholder="From"[(ngModel)]="Search_FromDate" name="Search_FromDate" > -->
+                      <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1 mrgn-crct-input-bx-sls-mstr-rspnsv-nw-sctn" 
+                      style="padding:11px 5px!important;">
+                          <input matInput [matDatepicker]="dp1" placeholder="" [(ngModel)]="Search_FromDate" name="Search_FromDate" > 
+                          <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                          <mat-datepicker #dp1></mat-datepicker>
+                          </mat-form-field>
+                  </div>  
+    
+                  <label class="col-form-label text-sm-right mt-1">To</label>
+                  <div class="col-md-1 col-sm-2  mt-1  mb-1">
+                      <!-- <input type="date" class="form-control p-0 pl-1 mt-2" placeholder="To"  [(ngModel)]="Search_ToDate" name="Search_ToDate"> -->
+                      <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1 mrgn-crct-input-bx-sls-mstr-rspnsv-nw-sctn" 
+      style="padding:11px 5px!important;">
+      <input matInput [matDatepicker]="dpdate" placeholder=""    [(ngModel)]="Search_ToDate" name="Search_ToDate"> 
+      <mat-datepicker-toggle matSuffix [for]="dpdate"></mat-datepicker-toggle>
+      <mat-datepicker #dpdate></mat-datepicker>
+      </mat-form-field>
+                  </div> 
+
+                  <!-- <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Branch</label>
+                  <div class="col-md-2 col-sm-2 mb-1">
+                  <select [(ngModel)]="Search_Branch" required class="form-control p-0 pl-1">
+                    <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">{{Branch_T.Branch_Name}}</option>
+                    </select>
+                    </div> -->
+
+                    <div class="col-md-4 col-lg-3 ew-8">              
+                      <button id="Registration_Report" (click)="View_Back()"  mat-raised-button type="submit"  class="other-button-style btnflot pull-right mr-1 mt-1 ">Back</button>
+                      <button (click)="Export()" style="background-color: #4bc859 !important;"  [hidden]="Export_View==false" mat-raised-button type="submit"  class="other-button-style btnflot pull-right mr-1 mt-1">Export</button>
+                      <button (click)="Search_Lead_button2()" id="Registration_Report" mat-raised-button type="submit"  style="background-color: #0caef7;"  class="other-button-style btnflot pull-right mr-1 mt-1">Search</button>
+                      <!-- <button  name="" _ngcontent-gdi-c11="" (click)="Search_Enquriy_Summary()"[hidden]="Summary_Sub==true"  class="btn btn-danger change-colour-button buton-save-search-edit">
+                        Data
+                         </button> -->
+                    </div>
+               
+              </div>
+
+              <div class="form-row">
+                  
+                <!-- <label class="col-md-0 col-sm-0 ml-1 col-form-label text-sm-right">Department</label>                           
+                <div class="col-md-3 col-sm-3 ml-2 mb-1">
+                  <select [(ngModel)]="Department_Search" id="Department_" required  class="form-control p-0 pl-1 ">
+                    <option *ngFor="let Department_T of Department_Data" [ngValue]="Department_T">{{Department_T.Department_Name}}</option>
+                    </select> 
+                </div>   -->
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2">Department</label>
+                <div class="col-md-2 col-sm-2 mb-1 mt-2">
+
+                <select [(ngModel)]="Department_Summary_Search" required class="form-control p-0 pl-1">
+                  <option *ngFor="let Dept of Department_Data" [ngValue]="Dept">{{Dept.Department_Name}}</option>
+                  </select>
+                  </div>
+                <label class="col-md-0 col-sm-0 ml-2 col-form-label text-sm-right">To Staff</label>                           
+                <div class="col-md-3 col-sm-3 mb-1">
+                  <select [(ngModel)]="User_Search" id="User_" required class="form-control p-0 pl-1 ">
+                    <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">{{User_T.User_Details_Name}}</option>
+                    </select> 
+                </div> 
+
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Status</label>                           
+                <div class="col-md-3 col-sm-3 mb-1 ew-1x">
+                  <select [(ngModel)]="Status_Search" required class="form-control p-0 pl-1 ">
+                    <option *ngFor="let Status_T of Status_Data" [ngValue]="Status_T">{{Status_T.Department_Status_Name}}</option>
+                    </select>  
+                </div> 
+
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right"
+                >Class</label
+              >
+              <div class="col-md-3 col-sm-3 mb-1 ew-1x">
+                <select
+                            [(ngModel)]="Class_Search"
+                            name="Class_Search"
+                            required
+                            class="form-control p-0 pl-1"
+                          >
+                            <option
+                              *ngFor="let class_Data_T of class_Data"
+                              [ngValue]="class_Data_T"
+                            >
+                              {{ class_Data_T.Class_Name }}
+                            </option>
+                          </select>
+              </div>
+
+
+
+                </div>
+            
+          </div>
+          </div>
+      </div>        
+      </div>
+
+
+<!-- <div class="row">
+  <div class="col-md-12 whole-portion-edit-section-lead-part" [style.height.px]="myInnerHeight" > -->
+    <div class="col-md-12 pl-0 pr-0 mt-2" style="border: 1">
+      <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">  
+  <!-- <div class="card card-plain"> -->
+    <div class="card-body card-body-for-searchedit-lead-section">
+    <div class="table-responsive" [style.height.px]="myInnerHeight"
+    style="overflow-y: scroll"
+    id="profile" >
+    <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format" style="font-size: 15px;">
+      <thead>
+        <th>
+          No
+        </th>      
+        <th>
+          Entry Date
+        </th>
+        <th>
+          Student
+        </th>     
+        <th>
+          Phone Number
+        </th>
+        <th >
+          Department
+        </th>
+        <th >
+          To Staff
+        </th>    
+        <th>
+          Status
+        </th>
+        <th>
+        Class
+        </th>      
+      </thead>
+      <tbody *ngFor="let Lead of Student_Data_Search; let i = index">
+        <tr>
+          <td>
+          {{i+1}}
+          </td>
+        
+          <!-- <td >
+          {{Lead["Student"]}}
+          </td> -->
+
+          <td style="width: 120px !important;">
+            {{Lead["Entry_Date"]}}
+            </td>
+
+          <td><a target="_blank" [routerLink]="['/Student']" (click)="Edit_Student_Notification(Lead.Student_Id,i)" 
+            style="color: #357bfd; font-weight: 800;">{{ Lead["Student"] }}</a></td>
+
+         
+          
+          <!-- <td>
+          {{Lead["File_No"]}}
+          </td> -->
+          <td >
+          {{Lead["Mobile"]}}
+          </td>
+      
+          <td style="width: 160px !important;">
+            <div>{{Lead["Max_Department_Name"]}}</div>
+            </td>
+          <td >
+          {{Lead["To_User_Name"]}}
+          </td>
+          <td > 
+          {{Lead["Max_Status_Name"]}}
+          </td>
+          <td >
+          {{Lead["Max_Class_Name"]}}
+          </td>
+        
+             <!-- <td>
+      <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button"><span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" _ngcontent-gxp-c5="" class="material-icons" (click)="Edit_Lead(Lead.Lead_Id,i)" >edit</i></span><div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay" ></div></button>
+  </td> -->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+   
+  <!-- </div> -->
+  </div>
+  <label  >Total Entries:<b>{{Total_Data}}</b></label>
+</div>
+</div>
+
+</div>
+
+
+<div *ngIf="WorkSummary_Div" class="main-content new-margin-T">
+  <div class="container-fluid1 mt-2 right-sec">
+ 
+      <div class="col-md-12 pl-0 mt-2 pr-0" style="border: 1">
+        <div class="dt-card mb-0 pb-2 pt-1">         
+            <div class="dt-card__body m-0 ">
+                <div class="mb-0">           
+                <div class="form-row">
+             
+                            <label class="col-md-0 col-sm-0 col-form-label  text-sm-right mt-2 x-tra-label pl-0">Created On</label>  
+                            <div class="col-md-0 col-sm-0 mb-1">
+                            <div _ngcontent-xmy-c9="" class=" lead-search-section-date-alighn label-down-alighn-stk-ad-mstr-prhse-rte x-tra-label pl-0">
+                              <div _ngcontent-xmy-c9="" class="form-check algyn-checkbx-lead-serch-scton margin-down-tocrect-lead-chckbox-date-front-section pl-0">
+                                <label _ngcontent-xmy-c9="" class="form-check-label">
+                                  <input type='checkbox'class="form-check-input" placeholder='Search...' [(ngModel)]="Look_In_Date_Summary" />
+                                  <span _ngcontent-xmy-c9="" class="form-check-sign" style="margin-left: -10px;
+                                  margin-top: 24px;"><span _ngcontent-xmy-c9="" class="check"></span>
+                                  </span>
+                                  <!-- <label class="">Created</label> -->
+                                </label>              
+                              </div>
+                              <!-- <label class="for-down-title-tabs-personal-details">Created</label> -->
+                            </div>
+                          </div>  
+        
+                
+                    <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2 ">From</label>
+                    <div class="col-md-0 col-sm-0  mt-2 mb-1">
+                        <!-- <input type="date" class="form-control p-0 pl-1 mt-2" placeholder="From"[(ngModel)]="Search_FromDate" name="Search_FromDate" > -->
+                    
+                        <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1 pading_tab" 
+                        >
+                            <input matInput [matDatepicker]="dp14" placeholder="" [(ngModel)]="Search_FromDate" name="Search_FromDate" > 
+                            <mat-datepicker-toggle matSuffix [for]="dp14"></mat-datepicker-toggle>
+                            <mat-datepicker #dp14></mat-datepicker>
+                            </mat-form-field>
+                   
+                    </div>  
+        
+                    <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2">To</label>
+                    <div class="col-md-0 col-sm-0  mt-2 mb-1">
+                        <!-- <input type="date" class="form-control p-0 pl-1 mt-2" placeholder="To"  [(ngModel)]="Search_ToDate" name="Search_ToDate"> -->
+                       
+                        <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1 pading_tab"
+      >
+      <input matInput [matDatepicker]="dpdate44" placeholder=""   [(ngModel)]="Search_ToDate" name="Search_ToDate"> 
+      <mat-datepicker-toggle matSuffix [for]="dpdate44"></mat-datepicker-toggle>
+      <mat-datepicker #dpdate44></mat-datepicker>
+      </mat-form-field>
+    
+                    </div> 
+  
+                    <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2">Department</label>
+                    <div class="col-md-2 col-sm-2 mb-1 mt-2">
+
+                    <select [(ngModel)]="Department_Summary_Search" required class="form-control p-0 pl-1">
+                      <option *ngFor="let Dept of Department_Data" [ngValue]="Dept">{{Dept.Department_Name}}</option>
+                      </select>
+                      </div>
+  
+                      <div class="col-md-0 col-md-0"  >              
+                        <button  name="" mat-raised-button type="submit"(click)="Search_Student_Report()" [hidden]="Summary_Sub==true" class="other-button-style btnflot-left mr-1 ml-2 ">Data</button>
+                        <!-- <button (click)="Graph_View()"  [hidden]="Summary_Sub==false"  mat-raised-button type="submit"  class="other-button-style btnflot pull-right mr-1 mt-2">Graph</button> -->
+                        <button (click)="Export_Summary()" style="background-color: #4bc859 !important;"  [hidden]="Export_View==false" mat-raised-button type="submit"  class="other-button-style btnflot pull-right ml-1 mt-2 ">Export</button>
+                        <button (click)="Search_Lead_button()" id="Registration_Report" mat-raised-button type="submit" style="background-color: #0caef7;"  class="other-button-style btnflot-right ml-2  mt-2">Search</button>
+                      
+                      </div>
+                 
+                </div>
+              
+            </div>
+            </div>
+        </div>        
+        </div>
+
+
+
+
+
+<!-- 
+  <div class="row div-to-down-margin-crect-allighn-wole-scton"  *ngIf="Summary_Sub">
+    <div class="col-md-12 whole-portion-edit-section-lead-part" [style.height.px]="myInnerHeight" > -->
+      <div class="col-md-12  pl-0 pr-0 mt-2" *ngIf="Summary_Sub" style="border: 1" >
+        <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">       
+    <!-- <div class="card card-plain"> -->
+      <div class="card-body card-body-for-searchedit-lead-section">
+      <div class="table-responsive"  style="overflow-y: scroll;"[style.height.px]="myTotalHeight">
+      <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format">
+        <thead>
+          <th style="    width: 50px;">
+            No
+          </th>
+          <th>
+             Department
+            </th>
+          
+          <th>
+         Count
+          </th>
+          <th></th>
+        </thead>
+        <tbody *ngFor="let Lead of Department_Data_Search; let i = index">          
+            <tr>
+            <td>
+            {{i+1}}
+            </td>
+            <td>
+              {{Lead["Max_Department_Name"]}}
+              </td>          
+            <td>
+            {{Lead["Count"]}}
+            </td>
+           <td><div> <button class="other-button-style" mat-raised-button type="submit" id="Registration_Report" (click)="View_Details_Click(Lead.Max_Department_Id)">
+            View Details</button></div>
+            </td>
+           
+               <!-- <td>
+        <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button"><span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" _ngcontent-gxp-c5="" class="material-icons" (click)="Edit_Lead(Lead.Lead_Id,i)" >edit</i></span><div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay" ></div></button>
+    </td> -->
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    <!-- </div> -->
+   </div>
+   <label >Total Follow Ups:<b>{{Total_Entries}}</b></label>
+    
+  </div>
+ 
+  </div>  
+  </div>
+
+
+
+
+  

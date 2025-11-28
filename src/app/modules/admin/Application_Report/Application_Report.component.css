@@ -1,0 +1,55 @@
+.one { color: rgb(42, 11, 219) ; } 
+.three { color:green; } 
+.two { color: rgb(255, 0, 0); } 
+.Four { color: black; }
+.Five { color: rgb(165, 2, 151); }
+
+::ng-deep .mat-form-field-infix {
+    width: 100px !important;
+  }
+
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  .mat-sort-header-container {
+    align-items: center;
+  }
+    
+  .table-responsive {
+    overflow: auto; 
+}
+
+table {
+    table-layout: fixed;
+    width: 100%; 
+}
+
+
+td, th {
+    white-space: normal; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+}
+
+
+th, td {
+    min-width: 150px; 
+    padding: 10px;
+    font-size: 14px !important;
+}
+
+
+.fixed-width {
+    width: 150px; 
+}
+
+.fixed-width1 {
+    width: 400px; 
+}
+
+.fixed-widthhash {
+    width: 65px; 
+}
+.fixed-widthhash1 {
+  width: 100px; 
+}

@@ -1,0 +1,608 @@
+<div *ngIf="issLoading" class="overlay">
+  <mat-progress-spinner
+    class="spinner"
+    [color]="color"
+    [mode]="mode"
+    [value]="value"
+  >
+  </mat-progress-spinner>
+</div>
+<div class="main-content dash_big_screen">
+  <div class="container-fluid">
+    <div class="row" *ngIf="Entry_View">
+      <div class="col-md-12">
+        <div class="card main-card" style="height: 100px">
+          <div class="card-body">
+            <form>
+              <div class="row" style="align-items: center; ">
+                <div
+                  class="d-flex align-items-center  mt-2 mb-2 col-4"
+                >
+                  <label class="pr-3" style="font-size: 15px !important"
+                    >Country<span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    >
+                  </label>
+                  <select
+                    [(ngModel)]="Country_"
+                    style="height: 51px"
+                    name="Country_"
+                    class="form-control"
+                  >
+                    <option
+                      *ngFor="let Country_1 of Country_Data"
+                      [ngValue]="Country_1"
+                    >
+                      {{ Country_1.Country_Name }}
+                    </option>
+                  </select>
+                </div>
+
+                <!-- <div
+                      class="d-flex align-items-center pl-0 pr-sm-3 mt-2 mb-2 col-4"
+                    >
+                      <label class="pr-3" style="font-size: 15px !important;">Intake<span
+                        style="
+                          color: #ef071e;
+                          font-size: 22px;
+                          vertical-align: -webkit-baseline-middle;
+                        "
+                        >*</span 
+                      > </label>
+                      <select
+                        class="form-control"
+                        [(ngModel)]="Intake_"
+                        name="Intake_"
+                      >
+                        <option
+                          *ngFor="let Intake_1 of Intake_Data"
+                          [ngValue]="Intake_1"
+                        >
+                          {{ Intake_1.Intake_Name }}
+                        </option>
+                      </select>
+                    </div> -->
+
+                <div
+                  class="d-flex align-items-center pl-0 pr-sm-3 mt-2 mb-2 col-4"
+                >
+                  <label class="pr-3" style="font-size: 15px !important">
+                    Year<span
+                      style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      "
+                      >*</span
+                    >
+                  </label>
+                  <select
+                    class="form-control"
+                    [(ngModel)]="Intake_Year_"
+                    style="height: 51px"
+                    name="Intake_Year_"
+                  >
+                    <option
+                      *ngFor="let Intake_Year_1 of Intake_Year_Data"
+                      [ngValue]="Intake_Year_1"
+                    >
+                      {{ Intake_Year_1.Intake_Year_Name }}
+                    </option>
+                  </select>
+                </div>
+
+                <!-- <div
+                  class="d-flex align-items-center pl-0 pr-sm-3 mt-2 mb-2 col-4"
+                >
+                  <label class="pr-3" style="font-size: 15px !important;"> Status<span
+                    style="
+                      color: #ef071e;
+                      font-size: 22px;
+                      vertical-align: -webkit-baseline-middle;
+                    "
+                    >*</span 
+                  > </label>
+                  <select
+                    class="form-control"
+                    [(ngModel)]="Country_Intake_Status_"
+                    name="Country_Intake_Status_"
+                  >
+                    <option
+                      *ngFor="let Country_Intake_Status_1 of Country_Intake_Status_Data"
+                      [ngValue]="Country_Intake_Status_1"
+                    >
+                      {{ Country_Intake_Status_1.Country_Intake_Status_Name }}
+                    </option>
+                  </select>
+                </div> -->
+
+                <div
+                  class="col-md-6 section-user-block-ne other-department-user-block"
+                >
+                  <div class="col-md-12">
+                    <table _ngcontent-xmy-c9="" class="table">
+                      <tbody _ngcontent-xmy-c9="">
+                        <tr _ngcontent-xmy-c9="">
+                          <th class="crect-margin-width-table-header-title">
+                            <div _ngcontent-xmy-c9="" class="form-check">
+                              <label
+                                _ngcontent-xmy-c9=""
+                                class="form-check-label"
+                              >
+                                <input
+                                  _ngcontent-xmy-c9=""
+                                  checked=""
+                                  class="form-check-input"
+                                  [(ngModel)]="Select_Selection"
+                                  (click)="Selection_Click()"
+                                  type="checkbox"
+                                  name="Select_Selection"
+                                  [checked]="Select_Selection_Check"
+                                  value=""
+                                />
+                                <span
+                                  _ngcontent-xmy-c9=""
+                                  class="form-check-sign"
+                                >
+                                  <span
+                                    _ngcontent-xmy-c9=""
+                                    class="check"
+                                  ></span>
+                                </span>
+                              </label>
+                            </div>
+                          </th>
+                          <!-- <th> <label class="slct-chck-al-bx-usr-nw-sctn"> Select Intake</label> </th> -->
+
+                          <th class="crect-margin-width-table-header-title">
+                            <div _ngcontent-xmy-c9="" class="form-check">
+                              <label
+                                _ngcontent-xmy-c9=""
+                                class="form-check-label"
+                              >
+                                <input
+                                  _ngcontent-xmy-c9=""
+                                  checked=""
+                                  class="form-check-input"
+                                  [(ngModel)]="Select_Status"
+                                  (click)="Status_Click()"
+                                  type="checkbox"
+                                  name="Select_Status"
+                                  [checked]="Select_Status_Check"
+                                  value=""
+                                />
+                                <span
+                                  _ngcontent-xmy-c9=""
+                                  class="form-check-sign"
+                                >
+                                  <span
+                                    _ngcontent-xmy-c9=""
+                                    class="check"
+                                  ></span>
+                                </span>
+                              </label>
+                            </div>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div
+                    _ngcontent-xmy-c9=""
+                    class="card margin-corect-card margin-corect-card-fr-menu-sctn"
+                  >
+                    <div _ngcontent-xmy-c9="" class="nav-tabs-navigation">
+                      <table _ngcontent-xmy-c9="" class="table">
+                        <tbody _ngcontent-xmy-c9="">
+                          <tr _ngcontent-xmy-c9="">
+                            <th class="crect-margin-width-table-header-title">
+                              Select
+                            </th>
+                            <th
+                              class="crect-margin-width-table-header-title"
+                              style="padding-right: 60px"
+                            >
+                              Intake
+                            </th>
+                            <th
+                              class="crect-margin-width-table-header-title"
+                              style="text-align: right; padding-right: 35px"
+                            >
+                              Status
+                            </th>
+                            <th
+                              class="crect-margin-width-table-header-title"
+                              style="text-align: right; padding-right: 35px"
+                            ></th>
+                            <th
+                              class="crect-margin-width-table-header-title"
+                              style="text-align: right; padding-right: 35px"
+                            ></th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div _ngcontent-xmy-c9="" class="card-body sml-bx-sctn-usr">
+                      <div _ngcontent-xmy-c9="" class="tab-content">
+                        <div
+                          _ngcontent-xmy-c9=""
+                          class="tab-pane active"
+                          id="profile"
+                        >
+                          <table _ngcontent-xmy-c9="" class="table">
+                            <tbody
+                              _ngcontent-xmy-c9=""
+                              *ngFor="let Intake of Intake_Data; let i = index"
+                            >
+                              <tr _ngcontent-xmy-c9="">
+                                <td
+                                  _ngcontent-xmy-c9=""
+                                  class="crect-margin-width-table-header-title"
+                                >
+                                  <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label
+                                      _ngcontent-xmy-c9=""
+                                      class="form-check-label"
+                                    >
+                                      <input
+                                        _ngcontent-xmy-c9=""
+                                        checked=""
+                                        class="form-check-input"
+                                        [(ngModel)]="Intake.Intake_Selection"
+                                        type="checkbox"
+                                        name="{{ Intake.Intake_Id }}{{
+                                          Intake.Intake_Selection
+                                        }}"
+                                        [checked]="Intake.Intake_Selection"
+                                        value=""
+                                      />
+                                      <span
+                                        _ngcontent-xmy-c9=""
+                                        class="form-check-sign"
+                                      >
+                                        <span
+                                          _ngcontent-xmy-c9=""
+                                          class="check"
+                                        ></span>
+                                      </span>
+                                    </label>
+                                  </div>
+                                </td>
+
+                                <td style="text-align: center">
+                                  {{ Intake["Intake_Name"] }}
+                                </td>
+
+                                <td
+                                  _ngcontent-xmy-c9=""
+                                  class="crect-margin-width-table-header-title"
+                                >
+                                  <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label
+                                      _ngcontent-xmy-c9=""
+                                      class="form-check-label"
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        name="{{ Intake.Status_Id }}s"
+                                        class="form-check-input"
+                                        [(ngModel)]="Intake.Intake_Status"
+                                        [checked]="Intake.Intake_Status"
+                                      />
+                                      <span
+                                        _ngcontent-xmy-c9=""
+                                        class="form-check-sign"
+                                      >
+                                        <span
+                                          _ngcontent-xmy-c9=""
+                                          class="check"
+                                        ></span>
+                                      </span>
+                                    </label>
+                                  </div>
+                                </td>
+
+                                <td
+                                  *ngIf="Intake.Intake_Status == true"
+                                  style="text-align: center"
+                                >
+                                  Open
+                                </td>
+                                <td
+                                  *ngIf="Intake.Intake_Status == false"
+                                  style="text-align: center"
+                                >
+                                  Close
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="col-md-6 down-alighn-label-all"
+                  style="top: 289px !important;"
+                >
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    [hidden]="Country_Save == false"
+                    id="Save_Button"
+                    class="btn btn-danger pull-right"
+                    (click)="Save_Country_Intake()"
+                    style="
+                      background-color: rgb(41, 214, 119);
+                      margin-bottom: 11px;    width: 62px;
+                      height: 29px;
+                    "
+                  >
+                    Save
+                  </button>
+                  <button
+                    mat-raised-button
+                    type="submit"
+                    class="btn btn-danger pull-right"
+                    (click)="Close_Click()"
+                    style="background-color: red; margin-bottom: 11px;    width: 62px;
+    height: 29px;"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+
+              <!-- <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-6 down-alighn-label-all">
+                                <button mat-raised-button type="submit"[hidden]="Country_Save==false" id="Save_Button"class="btn btn-danger pull-right" (click)="Save_Country()">Save</button>
+                                <button mat-raised-button type="submit"class="btn btn-danger pull-right" (click)="Close_Click()">Close</button>
+                            </div>
+                        </div>
+
+                    </div> -->
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="!Entry_View">
+      <div
+        class="col-md-12"
+        style="margin-left: 2% !important; margin-top: 1% !important"
+      >
+        <div class="card" style="height: 100px">
+          <form>
+            <div class="row" style="align-items: center">
+              <div
+                class="col-md-12 alighyn-div-margin-search-item-group"
+                style="display: flex; align-items: center; margin-left: 4%"
+              >
+                <div
+                  class="d-flex align-items-center pl-0 pr-sm-3 mt-2 mb-2 col-4"
+                >
+                  <label class="pr-3" style="font-size: 15px !important"
+                    >Country</label
+                  >
+                  <select
+                    [(ngModel)]="Search_Country_"
+                    style="border: 1px solid lightgrey; height: 51px"
+                    name="Country_"
+                    class="form-control"
+                  >
+                    <option
+                      *ngFor="let Country_12 of Country_Data"
+                      [ngValue]="Country_12"
+                    >
+                      {{ Country_12.Country_Name }}
+                    </option>
+                  </select>
+                </div>
+
+                <!-- <div
+                              class="d-flex align-items-center pl-0 pr-sm-3 mt-2 mb-2 col-4"
+                            >
+                              <label class="pr-3" style="font-size: 15px !important;">Intake</label>
+                              <select
+                                class="form-control"
+                                [(ngModel)]="Search_Intake_"
+                                name="Intake_"
+                              >
+                                <option
+                                  *ngFor="let Intake_12 of Intake_Data"
+                                  [ngValue]="Intake_12"
+                                >
+                                  {{ Intake_12.Intake_Name }}
+                                </option>
+                              </select>
+                            </div> -->
+
+                <div
+                  class="d-flex align-items-center pl-0 pr-sm-3 mt-2 mb-2 col-4"
+                >
+                  <label class="pr-3" style="font-size: 15px !important">
+                    Year</label
+                  >
+                  <select
+                    class="form-control"
+                    style="border: 1px solid lightgrey; height: 51px"
+                    [(ngModel)]="Search_Intake_Year_"
+                    name="Intake_Year_"
+                  >
+                    <option
+                      *ngFor="let Intake_Year_12 of Intake_Year_Data"
+                      [ngValue]="Intake_Year_12"
+                    >
+                      {{ Intake_Year_12.Intake_Year_Name }}
+                    </option>
+                  </select>
+                </div>
+                <!-- <div class="col-md-2">
+                            <button mat-raised-button type="submit" (click)="Search_Country()" class="btn btn-danger" style="background-color: rgb(90, 157, 189);margin-bottom: 0;">Search</button> 
+                            <button mat-raised-button type="submit" (click)="Create_New()" class="btn btn-danger"style="background: #fff; color: #020202 !important; border-color: #0a4d9b !important;    margin-top: 6px !important;">Create New</button> 
+                        </div> -->
+
+                <div class="col-md-4 col-sm-4 mt-0">
+                  <button
+                    (click)="Search_Country()"
+                    mat-raised-button
+                    type="submit"
+                    class="other-button-style pull-left mr-1"
+                  >
+                    Search
+                  </button>
+                  <button
+                    (click)="Create_New()"
+                    mat-raised-button
+                    type="submit"
+                    class="save-button-style pull-left mr-1"
+                  >
+                    Create New
+                  </button>
+                </div>
+              </div>
+
+              <!-- <div
+                          class="d-flex align-items-center pl-0 pr-sm-3 mt-2 mb-2 col-4"
+                        >
+                          <label class="pr-3" style="font-size: 15px !important;"> Status</label>
+                          <select
+                            class="form-control"
+                            [(ngModel)]="Search_Country_Intake_Status_"
+                            name="Search_Country_Intake_Status_"
+                          >
+                            <option
+                              *ngFor="let Country_Intake_Status_12 of Country_Intake_Status_Data"
+                              [ngValue]="Country_Intake_Status_12"
+                            >
+                              {{ Country_Intake_Status_12.Country_Intake_Status_Name }}
+                            </option>
+                          </select>
+                        </div> -->
+            </div>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-12 card-body">
+        <div class="card-plain">
+          <div
+            class="table-responsive"
+            style="
+              margin-top: 20px;
+              height: 500px;
+              overflow-y: hidden !important;
+              margin-left: 4%;
+            "
+          >
+            <div class="row grid_header" style="border-radius: 5px">
+              <div class="col-md-2">Sl No</div>
+              <div class="col-md-2">Country</div>
+              <!-- <div class="col-md-2">Intake</div> -->
+              <div class="col-md-2">Year</div>
+              <!-- <div class="col-md-2">Status</div> -->
+              <div class="col-md-1">Edit</div>
+              <div class="col-md-1">Delete</div>
+            </div>
+            <cdk-virtual-scroll-viewport
+              [style.height.px]="myInnerHeight"
+              itemSize="90"
+            >
+              <ng-container
+                *cdkVirtualFor="
+                  let Country1 of Country_Intake_Data;
+                  let i = index
+                "
+              >
+                <div class="row grid_data">
+                  <div class="col-md-2">{{ i + 1 }}</div>
+                  <div class="col-md-2">{{ Country1["Country_Name"] }}</div>
+                  <div class="col-md-2">{{ Country1["Intake_Year_Name"] }}</div>
+                  <div class="col-md-1">
+                    <button
+                      _ngcontent-gdi-c11=""
+                      [hidden]="Country_Edit == false"
+                      class="btn btn-danger2"
+                      mattooltip="Edit Task"
+                      type="button"
+                      aria-describedby="cdk-describedby-message-1"
+                      cdk-describedby-host=""
+                      ng-reflect-position="above"
+                      ng-reflect-message="Edit Task"
+                    >
+                      <span class="mat-button-wrapper"
+                        ><i
+                          _ngcontent-gdi-c11=""
+                          class="material-icons"
+                          (click)="Edit_Country(Country1, i)"
+                          >edit</i
+                        ></span
+                      >
+                      <div
+                        class="mat-button-ripple mat-ripple"
+                        matripple=""
+                        ng-reflect-centered="false"
+                        ng-reflect-disabled="false"
+                        ng-reflect-trigger="[object HTMLButtonElement]"
+                      ></div>
+                      <div class="mat-button-focus-overlay"></div>
+                    </button>
+                  </div>
+
+                  <div class="col-md-1">
+                    <button
+                      _ngcontent-gdi-c11=""
+                      [hidden]="Country_Delete == false"
+                      class="btn btn-danger1"
+                      mattooltip="Remove"
+                      type="button"
+                      aria-describedby="cdk-describedby-message-1"
+                      cdk-describedby-host=""
+                      ng-reflect-position="above"
+                      ng-reflect-message="Remove"
+                    >
+                      <span class="mat-button-wrapper"
+                        ><i
+                          _ngcontent-gdi-c11=""
+                          class="material-icons"
+                          (click)="
+                            Delete_Country(Country1.Country_Intake_Id, i)
+                          "
+                          >close</i
+                        ></span
+                      >
+                      <div
+                        class="mat-button-ripple mat-ripple"
+                        matripple=""
+                        ng-reflect-centered="false"
+                        ng-reflect-disabled="false"
+                        ng-reflect-trigger="[object HTMLButtonElement]"
+                      ></div>
+                      <div class="mat-button-focus-overlay"></div>
+                    </button>
+                  </div>
+                </div>
+              </ng-container>
+            </cdk-virtual-scroll-viewport>
+          </div>
+        </div>
+      </div>
+      <div class="row col-md-12" style="margin-left: 4%">
+        <label class="entry-num" style="margin-left: 20px"
+          >Entries : {{ Total_Entries }}</label
+        >
+      </div>
+    </div>
+  </div>
+</div>

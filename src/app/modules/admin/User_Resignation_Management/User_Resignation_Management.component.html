@@ -1,0 +1,160 @@
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+<img src="/assets/img/spinner.gif" width="100px" >
+</div>  
+  <div class="main-content new-margin-T">        
+    <div class="container-fluid">
+      <div class="row right-sec2" *ngIf="Application_Div">
+        <div class="col-xl-12 pl-0 pr-0 " >
+       <div class="dt-card mb-2 mt-2">
+                  <!-- <div class="dt-card mt-0"> -->
+                      
+                      <div class="dt-card__body">               
+                          <form class="mb-0">
+                            
+                        
+                                <div class="form-row  " >
+                               
+
+                           
+
+
+
+
+              <label
+              class="col-md-2 col-sm-2 col-form-label text-sm-right"
+              > Resigned User <span
+              style="
+                color: #ef071e;
+                line-height: 18px;
+                font-size: 22px;
+                vertical-align: -webkit-baseline-middle;
+              "
+              >*</span
+            ></label
+                        >
+      
+                <div class="col-md-2 col-sm-3 mb-1"  >
+                  <select
+                      [(ngModel)]="Resigned_User_"
+                      name="Resigned_User_"
+                      (ngModelChange)="Resigned_User_Change()"
+                      required
+                      class="form-control p-0 pl-1"
+                  >
+                      <option
+                          *ngFor="let Resigned_User__Data_T of Users_Data"
+                          [ngValue]="Resigned_User__Data_T"
+                      >
+                          {{ Resigned_User__Data_T.User_Details_Name }}
+                      </option>
+                  </select>
+              </div>
+
+
+              <label
+              class="col-md-2 col-sm-2 col-form-label text-sm-right"
+              > New asigned User <span
+              style="
+                color: #ef071e;
+                line-height: 18px;
+                font-size: 22px;
+                vertical-align: -webkit-baseline-middle;
+              "
+              >*</span
+            ></label
+                        >
+      
+                <div class="col-md-2 col-sm-3 mb-1"  >
+                    <div class="col-md-9 col-lg-10 mb-1">
+                        <input type="text"  class="form-control"  id="Backup_User_" name="Backup_User_"  [matAutocomplete]="auto_Backup_User" 
+                        [(ngModel)]="Backup_User_" (click)="Search_Backup_User_Typeahead($event)"(keyup)="Search_Backup_User_Typeahead($event)" /></div>  
+                        <mat-autocomplete #auto_Backup_User="matAutocomplete" [displayWith]="display_Backup_User">
+                        <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
+                        <ng-container *ngIf="!issLoading">
+                        <mat-option *ngFor="let Backup_User_ of Backup_User_Data1" [value]="Backup_User_">
+                        <span>{{Backup_User_.User_Details_Name}}</span>
+                        </mat-option>
+                        </ng-container>
+                        </mat-autocomplete>
+              </div>
+
+
+                                <div class="col-lg-1 mb-1">
+                                    <button class="save-button-style btnflot"  id="Save_Button" (click)="Save_User_Resignation_Management()" type="submit">Save</button>
+                                  </div>  
+                                </div>
+
+
+                           
+                  </form>
+                  </div>
+                 
+          </div>
+
+
+          <div class="dt-card mb-2 mt-2">
+                
+                <div class="dt-card__body">               
+                    <form class="mb-0">
+                      
+                  
+                          <div class="form-row  " >
+                         
+
+                     
+
+
+
+                            <div
+                            class="table-responsive"
+                            style="overflow-y: scroll"
+                            [style.height.px]="myTotalHeight"
+                        >
+                            <table
+                                class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format"
+                            >
+                                <thead>
+                                    <th style="    width: 50px;">No</th>
+                                    <th>Resigned User</th>
+                                    <th>New Assigned User</th>
+    
+                                </thead>
+                                <tbody *ngFor="let Lead of User_Resignation_Management_Data; let i = index">
+                                    <tr>
+                                        <td>
+                                            {{ i + 1 }}
+                                        </td>
+                                        <td>
+                                            {{ Lead["Resigned_User_Name"] }}
+                                        </td>
+                                        <td>
+                                            {{ Lead["New_asigned_User_Name"] }}
+                                        </td>
+    
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div> 
+                          </div>
+
+
+                     
+            </form>
+            </div>
+           
+    </div>
+
+          </div>    
+          </div>
+      </div>
+  </div>
+  
+  

@@ -1,0 +1,2003 @@
+<div
+  *ngIf="issLoading"
+  class="overlay"
+  style="margin-top: 21%; margin-left: 46%; background-color: transparent"
+  [style.left.px]="spinleft"
+>
+  <img src="/assets/img/spinner.gif" width="100px" />
+</div>
+<div class="course-container">
+<div class="main-content screenfixed new-margin-T">
+  <div class="container-fluid2 right-sec right-secright-new-width" style="margin-left: auto">
+    <div
+      class="row"
+      *ngIf="Entry_View"
+      style="overflow-y: scroll"
+      [style.height.px]="MyTotalHeight"
+    >
+      <div class="col-md-12 pl-0">
+        <div class="dt-card" style="background-color: #ffff">
+          <div class="dt-card__body">
+            <form>
+              <div class="row">
+                <div class="col-md-6">
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Course<span
+                        style="
+                          color: #ef071e;
+                          font-size: 22px;
+                          vertical-align: -webkit-baseline-middle;
+                        "
+                        >*</span
+                      ></label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Course_Name"
+                        name="Course_.Course_Name"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >University</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        Input
+                        type="text"
+                        class="form-control"
+                        [matAutocomplete]="autoc3"
+                        placeholder=""
+                        [(ngModel)]="University_"
+                        name="University_"
+                        (click)="University_Typeahead($event)"
+                        (input)="University_Typeahead($event)"
+                      />
+                    </div>
+
+                    <mat-autocomplete
+                      #autoc3="matAutocomplete"
+                      [displayWith]="display_University_"
+                    >
+                      <mat-option *ngIf="issLoading">
+                        <mat-spinner diameter="500"></mat-spinner>
+                      </mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option
+                          *ngFor="let University_1 of University_Data"
+                          [value]="University_1"
+                        >
+                          <span name="University_1.University_Name">{{
+                            University_1.University_Name
+                          }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Level</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <select
+                        [(ngModel)]="Level_"
+                        name="Level_"
+                        required
+                        class="form-control p-0 pl-1"
+                        id="normal-input-4"
+                      >
+                        <option
+                          *ngFor="let Level_T of Level_Data"
+                          [ngValue]="Level_T"
+                        >
+                          {{ Level_T.Level_Detail_Name }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div
+                    *ngIf="1 > 2"
+                    class="col-md-12 mar-crect-account-contra-edit-input-other-one"
+                  >
+                    <label
+                      class="col-md-3 name-label-margin-down-employer-details-name"
+                      >Course Code
+                    </label>
+
+                    <mat-form-field class="col-md-9">
+                      <input
+                        matInput
+                        type="text"
+                        [(ngModel)]="Course_.Course_Code"
+                        name="Course_.Course_Code"
+                        style="
+                          border: 1px solid #949494 !important;
+                          padding: 8px 3px !important;
+                        "
+                      />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Subject
+                    </label>
+
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        Input
+                        type="text"
+                        class="form-control"
+                        [matAutocomplete]="autoc2"
+                        [(ngModel)]="Subject_"
+                        name="Subject_"
+                        (click)="Subject_Typeahead($event)"
+                        (input)="Subject_Typeahead($event)"
+                      />
+                    </div>
+
+                    <mat-autocomplete
+                      #autoc2="matAutocomplete"
+                      [displayWith]="display_Subject_"
+                    >
+                      <mat-option *ngIf="issLoading"
+                        ><mat-spinner diameter="500"></mat-spinner
+                      ></mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option
+                          *ngFor="let Subject_1 of Subject_Data"
+                          [value]="Subject_1"
+                        >
+                          <span>{{ Subject_1.Subject_Name }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
+
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Sub Section</label
+                    >
+
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        Input
+                        type="text"
+                        class="form-control"
+                        [matAutocomplete]="autoc4"
+                        [(ngModel)]="Sub_Section_"
+                        name="Sub_Section_"
+                        (click)="Sub_Section_Typeahead($event)"
+                        (input)="Sub_Section_Typeahead($event)"
+                      />
+                    </div>
+
+                    <mat-autocomplete
+                      #autoc4="matAutocomplete"
+                      [displayWith]="display_Sub_Section_"
+                    >
+                      <mat-option *ngIf="issLoading"
+                        ><mat-spinner diameter="500"></mat-spinner
+                      ></mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option
+                          *ngFor="let Sub_Section_1 of Sub_Section_Data"
+                          [value]="Sub_Section_1"
+                        >
+                          <span>{{ Sub_Section_1.Sub_Section_Name }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Duration
+                    </label>
+                    <div class="col-md-9 col-lg-10">
+                      <select
+                        [(ngModel)]="Duration_"
+                        name="Duration_"
+                        required
+                        class="form-control p-0 pl-1"
+                        id="normal-input-4"
+                      >
+                        <option
+                          *ngFor="let Duration_T of Duration_Data"
+                          [ngValue]="Duration_T"
+                        >
+                          {{ Duration_T.Duration_Name }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Country</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        Input
+                        type="text"
+                        class="form-control"
+                        [matAutocomplete]="autoc1"
+                        placeholder=""
+                        [(ngModel)]="Country_"
+                        name="Country_"
+                        (click)="Search_Country_Typeahead($event)"
+                        (input)="Search_Country_Typeahead($event)"
+                      />
+                    </div>
+
+                    <mat-autocomplete
+                      #autoc1="matAutocomplete"
+                      [displayWith]="display_Country_"
+                    >
+                      <mat-option *ngIf="issLoading">
+                        <mat-spinner diameter="500"></mat-spinner>
+                      </mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option
+                          *ngFor="let Country_1 of Country_Data"
+                          [value]="Country_1"
+                        >
+                          <span name="Country_1.Country_Name">{{
+                            Country_1.Country_Name
+                          }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Tution Fee</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Tution_Fees"
+                        name="Course_.Tution_Fees"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Course Link</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Course_Link"
+                        name="Course_.Course_Link"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Work Experience</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Work_Experience"
+                        name="Course_.Work_Experience"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Gold</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Gold"
+                        name="Course_.Gold"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Silver</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Silver"
+                        name="Course_.Silver"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Platinum</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Platinum"
+                        name="Course_.Platinum"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Application Fees</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Application_Fees"
+                        name="Course_.Application_Fees"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Entry Requirement</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Entry_Requirement"
+                        name="Course_.Entry_Requirement"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Living Expense</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Living_Expense"
+                        name="Course_.Living_Expense"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >IELTS</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <select
+                        [(ngModel)]="Ielts_"
+                        name="Ielts_"
+                        required
+                        class="form-control p-0 pl-1"
+                      >
+                        <option
+                          *ngFor="let Ielts_T of Ielts_Data"
+                          [ngValue]="Ielts_T"
+                        >
+                          {{ Ielts_T.Ielts_Name }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Process selection starat -->
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Process</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <select
+                        [(ngModel)]="ProcessId"
+                        name="Ielts_"
+                        required
+                        class="form-control p-0 pl-1"
+                        aria-placeholder="Select"
+                      >
+                        <option
+                          *ngFor="let process of processes"
+                          [ngValue]="process.Process_Id"
+                        >
+                          {{ process.Process_Name }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- /Process selection end -->
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Internship</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <select
+                        [(ngModel)]="Internship_"
+                        name="Internship_"
+                        required
+                        class="form-control p-0 pl-1"
+                        id="normal-input-4"
+                      >
+                        <option
+                          *ngFor="let Internship_T of Internship_Data"
+                          [ngValue]="Internship_T"
+                        >
+                          {{ Internship_T.Internship_Name }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Notes</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Notes"
+                        name="Course_.Notes"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Registration Fees</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Registration_Fees"
+                        name="Course_.Registration_Fees"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Date Charges</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Date_Charges"
+                        name="Course_.Date_Charges"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Bank Statements</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Bank_Statements"
+                        name="Course_.Bank_Statements"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Insurance</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Insurance"
+                        name="Course_.Insurance"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >VFS Charges</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.VFS_Charges"
+                        name="Course_.VFS_Charges"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Apostille</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Apostille"
+                        name="Course_.Appostille"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Other Charges</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Other_Charges"
+                        name="Course_.Other_Charges"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-4"
+                      class="col-md-3 col-lg-2 col-form-label text-sm-right"
+                      >Tag</label
+                    >
+
+                    <div class="col-md-9 col-lg-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Tag"
+                        name="Course_.Tag"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group form-row">
+                    <label
+                      for="normal-input-3"
+                      class="col-md-3 col-lg-2 col-form-label col-form-label text-sm-right"
+                      >Details</label
+                    >
+                    <div class="col-md-9 col-lg-10">
+                      <textarea
+                        Input
+                        rows="5"
+                        cols="40"
+                        class="form-control"
+                        [(ngModel)]="Course_.Details"
+                        place-holder="Details..."
+                        name="Course_.Details"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="form-row">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+
+                </div>
+                </div> -->
+                <div class="col-md-6">
+                  <div class="col-md-12 p-0">
+                    <table _ngcontent-xmy-c9="" class="table">
+                      <tbody _ngcontent-xmy-c9="">
+                        <tr _ngcontent-xmy-c9="">
+                          <th class="crect-margin-width-table-header-title">
+                            <div _ngcontent-xmy-c9="" class="form-check">
+                              <label
+                                _ngcontent-xmy-c9=""
+                                class="form-check-label"
+                              >
+                                <input
+                                  _ngcontent-xmy-c9=""
+                                  checked=""
+                                  class="form-check-input"
+                                  [(ngModel)]="Select_Selection"
+                                  (click)="Selection_Click()"
+                                  type="checkbox"
+                                  name="Select_Selection"
+                                  [checked]="Select_Selection_Check"
+                                  value=""
+                                />
+                                <span
+                                  _ngcontent-xmy-c9=""
+                                  class="form-check-sign"
+                                  style="margin-top: 38px"
+                                >
+                                  <span
+                                    _ngcontent-xmy-c9=""
+                                    class="check"
+                                  ></span>
+                                </span>
+                              </label>
+                            </div>
+                          </th>
+                          <th>
+                            <label class="slct-chck-al-bx-usr-nw-sctn mrgn-cls">
+                              Select Intake</label
+                            >
+                          </th>
+
+                          <th class="crect-margin-width-table-header-title">
+                            <div _ngcontent-xmy-c9="" class="form-check">
+                              <label
+                                _ngcontent-xmy-c9=""
+                                class="form-check-label"
+                                style="padding-left: 0px"
+                              >
+                                <input
+                                  _ngcontent-xmy-c9=""
+                                  checked=""
+                                  class="form-check-input"
+                                  [(ngModel)]="Select_Status"
+                                  (click)="Status_Click()"
+                                  type="checkbox"
+                                  name="Select_Status"
+                                  [checked]="Select_Status_Check"
+                                  value=""
+                                />
+                                <span
+                                  _ngcontent-xmy-c9=""
+                                  class="form-check-sign"
+                                  style="margin-top: 38px; margin-left: -8px"
+                                >
+                                  <span
+                                    _ngcontent-xmy-c9=""
+                                    class="check"
+                                  ></span>
+                                </span>
+                              </label>
+                            </div>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div
+                    _ngcontent-xmy-c9=""
+                    class="card margin-corect-card margin-corect-card-fr-menu-sctn st-width3"
+                  >
+                    <div _ngcontent-xmy-c9="" class="nav-tabs-navigation">
+                      <table _ngcontent-xmy-c9="" class="table">
+                        <tbody _ngcontent-xmy-c9="">
+                          <tr _ngcontent-xmy-c9="">
+                            <th class="crect-margin-width-table-header-title">
+                              Select
+                            </th>
+                            <th
+                              class="crect-margin-width-table-header-title"
+                              style="text-align: center"
+                            >
+                              Intake
+                            </th>
+                            <th
+                              class="crect-margin-width-table-header-title pr-4"
+                              style="text-align: right"
+                            >
+                              Status
+                            </th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <div _ngcontent-xmy-c9="" class="card-body">
+                      <div _ngcontent-xmy-c9="" class="tab-content">
+                        <div
+                          _ngcontent-xmy-c9=""
+                          class="tab-pane active"
+                          id="profile"
+                        >
+                          <table _ngcontent-xmy-c9="" class="table">
+                            <tbody
+                              _ngcontent-xmy-c9=""
+                              *ngFor="let Intake of Intake_Data; let i = index"
+                            >
+                              <tr _ngcontent-xmy-c9="">
+                                <td
+                                  _ngcontent-xmy-c9=""
+                                  class="crect-margin-width-table-header-title"
+                                >
+                                  <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label
+                                      _ngcontent-xmy-c9=""
+                                      class="form-check-label"
+                                    >
+                                      <input
+                                        _ngcontent-xmy-c9=""
+                                        checked=""
+                                        class="form-check-input"
+                                        [(ngModel)]="Intake.Intake_Selection"
+                                        type="checkbox"
+                                        name="{{ Intake.Intake_Id }}{{
+                                          Intake.Intake_Selection
+                                        }}"
+                                        [checked]="Intake.Intake_Selection"
+                                        value=""
+                                      />
+                                      <span
+                                        _ngcontent-xmy-c9=""
+                                        class="form-check-sign"
+                                      >
+                                        <span
+                                          _ngcontent-xmy-c9=""
+                                          class="check"
+                                        ></span>
+                                      </span>
+                                    </label>
+                                  </div>
+                                </td>
+                                <!-- text-align: center; -->
+                                <td
+                                  style="
+                                    text-align: center;
+                                    padding-left: 0px !important;
+                                  "
+                                >
+                                  <div>
+                                    {{ Intake["Intake_Name"] }}
+                                  </div>
+                                </td>
+                                <td
+                                  _ngcontent-xmy-c9=""
+                                  class="crect-margin-width-table-header-title"
+                                >
+                                  <div></div>
+                                  <div _ngcontent-xmy-c9="" class="form-check">
+                                    <label
+                                      _ngcontent-xmy-c9=""
+                                      class="form-check-label"
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        name="{{ Intake.Intake_Id }}s"
+                                        class="form-check-input"
+                                        [(ngModel)]="Intake.Intake_Status"
+                                        [checked]="Intake.Intake_Status"
+                                      />
+                                      <span
+                                        _ngcontent-xmy-c9=""
+                                        class="form-check-sign"
+                                      >
+                                        <span
+                                          _ngcontent-xmy-c9=""
+                                          class="check"
+                                        ></span>
+                                      </span>
+                                    </label>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <!-- Devider between months and Qualification -->
+                      <div style="width: 100%; height: 50px"></div>
+
+                    
+            <label for="normal-input-4" class="col-md-3 col-lg-2 col-form-label text-sm-right"> English Test</label>  
+           
+            <div ng-if="Course_.English_Test_Status==true" _ngcontent-xmy-c9="" class="card-body" [style.height.px]="myTotalHeight"style="overflow-y: scroll;">
+            <div _ngcontent-xmy-c9="" class="tab-content" >
+            <div _ngcontent-xmy-c9="" class="tab-pane active" id="profile">
+            <table _ngcontent-xmy-c9="" class="table st-width2">
+            <tr _ngcontent-xmy-c9="" class="th-botm-bordr">
+            <!-- <th class="crect-align-tblelst-srlno-department th-botm-bordr-top">Select</th> -->
+            <th class="crect-align-tblelst-status-department th-botm-bordr-top">Test</th> 
+            <th class="th-botm-bordr-top">Mark</th> 
+            </tr>
+            <!-- <tbody _ngcontent-xmy-c9="" *ngFor="let IELTS_Type_Value of IELTS_Type_Data ; let i = index">
+            <tr _ngcontent-xmy-c9="">
+
+           
+            <td class="crect-align-tblelst-select-branch">
+            {{
+            IELTS_Type_Value.Ielts_Type_Name  
+
+            }}
+
+            </td>
+            <td class="crect-align-tblelst-select-branch">
+            <span >
+            <input  
+  type="text"
+  class="form-control"
+  [(ngModel)]="IELTS_Type_Value.Ielts_Minimum_Score"
+  [name]="'Ielts_Minimum_Score_' + i"
+  placeholder=" "
+/>
+
+            </span>
+            </td>
+            </tr>
+            </tbody> -->
+            <tbody *ngFor="let IELTS_Type_Value of IELTS_Type_Data; let i = index">
+  <tr>
+    <td class="crect-align-tblelst-select-branch">
+      <input 
+        type="checkbox" 
+        [(ngModel)]="IELTS_Type_Value.Ielts_Selection"
+        (change)="Update_IELTS_Score(IELTS_Type_Value)"
+        [name]="'Ielts_Selection_' + i" />
+      {{ IELTS_Type_Value.Ielts_Type_Name }}
+    </td>
+    <td class="crect-align-tblelst-select-branch">
+      <span *ngIf="IELTS_Type_Value.Ielts_Data_visibility == 1">
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="IELTS_Type_Value.Ielts_Minimum_Score"
+          [name]="'Ielts_Minimum_Score_' + i"
+          placeholder="Enter minimum score" />
+      </span>
+    </td>
+  </tr>
+</tbody>
+          </table></div>                                
+            </div>
+            </div>
+            </div>
+            </div>
+                </div>
+             
+        <!--New design section--> 
+        <!-- <div class="col-md-12">
+          <div class="form-row">
+          <div class="col-md-3 form-group form-row">
+               <label for="normal-input-4" class="col-md-4 col-lg-4 col-form-label text-sm-left">Qualification</label>
+                <div class="col-md-8 col-lg-8">
+                  <input
+                    Input
+                    type="text"
+                    class="form-control"
+                    [matAutocomplete]="autoc3"
+                    placeholder=""
+                    [(ngModel)]="University_"
+                    name="University_"
+                    (click)="University_Typeahead($event)"
+                    (input)="University_Typeahead($event)"/>
+                </div>
+                      <mat-autocomplete
+                      #autoc3="matAutocomplete"
+                      [displayWith]="display_University_"
+                    >
+                      <mat-option *ngIf="issLoading">
+                        <mat-spinner diameter="500"></mat-spinner>
+                      </mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option
+                          *ngFor="let University_1 of University_Data"
+                          [value]="University_1"
+                        >
+                          <span name="University_1.University_Name">{{
+                            University_1.University_Name
+                          }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
+          </div>
+           <div class="col-md-2 form-group form-row">
+               <label for="normal-input-4" class="col-md-4 col-lg-4 col-form-label text-sm-left">State</label>
+                <div class="col-md-8 col-lg-8">
+                  <input
+                    Input
+                    type="text"
+                    class="form-control"
+                    [matAutocomplete]="autoc3"
+                    placeholder=""
+                    [(ngModel)]="University_"
+                    name="University_"
+                    (click)="University_Typeahead($event)"
+                    (input)="University_Typeahead($event)"/>
+                </div>
+                      <mat-autocomplete
+                      #autoc3="matAutocomplete"
+                      [displayWith]="display_University_"
+                    >
+                      <mat-option *ngIf="issLoading">
+                        <mat-spinner diameter="500"></mat-spinner>
+                      </mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option
+                          *ngFor="let University_1 of University_Data"
+                          [value]="University_1"
+                        >
+                          <span name="University_1.University_Name">{{
+                            University_1.University_Name
+                          }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
+          </div>
+             <div class="col-md-3 form-group form-row">
+               <label for="normal-input-4" class="col-md-4 col-lg-4 col-form-label text-sm-left">University</label>
+                <div class="col-md-8 col-lg-8">
+                  <input
+                    Input
+                    type="text"
+                    class="form-control"
+                    [matAutocomplete]="autoc3"
+                    placeholder=""
+                    [(ngModel)]="University_"
+                    name="University_"
+                    (click)="University_Typeahead($event)"
+                    (input)="University_Typeahead($event)"/>
+                </div>
+                      <mat-autocomplete
+                      #autoc3="matAutocomplete"
+                      [displayWith]="display_University_"
+                    >
+                      <mat-option *ngIf="issLoading">
+                        <mat-spinner diameter="500"></mat-spinner>
+                      </mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option
+                          *ngFor="let University_1 of University_Data"
+                          [value]="University_1"
+                        >
+                          <span name="University_1.University_Name">{{
+                            University_1.University_Name
+                          }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
+          </div>
+          <div class="col-md-3 form-group form-row">
+               <label for="normal-input-4" class="col-md-4 col-lg-4 col-form-label text-sm-left">Stream</label>
+                <div class="col-md-8 col-lg-8">
+                  <input
+                    Input
+                    type="text"
+                    class="form-control"
+                    [matAutocomplete]="autoc3"
+                    placeholder=""
+                    [(ngModel)]="University_"
+                    name="University_"
+                    (click)="University_Typeahead($event)"
+                    (input)="University_Typeahead($event)"/>
+                </div>
+                      <mat-autocomplete
+                      #autoc3="matAutocomplete"
+                      [displayWith]="display_University_"
+                    >
+                      <mat-option *ngIf="issLoading">
+                        <mat-spinner diameter="500"></mat-spinner>
+                      </mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option
+                          *ngFor="let University_1 of University_Data"
+                          [value]="University_1"
+                        >
+                          <span name="University_1.University_Name">{{
+                            University_1.University_Name
+                          }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
+          </div>
+            <div class="col-md-1 form-group form-row">
+               <label for="normal-input-4" class="col-md-6 col-lg-6 col-form-label text-sm-left">Mark %</label>
+                 <div class="col-md-6 col-lg-6">
+                      <input
+                        type="text"
+                        class="form-control"
+                        [(ngModel)]="Course_.Course_Name"
+                        name="Course_.Course_Name"
+                        id="normal-input-4"
+                        placeholder=""
+                      />
+                    </div>
+          </div>
+        </div>
+
+        <div _ngcontent-xmy-c9=""
+                    class="card margin-corect-card margin-corect-card-fr-menu-sctn st-width3">
+                      <div _ngcontent-xmy-c9="" class="nav-tabs-navigation">
+                        <table _ngcontent-xmy-c9="" class="table">
+                          <tbody _ngcontent-xmy-c9="">
+                            <tr _ngcontent-xmy-c9="">
+                              <th class="crect-margin-width-table-header-title">
+                                Select Subject
+                              </th>   
+                               <th
+                                class="crect-margin-width-table-header-title pr-4"
+                                style="text-align: right"
+                              >
+                                Course
+                              </th>
+
+                               <th
+                                class="crect-margin-width-table-header-title pr-4"
+                                style="text-align: right"
+                              >
+                                Mark
+                              </th>                              
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+
+                   
+                      <div _ngcontent-xmy-c9="" class="tab-content">
+                        <div
+                          _ngcontent-xmy-c9=""
+                          class="tab-pane active"
+                          id="profile"
+                        >
+                          <table _ngcontent-xmy-c9="" class="table">
+                            <tbody
+                              _ngcontent-xmy-c9=""
+                              *ngFor="
+                                let qualification of qualificationList;
+                                let i = index
+                              "
+                            >
+                              <tr _ngcontent-xmy-c9="">
+                                <td>
+                                  <div
+                                    style="
+                                      width: auto;
+                                      text-align: start;
+                                      padding-left: 11px;
+                                      display: flex;
+                                      align-items: center;
+                                      text-align: center;
+                                    "
+                                  >
+                                    <div
+                                      _ngcontent-xmy-c9=""
+                                      class="form-check"
+                                    >
+                                      <label
+                                        _ngcontent-xmy-c9=""
+                                        class="form-check-label"
+                                      >
+                                        <input
+                                          _ngcontent-xmy-c9=""
+                                          checked=""
+                                          class="form-check-input"
+                                          [(ngModel)]="
+                                            qualification.Qualification_Selection
+                                          "
+                                          type="checkbox"
+                                          name="{{qualification.Qualification_Master_Id}}{{qualification.Qualification_Selection}}"
+                                          [checked]="
+                                            qualificationListObj[
+                                              qualification
+                                                .Qualification_Master_Id
+                                            ].selected
+                                          "
+                                          (click)="
+                                            showInput($event, qualification)
+                                          "
+                                          value=""
+                                        />
+                                        <span
+                                          _ngcontent-xmy-c9=""
+                                          class="form-check-sign"
+                                        >
+                                          <span
+                                            _ngcontent-xmy-c9=""
+                                            class="check"
+                                          ></span>
+                                        </span>
+                                      </label>
+                                    </div>
+                                    {{
+                                      qualification["Qualification_Name"]
+                                    }}
+                                  </div>
+                                </td>
+                                    <td
+                                  style="
+                                    text-align: center;
+                                    padding-left: 0px !important;
+                                  "
+                                >
+                                  <div>course
+                                    {{ Intake["Intake_Name"] }}
+                                  </div>
+                                </td>
+                                <td
+                                  _ngcontent-xmy-c9=""
+                                  class="crect-margin-width-table-header-title"
+                                >
+                                  <div></div>
+                                  <div
+                                    _ngcontent-xmy-c9=""
+                                    *ngIf="
+                                      qualificationListObj[
+                                        qualification.Qualification_Master_Id
+                                      ].selected
+                                    "
+                                  >
+                                    <label
+                                      _ngcontent-xmy-c9=""
+                                      class="form-check-label"
+                                    >
+                                      <input
+                                        style="height: 25px; margin-bottom: 6px"
+                                        type="number"
+                                        [value]="
+                                          qualificationListObj[
+                                            qualification
+                                              .Qualification_Master_Id
+                                          ].mark
+                                        "
+                                        [(ngModel)]="
+                                          qualificationListObj[
+                                            qualification
+                                              .Qualification_Master_Id
+                                          ].mark
+                                        "
+                                        (keyup)="
+                                          updateNotificationText(
+                                            $event,
+                                            qualification.Qualification_Master_Id
+                                          )
+                                        "
+                                        name="{{ Intake.Intake_Id }}"
+                                        class="form-check-input"
+                                      />
+                                    </label>
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+        </div>
+        </div> -->
+
+  <div class="col-md-12 butn-crct-alghn-dwnwrd-users-srch-new">
+    <button
+      mat-raised-button
+      type="submit"
+      [hidden]="Course_Save == false"
+      id="Save_Button"
+      class="save-button-style pull-right mr-1"
+      (click)="Save_Course()"
+    >
+      Save
+    </button>
+    <button
+      mat-raised-button
+      type="submit"
+      class="close-button-style pull-right mr-1"
+      (click)="Close_Click()"
+    >
+      Close
+    </button>
+  </div>
+</div>
+
+<div class="clearfix"></div>
+</form>
+</div>
+</div>
+</div>
+</div>
+    
+    <div class="row" *ngIf="!Entry_View">
+      <div class="col-md-12 pl-0 pr-0" style="border: 1">
+        <div class="dt-card mb-0 pb-1 new-dt-card">
+          <div class="dt-card__body mb-0 pb-0 new-dt-cardbody">
+            <div class="mb-0">
+              <h3
+              style="
+                font-size: 20px;
+                color: #51688a;
+                font-weight: 600;
+                margin: 0;
+              
+              "
+            >
+              Course
+            </h3>
+              <div class="form-row " style="align-items: center">
+             <div class="col-md-3 row">
+              <label
+              class="col-md-4 col-sm-0 col-form-label text-sm-right pt-1"
+              >Course</label
+            >
+            <div class="col-md-8 mb-0">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="Search_Course_name"
+                name="Search_Course_name"
+                placeholder=" "
+              />
+            </div>
+             </div>
+               
+<div class="col-md-3 row">
+  <label
+  class="col-form-label col-md-4"
+  >Country</label
+>
+
+<div class="col-md-8 mb-1 mt-1">
+  <input
+    Input
+    type="text"
+    class="form-control"
+    [matAutocomplete]="autoc8"
+    placeholder=""
+    [(ngModel)]="Profile_Country_"
+    name="Profile_Country_"
+    id="Profile_Country_"
+    (click)="Search_Country_Typeahead1($event)"
+    (keyup)="Search_Country_Typeahead1($event)"
+    (ngModelChange)="Country_Change1()"
+  />
+</div>
+<mat-autocomplete
+  #autoc8="matAutocomplete"
+  [displayWith]="display_Country"
+>
+  <mat-option *ngIf="issLoading">
+    <mat-spinner diameter="500"></mat-spinner>
+  </mat-option>
+  <ng-container *ngIf="!issLoading">
+    <mat-option
+      *ngFor="let Program_Country_T of Country_Data_Filter"
+      [value]="Program_Country_T"
+    >
+      <span name="Program_Country_T.Country_Name">{{
+        Program_Country_T.Country_Name
+      }}</span>
+    </mat-option>
+  </ng-container>
+</mat-autocomplete>
+
+</div>
+
+<div class="col-md-3 row">
+  <label
+  class="col-md-4  text-sm-right col-form-label"
+  style="text-align: end;"
+>
+  University
+</label>
+<div class="col-md-8 mt-1 mb-1" >
+  <input
+    Input
+    type="text"
+    class="form-control"
+    [matAutocomplete]="autoc4"
+    placeholder=""
+    [(ngModel)]="University_1"
+    name="University_1"
+    (click)="Search_University_Typeahead_Country($event)"
+    (keyup)="Search_University_Typeahead_Country($event)"
+
+  />
+</div>
+<mat-autocomplete
+  #autoc4="matAutocomplete"
+  [displayWith]="display_University_1"
+>
+  <mat-option *ngIf="issLoading">
+    <mat-spinner diameter="500"></mat-spinner>
+  </mat-option>
+  <ng-container *ngIf="!issLoading">
+    <mat-option
+
+    
+      *ngFor="let University_T1 of University_Data_Filter_2"
+      [value]="University_T1"
+    >
+      <span name="University_T1.University_Name">{{
+        University_T1.University_Name
+      }}</span>
+    </mat-option>
+  </ng-container>
+</mat-autocomplete>
+</div>
+                
+
+<label
+class="col-form-label ml-1"
+style="font-size: 14px !important"
+>Intake</label
+>
+<div class="col-md-3 col-lg-2">
+<select
+  [(ngModel)]="Intake_Search"
+  name="Intake_Search"
+  required
+  class="form-control p-0 pl-1"
+>
+  <option
+    *ngFor="let Intake_Mode_Data_T of Intake_Mode_Data"
+    [ngValue]="Intake_Mode_Data_T"
+  >
+    {{Intake_Mode_Data_T.Intake_Name}}
+  </option>
+</select>
+</div>
+       
+
+                <div
+                  class="col-md-3 col-sm-0"
+                  style="display: flex; align-items: center"
+                >
+                  <button
+                    (click)="Search_Course_Click()"
+                    mat-raised-button
+                    type="submit"
+                    class="other-button-style btnflot pull-left mr-1 search-btn"
+                  >
+                    Search
+                  </button>
+                  <!-- <button
+                    (click)="Create_New()"
+                    mat-raised-button
+                    type="submit"
+                    class="save-button-style pull-right mr-1 new-btn"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="17"
+                      height="17"
+                      viewBox="0 0 17 17"
+                      fill="none"
+                      style="background: #fff; border-radius: 50%"
+                    >
+                      <mask
+                        id="mask0_41_83"
+                        style="mask-type: alpha"
+                        maskUnits="userSpaceOnUse"
+                        x="0"
+                        y="0"
+                        width="17"
+                        height="17"
+                      >
+                        <rect width="17" height="17" fill="#D9D9D9" />
+                      </mask>
+                      <g mask="url(#mask0_41_83)">
+                        <path
+                          d="M7.79175 9.20832H3.54175V7.79166H7.79175V3.54166H9.20842V7.79166H13.4584V9.20832H9.20842V13.4583H7.79175V9.20832Z"
+                          fill="#1C1B1F"
+                        />
+                      </g>
+                    </svg>
+                    Create New
+                  </button> -->
+                  <button (click)="Create_New()" mat-raised-button type="submit" class="save-button-style pull-left mr-1 btn-pdng2">Create New</button>
+                  <li
+                    class="nav-item dropdown col-0"
+                    style="
+                      display: flex;
+                      justify-content: end;
+                      padding-left: 20px;
+                      padding-right: 0px;
+                    "
+                  >
+                    <!-- <a
+                      class="nav-link pr-0 icon-container"
+                      href="javascript:void(0)"
+                      id="navbarDropdownMenuLink"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      (click)="Reset_Notification_Count()"
+                      style="
+                        padding: 0;
+                        padding-top: 10px;
+                        font-size: 20px;
+                        font-size: 20px;
+                        vertical-align: 0;
+                        margin-top: 6px;
+                        padding: 0 !important;
+                      "
+                    >
+                      <i
+                        class="fa fa-bell-o"
+                        style="margin-top: -4px; color: #7838ff"
+                      ></i>
+                      <span
+                        class="notification"
+                        (click)="Reset_Notification_Count()"
+                        [hidden]="Count_Notification"
+                        >{{ Notification_Count }}</span
+                      >
+                      <p class="notification-p">
+                        <span class="d-lg-none d-md-block">Some Actions</span>
+                      </p>
+                    </a> -->
+                    <!--  -->
+                    <!-- <button (click)="resetIcons()">Reset icons</button>
+                
+                <div class="icons-container">
+                  <i #icon1 class="fa fa-star" (mouseover)="enlargeIcon(icon1)" (mouseout)="resetIcon(icon1)"></i>
+                  <i #icon2 class="fa fa-heart" (mouseover)="enlargeIcon(icon2)" (mouseout)="resetIcon(icon2)"></i>
+                  <i #icon3 class="fa fa-check" (mouseover)="enlargeIcon(icon3)" (mouseout)="resetIcon(icon3)"></i>
+                </div> -->
+                    <!--  -->
+                    <!-- [style.height.px]="Aheight" -->
+                    <div
+                      class="dropdown-menu dropdown-menu-right scroll-dropdown-notifi home-component notification-box"
+                      aria-labelledby="navbarDropdownMenuLink"
+                      style="
+                        height: 250px;
+                        overflow-y: scroll;
+                        padding-left: 25px;
+                        background: #e0e4e8;
+                      "
+                      [hidden]="Count_Notification"
+                    >
+                      <div class="notification-portion" style="color: #080808">
+                        <h5>
+                          <b>
+                            <i
+                              class="fa fa-bell"
+                              style="color: #86beb9; margin-right: 20px"
+                            ></i>
+                            Notifications
+                          </b>
+                        </h5>
+
+                        <!-- <a class="close close-notification" href="javascript:void(0)">
+                              &times;</a> -->
+                      </div>
+                      <div
+                        *ngFor="
+                          let Notification_T of Notification_Data;
+                          let i = index
+                        "
+                      >
+                        <!-- <a	 (click)="Notification_Item_Click(Notification_T )">
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;By&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 							 
+                            </a> -->
+                        <!-- <a href=""> -->
+                        <ul
+                          class="list-unstyled team-members"
+                          (click)="Notification_Item_Click(Notification_T)"
+                          style="
+                            border-bottom: solid 1px #f8f8f8;
+                            cursor: pointer;
+                          "
+                        >
+                          <li>
+                            <div class="row">
+                              <div class="col-md-2 col-2">
+                                <div class="avatar">
+                                  <i
+                                    class="fa fa-envelope"
+                                    style="color: #7aaba6; font-size: 18px"
+                                  ></i>
+                                </div>
+                              </div>
+                              <div
+                                class="col-md-8 col-7"
+                                style="color: black; font-size: 13px"
+                              >
+                                <b style="font-weight: bold; color: #8a85bc">{{
+                                  Notification_T["Student_Name"]
+                                }}</b>
+                                <br />
+                                {{ Notification_T["Notification_Type_Name"] }}
+                                <br />
+                                <span class="text-muted">
+                                  <b style="color: black">{{
+                                    Notification_T["From_User_Name"]
+                                  }}</b>
+                                </span>
+                              </div>
+                              <!-- <div class="col-md-3 col-3 text-right">
+                                  <button class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></button>
+                                </div> -->
+                            </div>
+                          </li>
+                        </ul>
+                        <!-- </a> -->
+                        <!-- <a
+                              *ngIf="
+                                Notification_T.Entry_Type == 1 ||
+                                Notification_T.Entry_Type == 2 ||
+                                Notification_T.Entry_Type == 3
+                              "
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Student']"
+                              (click)="Edit_Lead(Notification_T.Student_Id, i)"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;By&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                               
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type == 4"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              
+                              [routerLink]="['/Receipt_Confirmation']"
+                              
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type == 5"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Student']"
+                              (click)="Edit_Lead(Notification_T.Student_Id, i)"
+                            >
+                             
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 6"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Student']"
+                              (click)="Edit_Lead(Notification_T.Student_Id, i)"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 7"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Refund_Confirmation']"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 8"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Student_Task']"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 9"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Refund_Approval']"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 10"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Refund_Approval']"
+                            >
+                              <i class="fa fa-calendar"></i
+                              >&nbsp;{{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a>
+                            <a
+                              *ngIf="Notification_T.Entry_Type === 11"
+                              class="dropdown-item"
+                              href="javascript:void(0)"
+                              [routerLink]="['/Refund_Confirmation']"
+                            >
+                              <i class="fa fa-calendar"></i>&nbsp;
+                              {{ Notification_T["Student_Name"] }}&nbsp;
+                              {{ Notification_T["Notification_Type_Name"] }}&nbsp;
+                              {{ Notification_T["From_User_Name"] }}&nbsp; 
+                            </a> -->
+                      </div>
+                      <!-- <a href=""> -->
+                      <p
+                        class="v-btn mt-5"
+                        style="font-size: 14px; position: relative; top: 15px"
+                        (click)="Get_Notification()"
+                      >
+                        View All
+                      </p>
+                      <!-- </a>		 -->
+                    </div>
+                  </li>
+                </div>
+              </div>
+
+              <div class="form-row" *ngIf="!Advance_Search">
+                <!-- <label class="col-md-1 col-sm-1 col-form-label text-sm-right"
+                  >Country</label
+                >
+                <div class="col-md-2 col-sm-2 mb-1">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [matAutocomplete]="autoc1"
+                    placeholder=""
+                    [(ngModel)]="Search_Country_"
+                    name="Search_Country_"
+                    (click)="Search_Country_Typeahead($event)"
+                    (input)="Search_Country_Typeahead($event)"
+                    id="normal-input-4"
+                  />
+                </div>
+                <mat-autocomplete
+                  #autoc1="matAutocomplete"
+                  [displayWith]="display_Country_"
+                >
+                  <mat-option *ngIf="issLoading">
+                    <mat-spinner diameter="500"></mat-spinner>
+                  </mat-option>
+                  <ng-container *ngIf="!issLoading">
+                    <mat-option
+                      *ngFor="let Country_1 of Country_Data"
+                      [value]="Country_1"
+                    >
+                      <span name="Country_1.Country_Name">{{
+                        Country_1.Country_Name
+                      }}</span>
+                    </mat-option>
+                  </ng-container>
+                </mat-autocomplete> -->
+
+                <label class="col-md-1 col-sm-1 col-form-label text-sm-right"
+                  >Subject</label
+                >
+                <div class="col-md-2 col-sm-2 mb-1">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [matAutocomplete]="auto2"
+                    [(ngModel)]="Search_Subject_"
+                    name="Search_Subject_"
+                    (click)="Subject_Typeahead($event)"
+                    (input)="Subject_Typeahead($event)"
+                    id="normal-input-4"
+                  />
+                </div>
+                <mat-autocomplete
+                  #auto2="matAutocomplete"
+                  [displayWith]="display_Subject_"
+                >
+                  <mat-option *ngIf="issLoading"
+                    ><mat-spinner diameter="500"></mat-spinner
+                  ></mat-option>
+                  <ng-container *ngIf="!issLoading">
+                    <mat-option
+                      *ngFor="let Subject_1 of Subject_Data"
+                      [value]="Subject_1"
+                    >
+                      <span>{{ Subject_1.Subject_Name }}</span>
+                    </mat-option>
+                  </ng-container>
+                </mat-autocomplete>
+
+                <label class="col-md-1 col-sm-1 col-form-label text-sm-right"
+                  >Sub Section</label
+                >
+                <div class="col-md-2 col-sm-2 mb-1">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [matAutocomplete]="auto6"
+                    [(ngModel)]="Search_Sub_Section_"
+                    name="Search_Sub_Section_"
+                    (click)="Sub_Section_Typeahead($event)"
+                    (input)="Sub_Section_Typeahead($event)"
+                    id="normal-input-4"
+                  />
+                </div>
+                <mat-autocomplete
+                  #auto6="matAutocomplete"
+                  [displayWith]="display_Sub_Section_"
+                >
+                  <mat-option *ngIf="issLoading"
+                    ><mat-spinner diameter="500"></mat-spinner
+                  ></mat-option>
+                  <ng-container *ngIf="!issLoading">
+                    <mat-option
+                      *ngFor="let Sub_Section_Data_ of Sub_Section_Data"
+                      [value]="Sub_Section_Data_"
+                    >
+                      <span>{{ Sub_Section_Data_.Sub_Section_Name }}</span>
+                    </mat-option>
+                  </ng-container>
+                </mat-autocomplete>
+
+                <label class="col-md-1 col-sm-1 col-form-label text-sm-right"
+                  >University</label
+                >
+                <div class="col-md-2 col-sm-2 mb-1">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [matAutocomplete]="auto3"
+                    [(ngModel)]="Search_University_"
+                    name="Search_University_"
+                    (click)="University_Typeahead($event)"
+                    (keyup)="University_Typeahead($event)"
+                    id="normal-input-4"
+                  />
+                </div>
+                <mat-autocomplete
+                  #auto3="matAutocomplete"
+                  [displayWith]="display_University_"
+                >
+                  <mat-option *ngIf="issLoading"
+                    ><mat-spinner diameter="500"></mat-spinner
+                  ></mat-option>
+                  <ng-container *ngIf="!issLoading">
+                    <mat-option
+                      *ngFor="let University_1 of University_Data"
+                      [value]="University_1"
+                    >
+                      <span>{{ University_1.University_Name }}</span>
+                    </mat-option>
+                  </ng-container>
+                </mat-autocomplete>
+
+                <label class="col-md-1 col-sm-1 col-form-label text-sm-right"
+                  >Internship</label
+                >
+                <div class="col-md-2 col-sm-2 mb-1">
+                  <select
+                    [(ngModel)]="Search_Internship_"
+                    name="Search_Internship_"
+                    required
+                    class="form-control p-0 pl-1"
+                    id="normal-input-4"
+                  >
+                    <option
+                      *ngFor="let Internship_T of Internship_Search_Data"
+                      [ngValue]="Internship_T"
+                    >
+                      {{ Internship_T.Internship_Name }}
+                    </option>
+                  </select>
+                </div>
+
+                <label class="col-md-1 col-sm-1 col-form-label text-sm-right"
+                  >Duration</label
+                >
+                <div class="col-md-2 col-sm-2 mb-1">
+                  <select
+                    [(ngModel)]="Search_Duration_"
+                    name="Search_Duration_"
+                    required
+                    class="form-control p-0 pl-1"
+                    id="normal-input-4"
+                  >
+                    <option
+                      *ngFor="let Duration_T of Duration_Search_Data"
+                      [ngValue]="Duration_T"
+                    >
+                      {{ Duration_T.Duration_Name }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+
+
+
+      <div class="col-md-12 mt-2 dt-module dt-module__container dt-module__content" style="overflow-y: scroll; overflow-x: hidden;"  [style.height.px]="myInnerHeight1">
+        <div
+        class="dt-module__list-item pb-2 new-card"
+        *ngFor="let Course of Course_Data; let i = index"
+      >
+        <div >
+          <div class="user-detail">
+
+          <!-- <span class="icon-background4 mr-1" (click)="openSubjectsComponent(Course.Course_Id, i)">
+       Add
+     </span> -->
+      
+
+     <span
+              class="icon-background2 mr-1"
+              *ngIf="Course_Edit"
+              (click)="openSubjectsComponent(Course.Course_Id, i)"
+            >
+              <mat-icon class="text-green small"
+                >add_box</mat-icon
+              ></span
+            >
+            <span
+              class="icon-background2 mr-1"
+              *ngIf="Course_Edit"
+              (click)="Edit_Course(Course, i)"
+            >
+              <mat-icon class="text-green small"
+                >edit</mat-icon
+              ></span
+            >
+            <span
+              class="icon-background3 mr-1"
+              *ngIf="Course_Delete"
+              (click)="Delete_Course(Course.Course_Id, i)"
+            >
+              <mat-icon class="text-red small"
+                >close</mat-icon
+              ></span 
+            >
+          
+     
+      
+
+            <span class="d-inline-block">{{Course["Course_Name"]}}</span>
+            <span class="dt-separator-v">&nbsp;</span> 
+          
+            <span class="d-inline-block">{{Course["CountryName"]}}</span>
+            <span class="dt-separator-v">&nbsp;</span>
+            <span class="d-inline-block">{{Course["University"]}}</span>
+            <span class="dt-separator-v">&nbsp;</span>
+          
+          </div>
+        </div>
+      </div>
+      </div>
+</div>
+      <!-- Subjects Component Dialog -->
+<!-- Subjects Component Dialog -->
+
+    </div>
+  </div>
+ 
+</div>
+
+
+ <div *ngIf="showSubjectsDialog" class="subjects-dialog-overlay">
+  <app-CourseSubjects 
+    [courseId]="selectedCourseId" 
+    [existingData]="existingCourseSubjects"
+    (closeDialog)="closeSubjectsDialog()"
+    (subjectsUpdated)="onSubjectsUpdated($event)">
+  </app-CourseSubjects>
+</div>

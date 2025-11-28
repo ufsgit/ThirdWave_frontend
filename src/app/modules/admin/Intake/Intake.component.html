@@ -1,0 +1,107 @@
+<div *ngIf="issLoading" class="overlay" 
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+<img src="/assets/img/spinner.gif" width="100px" >
+</div>
+      <div class="main-content screenfixed new-margin-T  dash_big_screen ">
+      <div class="container-fluid2 ">
+      
+      
+      <div class="row" *ngIf="Entry_View">
+      
+        <div class="col-md-12 pl-0 pr-0 pt-2">
+          <div class="dt-card mb-0 pb-1 pt-4">         
+              <div class="dt-card__body mb-0 pb-0">
+                  <form class="mb-0">           
+                  <div class="form-row">
+                      <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Intake Name<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                      <div class="col-md-3 col-sm-3 mb-2">
+                          <input type="text" class="form-control" [(ngModel)]="Intake_.Intake_Name"  name="Intake_.Intake_Name"   placeholder="">
+                         
+                      </div>
+                      
+                      <div class="col-md-4 col-sm-4 mt-0">    
+                      
+                           <button (click)="Save_Intake()" *ngIf="Intake_Save" mat-raised-button type="submit" class="save-button-style pull-left mr-1">Save</button>
+                           <button (click)="Close_Click()" mat-raised-button type="submit" class="close-button-style pull-left mr-1 ">Close</button> 
+                          </div>
+                  </div>
+              </form>
+              </div>
+          </div>        
+        </div> 
+      
+      
+      
+      </div>
+      
+      <div class="row  mt-2" *ngIf="!Entry_View">
+       <div class="col-md-12 pl-0 pr-0 pt-0 mb-2">
+        <div class="dt-card mb-0 pb-1 pt-3">         
+            <div class="dt-card__body mb-0 pb-0">
+                <form class="mb-0">           
+                <div class="form-row" style="padding-left: 10px;">
+                    <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Intake Name</label>
+                    <div class="col-md-3 col-sm-3 mb-2">
+                        <input type="text" class="form-control" [(ngModel)]="Intake_Name_Search" name="Intake_Name"  placeholder="">
+                       
+                    </div>
+                    
+                    <div class="col-md-4 col-sm-4 mt-0">                    
+                         <button (click)="Search_Intake()" mat-raised-button type="submit"  class="other-button-style pull-left mr-1">Search</button>
+                         <button (click)="Create_New()" mat-raised-button type="submit" class="save-button-style pull-left mr-1 ">Create New</button>
+    
+                        </div>
+                </div>
+            </form>
+            </div>
+        </div>        
+      </div> 
+      
+      
+      
+      
+      
+      <div class="col-md-12 pl-0 pr-0 mt-0" [style.height.px]="myInnerHeight" itemSize="10">
+        <div class="dt-module">            
+            <div class="dt-module__container" >
+                <!-- style="overflow: scroll;"[style.height.px]="myTotalHeight" -->
+                <div class="dt-module__content ps-custom-scrollbar">
+                    <div class="dt-module__content-inner pl-0 pr-0 card-body set-height-scroll-bar-wole-block">   
+                        <div class="dt-module__list pl-0 pr-0" [style.height.px]="myInnerHeight"
+                        style="overflow-y: scroll"
+                        id="profile">
+                            <!-- <div class="card-body set-height-scroll-bar-wole-block"> -->
+                            <div class="dt-module__list-item pb-2 pt-2" *ngFor="let Intake_ of Intake_Data; let i = index"> 
+                                <div class="dt-module__list-item-content">
+                                    <div class="user-detail">
+    
+                                        <span class="icon-background2 mr-1" *ngIf="Intake_Edit" (click)="Edit_Intake(Intake_,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                        <span class="icon-background3 mr-1" *ngIf="Intake_Delete" (click)="Delete_Intake(Intake_.Intake_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+            
+    
+                                                                   
+                                        <span class="user-name">{{Intake_["Intake_Name"]}}</span>
+                                      
+                                    </div>
+                                  
+                                </div>                                
+                            </div>
+                           
+                    
+    
+                         
+                        </div>
+                    </div>
+                   
+                </div>
+             
+            </div>
+           
+          </div>
+      </div>  
+      
+      </div>
+      </div>
+        

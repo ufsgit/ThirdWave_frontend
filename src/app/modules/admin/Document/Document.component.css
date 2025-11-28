@@ -1,0 +1,94 @@
+
+.one { color: rgb(42, 11, 219) ; } 
+.three { color:green; } 
+.two { color: rgb(255, 0, 0); } 
+.Four { color: black; }
+.Five { color: rgb(165, 2, 151); }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+ 
+}
+
+ 
+input[type=number] {
+  -moz-appearance: textfield;
+}
+# Mobile
+
+@media only screen and (min-width: 480px) {
+
+  
+}
+
+
+
+
+
+
+/* Small Devices (Phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .col-md-4, .col-md-3 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .col-md-12 {
+    width: 100%;
+  }
+
+  label.col-md-3, label.col-md-5 {
+ 
+    text-align: left !important;
+    padding-bottom: 5px;
+    width: 100% !important;
+
+  }
+ .width{
+  width: 136% !important;
+ }
+
+  mat-form-field, select, input {
+    width: 100%;
+    margin-top: 5px;
+  }
+  mat-form-field, select, input {
+    width: 100%;
+    margin-top: 5px;
+  }
+  .save-button-style, .close-button-style {
+
+    margin-bottom: 10px;
+  }
+
+  .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  .alighyn-div-margin-search-item-group {
+    padding-left: 0 !important;
+  }
+  
+  .icon-background2, .icon-background3 {
+    margin-right: 5px;
+  }
+  .dt-module {
+    border-radius: 0.4rem;
+    margin-left: 0rem;
+    margin-bottom: 0px !important;
+    margin-top: 1rem !important;
+}
+}
+
+/* Adjusting the scrollable section for mobile and smaller viewports */
+.set-height-scroll-bar-wole-block {
+  height: 300px;
+  overflow: scroll;
+  scrollbar-width:none;
+}
+
+.dt-module__list {
+  padding: 0 !important;
+}

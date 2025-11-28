@@ -1,0 +1,187 @@
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+  <div class="main-content screenfixed new-margin-T dash_big_screen" >
+  <div class="container-fluid2 ">
+  
+  
+  <div class="row mt-2 " *ngIf="Entry_View">
+   
+    <div class="col-md-12 pl-0 pr-0">
+      <div class="dt-card mb-0 pb-1 pt-4">         
+          <div class="dt-card__body mb-0 pb-0">
+              <form class="mb-0"> 
+
+              <div class="form-row">
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right">Holiday<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                  <div class="col-md-3 col-sm-3 mb-2">
+                      <input type="text" class="form-control"[(ngModel)]="Holiday_.Holiday_Name" name="Holiday_.Holiday_Name"  placeholder="Holiday">        
+                  </div>
+                  <div class="col-md-3 col-sm-3 mb-2">
+                      <input type="date" class="form-control"[(ngModel)]="Holiday_.Holiday_Date" name="Holiday_.Holiday_Date"  placeholder="Holiday">        
+                  </div>
+            
+
+                  <div class="col-md-0 col-sm-0 mt-0 ml-1">  
+                    <button mat-raised-button type="submit" class="close-button-style pull-right mr-1 " (click)="Close_Click()">Close</button>
+                    <button mat-raised-button type="submit" [hidden]="Holiday_Save==false"id="Save_Button"  class="save-button-style pull-right mr-1" (click)="Save_Holiday()">Save</button>
+                 
+                      </div>
+              </div>
+              <table _ngcontent-xmy-c9="" class="table st-width2">
+                <tr _ngcontent-xmy-c9="" class="th-botm-bordr">
+                  <th
+                    class="crect-align-tblelst-srlno-department th-botm-bordr-top"
+                  >
+                    Sl.No
+                  </th>
+                  <th
+                    class="crect-align-tblelst-status-department th-botm-bordr-top"
+                  >
+                    Select
+                  </th>
+                  <th class="th-botm-bordr-top">Region </th>
+                </tr>
+                <tbody
+                  _ngcontent-xmy-c9=""
+                  *ngFor="
+                    let Region of Region_List;
+                    let i = index
+                  "
+                >
+                  <tr _ngcontent-xmy-c9="">
+                    <td class="crect-align-tblelst-srlno-branch">
+                      {{ i + 1 }}
+                    </td>
+                    <td
+                      _ngcontent-xmy-c9=""
+                      class="crect-align-tblelst-status-branch"
+                    >
+                      <div
+                        _ngcontent-xmy-c9=""
+                        class="form-check mar-crect-for-check-bx-depart"
+                      >
+                        <label
+                          _ngcontent-xmy-c9=""
+                          class="form-check-label"
+                        >
+                          <input
+                            type="checkbox"
+                            name="{{
+                              Region.Region_Id
+                            }}"
+                            class="form-check-input"
+                            (click)="
+                              selectRegion(Region)
+                            "
+                            [checked]="
+                              isRegionCheckd(Region)
+                            " />
+                          <span
+                            _ngcontent-xmy-c9=""
+                            class="form-check-sign"
+                            style="margin-left: 8px; margin-top: 13px"
+                          >
+                            <span
+                              _ngcontent-xmy-c9=""
+                              class="check"
+                            ></span> </span
+                        ></label>
+                      </div>
+                    </td>
+                    <td class="crect-align-tblelst-select-branch">
+                      <span
+                        name="Region.Region_Name"
+                        >{{ Region.Region_Name }}
+                      </span>
+
+                      
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+          </form>
+          </div>
+      </div>        
+    </div> 
+  
+  
+  
+  </div>
+  <div class="row " *ngIf="!Entry_View">
+  
+  
+   <div class="col-md-12 pr-0 pl-0 mt-2">
+    <div class="dt-card mb-2 pb-1 pt-3">         
+        <div class="dt-card__body mb-0 pb-0">
+            <form class="mb-0">           
+            <div class="form-row" style="padding-left: 10px;">
+                <label class="col-md-0 col-sm-0 col-form-label text-sm-right mr-0">Holiday</label>
+            
+                <div class="col-md-4  col-sm-4  mb-2">  
+                    <input type="text" class="form-control"[(ngModel)]="Search_Holiday_" name="Search_Holiday_"  placeholder="Holiday">
+                  
+                </div>
+                
+                <div class="col-md-0 col-sm-0 mt-0  ml-1" >                    
+                     <button (click)="Search_Holiday()" mat-raised-button type="submit" class="other-button-style pull-left mr-1">Search</button>
+                     <button (click)="Create_New()" mat-raised-button type="submit"  class="save-button-style pull-left mr-1 ">Create New</button>
+
+                    </div>
+            </div>
+        </form>
+        </div>
+    </div>        
+  </div> 
+  
+  
+  
+ 
+  
+  <div class="col-md-12 pr-0 pl-0"   [style.height.px]="myInnerHeight" itemSize="10" >
+    <div class="dt-module" >            
+        <div class="dt-module__container" >
+            <div class="dt-module__content ps-custom-scrollbar">
+                <div class="dt-module__content-inner card-body set-height-scroll-bar-wole-block">   
+                    <div class="dt-module__list" [style.height.px]="myInnerHeight"
+                    style="overflow-y: scroll"
+                    id="profile">
+                        <div class="dt-module__list-item pb-2 pt-2" *ngFor="let Holiday_1 of Holiday_Data; let i = index"> 
+                            <div class="dt-module__list-item-content">
+                                <div class="user-detail">
+
+
+                                    <span class="icon-background2 mr-1" *ngIf="Holiday_Edit" (click)="Edit_Holiday(Holiday_1,i)" > <mat-icon class="text-green small" >edit</mat-icon></span>
+                                    <span class="icon-background3 mr-1" *ngIf="Holiday_Delete" (click)="Delete_Holiday(Holiday_1.Holiday_Id,i)" > <mat-icon class="text-red small" >close</mat-icon></span>
+        
+
+                                    <span class="user-name mr-2">{{Holiday_1["Holiday_Name"]}}</span>  :-   
+                                    <span class="user-name ml-2">{{Holiday_1["Holiday_Date"] | date:'dd-MM-yyyy'  }}</span>
+                        
+                                </div>
+                         
+                            </div>                                
+                        </div>
+                       
+                   
+                     
+                    </div>
+                </div>
+              
+            </div>
+           
+        </div>
+       
+      </div>
+  </div>  
+    </div>
+  </div>

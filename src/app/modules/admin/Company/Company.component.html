@@ -1,0 +1,139 @@
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+  
+  <div class="main-content new-margin-T">
+   
+             
+    <div class="container-fluid right-sec">
+      <div class="row mt-2" *ngIf="Company_Div">
+        <div class="col-xl-12 pl-0 pr-0 " >
+       <div class="dt-card mb-2 right-sec">
+                
+      
+      
+                
+                  <!-- <div class="dt-card mt-0"> -->
+                      
+                      <div class="dt-card__body">               
+                          <form class="mb-0">
+                              <!-- <div class="cards"> -->
+                          <div class="form-row mt-5 mb-2 ">
+                            
+                            <label class="col-md-2 col-lg-2 col-form-label text-sm-right">Company Name<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                            <div class="col-md-4 col-lg-4 mb-1">
+                                <input type="text" [(ngModel)]="Company_.companyname "  name="companyname" class="form-control">
+                            </div>                
+                                  
+                              <label class="col-md-2 col-lg-2 col-form-label text-sm-right">Mobile<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                              <div class="col-md-4 col-lg-4 mb-1">
+                                  <input type="text" [(ngModel)]="Company_.Phone2"  name="Phone2" class="form-control" >
+                              </div>
+                          </div>
+      
+                          <!-- <div class="form-row  mb-2">
+                              <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Phone1<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+                              <div class="col-md-3 col-sm-3 mb-1">
+                                  <input type="text" [(ngModel)]="Company_.Phone1" name="Phone1" class="form-control" >
+                              </div>                
+                              <div class="col-md-1 col-sm-1"></div>      
+                              <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Mobile<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+                              <div class="col-md-3 col-sm-3 mb-1">
+                                  <input type="text"  [(ngModel)]="Company_.Mobile" name="Mobile" class="form-control" >
+                              </div>
+                          </div> -->
+      
+                          <div class="form-row  mb-2">
+                              <label class="col-md-2 col-lg-2 col-form-label text-sm-right">Address<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>                           
+                              <div class="col-md-4 col-lg-4 mb-1">
+                                <textarea
+                                [(ngModel)]="Company_.Address1" name="Company_.Address1" class="form-control" 
+                                placeholder="Alternate Address"
+                                rows="4"
+                                    class="form-control"
+                                    cols="50"
+                                >
+                                </textarea>
+                                  <!-- <input type="text" [(ngModel)]="Company_.Address1" name="Company_.Address1" class="form-control" > -->
+                              </div>                
+                                
+                              <label class="col-md-2 col-lg-2 col-form-label text-sm-right">Email<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                              <div class="col-md-4 col-lg-4 mb-1">
+                                  <input type="text" [(ngModel)]="Company_.Email"  name="Email" class="form-control" >
+                                  <button class="save-button-style btnflot mt-4"  id="Save_Button" (click)="Save_Company()" type="submit">Save</button>        
+                              </div> 
+                                            
+                          </div>
+      
+                          <!-- <div class="form-row  mb-2">
+                               <label class="col-md-2 col-lg-2 col-form-label text-sm-right"></label>
+                              <div class="col-md-4 col-lg-4 mb-1">
+                                  <input type="text" [(ngModel)]="Company_.Address2" name="Address2" class="form-control" >
+                              </div>                                             
+                              
+                              <label class="col-md-2 col-lg-2 col-form-label text-sm-right">Website<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label> 
+                              <div class="col-md-4 col-lg-4 mb-1">
+                                  <input type="text"   [(ngModel)]="Company_.Website"  name="Website" class="form-control">
+                              </div>      
+                          </div> -->
+                          <!-- <div class="form-row  mb-2">
+                              <label class="col-md-2 col-lg-2 col-form-label text-sm-right"></label>
+                              <div class="col-md-4 col-lg-4 mb-1">
+                                  <input type="text" [(ngModel)]="Company_.Address3" name="Address3" class="form-control" >
+                              </div>   -->
+                              
+                                  
+  
+                              <!-- <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Logo</label>
+                              <div class="col-md-3 col-sm-3 mb-1">
+                                <input class="btn btn-danger mb-2  pl-2 pr-2"   style="background-color: #82838e;" type="file" id="btnUpload" 
+                                value="Upload" name="Photo" [(ngModel)]="File" (change)="File_Change($event)"
+                                class="upload" />
+                            </div> -->
+  
+                            <!-- <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Logo<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span></label>
+                            <div class="col-md-3 col-sm-3 mb-1">
+                              <button class="btn btn-danger mb-2  pl-2 pr-2"  type="button" style="background-color: #82838e;"  (click)="fileInput4.click()"><span>Choose File</span>
+                                <input #fileInput4 type="file"   id="btnUpload"  value="Upload" name="Photo"  [(ngModel)]="File" (change)="File_Change($event)" style="display:none;"  class="upload"  /> </button>
+                                {{companyfile}}
+                              
+                            </div> -->
+  
+<!--                           
+                          </div> -->
+                          <div class="form-row  mb-2">
+                            <!-- <div class="col-lg-12 mb-1">
+                              <button class="save-button-style btnflot"  id="Save_Button" (click)="Save_Company()" type="submit">Save</button>
+                            </div> -->
+                             
+                               
+                                                                     
+                          </div>
+                         
+      
+                  </form>
+                  </div>
+      
+            
+                
+      
+      
+                  <!-- </div> -->
+  
+          </div>
+          </div>    
+          </div>
+      
+        
+      </div>
+  </div>
+  
+  

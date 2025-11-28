@@ -1,0 +1,337 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>                                     
+
+
+<div *ngIf="issLoading" class="overlay" 
+
+style="margin-top: 21%;margin-left:46% ;
+background-color: transparent;"
+[style.left.px]="spinleft">
+	
+	
+
+    <img src="/assets/img/spinner.gif" width="100px" >
+
+</div>
+
+<div  *ngIf="main_View" class="main-content screenfixed new-margin-T" >
+<div class="container-fluid1 right-sec">
+   
+    <div class="col-md-12 pl-0 pr-0 mt-2" style="border: 1">
+      <div class="dt-card mb-0 pb-2 pt-1 ">         
+          <div class="dt-card__body  m-0">
+              <div class="mb-0">           
+              <div class="form-row">
+           
+                          <!-- <label class="col-md-0 col-sm-0 col-form-label  text-sm-right">Created</label>  
+                          <div class="col-md-0 col-sm-0 mb-1">
+                          <div _ngcontent-xmy-c9="" class="col-md-1 lead-search-section-date-alighn label-down-alighn-stk-ad-mstr-prhse-rte">
+                            <div _ngcontent-xmy-c9="" class="form-check1 algyn-checkbx-lead-serch-scton margin-down-tocrect-lead-chckbox-date-front-section">
+                              <label _ngcontent-xmy-c9="" class="form-check-label">
+                                <input type='checkbox'class="form-check-input" placeholder='Search...' [(ngModel)]="Look_In_Date" />
+                                <span _ngcontent-xmy-c9="" class="form-check1-sign"><span _ngcontent-xmy-c9="" class="check1"></span>
+                                </span>
+                              </label>              
+                            </div>
+                          </div>
+                        </div>   -->
+      
+                        <label class="col-form-label  text-sm-right pl-2 mt-2 x-tra-label">Created On</label>  
+                        <!-- <div class="col-md-0 col-sm-0 mb-1"> -->
+                        <div _ngcontent-xmy-c9="" class="lead-search-section-date-alighn label-down-alighn-stk-ad-mstr-prhse-rte pt-1 x-tra">
+                          <div _ngcontent-xmy-c9="" class="form-check algyn-checkbx-lead-serch-scton margin-down-tocrect-lead-chckbox-date-front-section pl-0">
+                            <label _ngcontent-xmy-c9="" class="form-check-label pl-0">
+                              <input type='checkbox'class="form-check-input" placeholder='Search...' [(ngModel)]="Look_In_Date" />
+                              <span _ngcontent-xmy-c9="" class="form-check-sign" style="    margin-left: -13px;
+                              margin-top: 9px;"><span _ngcontent-xmy-c9="" class="check"></span>
+                              </span>
+                              <!-- <label class="">Created</label> -->
+                            </label>              
+                          </div>
+                          <!-- <label class="for-down-title-tabs-personal-details">Created</label> -->
+                        </div>
+                      <!-- </div>   -->
+
+
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2 ml-2">From</label>
+                  <div class="col-md-0 col-lg-0 mb-1 mt-2" >
+                      <!-- <input type="date" class="form-control p-0 pl-1" placeholder="  " [(ngModel)]="Search_FromDate" name="Search_FromDate" > -->
+                      <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1" 
+                      style="padding-top:9px!important;">
+                          <input matInput [matDatepicker]="dp1" placeholder="" [(ngModel)]="Search_FromDate" name="Search_FromDate" > 
+                          <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+                          <mat-datepicker #dp1></mat-datepicker>
+                          </mat-form-field>
+              
+              
+                  </div>  
+      
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2">To</label>
+                  <div class="col-md-0 col-lg-0 mb-1 mt-2">
+                      <!-- <input type="date" class="form-control p-0 pl-1" placeholder=""  [(ngModel)]="Search_ToDate" name="Search_ToDate"> -->
+                      <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1" style="height: 40px;"
+                      style="padding-top:9px!important;">
+                      <input matInput [matDatepicker]="dpdate" placeholder=""   [(ngModel)]="Search_ToDate" name="Search_ToDate"> 
+                      <mat-datepicker-toggle matSuffix [for]="dpdate"></mat-datepicker-toggle>
+                      <mat-datepicker #dpdate></mat-datepicker>
+                      </mat-form-field> 
+                  </div> 
+
+                  <label class="col-md-0 col-sm-0 col-form-label text-sm-right mt-2">Branch</label>
+                  <div class="col-md-3 col-lg-2 mb-1 mt-2">
+                  <select [(ngModel)]="Search_Branch" required class="form-control p-0 pl-1">
+                    <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">{{Branch_T.Branch_Name}}</option>
+                    </select>
+                    </div>
+
+                    <div class="col-md-0 col-md-0">         
+                      <!-- <button (click)="Graph_View()"  [hidden]="Summary_Sub==false"  mat-raised-button type="submit"  class="other-button-style btnflot pull-right mr-1 mt-2 ">Graph</button>      -->
+                      <button (click)="Search_Enquriy_Summary()"[hidden]="Summary_Sub==true"   mat-raised-button type="submit" class="other-button-style btnflot pull-right mr-1 mt-2 ">Data </button>
+                      <button (click)="Export()" style="background-color: #4bc859 !important;"  [hidden]="Export_View==false" mat-raised-button type="submit"  class="other-button-style btnflot pull-right mr-1  mt-2">Export</button>
+                      <button (click)="Search_Lead_button()" id="Registration_Report" mat-raised-button type="submit" style="background-color: #0caef7;"  class="other-button-style btnflot pull-right mr-1 mt-2 ">Search</button>
+
+                    </div>
+               
+              </div>
+            
+          </div>
+          </div>
+      </div>        
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row div-to-down-margin-crect-allighn-wole-scton" *ngIf="Summary_Sub">
+  <div class="col-md-12 whole-portion-edit-section-lead-part" [style.height.px]="myInnerHeight" > -->
+    <div class="col-md-12 pl-0 mt-2 pr-0" *ngIf="Summary_Sub" style="border: 1">
+      <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">  
+  <!-- <div class="card card-plain"> -->
+    <div class="card-body card-body-for-searchedit-lead-section">
+    <div class="table-responsive"  style="overflow-y: scroll;"[style.height.px]="myTotalHeight">
+    <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format">
+      <thead>
+        <th style="width: 50px;">
+          No
+        </th>
+        <th>
+          Branch
+            </th> 
+        <th>
+       Enquiry Source
+          </th>
+        <th style="padding-left: 32px;">
+       No. of Students
+        </th>
+      <th></th>
+      </thead>
+      <tbody *ngFor="let Lead of Student_Data_Search; let i = index">          
+          <tr>
+          <td>
+          {{i+1}}
+          </td>
+          <td>
+            {{Lead["Branch"]}}
+            </td>
+          <td>
+            {{Lead["Enquiry_Source"]}}
+            </td>
+          <td style="padding-left: 85px;">
+          {{Lead["No_of_Students"]}}
+          </td>
+        
+         
+             <!-- <td>
+      <button _ngcontent-jry-c5="" _ngcontent-gxp-c5="" aria-describedby="cdk-describedby-message-0" cdk-describedby-host="" class="aligyn-crect-deprtnment btn btn-primary btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button="" mattooltip="Edit Task" ng-reflect-message="Edit Task" ng-reflect-position="above" type="button"><span class="mat-button-wrapper"><span _ngcontent-jry-c5="" class="mat-button-wrapper"><i _ngcontent-jry-c5="" _ngcontent-gxp-c5="" class="material-icons" (click)="Edit_Lead(Lead.Lead_Id,i)" >edit</i></span><div _ngcontent-jry-c5="" class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div _ngcontent-jry-c5="" class="mat-button-focus-overlay"></div></span><div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false" ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div><div class="mat-button-focus-overlay" ></div></button>
+  </td> -->
+        </tr>
+        </tbody>
+      </table>
+      
+    </div>
+    <div class="row">
+     <div class="col-lg-12">
+     
+     </div>
+    </div>
+ 
+  </div>
+  
+  <!-- </div> -->
+  </div>
+</div>
+<label style="margin-left: 6px;">Total Students : <b>{{Total_Students}}</b></label>
+<!-- <label class="entry-num" style="background-color: transparent;">Total Entries : {{Total_Entries}}</label> -->
+ 
+</div>
+
+
+
+
+  <div *ngIf="Summary_Div" class="main-content">
+    <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12 bg-set-leds-dtls">
+                  <div class="row">
+                      
+                          <div *ngIf="1>2" _ngcontent-xmy-c9="" class="col-md-1 lead-search-section-date-alighn"><!--for-leads-chckbx-men-lst-->
+                        <div _ngcontent-xmy-c9="" class="form-check algyn-checkbx-lead-serch-scton margin-down-tocrect-lead-chckbox-date-front-section"><!--for-chck-bx-crcktng corcting-tabs-down-->
+                          <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input type='checkbox'class="form-check-input" placeholder='Search...' [(ngModel)]="Look_In_Date" />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"><span _ngcontent-xmy-c9="" class="check"></span>
+                          </span></label>
+                        </div>
+                      <label class="for-down-title-tabs-personal-details">Created</label>
+                      </div>
+              
+                      <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+                        <label class="col-md-4 alighn-title-search-section-tab-lead-per-details">From</label>
+                        <mat-form-field class="col-md-8 input-allighn-to-crect-wole-paddings alighn-date-search-section-new-tab-lead-per-details">
+                            <input matInput [matDatepicker]="dpFromDate" placeholder="" [(ngModel)]="Search_FromDate">
+                            <mat-datepicker-toggle matSuffix [for]="dpFromDate"></mat-datepicker-toggle>
+                            <mat-datepicker #dpFromDate></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-2 down-ward-date-section-to-croct-leads-for-search">
+                        <label class="col-md-3 alighn-title-search-section-tab-lead-per-details">To</label>
+                        <mat-form-field class="col-md-9 input-allighn-to-crect-wole-paddings alighn-date-search-section-new-tab-lead-per-details">
+                            <input matInput [matDatepicker]="dpToDate" placeholder="" [(ngModel)]="Search_ToDate">
+                            <mat-datepicker-toggle matSuffix [for]="dpToDate"></mat-datepicker-toggle>
+                            <mat-datepicker #dpToDate></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+          
+                    
+                </div>
+            <div *ngIf="1>2" class="seperation-for-down-butons" [hidden]="More_Search_Options">
+                <div class="row alyghn-croect-row-table-lead-sctn">
+                      <div class="col-md-4">
+                        <label class="col-md-4 label-crect-journal-entry-voucher-no">Department</label>
+                        <select [(ngModel)]="Department_Search" id="Department_" required  class="col-md-8 for-input-selct-tblelst">
+                        <option *ngFor="let Department_T of Department_Data" [ngValue]="Department_T">{{Department_T.Department_Name}}</option>
+                        </select> 
+                      </div>
+            
+                      <div class="col-md-4">
+                        <label class="col-md-4 label-crect-journal-entry-voucher-no"> Created By</label>
+                        <select [(ngModel)]="User_Search" id="User_" required class="col-md-8 for-input-selct-tblelst ng-untouched ng-valid ng-dirty">
+                        <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">{{User_T.User_Details_Name}}</option>
+                        </select>  
+                      </div>
+            
+                    <div  class="col-md-4">
+                      <label class="col-md-4 label-crect-journal-entry-voucher-no"> Branch</label>
+                      <select [(ngModel)]="Search_Branch" required class="col-md-8 for-input-selct-tblelst ng-valid ng-dirty ng-touched">
+                      <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">{{Branch_T.Branch_Name}}</option>
+                      </select> 
+                    </div>           
+                </div>          
+                </div>    
+                </div>
+                </div>
+
+          
+    <label class="entry-num" style="background-color: transparent;">Total Entries : {{Total_Entries}}</label>                   
+  </div>
+</div>
+
+    
+<!-- <div *ngIf="Graph">
+  <div class="container-fluid1">
+    <div class="col-md-12 pl-3 pr-8 mt-2" style="border: 1">
+      <div class="dt-card mb-0 pb-1 ">         
+             <div class="form-row"> 
+  <div class="col-md-1"></div>
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <div class="card card-chart"  style="background-color: transparent">
+                <div>
+                    <label style="background-color: transparent;">Enquiry Source Summary</label>
+                </div>
+            </div>
+            <google-chart #chart  [title]='Enquiry_Source_title' [type]="Enquiry_Source_type" [data]="Branchwise_data" [columnNames]="Branchwise_columnNames" [options]="Enquiry_Source_options" 
+            [width]="width" [height]="height">
+            
+            </google-chart>
+                </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            <div class="card card-chart"  style="background-color: transparent">
+              <div >
+                <label style="background-color: transparent;">Enquiry Source Summary</label>
+              </div>
+            </div>
+            <google-chart #chart [title]='Enquiry_Source_title' [type]="Type_PIe" [data]="Branchwise_data" [columnNames]="Branchwise_columnNames" [options]="Enquiry_Source_options" 
+              [width]="width" [height]="height">
+              
+              </google-chart>
+        </div>
+
+  </div>
+</div>
+</div>
+</div> 
+</div> -->
+
+
+
+</div>
+
+
+<div *ngIf="Graph">
+  <div class="container-fluid3">
+    <div class="col-md-12 pl-3 pr-8 mt-0" style="border: 1">
+      <div class="dt-card mb-0 pb-1 " style="background-color: #ffff;">         
+         <div class="form-row"    style="margin-left: 1px;"> 
+    <!-- <div class="col-md-1"></div> -->
+          <!-- <div class="col-md-1"></div> -->
+          <div class="col-lg-6 col-md-6 col-sm-6">
+          <div class="cardnew ">
+            <div class="card-headernew">
+              <h4 class=""><b>Enquiry Source Summary</b></h4>
+            </div>
+            <div class=" card-chart" style="background-color: transparent;">
+            </div>
+            <google-chart #chart  [title]='Enquiry_Source_title' [type]="Enquiry_Source_type" [data]="Branchwise_data" [columnNames]="Branchwise_columnNames" [options]="Enquiry_Source_options" 
+            [width]="width" [height]="height">
+            
+            </google-chart>
+                <!-- </div> -->
+              
+              </div>
+                </div>
+
+              <!-- <div class="cardnew card-headernew"> -->
+                <div class="col-lg-6 col-md-4 col-sm-6">
+                  <div class="cardnew ">
+                    <div class="card-headernew">
+                      <h4 class=""><b>Enquiry Source Summary</b></h4>
+                    </div>
+                  <div class="card-chart"  style="background-color: transparent;" >
+             
+            </div>
+            <google-chart #chart [title]='Enquiry_Source_title' [type]="Type_PIe" [data]="Branchwise_data" [columnNames]="Branchwise_columnNames" [options]="Enquiry_Source_options" 
+              [width]="width" [height]="height">
+              
+              </google-chart>
+            
+              </div>
+        </div>
+      <!-- </div> -->
+        <!-- </div> -->
+
+</div>
+</div>
+</div>
+</div>
+</div>
+

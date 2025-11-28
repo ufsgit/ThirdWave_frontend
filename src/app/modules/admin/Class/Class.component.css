@@ -1,0 +1,28 @@
+.one { color: rgb(42, 11, 219) ; } 
+.three { color:green; } 
+.two { color: rgb(255, 0, 0); } 
+.Four { color: black; }
+.Five { color: rgb(165, 2, 151); }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+ 
+}
+
+ 
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media only screen and (min-width: 1281px) {
+  .dash_big_screen{
+  margin-left: 90px;
+  }
+}
+@media only screen and (max-width: 1280px) {
+      .dash_big_screen{
+          margin-left: 60px;
+      }
+}
+
