@@ -393,7 +393,7 @@ var User_Id=0,look_In_Date_Value=0,branch_id=0;
     this.issLoading = true;
     
     this.Student_Service_.Search_Enquiry_Source_Summary_Track(moment(this.Search_FromDate).format('YYYY-MM-DD'),
-    moment(this.Search_ToDate).format('YYYY-MM-DD'),this.Login_User,look_In_Date_Value,branch_id)
+    moment(this.Search_ToDate).format('YYYY-MM-DD'),this.Login_User,look_In_Date_Value,branch_id,User_Id)
 .subscribe(Graph_Status => 
 {
 

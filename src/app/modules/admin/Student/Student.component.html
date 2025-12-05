@@ -19302,10 +19302,10 @@
     margin-left: 3% !important;">
               <div class="dt-card__header">
                 <div class="dt-card__heading">
-                  <!-- <h3 class="dt-card__title min-w-150  border-bottom">
+<!-- <h3 class="dt-card__title min-w-150  border-bottom">
                                     <i class="icon icon-users icon-fw icon-lg"></i><b>Followup Details</b></h3> -->
                   <h3 style="margin-top: 2px">
-                    <!-- <i class="icon icon-users icon-fw icon-lg">school</i> -->
+                 
 
                     <i
                       class="icon icon-users icon-fw icon-lg material-icons mr-2"
@@ -19443,20 +19443,6 @@
                       />
                     </div>
 
-                     <!-- Typeahead for user selection, visible based on button click -->
-   
-                    <!-- <div class="col-md-4 col-lg-5 mb-1">
-											<input
-												type="text"
-												class="form-control"
-												id="DefaultStatus_"
-												name="DefaultStatus_"
-												[matAutocomplete]="auto_FollowUp_Status1"
-												[(ngModel)]="DefaultStatus_"
-												(click)="Search_DefaultDepartmentStatus_Typeahead($event)"
-												(ngModelChange)="Status_Change()"
-											/>
-										</div> -->
                     <mat-autocomplete
                       #auto_FollowUp_Status1="matAutocomplete"
                       [displayWith]="display_Followup_Status"
@@ -19473,20 +19459,7 @@
                             >{{ Status1.Department_Status_Name }} &nbsp;</span
                           >
 
-                          <!-- <span *ngIf="Status1.Transfer_Department_Name" style="color: #000000;"> - &nbsp;
-                                  
-													</span>
-
-													<span
-											 
-													style="
-													color: #ef071e;
-													
-												"
-													 >
-													{{
-														Status1.Transfer_Department_Name
-													}}</span> -->
+                     
                         </mat-option>
                       </ng-container>
                     </mat-autocomplete>
@@ -19524,107 +19497,8 @@
                          </ng-container>
                          </mat-autocomplete>
                 </div>
-                    <!-- <mat-autocomplete
-										#auto_FollowUp_Status1="matAutocomplete"
-										[displayWith]="display_Defultstatus"
-									>
-										<mat-option *ngIf="issLoading"
-											><mat-spinner diameter="500"></mat-spinner
-										></mat-option>
-										<ng-container *ngIf="!issLoading">
-											<mat-option
-												*ngFor="let Status1 of DefaultStatus_Data"
-												[value]="Status1"
-											>
-												<span>{{ Status1.Default_Status_Name }}</span>
-											</mat-option>
-										</ng-container>
-									</mat-autocomplete> -->
-
-                    <!-- <label
-											class="col-md-2 col-lg-1 col-form-label text-sm-right"
-											>Sub Status<span
-												style="
-													color: #ef071e;
-													font-size: 22px;
-													vertical-align: -webkit-baseline-middle;
-												"
-												>*</span
-											></label
-										>
-										<div class="col-md-4 col-lg-5 mb-1">
-											<input
-												type="text"
-												class="form-control"
-												id="FollowUp_Sub_Status_"
-												name="FollowUp_Sub_Status_"
-												[matAutocomplete]="auto_sub_Status"
-												[(ngModel)]="FollowUp_Sub_Status_"
-												(click)="Search_Substatus_Typeahead($event)"
-												
-											/>
-										</div>
-										<mat-autocomplete
-											#auto_sub_Status="matAutocomplete"
-											[displayWith]="display_Sub_Status"
-										>
-											<mat-option *ngIf="issLoading"
-												><mat-spinner diameter="500"></mat-spinner
-											></mat-option>
-											<ng-container *ngIf="!issLoading">
-												<mat-option
-													*ngFor="let Status of Followup_Substatus_Data_Filter"
-													[value]="Status"
-													(click)="datepickershow(Status)"
-												>
-													<span  >{{ Status.Sub_Status_Name }}</span>
-												</mat-option>
-											</ng-container>
-										</mat-autocomplete> -->
-                    <!-- //commented for round robin begin -->
-                    <!-- <label
-											class="col-md-2 col-lg-1 col-form-label text-sm-right"
-											*ngIf="Tostaff_Typeahead_View && !issLoading"
-											>To staff<span
-												style="
-													color: #ef071e;
-													font-size: 22px;
-													vertical-align: -webkit-baseline-middle;
-												"
-												>*</span
-											></label
-										>
-										<div class="col-md-4 col-lg-5 mb-1" *ngIf="Tostaff_Typeahead_View &&!issLoading">
-											<input
-												type="text"
-												class="form-control"
-												[matAutocomplete]="auto_Followup_Users"
-												name="Followup_Users_"
-												[(ngModel)]="Followup_Users_"
-												(input)="
-													Search_Department_User_Typeahead_Fllowup($event,1)
-													
-												"
-												(mouseup)="Search_Department_User_Typeahead_Fllowup($event,2)"
-											/>
-										</div>
-									
-										<mat-autocomplete
-											#auto_Followup_Users="matAutocomplete"
-											[displayWith]="display_Followup_Users"
-										>
-											<mat-option *ngIf="issLoading"
-												><mat-spinner diameter="500"></mat-spinner
-											></mat-option>
-											<ng-container *ngIf="!issLoading">
-												<mat-option
-													*ngFor="let Users_sub of Followup_Users_Data_t_Filter"
-													[value]="Users_sub"
-												>
-													<span>{{ Users_sub.User_Details_Name }}</span>
-												</mat-option>
-											</ng-container>
-										</mat-autocomplete> -->
+               
+								
 
                     <!-- //commented for round robin begin -->
                   </div>
@@ -19660,38 +19534,56 @@
                         ></mat-datepicker-toggle>
                         <mat-datepicker #dp11></mat-datepicker>
                       </mat-form-field>
-
-                      <!-- <input matInput [matDatepicker]="dpfollowupDate" class="form-control" placeholder="" name="FollowUp_.Next_FollowUp_Date" [(ngModel)]="FollowUp_.Next_FollowUp_Date"  >
-                                        <mat-datepicker-toggle matSuffix [for]="dpfollowupDate"></mat-datepicker-toggle>
-                                        <mat-datepicker #dpfollowupDate></mat-datepicker> -->
+            
                     </div>
+<!-- NEW: Reminder checkbox + time -->
+<div class="form-row align-items-center" *ngIf="Is_Follow_ == 1">
+  <!-- Reminder label -->
+ <!-- Reminder row -->
+<div class="form-row" *ngIf="Is_Follow_ == 1">
+  <!-- Reminder label -->
+  <label
+    class="col-md-0 col-sm-0 ml-1 col-form-label text-sm-right x-tra-label"
+  >
+    Reminder
+  </label>
 
-                    <!-- <label
-											class="col-md-2 col-lg-1 col-form-label text-sm-right"
-											>Class<span
-												style="
-													color: #ef071e;
-													font-size: 22px;
-													vertical-align: -webkit-baseline-middle;
-												"
-												>*</span
-											></label
-										>
-										<div class="col-md-4 col-lg-5 mb-1">
-											<select
-												[(ngModel)]="class_"
-												name="class_"
-												required
-												class="form-control p-0 pl-1"
-											>
-												<option
-													*ngFor="let class_Data_T of class_Data"
-													[ngValue]="class_Data_T"
-												>
-													{{ class_Data_T.Class_Name }}
-												</option>
-											</select>
-										</div> -->
+  <!-- Checkbox, same style as your working one -->
+  <div class="col-md-3 col-sm-3 mb-1">
+    <div class="checkbox-to-crect-sales-search-section">
+      <div class="form-check uper-dte-lbel-sales-sctn-new pl-0">
+        <label class="form-check-label">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="Enable_Followup_Reminder"
+            [(ngModel)]="Enable_Followup_Reminder"
+          />
+          <span class="form-check-sign">
+            <span class="check"></span>
+          </span>
+          <span class="ml-1">Set Reminder</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <label class="col-md-2 col-lg-1 col-form-label text-sm-right">
+    Reminder Time
+  </label>
+
+  <div class="col-md-4 col-lg-5 mb-1">
+    <input
+      type="time"
+      class="form-control"
+      [(ngModel)]="FollowUp_Reminder_Time"
+      name="FollowUp_Reminder_Time"
+      [disabled]="!Enable_Followup_Reminder"
+    />
+  </div>
+</div>
+
+                  
                   </div>
                   <div class="form-row">
                     <label
@@ -19777,20 +19669,7 @@
                           class="fltll"
                           *ngFor="let Auto_Dept of Automatic_Department_Data"
                         >
-                          <!-- <button
-													class="save-button-style btnflot"													
-													id="Save_Button"
-													(click)="
-														Get_Transfer_status(
-															Auto_Dept.Department_Name,
-															Auto_Dept.Department_Id
-														)
-													"
-													type="submit"
-													style="background-color: #8f5513"
-												>
-													{{ Auto_Dept.Department_Name }}
-												</button> -->
+                         
                           <mat-button-toggle
                             class="toggletsave-button-style btnflot transfer-button"
                             id="Save_Button"
@@ -19857,46 +19736,8 @@
                       </ng-container>
                     </mat-autocomplete>
 
-                    <!-- <label
-											class="col-md-2 col-lg-1 col-form-label text-sm-right"
-											>Sub Status<span
-												style="
-													color: #ef071e;
-													font-size: 22px;
-													vertical-align: -webkit-baseline-middle;
-												"
-												>*</span
-											></label
-										>
-										<div class="col-md-4 col-lg-5 mb-1">
-											<input
-												type="text"
-												class="form-control"
-												id="Transfer_Status_k"
-												name="Transfer_Status_k"
-												[matAutocomplete]="auto_sub_Status1"
-												[(ngModel)]="Transfer_Status_k"
-												(click)="Search_Substatus_Typeahead_Transfer($event)"
-												
-											/>
-										</div>
-										<mat-autocomplete
-											#auto_sub_Status1="matAutocomplete"
-											[displayWith]="display_Sub_Status_transfer"
-										>
-											<mat-option *ngIf="issLoading"
-												><mat-spinner diameter="500"></mat-spinner
-											></mat-option>
-											<ng-container *ngIf="!issLoading">
-												<mat-option
-													*ngFor="let Status_trn of Followup_Substatus_Data_Filter1"
-													[value]="Status_trn"
-													
-												>
-													<span  >{{ Status_trn.Sub_Status_Name }}</span>
-												</mat-option>
-											</ng-container>
-										</mat-autocomplete> -->
+                 
+									
                   </div>
 
                   <div class="form-row">

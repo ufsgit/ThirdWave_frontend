@@ -57,10 +57,6 @@ export class Pending_FollowUpComponent implements OnInit {
     Look_In_Date: Boolean = true;
     More_Search_Options: boolean = true;
 
-    Users_Temp1: User_Details = new User_Details();
-    Users_Data1: User_Details[]
-    To_User_Search1: User_Details = new User_Details();
-
     Department_Data: Department[]
     Users_Data: User_Details[]
     Branch_Data: Branch[]
@@ -86,11 +82,7 @@ export class Pending_FollowUpComponent implements OnInit {
     mode = 'indeterminate';
     value = 50;
 myInnerHeight: number;
-myInnerHeight2: number;
     issLoading: boolean;
-
-    UserType:any;
-    Day_Type_:any;
 
     Black: boolean = false;
     Red: boolean = false;
@@ -144,11 +136,13 @@ myInnerHeight2: number;
     height = 400; 
     Permissions: any;
     Missed_follow:number=0;
-    user_category: any;
-    click_s:number=0;
-    Task_Data_Search:any;
+    User_Id_Temp:number;
 
-    
+    Search_Name_email_:string="";
+
+    job_dashboard_view:number=0;
+
+    type:number;
 
  
 constructor(public Student_Service_:Student_Service, private route: ActivatedRoute, private router: Router,public dialogBox: MatDialog) 
@@ -157,6 +151,23 @@ ngOnInit()
 {
   
     this.Login_User = localStorage.getItem("Login_User");
+    
+    this.Login_User = localStorage.getItem("Login_User");
+    this.User_Id_Temp= Number(localStorage.getItem("User_Search"));
+
+    this.job_dashboard_view = Number(localStorage.getItem("job_dashboard"));
+    this.type = Number(localStorage.getItem("type"));
+
+
+    if(this.job_dashboard_view>0)
+    {
+        localStorage.removeItem('job_dashboard');
+    }
+
+    if (this.User_Id_Temp > 0) {
+        this.User_Id_Temp = Number(this.User_Id_Temp);
+        localStorage.setItem("User_Search", "0");
+    }
     // this.array = Get_Page_Permission(this.Menu_Id);
     // this.Export_Permission=Get_Page_Permission(38);
     // if (this.array == undefined || this.array == null)
@@ -180,32 +191,24 @@ Page_Load()
     
     this.Black_Stop = this.Page_Length_;
     this.Red_Stop = this.Page_Length_;
-    this.Search_Div=true
-    this.Summary_Div=false
+    this.Search_Div=false
+    this.Summary_Div=true
     // this.Get_Lead_Load_Data();
     this.Get_Menu_Status(28,this.Login_User);
     this.Get_Menu_Status(38,this.Login_User);
-    this.UserType = 0;
-    this.Day_Type_=0;
+    debugger
+
     this.Get_Lead_Load_Data_ByUser(this.Login_User);
 
-    
-    //this.Search_By_=1;
-   // this.Registered_By_ = 1;
-  
-    this.FollowUp_Summary();
+
+   this.FollowUp_Summary();
     this.Search_FromDate = this.New_Date(this.Search_FromDate);
     this.Search_ToDate = this.New_Date(this.Search_ToDate);
     
     this.myInnerHeight = (window.innerHeight);
     this.myTotalHeight=this.myInnerHeight -230;
     this.myTotalHeight=this.myTotalHeight-40;
-    this.myInnerHeight = this.myInnerHeight - 340;
-
-    this.myInnerHeight2 = (window.innerHeight);
-    this.myTotalHeight=this.myInnerHeight2 -230;
-    this.myTotalHeight=this.myTotalHeight-40;
-    this.myInnerHeight2 = this.myInnerHeight2 - 340;
+    this.myInnerHeight = this.myInnerHeight - 230;
 }
 
 Get_Menu_Status(Menu_id, Login_user_id)
@@ -305,45 +308,6 @@ Edit_Lead(Lead_Id, i) {
         }
 
     }
-
-
-    Edit_Lead1(Lead_Id, i) {
-        // localStorage.setItem('Lead_Id', Lead_Id);
-
-        this.Edit_Page_Permission = Get_Page_Permission(95);
-        if (this.Edit_Page_Permission == undefined) {
-            const dialogRef = this.dialogBox.open(DialogBox_Component, { panelClass: 'Dialogbox-Class', data: { Message: 'No permission to view', Type: "2" } });
-        }
-        else if (this.Edit_Page_Permission.View == true)
-            this.router.navigateByUrl('/Student_Task');
-        else {
-            const dialogRef = this.dialogBox.open(DialogBox_Component, { panelClass: 'Dialogbox-Class', data: { Message: 'No permission to view', Type: "2" } });
-        }
-
-    }
-
-
-    PendingTaskDetails_Button(Lead_Id, i)
-    {
-        this.Edit_Page_Permission = Get_Page_Permission(95);
-        if (this.Edit_Page_Permission == undefined) {
-            const dialogRef = this.dialogBox.open(DialogBox_Component, { panelClass: 'Dialogbox-Class', data: { Message: 'No permission to view', Type: "2" } });
-        }
-        else if (this.Edit_Page_Permission.View == true)
-        {
-            this.router.navigateByUrl('/Student_Task');
-        localStorage.setItem('pendingtask_click', '1');
-        localStorage.setItem('User_PendingId', Lead_Id.User_Details_Id);
-        localStorage.setItem('Look_In_', this.Look_In_Date.toString());
-        localStorage.setItem('Search_FromDate', this.Search_FromDate.toString());
-        localStorage.setItem('Search_ToDate', this.Search_ToDate.toString());
-        }
-
-        else {
-            const dialogRef = this.dialogBox.open(DialogBox_Component, { panelClass: 'Dialogbox-Class', data: { Message: 'No permission to view', Type: "2" } });
-        }
-    }
-
 Search_Lead_button() 
 {
     this.Black_Start =1;
@@ -373,16 +337,11 @@ View_Back(){
     // this.Department_Search.Department_Name="All";
     // this.User_Search.User_Details_Name=null;
     // this.Search_Branch.Branch_Name="All"
-debugger
-    if(this.Users_Data!=null && this.Users_Data != undefined)
-        {
-            this.User_Search=this.Users_Data[0];
-        }
     this.Get_Lead_Load_Data_ByUser(this.Login_User);
     this.Search_Div=true
     this.Summary_Div=false
-    // if(this.Users_Data!=null && this.Users_Data != undefined)
-    //     this.User_Search=this.Users_Data[0];
+    if(this.Users_Data!=null && this.Users_Data != undefined)
+        this.User_Search=this.Users_Data[0];
     this.FollowUp_Summary();
 }
 
@@ -400,46 +359,24 @@ Export()
         this.Student_Service_.exportExcel(this.Student_Data_Search,'Pending_FollowUp')
 
 }
-Details_Button(User_Details_Id,User_Category_Name,click_s){
-    debugger
-    console.log('User_Category_Name: ', User_Category_Name);
+Details_Button(User_Details_Id){
     
     for (var i = 0; i < this.Users_Data.length; i++) {
         if (User_Details_Id== this.Users_Data[i].User_Details_Id)
         this.User_Search=this.Users_Data[i];
     }
-    if(User_Category_Name == 'Direct'){
-        this.user_category='1,3'
-    }else{
-        this.user_category='2'
-    }
-       
-//this.user_category=user_category
-if(click_s==1)
-    {
-        this.Pending_FollowUp(User_Details_Id);
-        console.log('User_Details_Id: ', User_Details_Id);
-        this.click_s=1;
-    }
-
-    if(click_s==2)
-
-        {
-            this.Pending_FollowUp_Task(User_Details_Id);
-            console.log('User_Details_Id: ', User_Details_Id);
-            this.click_s=2;
-        }
-   
+    
+    
+    this.Pending_FollowUp(User_Details_Id);
  }
 Pending_FollowUp(User_Id)
-
 {
-    console.log('User_Id: ', User_Id);
+    
     this.Search_Div=false
     this.Summary_Div=true
     this.Graph=false
     this.missedfollowup_count =0;
-var value = 1, dept_id=0,search_name_='0',look_In_Date_Value=0,branch_id=0;
+var value = 1, dept_id=0,search_name_='0',look_In_Date_Value=0,branch_id=0,SearchbyName_="0";
     if(this.Search_By_!=undefined && this.Search_By_!=null)
     if (this.Search_By_ != undefined && this.Search_By_ != null && this.Search_By_ != '')
     value=this.Search_By_;
@@ -449,16 +386,15 @@ var value = 1, dept_id=0,search_name_='0',look_In_Date_Value=0,branch_id=0;
 
     if (this.Search_Name != undefined && this.Search_Name != null && this.Search_Name != '')
     search_name_ = this.Search_Name;
-  debugger
+
     for (var i = 0; i < this.Users_Data.length; i++) {
         if (User_Id== this.Users_Data[i].User_Details_Id)
         this.User_Search=this.Users_Data[i];
     }
-    console.log('User_Id1: ', User_Id);
-    // if (this.User_Search != undefined && this.User_Search!=null)
-    // if (this.User_Search.User_Details_Id != undefined && this.User_Search.User_Details_Id != null)
-    //  User_Id = this.User_Search.User_Details_Id;
-    console.log('User_Id2: ', User_Id);
+    if (this.User_Search != undefined && this.User_Search!=null)
+    if (this.User_Search.User_Details_Id != undefined && this.User_Search.User_Details_Id != null)
+     User_Id = this.User_Search.User_Details_Id;
+
     if (this.Department_Search != undefined && this.Department_Search != null)
     if (this.Department_Search.Department_Id != undefined && this.Department_Search.Department_Id != null)
     dept_id = this.Department_Search.Department_Id;
@@ -466,14 +402,60 @@ var value = 1, dept_id=0,search_name_='0',look_In_Date_Value=0,branch_id=0;
     if (this.Search_Branch != undefined && this.Search_Branch != null)
     if (this.Search_Branch.Branch_Id != undefined && this.Search_Branch.Branch_Id != null)
     branch_id = this.Search_Branch.Branch_Id;
+debugger
+    if (this.Search_Name_email_ != undefined && this.Search_Name_email_ != null && this.Search_Name_email_ != '')
+    SearchbyName_ = this.Search_Name_email_;
 
 
     this.issLoading = true;
     debugger
-    this.Student_Service_.Pending_FollowUp( dept_id,branch_id,User_Id,this.user_category,this.Login_User,Number(this.Day_Type_),
-    look_In_Date_Value,
-    moment(this.Search_FromDate).format('YYYY-MM-DD'), 
-moment(this.Search_ToDate).format('YYYY-MM-DD'))
+
+// if(this.job_dashboard_view==1) 
+
+// {
+
+//     this.Student_Service_.Pending_FollowUp_Job( dept_id,branch_id,User_Id,this.Login_User,SearchbyName_,this.type)
+// .subscribe(Rows => 
+// {
+    
+//     //log(Rows)
+//     this.Student_Data_Search = Rows.returnvalue.Leads;
+//     this.Total_Data= this.Student_Data_Search.length
+//     this.missedfollowup_count =0;
+//     this.followup_count=0;
+   
+   
+//     for (var i = 0; i < this.Student_Data_Search.length; i++) {
+//     this.Student_Data_Search[i].RowNo =i+1 + this.Total_Rows;
+//     if (this.Student_Data_Search[i].tp == 1)
+//     this.followup_count = this.followup_count + 1;
+//     if (this.Student_Data_Search[i].tp == 2)
+
+//     this.missedfollowup_count = this.missedfollowup_count + 1;
+// }
+
+// if ( this.Student_Data_Search.length>0)
+// this.Total_Rows= this.Total_Rows+this.Student_Data_Search.length;
+// this.issLoading = false;
+// if(this.Student_Data_Search.length==0)
+// {
+//     const dialogRef = this.dialogBox.open( DialogBox_Component, {panelClass:'Dialogbox-Class',data:{Message:'No Details Found',Type:"3"}});
+// }
+// },
+// Rows => 
+// {   
+//     const dialogRef = this.dialogBox.open( DialogBox_Component, {panelClass:'Dialogbox-Class',data:{Message:'Error Occured',Type:"2"}});
+//     this.issLoading = false;
+// });
+
+// }
+
+
+// else
+// {
+
+
+    this.Student_Service_.Pending_FollowUp( dept_id,branch_id,User_Id,this.Login_User,SearchbyName_)
 .subscribe(Rows => 
 {
     
@@ -506,88 +488,15 @@ Rows =>
     const dialogRef = this.dialogBox.open( DialogBox_Component, {panelClass:'Dialogbox-Class',data:{Message:'Error Occured',Type:"2"}});
     this.issLoading = false;
 });
-}
 
 
-
-
-Pending_FollowUp_Task(User_Id)
-
-{
-    console.log('User_Id: ', User_Id);
-    this.Search_Div=false
-    this.Summary_Div=true
-    this.Graph=false
-    this.missedfollowup_count =0;
-var value = 1, dept_id=0,search_name_='0',look_In_Date_Value=0,branch_id=0;
-    if(this.Search_By_!=undefined && this.Search_By_!=null)
-    if (this.Search_By_ != undefined && this.Search_By_ != null && this.Search_By_ != '')
-    value=this.Search_By_;
-
-    if (this.Look_In_Date == true )
-    look_In_Date_Value = 1;
-
-    if (this.Search_Name != undefined && this.Search_Name != null && this.Search_Name != '')
-    search_name_ = this.Search_Name;
-  debugger
-    for (var i = 0; i < this.Users_Data.length; i++) {
-        if (User_Id== this.Users_Data[i].User_Details_Id)
-        this.User_Search=this.Users_Data[i];
-    }
-    console.log('User_Id1: ', User_Id);
-    // if (this.User_Search != undefined && this.User_Search!=null)
-    // if (this.User_Search.User_Details_Id != undefined && this.User_Search.User_Details_Id != null)
-    //  User_Id = this.User_Search.User_Details_Id;
-    console.log('User_Id2: ', User_Id);
-    if (this.Department_Search != undefined && this.Department_Search != null)
-    if (this.Department_Search.Department_Id != undefined && this.Department_Search.Department_Id != null)
-    dept_id = this.Department_Search.Department_Id;
-
-    if (this.Search_Branch != undefined && this.Search_Branch != null)
-    if (this.Search_Branch.Branch_Id != undefined && this.Search_Branch.Branch_Id != null)
-    branch_id = this.Search_Branch.Branch_Id;
-
-
-    this.issLoading = true;
-    debugger
-    this.Student_Service_.Pending_FollowUp_Task( dept_id,branch_id,User_Id,this.user_category,this.Login_User,Number(this.Day_Type_),
-    look_In_Date_Value,
-    moment(this.Search_FromDate).format('YYYY-MM-DD'), 
-moment(this.Search_ToDate).format('YYYY-MM-DD'))
-.subscribe(Rows => 
-{
     
-    //log(Rows)
-    this.Task_Data_Search = Rows.returnvalue.Leads;
-    this.Total_Data= this.Task_Data_Search.length
-    this.missedfollowup_count =0;
-    this.followup_count=0;
-   
-   
-    for (var i = 0; i < this.Task_Data_Search.length; i++) {
-    this.Task_Data_Search[i].RowNo =i+1 + this.Total_Rows;
-    if (this.Task_Data_Search[i].tp == 1)
-    this.followup_count = this.followup_count + 1;
-    if (this.Task_Data_Search[i].tp == 2)
+// }
 
-    this.missedfollowup_count = this.missedfollowup_count + 1;
-}
 
-if ( this.Task_Data_Search.length>0)
-this.Total_Rows= this.Total_Rows+this.Task_Data_Search.length;
-this.issLoading = false;
-if(this.Task_Data_Search.length==0)
-{
-    const dialogRef = this.dialogBox.open( DialogBox_Component, {panelClass:'Dialogbox-Class',data:{Message:'No Details Found',Type:"3"}});
-}
-},
-Rows => 
-{   
-    const dialogRef = this.dialogBox.open( DialogBox_Component, {panelClass:'Dialogbox-Class',data:{Message:'Error Occured',Type:"2"}});
-    this.issLoading = false;
-});
-}
 
+
+}
 
 
 FollowUp_Summary()
@@ -596,49 +505,21 @@ FollowUp_Summary()
     this.Search_Div=true
     this.Summary_Div=false
     this.Summary_Sub=true
-    var User_Id=0,dept_id=0,UserType_Value =  0;var Day_Type_value_=0,look_In_Date_Value=0;
+    var User_Id=0;
     this.Missed_follow=0;
     this.Graph=false
     
-
-    if (this.Look_In_Date == true )
-        look_In_Date_Value = 1;
-
     if (this.User_Search != undefined && this.User_Search!=null)
     if (this.User_Search.User_Details_Id != undefined && this.User_Search.User_Details_Id != null)
     User_Id = this.User_Search.User_Details_Id;
 
-
-    
-    if (this.Department_Search != undefined && this.Department_Search != null)
-        if (this.Department_Search.Department_Id != undefined && this.Department_Search.Department_Id != null)
-        dept_id = this.Department_Search.Department_Id;
-
-debugger
-    if (this.UserType != undefined && this.UserType != null) {
-        if (this.UserType != undefined && this.UserType != null && this.UserType != "") {
-            UserType_Value = this.UserType;
-            console.log('UserType_Value: ', UserType_Value);
-        }
-    }
-
-    if (this.Day_Type_ != undefined && this.Day_Type_ != null) {
-        if (this.Day_Type_ != undefined && this.Day_Type_ != null && this.Day_Type_ != "") {
-            Day_Type_value_ = this.Day_Type_;
-            console.log('Day_Type_value_: ', Day_Type_value_);
-        }
-    }
-
-
     this.issLoading = true;
     debugger
-    this.Student_Service_.FollowUp_Summary( User_Id,dept_id,UserType_Value,this.Login_User,Day_Type_value_,look_In_Date_Value,
-        moment(this.Search_FromDate).format('YYYY-MM-DD'), 
-    moment(this.Search_ToDate).format('YYYY-MM-DD')
-    )
+    this.Student_Service_.FollowUp_Summary( User_Id,this.Login_User)
 .subscribe(Rows => 
-{
-    debugger
+{    debugger
+
+    
     //log(Rows)
     this.Student_Data_Search = Rows.returnvalue.Leads;
     this.Total_Entries=this.Student_Data_Search .length
@@ -737,12 +618,6 @@ Get_Lead_Load_Data_ByUser(Login_User)
    this.Users_Data.unshift(Object.assign({},this.Users_Temp));
    this.User_Search = this.Users_Data[0];
    
-   this.Users_Data1 = Rows[17].slice();
-   this.Users_Temp1.User_Details_Id = 0;
-   this.Users_Temp1.User_Details_Name = "All";
-   this.Users_Data1.unshift(Object.assign({},this.Users_Temp1));
-   this.User_Search = this.Users_Data1[0];
-   this.To_User_Search1= this.Users_Data1[0];
   
    this.Branch_Data = Rows[2].slice();
    this.Branch_Temp1.Branch_Id = 0;
@@ -756,7 +631,17 @@ Get_Lead_Load_Data_ByUser(Login_User)
    this.Status_Data.unshift(Object.assign({},this.Status_Temp));
    this.Status_Search = this.Status_Data[0];
 
-
+   if(this.User_Id_Temp!=0)
+   {
+    debugger
+                  for (var i = 0; i < this.Users_Data.length; i++) {
+                      if (this.User_Id_Temp == this.Users_Data[i].User_Details_Id)
+                          this.User_Search = this.Users_Data[i];
+                  }
+                  
+    }
+    // ?this.Pending_FollowUp(this.User_Search.User_Details_Id);
+    this.issLoading = false;
 
 },
 Rows => { 
@@ -806,11 +691,50 @@ Graph_View(){
     this.Summary_Sub=false
 }
 
-Edit_Student_Notification(Student_Id, i) {
+Edit_Student_Notification(Student_Id,Enquiry_For_id ,i) {
+    debugger
+    // alert(Enquiry_For_id)
+    var Navbar_Leads_View=0;var View_Student_pro=1;
+
+    if(Enquiry_For_id ==6){
+        localStorage.setItem("Navbar_Leads_View",'1');
     
+        localStorage.setItem("Navbar_Leads_View_Menus","1");
+          this.Student_Service_.updateNavTitle('study'); 
+        }else if(Enquiry_For_id ==5){
+            localStorage.setItem("Navbar_Leads_View",'2');
+    
+            localStorage.setItem("Navbar_Leads_View_Menus","2");
+            this.Student_Service_.updateNavTitle('Job'); 
+
+        }
+        else if(Enquiry_For_id ==1){
+            localStorage.setItem("Navbar_Leads_View",'3');
+    
+            localStorage.setItem("Navbar_Leads_View_Menus","3");
+            this.Student_Service_.updateNavTitle('Immigration'); 
+
+        }
+        else if(Enquiry_For_id ==7){
+            localStorage.setItem("Navbar_Leads_View",'4');
+    
+            localStorage.setItem("Navbar_Leads_View_Menus","4");
+            this.Student_Service_.updateNavTitle('Visa'); 
+
+        }
+
+    
+    // if(Enquiry_For_id==6)Navbar_Leads_View=1
+    // if(Enquiry_For_id==5)Navbar_Leads_View=2
+    // if(Enquiry_For_id==1)Navbar_Leads_View=3
+    // if(Enquiry_For_id==7)Navbar_Leads_View=4
+    // localStorage.setItem('Navbar_Leads_View', Navbar_Leads_View.toString());
+    // localStorage.setItem('Navbar_Leads_View_Menus', Navbar_Leads_View.toString());
     localStorage.setItem('Student_Id', Student_Id);
+    localStorage.setItem('View_Student_pro',View_Student_pro.toString());
     console.log(Student_Id)
     this.Edit_Page_Permission = Get_Page_Permission(5);
+    this.router.navigateByUrl('/Candidate');
     if (this.Edit_Page_Permission == undefined) {
         const dialogRef = this.dialogBox.open(DialogBox_Component, { panelClass: 'Dialogbox-Class', data: { Message: 'No permission to view', Type: "2" } });
     }

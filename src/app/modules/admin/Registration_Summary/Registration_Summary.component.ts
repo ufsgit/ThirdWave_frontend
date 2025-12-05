@@ -127,6 +127,7 @@ export class Registration_SummaryComponent implements OnInit {
     points25: boolean = false;
     Edit_Page_Permission: any;
 
+     User_Id_Temp:number;
     Graph:boolean=false
     Summary_Sub:boolean=false
     Export_Permission:any
@@ -143,6 +144,7 @@ ngOnInit()
 {
   
     this.Login_User = localStorage.getItem("Login_User");
+        this.User_Id_Temp= Number(localStorage.getItem("User_Search"));
     // this.array = Get_Page_Permission(this.Menu_Id);
     // this.Export_Permission= Get_Page_Permission(38);
     // if (this.array == undefined || this.array == null)
@@ -151,6 +153,11 @@ ngOnInit()
     //     this.router.navigateByUrl('/auth/login');
     // }
     // else 
+          if (this.User_Id_Temp > 0) {
+        this.User_Id_Temp = Number(this.User_Id_Temp);
+        localStorage.setItem("User_Search", "0");
+    }
+
     {
         this.Page_Load()
         // if (this.Export_Permission != undefined && this.Export_Permission != null)
@@ -363,7 +370,7 @@ var value = 1, dept_id=0,User_Id=0,search_name_='0',look_In_Date_Value=0,branch_
 
     this.issLoading = true;
     
-    this.Student_Service_.Student_Registration_Summary(moment(this.Search_FromDate).format('YYYY-MM-DD'), moment(this.Search_ToDate).format('YYYY-MM-DD'), branch_id, look_In_Date_Value,this.Login_User)
+    this.Student_Service_.Student_Registration_Summary(moment(this.Search_FromDate).format('YYYY-MM-DD'), moment(this.Search_ToDate).format('YYYY-MM-DD'), branch_id, look_In_Date_Value,this.Login_User,this.User_Id_Temp)
 .subscribe(Rows => 
 {
    
@@ -507,6 +514,16 @@ this.Student_Service_.Get_Lead_Load_Data().subscribe(Rows => {
         this.Status_Temp.Department_Status_Name = "All";
         this.Status_Data.unshift(Object.assign({}, this.Status_Temp));
         this.Status_Search = this.Status_Data[0];
+
+           if(this.User_Id_Temp!=0)
+   {
+    // debugger
+    for (var i = 0; i < this.Users_Data.length; i++) {
+        if (this.User_Id_Temp == this.Users_Data[i].User_Details_Id)
+                this.User_Search = this.Users_Data[i];
+                  }
+                  
+    }
     }
 },
 Rows => {

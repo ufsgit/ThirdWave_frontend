@@ -38,6 +38,8 @@ export class Student_FollowUp
     Dept_Name:string;
     UserName:string;
     Registration:boolean;
+      Reminder_Enabled: number;       // <--- ADD THIS
+  Reminder_Time: string | null;
 constructor(values: Object = {})  
 {
 Object.assign(this, values) 

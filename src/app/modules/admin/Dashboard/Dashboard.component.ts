@@ -183,7 +183,8 @@ Get_Lead_Load_Data_ByUser(Login_User) {
 				this.Users_Temp.User_Details_Id = 0;
 				this.Users_Temp.User_Details_Name = "All";
 				this.Users_Data.unshift(this.Users_Temp);
-
+ this.User_Search = this.Users_Data[0];
+ console.log('this.Users_Data[0]: ', this.Users_Data[0]);
 
 				
 
@@ -193,14 +194,15 @@ Get_Lead_Load_Data_ByUser(Login_User) {
 
 				// this.Users_Data.unshift(Object.assign({}, this.Users_Temp));
 				// this.User_Search = this.Users_Data[0];
-				this.User_Search = Object.assign({}, this.Users_Temp);
+				// this.User_Search = Object.assign({}, this.Users_Temp);
 
-				if (Number(this.Login_User) > 0) {
-                    for (var i = 0; i < this.Users_Data.length; i++) {
-                        if (Number(this.Login_User) == this.Users_Data[i].User_Details_Id)
-                            this.User_Search = this.Users_Data[i];
-                    }
-                } else this.User_Search = this.Users_Data[0];
+				// if (Number(this.Login_User) > 0) {
+                //     for (var i = 0; i < this.Users_Data.length; i++) {
+                //         if (Number(this.Login_User) == this.Users_Data[i].User_Details_Id)
+                //             this.User_Search = this.Users_Data[i];
+                //     }
+                // } else this.User_Search = this.Users_Data[0];
+                // console.log('this.Users_Data[0]: ', this.Users_Data[0]);
 
 
 
@@ -278,52 +280,56 @@ debugger
         }
 }
 Click_No1()
-{
-    // this.router.navigateByUrl('/Enquiry_Source_Summary');
+{debugger
+     this.router.navigateByUrl('/Enquiry_Source_Summary');
+       localStorage.setItem('User_Search', this.User_Search.User_Details_Id.toString());
+       console.log('this.User_Search.User_Details_Id: ', this.User_Search.User_Details_Id);
 }
 Click_No2()
 {
-    //   this.router.navigateByUrl('/Registration_Summary');  
+      this.router.navigateByUrl('/Registration_Summary');  
+         localStorage.setItem('User_Search', this.User_Search.User_Details_Id.toString());
 }
 Click_No3()
 {
-    // this.router.navigateByUrl('/Pending_FollowUp');
+     this.router.navigateByUrl('/Pending_FollowUp');
+       localStorage.setItem('User_Search', this.User_Search.User_Details_Id.toString());
    
 }
 Click_No4()
 {
-    // this.router.navigateByUrl('/Receipt_Summary_Report');
+    this.router.navigateByUrl('/Receipt_Summary_Report');
    
 }
 Click_No5()
 {
-    // this.router.navigateByUrl('/Enquiry_Source_Summary');
+     this.router.navigateByUrl('/Enquiry_Source_Summary');
    
 }
  
 Click_No6()
 {
-    // this.router.navigateByUrl('/Application_Report');
+     this.router.navigateByUrl('/Application_Report');
    
 }
 
 Click_No7()
 {
-    // this.router.navigateByUrl('/Student_Task');
+     this.router.navigateByUrl('/Student_Task');
 
-    // localStorage.setItem('Assign_User_Dashboard_', '0');
+     localStorage.setItem('Assign_User_Dashboard_', '0');
   
    
 }
 
 Click_No8()
 {
-    // this.router.navigateByUrl('/Student');
+    this.router.navigateByUrl('/Student');
    
 }
 Click_No10()
 {
-    // this.router.navigateByUrl('/Agent_Student');
+     this.router.navigateByUrl('/Agent_Student');
    
 }
 

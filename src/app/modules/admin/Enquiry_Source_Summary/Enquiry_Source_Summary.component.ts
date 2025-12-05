@@ -156,7 +156,7 @@ export class Enquiry_Source_SummaryComponent implements OnInit {
     Export_View:boolean=false
    Total_Data:number=0
 
-   
+   User_Id_Temp:number;
 
 constructor( public Student_Service_:Student_Service, private route: ActivatedRoute, private router: Router,public dialogBox: MatDialog) { }
 
@@ -165,6 +165,8 @@ constructor( public Student_Service_:Student_Service, private route: ActivatedRo
 ngOnInit() 
 {
     this.Login_User = localStorage.getItem("Login_User");
+     this.User_Id_Temp= Number(localStorage.getItem("User_Search"));
+     console.log(' this.User_Id_Templocal: ',  this.User_Id_Temp);
     // this.Permissions = Get_Page_Permission(32);
     // this.Export_Permission=Get_Page_Permission(38);
     // if(this.Permissions==undefined || this.Permissions==null)
@@ -173,6 +175,14 @@ ngOnInit()
     // this.router.navigateByUrl('Home_Page');
     // }
     // else
+           if (this.User_Id_Temp > 0) {
+            debugger
+        this.User_Id_Temp = Number(this.User_Id_Temp);
+        console.log('this.User_Id_Temploc2 : ', this.User_Id_Temp );
+        localStorage.setItem("User_Search", "0");
+
+
+    }
     {
         //this.data.push({})
         this.Page_Load();
@@ -196,6 +206,7 @@ Page_Load(){
     // this.Get_Lead_Load_Data();
     this.Get_Menu_Status(32,this.Login_User);
     this.Get_Menu_Status(38,this.Login_User);
+    debugger
     this.Get_Lead_Load_Data_ByUser(this.Login_User);
 
   // this.Search_Student_Report();
@@ -356,8 +367,18 @@ Get_Lead_Load_Data_ByUser(Login_User)
    this.Status_Temp.Department_Status_Name = "All";
    this.Status_Data.unshift(Object.assign({},this.Status_Temp));
    this.Status_Search = this.Status_Data[0];
+    console.log('this.User_Id_Temp: ', this.User_Id_Temp);
+ if(this.User_Id_Temp!=0)
 
-
+   {
+    debugger
+    for (var i = 0; i < this.Users_Data.length; i++) {
+        if (this.User_Id_Temp == this.Users_Data[i].User_Details_Id)
+            console.log('his.Users_Data[i].User_Details_Id: ', this.Users_Data[i].User_Details_Id);
+                this.User_Search = this.Users_Data[i];
+                  }
+                  
+    }
 
 },
 Rows => { 
@@ -502,9 +523,9 @@ Search_Enquriy_Summary()
 
    var c=0;
     this.issLoading = true;
-    
+    debugger
     this.Student_Service_.Search_Enquiry_Source_Summary_Track(moment(this.Search_FromDate).format('YYYY-MM-DD'),
-    moment(this.Search_ToDate).format('YYYY-MM-DD'),this.Login_User,look_In_Date_Value,branch_id)
+    moment(this.Search_ToDate).format('YYYY-MM-DD'),this.Login_User,look_In_Date_Value,branch_id,this.User_Id_Temp)
 .subscribe(Graph_Status => 
 {
 

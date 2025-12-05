@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
+import { Component, OnInit, OnDestroy, ElementRef } from "@angular/core";
 import {
 	Location,
 	LocationStrategy,
@@ -76,7 +76,7 @@ const moment = _rollupMoment || _moment;
 		{ provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
 	],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 	//private url = 'http://regnewapi.trackbox.co.in:3646/'
 	url = environment.NotificationPath;
 	private socket;
@@ -108,7 +108,7 @@ export class NavbarComponent implements OnInit {
 	Aheight: number = 50;
 	Count_Notification: boolean = false;
 	Notification_List: boolean = false;
-
+Todayss_Notification: any[];
 	chat_count_view: boolean = false;
 	Chat_Data: any;
 	Chat_Count_: number = 0;
@@ -144,6 +144,10 @@ export class NavbarComponent implements OnInit {
 	isDropdownVisible: boolean = false;
 	/** Added on 24-07-2024 */
 	Profile_Type: number=3;
+	
+	// Notification Timer Properties
+	private notificationTimerId: any;
+	private notificationCheckInterval: number = 2 * 60 * 1000; // 5 minutes in milliseconds
 
 	constructor(
 		location: Location,
@@ -355,50 +359,9 @@ export class NavbarComponent implements OnInit {
 			
 			
 			}	
-			// var tempuser_id = "m" + this.u_id + "m";
-			// this.Current_Channel_Id = Number(
-			// 	localStorage.getItem("Current_Channel_Id")
-			// );
-			// // tempuser_id='oi'
-			// if (
-			// 	message.Notification_Type_Name == "Chat" &&
-			// 	Number(this.u_id) != message.From_User
-			// ) {
-			// 	;
-			// 	var k = message.To_User_List.includes(tempuser_id);
-			// 	if (k) {
-			// 		let currentUrl = this.router.url;
-			// 		console.log('currentUrl: ', currentUrl);
+		
 
-			// 		if (
-			// 			currentUrl != "/Chat_Window" ||
-			// 			message.Channel_Id != this.Current_Channel_Id
-			// 		) {
-			// 			this.Chat_Count_++;
-			// 			this.chat_count_view = true;
-			// 		} else if (
-			// 			message.Channel_Id == this.Current_Channel_Id ||
-			// 			currentUrl == "/Chat_Window"
-			// 		) {
-			// 			this.Chat_Count_ = this.Chat_Count_;
-			// 		}
-			// 		// if(this.Chat_Count_!=0){this.chat_count_view=true}
-			// 		// else(this.chat_count_view=false)
-			// 	}
-			// }
-
-			// if (
-			// 	message.Notification_Type_Name == "read_msg" &&
-			// 	Number(this.u_id) == message.From_User
-			// ) {
-			// 	;
-			
-			// 	if (this.Chat_Count_)
-			// 		this.Chat_Count_ = this.Chat_Count_ - message.Msg_Count;
-			// 	if (this.Chat_Count_ != 0 && this.Chat_Count_ != null) {
-			// 		this.chat_count_view = true;
-			// 	} else this.chat_count_view = false;
-			// }
+		
 		}
 
 // CHAT MESSAGE HANDLING - Only once!
@@ -428,57 +391,9 @@ export class NavbarComponent implements OnInit {
         }
 
 
-			// var tempuser_id = "m" + this.u_id + "m";
-			// this.Current_Channel_Id = Number(
-			// 	localStorage.getItem("Current_Channel_Id")
-			// );
-			// // tempuser_id='oi'
-			// console.log('this.u_id: ', this.u_id);
-			// if (
-			// 	message.Notification_Type_Name == "Chat" &&
-			// 	Number(this.u_id) != message.From_User
-			// ) {
-			// 	// debugger;
-			// 	var k = message.To_User_List.includes(tempuser_id);
-			// 	if (k) {
-			// 		let currentUrl = this.router.url;
-
-			// 		if (
-			// 			currentUrl != "/Chat_Window" ||
-			// 			message.Channel_Id != this.Current_Channel_Id
-			// 		) {
-			// 			this.Chat_Count_++;
-			// 			this.chat_count_view = true;
-			// 		} else if (
-			// 			message.Channel_Id == this.Current_Channel_Id ||
-			// 			currentUrl == "/Chat_Window"
-			// 		) {
-			// 			this.Chat_Count_ = this.Chat_Count_;
-			// 		}
-			// 		// if(this.Chat_Count_!=0){this.chat_count_view=true}
-			// 		// else(this.chat_count_view=false)
-			// 	}
-			// }
-
-
-
-
-			// if (
-			// 	message.Notification_Type_Name == "read_msg" &&
-			// 	Number(this.u_id) == message.From_User
-			// ) {
-			// 	// debugger;
-			
-			// 	if (this.Chat_Count_)
-			// 		this.Chat_Count_ = this.Chat_Count_ - message.Msg_Count;
-			// 	if (this.Chat_Count_ != 0 && this.Chat_Count_ != null) {
-			// 		this.chat_count_view = true;
-			// 	} else this.chat_count_view = false;
-			// }
+	
 			 else {
-				//  this.messages.push(message);
-			//alert(message);
-// debugger
+				
 			if (Number(this.u_id) == message.To_User) {
 				// if (message.Notification_Type_Name == "Task") {
 				// 	this.Student_Task_Count = message.Task_Count;
@@ -540,6 +455,7 @@ export class NavbarComponent implements OnInit {
 
 		//localStorage.setItem("Notification_Count", "0");
 		this.Get_All_Notification();
+		
 	}
 	hasMenuItems(): boolean {
 		// Add all the menuArray indices related to Settings
@@ -729,16 +645,51 @@ export class NavbarComponent implements OnInit {
 		this.router.navigateByUrl("Notification");
 	
 	}
+
 	Get_All_Notification() {
 		var User_Id = 0;
+		const today = moment().format("YYYY-MM-DD");
+		const storedDate = localStorage.getItem('notification_date');
+		
+		// Check if we need to call the API (different day or no stored date)
+		if (storedDate !== today) {
+			// Call API to get today's notifications
+			this.Student_Service_.Get_Todays_Notifications(this.u_id).subscribe((Rows) => {
+				this.Todayss_Notification = Rows[0];
+				
+				// Store notifications in localStorage with current date
+				const notificationData = {
+					date: today,
+					notifications: this.Todayss_Notification
+				};
+				localStorage.setItem('todays_notifications', JSON.stringify(notificationData));
+				localStorage.setItem('notification_date', today);
+				
+				console.log(this.Todayss_Notification, 'Rows from API');
+				
+				// Start the notification timer
+				this.startNotificationTimer();
+			});
+		} else {
+			// Load notifications from localStorage
+			const storedNotifications = localStorage.getItem('todays_notifications');
+			if (storedNotifications) {
+				const notificationData = JSON.parse(storedNotifications);
+				this.Todayss_Notification = notificationData.notifications;
+				console.log(this.Todayss_Notification, 'Rows from localStorage');
+				
+				// Start the notification timer
+				this.startNotificationTimer();
+			}
+		}
+		
 		this.Student_Service_.Get_All_Notification(
 			moment(this.Search_ToDate).format("YYYY-MM-DD"),
 			User_Id,
 			this.u_id
 		).subscribe((Rows) => {
-			
-			 this.Notification_Data = Rows[0];
-			 console.log(this.Notification_Data)
+			this.Notification_Data = Rows[0];
+			console.log(this.Notification_Data)
 			this.Student_Task_Count = Rows[2][0].Student_Task_Count;
 			this.Fetched_Serial_No = Rows[3][0].Updated_Serial_Id;
 			if (this.Fetched_Serial_No == undefined || this.Fetched_Serial_No == null)
@@ -1201,10 +1152,119 @@ this.studentSubmenus = false;
 			});
 
 			this.getTitle()
+	}
+
+	// Notification Timer Methods
+	startNotificationTimer() {
+		debugger
+		// Clear any existing timer
+		if (this.notificationTimerId) {
+			clearInterval(this.notificationTimerId);
+		}
+		
+		// Check notifications immediately
+		this.checkAndProcessNotifications();
+		
+		// Set up interval to check every 5 minutes
+		this.notificationTimerId = setInterval(() => {
+			this.checkAndProcessNotifications();
+		}, this.notificationCheckInterval);
+	}
+
+	checkAndProcessNotifications() {
+		debugger
+		const storedNotifications = localStorage.getItem('todays_notifications');
+		if (!storedNotifications) {
+			return;
 		}
 
+		const notificationData = JSON.parse(storedNotifications);
+		const notifications = notificationData.notifications || [];
+		console.log(notifications,'notifications');
+		
+		if (notifications.length === 0) {
+			return;
+		}
 
+		const currentTime = new Date();
+		const notificationsToShow = [];
+		const remainingNotifications = [];
+
+		// Process each notification	
+		notifications.forEach((notification: any) => {
+			// Assuming notification has a scheduled time field (adjust field name as needed)
+			// You may need to adjust this based on your actual notification structure
+			const notificationTime = notification.Time || notification.Entry_Date;
+			console.log(notificationTime,'notificationTime');
+			if (notificationTime) {
+				// Create a Date object for the notification time
+				let notifTime: Date;
+				
+				// Check if notificationTime is just a time string (HH:MM:SS)
+				if (typeof notificationTime === 'string' && notificationTime.match(/^\d{2}:\d{2}:\d{2}$/)) {
+					// Combine today's date with the notification time
+					const today = new Date();
+					const [hours, minutes, seconds] = notificationTime.split(':').map(Number);
+					notifTime = new Date(today.getFullYear(), today.getMonth(), today.getDate(), hours, minutes, seconds);
+				} else {
+					// It's a full date-time string
+					notifTime = new Date(notificationTime);
+				}
+				
+				console.log(notifTime,'notifTime');
+				console.log(currentTime,'currentTime');
+				
+				// If notification time is less than or equal to current time
+				if (notifTime <= currentTime) {
+					notificationsToShow.push(notification);
+				} else {
+					// Keep for future processing
+					remainingNotifications.push(notification);
+				}
+			} else {
+				// If no time specified, keep it
+				remainingNotifications.push(notification);
+			}
+		});
+		console.log(notificationsToShow,'notificationsToShow');	
+		// Add due notifications to the notification data
+		if (notificationsToShow.length > 0) {
+			notificationsToShow.forEach((notification) => {
+				// Add to notification data at the beginning
+				this.Notification_Data.unshift(notification);
+				
+				// Update notification count
+				this.Notification_Count = Number(this.Notification_Count) + 1;
+				
+				// Animate notification
+				this.animate();
+				
+				console.log('Notification pushed:', notification);
+			});
+
+			// Update height for notification display
+			if (this.Notification_Count < 4) {
+				this.Aheight = 52 * (this.Notification_Count + 1);
+			} else {
+				this.Aheight = 52 * 10;
+			}
+		}
+
+		// Update localStorage with remaining notifications
+		const updatedNotificationData = {
+			date: notificationData.date,
+			notifications: remainingNotifications
+		};
+		localStorage.setItem('todays_notifications', JSON.stringify(updatedNotificationData));
+		
+		console.log(`Processed ${notificationsToShow.length} notifications, ${remainingNotifications.length} remaining`);
 	}
-	  
-	
 
+	ngOnDestroy() {
+		// Clean up timer when component is destroyed
+		if (this.notificationTimerId) {
+			clearInterval(this.notificationTimerId);
+		}
+	}
+
+}

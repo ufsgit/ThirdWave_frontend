@@ -6,6 +6,7 @@ import {
 	HttpClient,
 	HttpHeaders,
 	HttpErrorResponse,
+	HttpParams,
 } from "@angular/common/http";
 // import { Observable, of } from "rxjs";
 import { map, catchError, tap } from "rxjs/operators";
@@ -14,6 +15,7 @@ import { BehaviorSubject, Observable, Subject, of } from "rxjs";
 // import { Student_Status } from '../../../models/Student_Status';
 import * as FileSaver from "file-saver";
  import * as XLSX from "xlsx";
+import { Student } from "app/models/Student.js";
 @Injectable({
 	providedIn: "root",
 })
@@ -981,6 +983,14 @@ Get_All_Notification(date_, userid_, login_user_) {
 		{ params: Search_Data }
 	);
 }
+Get_Todays_Notifications(User_Id: number) {
+
+	  const params = new HttpParams().set('ts', Date.now().toString()); 
+  return this.http.get<any>(
+    environment.BasePath + "Student/Get_Todays_Notifications/" + User_Id
+  );
+}
+
 
 Get_ReviewDetails(Student_Id) {
 	return this.http.get(
@@ -988,6 +998,7 @@ Get_ReviewDetails(Student_Id) {
 	);
 	
 }
+
 Get_WorkexperienceDetails(Student_Id) {
 	return this.http.get(
 		environment.BasePath + "Student/Get_WorkexperienceDetails/" + Student_Id
@@ -1603,12 +1614,15 @@ Load_Shore(): Observable<any>
 				RowCount2_
 		);
 	}
-	Student_Registration_Summary(
+	
+
+		Student_Registration_Summary(
 		Search_FromDate,
 		Search_ToDate,
 		Branch_Id,
 		look_In_Date_Value,
-		Login_User_Id_
+		Login_User_Id_,
+		User_Id_Temp_,
 	): Observable<any> {
 		return this.http.get(
 			environment.BasePath +
@@ -1621,7 +1635,9 @@ Load_Shore(): Observable<any>
 				"/" +
 				look_In_Date_Value +
 				"/" +
-				Login_User_Id_
+				Login_User_Id_ +
+				"/" +
+				User_Id_Temp_
 		);
 	}
 	Student_Registration_Summary_Agent(
@@ -2163,11 +2179,9 @@ Load_Shore(): Observable<any>
 		);
 	}
 	
-	Pending_FollowUp(dept_id, Branch_, User_Id,user_category, Login_User_Id_,Day_Type_value_,
-		look_In_Date_Value_,FromDate_,ToDate_): Observable<any> {
+	Pending_FollowUp(dept_id, Branch_, User_Id, Login_User_Id_,SearchbyName_): Observable<any> {
 		debugger
 		return this.http.get(
-			
 			environment.BasePath +
 				"Student/Pending_FollowUp/" +
 				dept_id +
@@ -2176,20 +2190,11 @@ Load_Shore(): Observable<any>
 				"/" +
 				User_Id +
 				"/" +
-				user_category +
-				"/" +
 				Login_User_Id_+
 				"/" +
-				Day_Type_value_+
-                "/" +
-                look_In_Date_Value_+
-                "/" +
-                FromDate_+
-                "/" +
-                ToDate_
+				SearchbyName_
 		);
 	}
-
 	Pending_FollowUp_Task(dept_id, Branch_, User_Id,user_category, Login_User_Id_,Day_Type_value_,look_In_Date_Value_,FromDate_,ToDate_): Observable<any> {
 		debugger
 		return this.http.get(
@@ -2259,30 +2264,16 @@ Load_Shore(): Observable<any>
 		);
 	}
 
-	FollowUp_Summary(User_Id,dept_id,UserType_Value,Login_User_Id_,Day_Type_value_,
-		look_In_Date_Value_,FromDate_,ToDate_
-	): Observable<any> {
-		debugger
+	FollowUp_Summary(User_Id, Login_User_Id_): Observable<any> {
         return this.http.get(
             environment.BasePath +
                 "Student/FollowUp_Summary/" +
                 User_Id +
                 "/" +
-				dept_id +
-                "/" +
-				UserType_Value +
-                "/" +
-                Login_User_Id_ +
-                "/" +
-                Day_Type_value_+
-                "/" +
-                look_In_Date_Value_+
-                "/" +
-                FromDate_+
-                "/" +
-                ToDate_
+                Login_User_Id_
         );
     }
+
 
 	Agent_Search_data(User_Id): Observable<any> {
         return this.http.get(
@@ -2356,7 +2347,7 @@ Load_Shore(): Observable<any>
 		Search_ToDate,
 		Login_User_Id_,
 		look_In_Date_Value,
-		branch_id
+		branch_id,User_Id_Temp
 	): Observable<any> {
 		return this.http.get(
 			environment.BasePath +
@@ -2369,8 +2360,10 @@ Load_Shore(): Observable<any>
 				"/" +
 				look_In_Date_Value +
 				"/" +
-				branch_id
-				
+				branch_id +
+				"/" +
+				User_Id_Temp +
+				"/"
 		);
 	}
 	

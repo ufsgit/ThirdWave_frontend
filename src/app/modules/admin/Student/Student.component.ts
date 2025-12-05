@@ -644,6 +644,9 @@ export class StudentComponent implements OnInit {
 	Flag_Student: number = 0;
 	Student_Id: number = 0;
 	User_Id: number = 0;
+	
+  Enable_Followup_Reminder: boolean = false;        // checkbox
+  FollowUp_Reminder_Time: string = '';
 
 
 	Users_Data1: User_Details[]
@@ -11861,6 +11864,19 @@ return Users_.User_Details_Name;
 		this.FollowUp_.Next_FollowUp_Date = this.New_Date(
 			new Date(moment(this.FollowUp_.Next_FollowUp_Date).format("YYYY-MM-DD"))
 		);
+		console.log('this.Enable_Followup_Reminder && this.FollowUp_Reminder_Time: ', this.Enable_Followup_Reminder && this.FollowUp_Reminder_Time);
+// Reminder fields from Followup checkbox + time
+if (this.Enable_Followup_Reminder && this.FollowUp_Reminder_Time) {
+	
+  // you MUST create these properties in the model / backend DTO
+  this.FollowUp_.Reminder_Enabled = 1;
+  console.log('  this.FollowUp_.Reminder_Enabled: ',   this.FollowUp_.Reminder_Enabled);
+  this.FollowUp_.Reminder_Time = this.FollowUp_Reminder_Time;   // 'HH:mm'
+} else {
+  this.FollowUp_.Reminder_Enabled = 0;
+  console.log('this.FollowUp_.Reminder_Enabled: ', this.FollowUp_.Reminder_Enabled);
+  this.FollowUp_.Reminder_Time = null;
+}
 
 		if (this.FollowUp_Sub_Status_ == null) {
 			this.FollowUp_.Sub_Status_Id = 1;
@@ -12042,6 +12058,8 @@ console.log('this.Transfer_Button_Status:  last', this.Transfer_Button_Status);
 						data: { Message: "Error Occured", Type: "2" },
 					});
 				}
+
+const n
 				this.issLoading = false;
 			},
 			(Rows) => {
