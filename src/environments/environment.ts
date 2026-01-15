@@ -4,7 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-	production: false,	
+    production: false,
 
     // BasePath:'https://empireapi.trackbox.live/',
 
@@ -12,24 +12,25 @@ export const environment = {
     // BasePath:' https://empireapi.ufstech.net.in/',
     //     FilePath:'https://ufsnabeelphotoalbum.s3.us-east-2.amazonaws.com/', 
     //     NotificationPath:'https://empirenotificationapi.ufstech.net.in/',
-//BasePath:' https://empireapi.ufstech.net.in/',
-  
-
-BasePath: 'http://localhost:3503/',    
-       
-
-        //  BasePath:' https://empireapi.ufstech.net.in/',
-        FilePath:'https://ufsnabeelphotoalbum.s3.us-east-2.amazonaws.com/', 
-        NotificationPath:'https://empirenotificationnewapi.ufstech.net.in/'
-        //  NotificationPath:'http://13.233.77.32:3205/',
+    //BasePath:' https://empireapi.ufstech.net.in/',
 
 
+    // BasePath: 'http://localhost:3503/',    
+    BasePath: 'https://thirdwaveapi.trackbox.in/',
 
-  
-         //BasePath:' https://empireapi.ufstech.net.in/',
-        // FilePath:'https://ufsnabeelphotoalbum.s3.us-east-2.amazonaws.com/', 
-        // NotificationPath:'https://empirenotificationapi.ufstech.net.in/',
-        // NotificationPath:'http://13.233.77.32:3205/',
+
+    //  BasePath:' https://empireapi.ufstech.net.in/',
+    FilePath: 'https://ufsnabeelphotoalbum.s3.us-east-2.amazonaws.com/',
+    NotificationPath: 'https://empirenotificationnewapi.ufstech.net.in/'
+    //  NotificationPath:'http://13.233.77.32:3205/',
+
+
+
+
+    //BasePath:' https://empireapi.ufstech.net.in/',
+    // FilePath:'https://ufsnabeelphotoalbum.s3.us-east-2.amazonaws.com/', 
+    // NotificationPath:'https://empirenotificationapi.ufstech.net.in/',
+    // NotificationPath:'http://13.233.77.32:3205/',
     //FilePath:'https://empireapi.trackbox.live/uploads/',
     // NotificationPath:'https://empirenotificationapi.trackbox.live/',  
 
@@ -37,6 +38,6 @@ BasePath: 'http://localhost:3503/',
     // FilePath:'https://empireapi.trackbox.live/uploads/',																									
     // NotificationPath:'https://empirenotificationapi.trackbox.live/'
 
-   
-		
+
+
 };
