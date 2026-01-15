@@ -1101,3 +1101,92 @@ table td {
     }
   }
 }
+
+/* Custom alignment for Reminder section */
+.reminder-row {
+  display: flex !important;
+  align-items: center !important;
+  align-content: center !important;
+  flex-wrap: nowrap !important;
+  margin-bottom: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.reminder-gap {
+  margin-left: 15px !important;
+}
+
+.checkbox-fix {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.time-input-fix {
+  width: 150px !important;
+}
+
+/* Remove all vertical spacing for form fields - Match left side spacing */
+.form-row {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+.form-control {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+textarea.form-control {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+}
+
+.col-md-3,
+.col-sm-3 {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.col-md-2,
+.col-sm-2 {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove spacing from dt-card sections */
+.dt-card__body {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Specific targeting for form labels */
+.col-form-label {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove any extra spacing from input containers */
+div[class*="col-md-3"],
+div[class*="col-sm-3"],
+div[class*="col-md-2"],
+div[class*="col-sm-2"] {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}

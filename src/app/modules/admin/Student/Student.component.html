@@ -777,7 +777,7 @@
 
 
                           <label class="col-md-2 col-sm-1 col-form-label text-sm-right">Whatsapp</label>
-                          <div class="col-md-3 col-sm-3 mb-1">
+                          <div class="col-md-3 col-sm-3 mb-0">
                             <input type="text" [(ngModel)]="Profile_.Whatsapp" name="Profile_.Whatsapp"
                               class="form-control" placeholder="Whatsapp" maxlength="14" />
                           </div>
@@ -785,7 +785,7 @@
 
                           <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Country</label>
 
-                          <div class="col-md-3 col-sm-3 mb-1">
+                          <div class="col-md-3 col-sm-3 mb-0">
                             <input Input type="text" class="form-control" [matAutocomplete]="autoc8" placeholder=""
                               [(ngModel)]="Profile_Country_" name="Profile_Country_" id="Profile_Country_"
                               (click)="Search_Country_Typeahead($event)" (keyup)="Search_Country_Typeahead($event)" />
@@ -804,13 +804,13 @@
                             </ng-container>
                           </mat-autocomplete>
 
-                          <div class="form-row mb-2 col-12">
+                          <div class="form-row mb-0 col-12">
                             <label class="col-md-2 col-sm-1 col-form-label text-sm-right">Enquiry Source<span style="
                                 color: #ef071e;
                                 font-size: 22px;
                                 vertical-align: -webkit-baseline-middle;
                               ">*</span></label>
-                            <div class="col-md-3 col-sm-3 mb-1">
+                            <div class="col-md-3 col-sm-3 mb-0">
                               <select [(ngModel)]="Enquiry_Source_" name="Profile_.Enquiry_Source_Id" required
                                 class="form-control p-0 pl-1">
                                 <option *ngFor="let EStatus_T of Enquiry_Source_Data" [ngValue]="EStatus_T">
@@ -818,13 +818,12 @@
                                 </option>
                               </select>
                             </div>
-                          </div>
-                          <div class="form-row mb-2 col-12">
+
                             <label class="col-md-2 col-sm-2 col-form-label text-sm-right" style="
-									font-size: 14px !important;
-									
-								">Intake</label>
-                            <div class="col-md-3 col-sm-3 mb-1">
+							font-size: 14px !important;
+							
+							">Intake</label>
+                            <div class="col-md-3 col-sm-3 mb-0">
                               <select [(ngModel)]="Intake_Mode_Profile_" name="Intake_Mode_Profile_" required
                                 class="form-control p-0 pl-1">
                                 <option *ngFor="let Intake_Mode_T of Intake_Mode_Data" [ngValue]="Intake_Mode_T">
@@ -832,12 +831,10 @@
                                 </option>
                               </select>
                             </div>
-
+                          </div>
+                          <div class="form-row mb-0 col-12">
                             <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Course</label>
-                            <!-- <div class="col-md-3 col-sm-3 mb-1">
-                                <input type="text" [(ngModel)]="Student_.Programme_Course"  name="Student_.Programme_Course" class="form-control" placeholder="Programe">
-                            </div>   -->
-                            <div class="col-md-3 col-sm-3 mb-1">
+                            <div class="col-md-3 col-sm-3 mb-0">
                               <input Input type="text" class="form-control" [matAutocomplete]="autoc7" placeholder=""
                                 [(ngModel)]="Program_Course_" name="Program_Course_"
                                 (click)="Search_Courses_Typeahead($event)" (keyup)="Search_Courses_Typeahead($event)" />
@@ -856,19 +853,17 @@
                               </ng-container>
                             </mat-autocomplete>
 
+                            <label class="col-md-2 col-sm-2 col-form-label text-sm-right">E-mail Id</label>
+                            <div class="col-md-3 col-sm-3 mb-0">
+                              <input type="text" [(ngModel)]="Profile_.Email" name="Profile_.Email" class="form-control"
+                                placeholder="Email" />
+                            </div>
                           </div>
 
                           <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Age </label>
-                          <div class="col-md-3 col-sm-3 mb-1">
+                          <div class="col-md-3 col-sm-3 mb-0">
                             <input type="text" [(ngModel)]="Profile_.Age" name="Age" class="form-control"
                               placeholder="Age" />
-                          </div>
-
-
-                          <label class="col-md-2 col-sm-2 col-form-label text-sm-right">E-mail Id</label>
-                          <div class="col-md-3 col-sm-3 mb-1">
-                            <input type="text" [(ngModel)]="Profile_.Email" name="Profile_.Email" class="form-control"
-                              placeholder="Email" />
                           </div>
                           <div class="form-row mb-2 col-12">
                             <label class="col-md-2 col-sm-2 col-form-label text-sm-right">counsellor Note</label>
@@ -1230,13 +1225,13 @@
                     </div>
 
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Reference</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
+                    <div class="col-md-3 col-sm-3 mb-0">
                       <input type="text" [(ngModel)]="Profile_.Reference" name="Profile_.Reference" class="form-control"
                         placeholder="" />
                     </div>
                   </div>
 
-                  <div class="form-row mb-2">
+                  <div class="form-row mb-0">
                     <!-- <label class="col-md-1 label-down-alighn-supler-prhse-mstr-down"></label> -->
                     <!-- <label
                       class="col-md-2 col-sm-2 col-form-label text-sm-right"
@@ -1253,9 +1248,38 @@
                     </div> -->
 
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Alternative Email</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
+                    <div class="col-md-3 col-sm-3 mb-0">
                       <input type="text" [(ngModel)]="Profile_.Alternative_Email" name="Profile_.Alternative_Email"
                         class="form-control" placeholder="Alternative Email" />
+                    </div>
+
+                    <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Guardian Telephone</label>
+                    <div class="col-md-3 col-sm-3 mb-0">
+                      <input type="Number" [(ngModel)]="Profile_.Guardian_telephone" name="Profile_.Guardian_telephone"
+                        class="form-control" placeholder="" />
+                    </div>
+                  </div>
+
+
+                  <!-- <div class="form-row  mb-2">
+                            <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Last Name</label>                          
+                            <div class="col-md-3 col-sm-3 mb-1">
+                                <input type="text" [(ngModel)]="Student_.Last_Name" name="Student_.Last_Name" class="form-control" placeholder="Last Name">
+                            </div>                
+                            <div class="col-md-1 col-sm-1"></div>  
+                            <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Year</label>
+                            <div class="col-md-3 col-sm-3 mb-1">
+                                <input type="text" [(ngModel)]="Student_.Year"  name="Student_.Year" class="form-control" placeholder="Year">
+                            </div>                        
+                        </div> -->
+
+
+                  <div class="form-row mb-0">
+                    <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Alternative Mobile</label>
+                    <div class="col-md-3 col-sm-3 mb-0">
+                      <input type="text" [(ngModel)]="Profile_.Alternative_Phone_Number"
+                        name="Profile_.Alternative_Phone_Number" class="form-control" placeholder="Alternative Mobile"
+                        maxlength="14" />
                     </div>
                     <!-- <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Shore<span style="color:#ef071e; font-size: 22px; vertical-align: -webkit-baseline-middle;">*</span> </label>                          
 										<div class="col-md-3 col-sm-3 mb-1">
@@ -1315,40 +1339,11 @@
 											</ng-container>
 										</mat-autocomplete> -->
                   </div>
-
-
-                  <!-- <div class="form-row  mb-2">
-                            <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Last Name</label>                          
-                            <div class="col-md-3 col-sm-3 mb-1">
-                                <input type="text" [(ngModel)]="Student_.Last_Name" name="Student_.Last_Name" class="form-control" placeholder="Last Name">
-                            </div>                
-                            <div class="col-md-1 col-sm-1"></div>  
-                            <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Year</label>
-                            <div class="col-md-3 col-sm-3 mb-1">
-                                <input type="text" [(ngModel)]="Student_.Year"  name="Student_.Year" class="form-control" placeholder="Year">
-                            </div>                        
-                        </div> -->
-
-
-                  <div class="form-row mb-2">
-                    <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Alternative Mobile</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
-                      <input type="text" [(ngModel)]="Profile_.Alternative_Phone_Number"
-                        name="Profile_.Alternative_Phone_Number" class="form-control" placeholder="Alternative Mobile"
-                        maxlength="14" />
-                    </div>
-
-                    <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Guardian Telephone</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
-                      <input type="Number" [(ngModel)]="Profile_.Guardian_telephone" name="Profile_.Guardian_telephone"
-                        class="form-control" placeholder="" />
-                    </div>
-                  </div>
                   <!-- Additional Information -->
 
 
 
-                  <div class="form-row mb-2">
+                  <div class="form-row mb-0">
                     <!-- <div class="col-md-1 col-sm-1"></div>  
                             <label class="col-md-1 col-sm-1 col-form-label text-sm-right">DOB</label>                          
                             <div class="col-md-3 col-sm-3 mb-1">
@@ -1357,7 +1352,7 @@
 
                     <div class="col-md-0 col-sm-0"></div>
                   </div>
-                  <div class="form-row mb-2">
+                  <div class="form-row mb-0">
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Address</label>
                     <div class="col-md-3 col-sm-3 mb-1">
                       <textarea type="text" [(ngModel)]="Profile_.Address1" name="Profile_.Address1"
@@ -1373,7 +1368,7 @@
                     </div>
 
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Alternate Address</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
+                    <div class="col-md-3 col-sm-3 mb-0">
                       <textarea [(ngModel)]="Profile_.Address2" name="Profile_.Address2" class="form-control"
                         placeholder="Alternate Address" rows="4" class="form-control" cols="50">
                       </textarea>
@@ -1387,7 +1382,7 @@
                     </div>
                   </div>
 
-                  <div class="form-row mb-2">
+                  <div class="form-row mb-0">
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Any Previous Visa Rejection or Travel
                       to any country by
                       you or any family member</label>
@@ -1398,7 +1393,7 @@
                     </div>
 
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Marital Status</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
+                    <div class="col-md-3 col-sm-3 mb-0">
                       <!-- <input type="text"  [(ngModel)]="Student_.Activity" name="Student_.Activity" class="form-control" placeholder="Activity"> -->
                       <select [(ngModel)]="Marital_Status_" name="Marital_Status_" required
                         class="form-control p-0 pl-1">
@@ -1409,7 +1404,7 @@
                     </div>
                   </div>
 
-                  <div class="dt-card__body mt-2" *ngIf="Marital_Status_.Marital_Status_Id == 2"
+                  <div class="dt-card__body mt-0" *ngIf="Marital_Status_.Marital_Status_Id == 2"
                     [hidden]="Marital_Status_.Marital_Status_Id <= 1">
                     <form class="mb-0">
                       <div class="container-fluidprofile lbl-fond pl-0 pr-0">
@@ -1627,7 +1622,7 @@
 	
 											</div> -->
 
-                  <div class="form-row mb-2">
+                  <div class="form-row mb-0">
                     <!-- <label
 											class="col-md-2 col-sm-2 col-form-label text-sm-right"
 											>counsellor Note</label
@@ -1643,7 +1638,7 @@
 											</textarea>
 										</div> -->
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Auditor Note</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
+                    <div class="col-md-3 col-sm-3 mb-0">
                       <textarea [(ngModel)]="Profile_.BPH_Note" name="Profile_.BPH_Note" rows="4" class="form-control"
                         cols="50">
                       </textarea>
@@ -1651,7 +1646,7 @@
 
                     <div class="col-md-0 col-sm-0"></div>
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Pre Visa Note</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
+                    <div class="col-md-3 col-sm-3 mb-0">
                       <textarea [(ngModel)]="Profile_.Pre_Visa_Note" name="Profile_.Pre_Visa_Note" rows="4"
                         class="form-control" cols="50">
                       </textarea>
@@ -1665,11 +1660,11 @@
                     </div>
                   </div>
 
-                  <div class="form-row mb-2"></div>
+                  <div class="form-row mb-0"></div>
 
-                  <div class="form-row mb-2" *ngIf="Profile_Refund_View == 1">
+                  <div class="form-row mb-0" *ngIf="Profile_Refund_View == 1">
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Refund Amount</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
+                    <div class="col-md-3 col-sm-3 mb-0">
                       <input type="text" [(ngModel)]="Profile_.Refund_Amount" name="Profile_.Refund_Amount"
                         class="form-control" placeholder="" maxlength="14" />
                     </div>
@@ -1677,7 +1672,7 @@
                     <div class="col-md-0 col-sm-0"></div>
 
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Refund Description</label>
-                    <div class="col-md-3 col-sm-3 mb-1">
+                    <div class="col-md-3 col-sm-3 mb-0">
                       <textarea [(ngModel)]="Profile_.Refund_Description" name="Profile_.Refund_Description" rows="4"
                         class="form-control" cols="50">
                       </textarea>
@@ -1826,7 +1821,7 @@
                     </div>
                   </div>
 
-                  <div class="form-row mb-2" *ngIf="Passport_Mode_.Passport_Id == 1">
+                  <div class="form-row mb-0" *ngIf="Passport_Mode_.Passport_Id == 1">
                     <label class="col-md-2 col-sm-2 col-form-label text-sm-right">From Date<span style="
                           color: #ef071e;
                           font-size: 22px;
@@ -1882,7 +1877,7 @@
                     </div>
                   </div>
 
-                  <div class="form-row mb-2">
+                  <div class="form-row mb-0">
                     <!-- <label
 											class="col-md-2 col-sm-2 col-form-label text-sm-right"
 											>Any Previous Visa Rejection or
@@ -14783,598 +14778,605 @@
                       </mat-form-field>
 
                     </div>
+                  </div>
 
+                  <!-- Reminder and Remark Section - Single Row -->
+                  <div class="form-row align-items-center mb-2" *ngIf="Is_Follow_ == 1">
+                    <!-- Reminder Label -->
+                    <label class="col-md-2 col-lg-1 col-form-label text-sm-right">Reminder</label>
 
+                    <!-- Set Reminder Checkbox -->
+                    <div class="col-md-4 col-lg-5 d-flex align-items-center">
+                      <div class="checkbox-to-crect-sales-search-section mr-3">
+                        <div class="form-check uper-dte-lbel-sales-sctn-new pl-0 m-0">
+                          <label class="form-check-label d-flex align-items-center">
+                            <input type="checkbox" class="form-check-input" name="Enable_Followup_Reminder"
+                              [(ngModel)]="Enable_Followup_Reminder" />
+                            <span class="form-check-sign"><span class="check"></span></span>
 
-                    <!-- NEW: Reminder checkbox + time -->
-                    <div class="form-row align-items-center" *ngIf="Is_Follow_ == 1">
-                      <!-- Reminder label -->
-                      <!-- Reminder row -->
-                      <div class="form-row" *ngIf="Is_Follow_ == 1">
-                        <!-- Reminder label -->
-                        <label class="col-md-0 col-sm-0 ml-1 col-form-label text-sm-right x-tra-label">
-                          Reminder
-                        </label>
-
-                        <!-- Checkbox, same style as your working one -->
-                        <div class="col-md-3 col-sm-3 mb-1">
-                          <div class="checkbox-to-crect-sales-search-section">
-                            <div class="form-check uper-dte-lbel-sales-sctn-new pl-0">
-                              <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" name="Enable_Followup_Reminder"
-                                  [(ngModel)]="Enable_Followup_Reminder" />
-                                <span class="form-check-sign">
-                                  <span class="check"></span>
-                                </span>
-                                <span class="ml-1">Set Reminder</span>
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-
-                        <label class="col-md-2 col-lg-1 col-form-label text-sm-right">
-                          Reminder Time
-                        </label>
-
-                        <div class="col-md-4 col-lg-5 mb-1">
-                          <input type="time" class="form-control" [(ngModel)]="FollowUp_Reminder_Time"
-                            name="FollowUp_Reminder_Time" [disabled]="!Enable_Followup_Reminder" />
+                          </label>
                         </div>
                       </div>
                     </div>
 
+                    <!-- Reminder Time Label -->
+                    <label class="col-md-2 col-lg-1 col-form-label text-sm-right">Reminder Time</label>
 
-
-
-
-
-                    <div class="form-row">
-                      <label class="col-md-2 col-lg-1 col-form-label text-sm-right">Remark<span
-                          *ngIf="!showTransferUserTypeahead" style="
-                          color: #ef071e;
-                          font-size: 22px;
-                          vertical-align: -webkit-baseline-middle;
-                        ">*</span></label>
-                      <div class="col-md-5 col-lg-11 mb-1">
-                        <!-- <input type="text" class="form-control" placeholder="Remark"> -->
-                        <input type="text" [matAutocomplete]="autore" [(ngModel)]="Remarks_" name="Remarks_"
-                          maxlength="4000" (click)="Remarks_Typeahead($event)" (input)="Remarks_Typeahead($event)"
-                          class="form-control" />
-                      </div>
-                      <mat-autocomplete #autore="matAutocomplete" [displayWith]="display_Remarks">
-                        <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
-                        <ng-container *ngIf="!issLoading">
-                          <mat-option *ngFor="let Remarks_1 of Remarks_Data_Filter" [value]="Remarks_1">
-                            <span>{{ Remarks_1.Remarks_Name }}</span>
-                          </mat-option>
-                        </ng-container>
-                      </mat-autocomplete>
+                    <!-- Time Input -->
+                    <div class="col-md-4 col-lg-5">
+                      <input type="time" class="form-control" style="width: 150px;" [(ngModel)]="FollowUp_Reminder_Time"
+                        name="FollowUp_Reminder_Time" [disabled]="!Enable_Followup_Reminder" />
                     </div>
+                  </div>
+
+                  <!-- Remark Section - Separate Row -->
+                  <div class="form-row" *ngIf="Is_Follow_ == 1">
+                    <!-- Remark Label -->
+                    <label class="col-md-2 col-lg-1 col-form-label text-sm-right">Remark<span style="
+                        color: #ef071e;
+                        font-size: 22px;
+                        vertical-align: -webkit-baseline-middle;
+                      ">*</span></label>
+
+                    <!-- Remark Input -->
+                    <div class="col-md-10 col-lg-11 mb-1">
+                      <input type="text" [matAutocomplete]="autore" [(ngModel)]="Remarks_" name="Remarks_"
+                        maxlength="4000" (click)="Remarks_Typeahead($event)" (input)="Remarks_Typeahead($event)"
+                        class="form-control" />
+                    </div>
+
+                    <!-- Autocomplete for Remark -->
+                    <mat-autocomplete #autore="matAutocomplete" [displayWith]="display_Remarks">
+                      <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option *ngFor="let Remarks_1 of Remarks_Data_Filter" [value]="Remarks_1">
+                          <span>{{ Remarks_1.Remarks_Name }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-md-12 pl-0 pr-0 mt-0 mb-2" *ngIf="Transfer_view">
-            <div class="container-fluidprofile">
-              <div class="dt-card mt-2">
-                <div class="dt-card__header">
-                  <div class="dt-card__heading">
-                    <!-- <h3 class="dt-card__title min-w-150  border-bottom">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="col-md-12 pl-0 pr-0 mt-0 mb-2" *ngIf="Transfer_view">
+          <div class="container-fluidprofile">
+            <div class="dt-card mt-2">
+              <div class="dt-card__header">
+                <div class="dt-card__heading">
+                  <!-- <h3 class="dt-card__title min-w-150  border-bottom">
                                     <i class="icon icon-users icon-fw icon-lg"></i><b>Followup Details</b></h3> -->
-                    <h3 class="col-md-12">
-                      <!-- <i class="icon icon-users icon-fw icon-lg"></i> -->
-                      <i class="icon icon-users icon-fw icon-lg material-icons mr-2" style="color: #586ae9">
-                        north_east
-                      </i>
-                      <b style="margin-bottom: 20px; color: #3f6ad8">Transfer:</b>
-                      <b style="margin-bottom: 20px; color: #0db195">{{
-                        Student_Name_t
-                        }}</b>
-                    </h3>
-                    <div class="form-row mt-0 mb-0 col-12">
-                      <!-- <div class="col-md-6 col-sm-6"></div>  style="margin-left: 113px;"-->
-                      <div class="col-md-12 col-sm-2">
-                        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" style="
+                  <h3 class="col-md-12">
+                    <!-- <i class="icon icon-users icon-fw icon-lg"></i> -->
+                    <i class="icon icon-users icon-fw icon-lg material-icons mr-2" style="color: #586ae9">
+                      north_east
+                    </i>
+                    <b style="margin-bottom: 20px; color: #3f6ad8">Transfer:</b>
+                    <b style="margin-bottom: 20px; color: #0db195">{{
+                      Student_Name_t
+                      }}</b>
+                  </h3>
+                  <div class="form-row mt-0 mb-0 col-12">
+                    <!-- <div class="col-md-6 col-sm-6"></div>  style="margin-left: 113px;"-->
+                    <div class="col-md-12 col-sm-2">
+                      <mat-button-toggle-group name="fontStyle" aria-label="Font Style" style="
                           border: 0px !important;
                           display: block !important;
                         ">
-                          <div class="fltll" *ngFor="let Auto_Dept of Automatic_Department_Data">
+                        <div class="fltll" *ngFor="let Auto_Dept of Automatic_Department_Data">
 
-                            <mat-button-toggle class="toggletsave-button-style btnflot transfer-button" id="Save_Button"
-                              (click)="
+                          <mat-button-toggle class="toggletsave-button-style btnflot transfer-button" id="Save_Button"
+                            (click)="
                               Get_Transfer_status(
                                 Auto_Dept.Department_Name,
                                 Auto_Dept.Department_Id
                               )
                             " type="submit">
-                              {{ Auto_Dept.Department_Name }}
-                            </mat-button-toggle>
-                          </div>
-                        </mat-button-toggle-group>
-                      </div>
+                            {{ Auto_Dept.Department_Name }}
+                          </mat-button-toggle>
+                        </div>
+                      </mat-button-toggle-group>
                     </div>
-                    <div class="mb-2"></div>
-                    <hr class="lineheader" />
                   </div>
+                  <div class="mb-2"></div>
+                  <hr class="lineheader" />
                 </div>
-                <div class="dt-card__body mt-3">
-                  <div class="mb-0">
-                    <div class="form-row">
-                      <label class="col-md-2 col-lg-1 col-form-label text-sm-right">Status<span style="
+              </div>
+              <div class="dt-card__body mt-3">
+                <div class="mb-0">
+                  <div class="form-row">
+                    <label class="col-md-2 col-lg-1 col-form-label text-sm-right">Status<span style="
                           color: #ef071e;
                           font-size: 22px;
                           vertical-align: -webkit-baseline-middle;
                         ">*</span></label>
-                      <div class="col-md-4 col-lg-11 mb-1">
-                        <input type="text" class="form-control" id="Transfer_Status_" name="Transfer_Status_"
-                          [matAutocomplete]="auto_FollowUp_Status" [(ngModel)]="Transfer_Status_" (click)="
+                    <div class="col-md-4 col-lg-11 mb-1">
+                      <input type="text" class="form-control" id="Transfer_Status_" name="Transfer_Status_"
+                        [matAutocomplete]="auto_FollowUp_Status" [(ngModel)]="Transfer_Status_" (click)="
                           Search_Department_Transfer_Status_Typeahead($event)
                         " />
-                        <!-- (ngModelChange)="Status_Change1()" -->
-                      </div>
-                      <mat-autocomplete #auto_FollowUp_Status="matAutocomplete"
-                        [displayWith]="display_Followup_Status_transfer">
-                        <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
-                        <ng-container *ngIf="!issLoading">
-                          <mat-option *ngFor="let tStatus of Followup_Transfer_Status_Data" [value]="tStatus">
-                            <span>{{ tStatus.Department_Status_Name }}</span>
-                          </mat-option>
-                        </ng-container>
-                      </mat-autocomplete>
-
-
-
+                      <!-- (ngModelChange)="Status_Change1()" -->
                     </div>
+                    <mat-autocomplete #auto_FollowUp_Status="matAutocomplete"
+                      [displayWith]="display_Followup_Status_transfer">
+                      <mat-option *ngIf="issLoading"><mat-spinner diameter="500"></mat-spinner></mat-option>
+                      <ng-container *ngIf="!issLoading">
+                        <mat-option *ngFor="let tStatus of Followup_Transfer_Status_Data" [value]="tStatus">
+                          <span>{{ tStatus.Department_Status_Name }}</span>
+                        </mat-option>
+                      </ng-container>
+                    </mat-autocomplete>
 
-                    <div class="form-row">
-                      <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Remark<span style="
+
+
+                  </div>
+
+                  <div class="form-row">
+                    <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Remark<span style="
                           color: #ef071e;
                           font-size: 22px;
                           vertical-align: -webkit-baseline-middle;
                         ">*</span></label>
-                      <div class="col-md-11 col-sm-11 mb-1">
-                        <!-- <input type="text" class="form-control" placeholder="Remark"> -->
-                        <input type="text" [(ngModel)]="Profile_.Transfer_Remark" name="Remarks_" maxlength="4000"
-                          class="form-control" />
-                      </div>
+                    <div class="col-md-11 col-sm-11 mb-1">
+                      <!-- <input type="text" class="form-control" placeholder="Remark"> -->
+                      <input type="text" [(ngModel)]="Profile_.Transfer_Remark" name="Remarks_" maxlength="4000"
+                        class="form-control" />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-md-12 pl-0 pr-0" id="Historydiv" *ngIf="!Show_Followup_History">
-            <div class="container-fluidprofile">
-              <div class="dt-card mt-2" style="padding-top: 2px;margin-left: 4% !important;">
-                <div class="dt-card__header">
-                  <div class="dt-card__heading">
-                    <div class="d-flex col-12" style="align-items: center; justify-content: space-between">
-                      <h3 class="col-md-10">
-                        <i class="icon icon-users icon-fw icon-lg"></i><b style="margin-bottom: 20px">History</b>
-                      </h3>
-                      <div class="col-md-2" style="
+        <div class="col-md-12 pl-0 pr-0" id="Historydiv" *ngIf="!Show_Followup_History">
+          <div class="container-fluidprofile">
+            <div class="dt-card mt-2" style="padding-top: 2px;margin-left: 4% !important;">
+              <div class="dt-card__header">
+                <div class="dt-card__heading">
+                  <div class="d-flex col-12" style="align-items: center; justify-content: space-between">
+                    <h3 class="col-md-10">
+                      <i class="icon icon-users icon-fw icon-lg"></i><b style="margin-bottom: 20px">History</b>
+                    </h3>
+                    <div class="col-md-2" style="
                         display: flex;
                         justify-content: start;
                         margin-left: 30px;
                       ">
-                        <button *ngIf="moredetailsbutton" class="save-button-style btnflot" [hidden]="View_History_"
-                          id="Followup_History" (click)="Followup_History(1)" type="submit">
-                          More Details
-                        </button>
-                        <button *ngIf="lessdetailsbutton" class="save-button-style btnflot"
-                          [hidden]="Followphistoryview" id="Followup_History" (click)="Followup_History(2)"
-                          type="submit">
-                          Less Details
-                        </button>
-                      </div>
+                      <button *ngIf="moredetailsbutton" class="save-button-style btnflot" [hidden]="View_History_"
+                        id="Followup_History" (click)="Followup_History(1)" type="submit">
+                        More Details
+                      </button>
+                      <button *ngIf="lessdetailsbutton" class="save-button-style btnflot" [hidden]="Followphistoryview"
+                        id="Followup_History" (click)="Followup_History(2)" type="submit">
+                        Less Details
+                      </button>
                     </div>
-                    <div classs="mb-2"></div>
-                    <hr style="margin: 2px 0" class="lineheader" />
                   </div>
+                  <div classs="mb-2"></div>
+                  <hr style="margin: 2px 0" class="lineheader" />
                 </div>
+              </div>
 
-                <div class="dt-card__body">
-                  <div class="mb-0">
-                    <div class="dt-module__content" style="overflow: scroll" [style.height.px]="myInnerHeightInner">
-                      <div class="card-body  p-0">
-                        <div class="card-stacked mb-2 mt-2" [hidden]="!Followupdetailsview" *ngFor="
+              <div class="dt-card__body">
+                <div class="mb-0">
+                  <div class="dt-module__content" style="overflow: scroll" [style.height.px]="myInnerHeightInner">
+                    <div class="card-body  p-0">
+                      <div class="card-stacked mb-2 mt-2" [hidden]="!Followupdetailsview" *ngFor="
                           let History of Followp_History_Data;
                           let i = index
                         " style="background-color: #ffff; width: 300% !important">
-                          <div class="card-body pb-0 pt-0">
-                            <div *ngIf="History.Entry_Type == 1" class="d-flex flex-wrap mb-0">
-                              <div class="d-flex flex-wrap mb-1">
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundfollowup mr-1 text-purple small"
-                                      style="margin-top: -1px">date_range</mat-icon></span>
-                                </div>
-
-                                <div>
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
-                                <div class="pr-3" style="width: 210px; margin-left: 18px">
-                                  On:<span class="text-dark">{{
-                                    History["Entry_Date"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 600px; margin-left: 18px">
-                                  Remarks:<span class="text-dark">{{
-                                    History["Remark"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3" style="width: 250px; margin-left: 18px">
-                                  Branch:
-                                  <span class="text-dark">{{
-                                    History["Branch_Name"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3" style="width: 250px; margin-left: 18px">
-                                  Department:
-                                  <span class="text-dark">{{
-                                    History["Department_Name"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3" style="width: 200px; margin-left: 18px">
-                                  Status:
-                                  <span class="text-dark">{{
-                                    History["Status_Name"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 260px; margin-left: 18px">
-                                  Actual FollowUp Date:<span class="text-dark">{{
-                                    History["Actual_FollowUp_Date"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 260px; margin-left: 18px">
-                                  Next FollowUp Date:<span class="text-dark">{{
-                                    History["Next_FollowUp_date"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3" style="width: 250px; margin-left: 18px">
-                                  To:<span class="text-dark">{{
-                                    History["User_Name"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3" style="width: 200px; margin-left: 18px">
-                                  By:<span class="text-dark">{{
-                                    History["By_User_Name"]
-                                    }}</span>
-                                </div>
+                        <div class="card-body pb-0 pt-0">
+                          <div *ngIf="History.Entry_Type == 1" class="d-flex flex-wrap mb-0">
+                            <div class="d-flex flex-wrap mb-1">
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundfollowup mr-1 text-purple small"
+                                    style="margin-top: -1px">date_range</mat-icon></span>
                               </div>
-                              <div></div>
-                            </div>
 
-                            <div *ngIf="History.Entry_Type == 2" class="d-flex flex-wrap mb-0">
-                              <div class="d-flex flex-wrap mb-1">
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundfees mr-1 text-blueviolet small"
-                                      style="margin-top: -1px">attach_money</mat-icon></span>
-                                </div>
-
-                                <div>
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
-
-                                <div class="pr-3">
-                                  On:<span class="text-dark">{{
-                                    History["Entry_Date"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3" style="width: 453px; padding-left: 5%">
-                                  Fees:
-                                  <span class="text-dark">{{
-                                    History["Status_Name"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3" style="width: 200px; margin-left: 18px">
-                                  Amount:<span class="text-dark">{{
-                                    History["Actual_FollowUp_Date"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 450px; margin-left: 18px">
-                                  Collected By:<span class="text-dark">{{
-                                    History["By_User_Name"]
-                                    }}</span>
-                                </div>
-                                <div class="" style="width: 200px; margin-left: 18px">
-                                  Entered:<span class="text-dark">{{
-                                    History["Next_FollowUp_Date"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 270px">
-                                  Branch:
-                                  <span class="text-dark">{{
-                                    History["Branch_Name"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3" style="width: 600px; margin-left: 18px">
-                                  Description:<span class="text-dark">{{
-                                    History["Remark"]
-                                    }}</span>
-                                </div>
+                              <div>
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
                               </div>
-                              <div></div>
-                            </div>
-
-                            <div *ngIf="History.Entry_Type == 3" class="d-flex flex-wrap mb-0">
-                              <div class="d-flex flex-wrap mb-1">
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundcourse mr-1 text-orange small"
-                                      style="margin-top: -1px">email</mat-icon></span>
-                                </div>
-
-                                <div>
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
-                                <div class="pr-3" style="width: 200px">
-                                  On:<span class="text-dark">{{
-                                    History["Entry_Date"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 250px; margin-left: 18px">
-                                  By:<span class="text-dark">{{
-                                    History["User_Name"]
-                                    }}</span>
-                                </div>
+                              <div class="pr-3" style="width: 210px; margin-left: 18px">
+                                On:<span class="text-dark">{{
+                                  History["Entry_Date"]
+                                  }}</span>
                               </div>
-                              <div></div>
-                            </div>
-                            <div *ngIf="History.Entry_Type == 4" class="d-flex flex-wrap mb-0">
-                              <div class="d-flex flex-wrap mb-1">
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundreg mr-1 text-green small"
-                                      style="margin-top: -1px">beenhere</mat-icon></span>
-                                </div>
-                                <div class="pr-3">
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
 
-                                <div class="pr-3" style="width: 200px">
-                                  On:<span class="text-dark">{{
-                                    History["Entry_Date"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3" style="width: 250px">
-                                  Branch:
-                                  <span class="text-dark">{{
-                                    History["Branch_Name"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 250px">
-                                  By:<span class="text-dark">{{
-                                    History["By_User_Name"]
-                                    }}</span>
-                                </div>
+                              <div class="pr-3" style="width: 600px; margin-left: 18px">
+                                Remarks:<span class="text-dark">{{
+                                  History["Remark"]
+                                  }}</span>
                               </div>
-                              <div></div>
-                            </div>
-                            <div *ngIf="History.Entry_Type == 5" class="d-flex flex-wrap mb-0">
-                              <div class="d-flex flex-wrap mb-1">
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundcourse mr-1 text-orange small"
-                                      style="margin-top: -1px">email</mat-icon></span>
-                                </div>
-                                <div class="pr-3">
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 200px">
-                                  On:<span class="text-dark">{{
-                                    History["Entry_Date"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 250px">
-                                  By:<span class="text-dark">{{
-                                    History["By_User_Name"]
-                                    }}</span>
-                                </div>
+                              <div class="pr-3" style="width: 250px; margin-left: 18px">
+                                Branch:
+                                <span class="text-dark">{{
+                                  History["Branch_Name"]
+                                  }}</span>
                               </div>
-                              <div></div>
+                              <div class="pr-3" style="width: 250px; margin-left: 18px">
+                                Department:
+                                <span class="text-dark">{{
+                                  History["Department_Name"]
+                                  }}</span>
+                              </div>
+                              <div class="pr-3" style="width: 200px; margin-left: 18px">
+                                Status:
+                                <span class="text-dark">{{
+                                  History["Status_Name"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 260px; margin-left: 18px">
+                                Actual FollowUp Date:<span class="text-dark">{{
+                                  History["Actual_FollowUp_Date"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 260px; margin-left: 18px">
+                                Next FollowUp Date:<span class="text-dark">{{
+                                  History["Next_FollowUp_date"]
+                                  }}</span>
+                              </div>
+                              <div class="pr-3" style="width: 250px; margin-left: 18px">
+                                To:<span class="text-dark">{{
+                                  History["User_Name"]
+                                  }}</span>
+                              </div>
+                              <div class="pr-3" style="width: 200px; margin-left: 18px">
+                                By:<span class="text-dark">{{
+                                  History["By_User_Name"]
+                                  }}</span>
+                              </div>
                             </div>
+                            <div></div>
+                          </div>
 
-                            <div *ngIf="History.Entry_Type == 6" class="d-flex flex-wrap mb-0">
-                              <div class="d-flex flex-wrap mb-1">
-                                <!-- <div class="pr-3"><span class=" text-dark" style="margin-left: -16px">{{History["Entry_Caption"]}}:</span></div> -->
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundcourse mr-1 text-orange small"
-                                      style="margin-top: -1px">note</mat-icon></span>
-                                </div>
-                                <div class="pr-3">
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
-                                <div class="pr-3">
-                                  Date:<span class="text-dark" style="width: 150px">{{ History["Entry_Date"] }}</span>
-                                </div>
-                                <div class="pr-3">
-                                  Status:<span class="text-dark" style="width: 150px">{{ History["Branch_Name"]
-                                    }}</span>
-                                </div>
+                          <div *ngIf="History.Entry_Type == 2" class="d-flex flex-wrap mb-0">
+                            <div class="d-flex flex-wrap mb-1">
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundfees mr-1 text-blueviolet small"
+                                    style="margin-top: -1px">attach_money</mat-icon></span>
+                              </div>
 
-                                <div class="pr-3 history-width">
-                                  Remark:<span class="text-dark">{{
-                                    History["Department_Name"]
-                                    }}</span>
-                                </div>
-                                <!-- <div class="pr-3"style=" width:250px;"> Branch: <span class=" text-dark" >{{History["Branch_Name"]}}</span></div> -->
-                                <!-- <div class="pr-3">Description:<span class=" text-dark" >{{History["Remark"]}}</span></div>
+                              <div>
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
+                              </div>
+
+                              <div class="pr-3">
+                                On:<span class="text-dark">{{
+                                  History["Entry_Date"]
+                                  }}</span>
+                              </div>
+                              <div class="pr-3" style="width: 453px; padding-left: 5%">
+                                Fees:
+                                <span class="text-dark">{{
+                                  History["Status_Name"]
+                                  }}</span>
+                              </div>
+                              <div class="pr-3" style="width: 200px; margin-left: 18px">
+                                Amount:<span class="text-dark">{{
+                                  History["Actual_FollowUp_Date"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 450px; margin-left: 18px">
+                                Collected By:<span class="text-dark">{{
+                                  History["By_User_Name"]
+                                  }}</span>
+                              </div>
+                              <div class="" style="width: 200px; margin-left: 18px">
+                                Entered:<span class="text-dark">{{
+                                  History["Next_FollowUp_Date"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 270px">
+                                Branch:
+                                <span class="text-dark">{{
+                                  History["Branch_Name"]
+                                  }}</span>
+                              </div>
+                              <div class="pr-3" style="width: 600px; margin-left: 18px">
+                                Description:<span class="text-dark">{{
+                                  History["Remark"]
+                                  }}</span>
+                              </div>
+                            </div>
+                            <div></div>
+                          </div>
+
+                          <div *ngIf="History.Entry_Type == 3" class="d-flex flex-wrap mb-0">
+                            <div class="d-flex flex-wrap mb-1">
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundcourse mr-1 text-orange small"
+                                    style="margin-top: -1px">email</mat-icon></span>
+                              </div>
+
+                              <div>
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
+                              </div>
+                              <div class="pr-3" style="width: 200px">
+                                On:<span class="text-dark">{{
+                                  History["Entry_Date"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 250px; margin-left: 18px">
+                                By:<span class="text-dark">{{
+                                  History["User_Name"]
+                                  }}</span>
+                              </div>
+                            </div>
+                            <div></div>
+                          </div>
+                          <div *ngIf="History.Entry_Type == 4" class="d-flex flex-wrap mb-0">
+                            <div class="d-flex flex-wrap mb-1">
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundreg mr-1 text-green small"
+                                    style="margin-top: -1px">beenhere</mat-icon></span>
+                              </div>
+                              <div class="pr-3">
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 200px">
+                                On:<span class="text-dark">{{
+                                  History["Entry_Date"]
+                                  }}</span>
+                              </div>
+                              <div class="pr-3" style="width: 250px">
+                                Branch:
+                                <span class="text-dark">{{
+                                  History["Branch_Name"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 250px">
+                                By:<span class="text-dark">{{
+                                  History["By_User_Name"]
+                                  }}</span>
+                              </div>
+                            </div>
+                            <div></div>
+                          </div>
+                          <div *ngIf="History.Entry_Type == 5" class="d-flex flex-wrap mb-0">
+                            <div class="d-flex flex-wrap mb-1">
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundcourse mr-1 text-orange small"
+                                    style="margin-top: -1px">email</mat-icon></span>
+                              </div>
+                              <div class="pr-3">
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 200px">
+                                On:<span class="text-dark">{{
+                                  History["Entry_Date"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 250px">
+                                By:<span class="text-dark">{{
+                                  History["By_User_Name"]
+                                  }}</span>
+                              </div>
+                            </div>
+                            <div></div>
+                          </div>
+
+                          <div *ngIf="History.Entry_Type == 6" class="d-flex flex-wrap mb-0">
+                            <div class="d-flex flex-wrap mb-1">
+                              <!-- <div class="pr-3"><span class=" text-dark" style="margin-left: -16px">{{History["Entry_Caption"]}}:</span></div> -->
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundcourse mr-1 text-orange small"
+                                    style="margin-top: -1px">note</mat-icon></span>
+                              </div>
+                              <div class="pr-3">
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
+                              </div>
+                              <div class="pr-3">
+                                Date:<span class="text-dark" style="width: 150px">{{ History["Entry_Date"] }}</span>
+                              </div>
+                              <div class="pr-3">
+                                Status:<span class="text-dark" style="width: 150px">{{ History["Branch_Name"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3 history-width">
+                                Remark:<span class="text-dark">{{
+                                  History["Department_Name"]
+                                  }}</span>
+                              </div>
+                              <!-- <div class="pr-3"style=" width:250px;"> Branch: <span class=" text-dark" >{{History["Branch_Name"]}}</span></div> -->
+                              <!-- <div class="pr-3">Description:<span class=" text-dark" >{{History["Remark"]}}</span></div>
 
 <div class="pr-3">Department: <span class=" text-dark" >{{History["Department_Name"]}}</span></div>
 <div class="pr-3">Fees Name: <span class=" text-dark" >{{History["Status_Name"]}}</span></div> -->
-                                <!-- <div class="pr-3">FollowUp On:<span   [hidden]="History.FollowUp==0" [ngStyle]="{'color':History.FollowUp_Difference > 0 ? 'red':' black' }">{{History["Next_FollowUp_Date"]}}</span></div> -->
-                                <!-- <div class="pr-3">Amount:<span class=" text-dark" >{{History["Actual_FollowUp_Date"]}}</span></div> -->
-                                <div class="pr-3 history-width">
-                                  Course Name:<span class="text-dark">{{
-                                    History["Followup_value"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3 history-width">
-                                  By User:<span class="text-dark">{{
-                                    History["By_User_Name"]
-                                    }}</span>
-                                </div>
-                                <div class="pr-3 history-width">
-                                  To User:<span class="text-dark">{{
-                                    History["To_User_Name"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3 history-width">
-                                  Entry Date and Time:<span class="text-dark">{{
-                                    History["Entry_Date_Time"]
-                                    }}</span>
-                                </div>
-                                <!-- <div class="pr-3">By:<span class=" text-dark" >{{History["By_User_Name"]}}</span></div> -->
-
-                                <!-- <div class="pr-3">Description : <span >{{Receipt_data_1["Description"]}}</span></div>  -->
+                              <!-- <div class="pr-3">FollowUp On:<span   [hidden]="History.FollowUp==0" [ngStyle]="{'color':History.FollowUp_Difference > 0 ? 'red':' black' }">{{History["Next_FollowUp_Date"]}}</span></div> -->
+                              <!-- <div class="pr-3">Amount:<span class=" text-dark" >{{History["Actual_FollowUp_Date"]}}</span></div> -->
+                              <div class="pr-3 history-width">
+                                Course Name:<span class="text-dark">{{
+                                  History["Followup_value"]
+                                  }}</span>
                               </div>
-                              <div></div>
-                            </div>
 
-                            <div *ngIf="History.Entry_Type == 7" class="d-flex flex-wrap mb-0">
-                              <div class="d-flex flex-wrap mb-1">
-                                <!-- <div class="pr-3"><span class=" text-dark" style="margin-left: -16px">{{History["Entry_Caption"]}}:</span></div> -->
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundcourse mr-1 text-blue small"
-                                      style="margin-top: -1px">task</mat-icon></span>
-                                </div>
-                                <div class="pr-3">
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
-
-                                <div class="pr-3">
-                                  Task Details:<span class="text-dark" style="width: 150px">{{ History["Branch_Name"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3 history-width">
-                                  Remark:<span class="text-dark">{{
-                                    History["Department_Name"]
-                                    }}</span>
-                                </div>
+                              <div class="pr-3 history-width">
+                                By User:<span class="text-dark">{{
+                                  History["By_User_Name"]
+                                  }}</span>
                               </div>
-                              <div></div>
+                              <div class="pr-3 history-width">
+                                To User:<span class="text-dark">{{
+                                  History["To_User_Name"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3 history-width">
+                                Entry Date and Time:<span class="text-dark">{{
+                                  History["Entry_Date_Time"]
+                                  }}</span>
+                              </div>
+                              <!-- <div class="pr-3">By:<span class=" text-dark" >{{History["By_User_Name"]}}</span></div> -->
+
+                              <!-- <div class="pr-3">Description : <span >{{Receipt_data_1["Description"]}}</span></div>  -->
                             </div>
+                            <div></div>
+                          </div>
+
+                          <div *ngIf="History.Entry_Type == 7" class="d-flex flex-wrap mb-0">
+                            <div class="d-flex flex-wrap mb-1">
+                              <!-- <div class="pr-3"><span class=" text-dark" style="margin-left: -16px">{{History["Entry_Caption"]}}:</span></div> -->
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundcourse mr-1 text-blue small"
+                                    style="margin-top: -1px">task</mat-icon></span>
+                              </div>
+                              <div class="pr-3">
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
+                              </div>
+
+                              <div class="pr-3">
+                                Task Details:<span class="text-dark" style="width: 150px">{{ History["Branch_Name"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3 history-width">
+                                Remark:<span class="text-dark">{{
+                                  History["Department_Name"]
+                                  }}</span>
+                              </div>
+                            </div>
+                            <div></div>
                           </div>
                         </div>
+                      </div>
 
-                        <div class="card-stacked mb-2 mt-2" [hidden]="Followupdetailsview" *ngFor="
+                      <div class="card-stacked mb-2 mt-2" [hidden]="Followupdetailsview" *ngFor="
                           let History of Followp_History_Data_Details;
                           let i = index
                         " style="background-color: #ffff; width: 300% !important">
-                          <div class="card-body pb-0 pt-1">
-                            <div class="d-flex flex-wrap mb-0">
-                              <div class="d-flex flex-wrap mb-1" *ngIf="History.Entry_Type == 1">
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundfollowup mr-1 text-purple small"
-                                      style="margin-top: -1px">date_range</mat-icon></span>
-                                </div>
-
-                                <div>
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
-                                <div class="pr-3" style="width: 210px; margin-left: 18px">
-                                  On:<span class="text-dark">{{
-                                    History["Entry_Date"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 600px; margin-left: 18px">
-                                  Remark:<span class="text-dark">{{
-                                    History["Remark"]
-                                    }}</span>
-                                </div>
+                        <div class="card-body pb-0 pt-1">
+                          <div class="d-flex flex-wrap mb-0">
+                            <div class="d-flex flex-wrap mb-1" *ngIf="History.Entry_Type == 1">
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundfollowup mr-1 text-purple small"
+                                    style="margin-top: -1px">date_range</mat-icon></span>
                               </div>
 
-                              <div class="d-flex flex-wrap mb-1" *ngIf="History.Entry_Type == 2">
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundcourse mr-1 text-orange small"
-                                      style="margin-top: -1px">note</mat-icon></span>
-                                </div>
-
-                                <div>
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
-                                <div class="pr-3" style="width: 210px; margin-left: 18px">
-                                  On:<span class="text-dark">{{
-                                    History["Entry_Date_Time"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 210px; margin-left: 18px">
-                                  By User:<span class="text-dark">{{
-                                    History["By_User_Name"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 210px; margin-left: 18px">
-                                  To User:<span class="text-dark">{{
-                                    History["To_User_Name"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 600px; margin-left: 18px">
-                                  Remark:<span class="text-dark">{{
-                                    History["Remark"]
-                                    }}</span>
-                                </div>
+                              <div>
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
+                              </div>
+                              <div class="pr-3" style="width: 210px; margin-left: 18px">
+                                On:<span class="text-dark">{{
+                                  History["Entry_Date"]
+                                  }}</span>
                               </div>
 
-                              <div class="d-flex flex-wrap mb-1" *ngIf="History.Entry_Type == 3">
-                                <div class="pr-3">
-                                  <span>
-                                    <mat-icon class="icon-backgroundcourse mr-1 text-blue small"
-                                      style="margin-top: -1px">task</mat-icon></span>
-                                </div>
-
-                                <div>
-                                  <span class="text-brown" style="width: 150px; margin-left: -19px">{{
-                                    History["Entry_Caption"] }}:</span>
-                                </div>
-                                <div class="pr-3" style="width: 210px; margin-left: 18px">
-                                  On:<span class="text-dark">{{
-                                    History["Next_FollowUp_Date"]
-                                    }}</span>
-                                </div>
-
-                                <div class="pr-3" style="width: 600px; margin-left: 18px">
-                                  Remark:<span class="text-dark">{{
-                                    History["Remark"]
-                                    }}</span>
-                                </div>
+                              <div class="pr-3" style="width: 600px; margin-left: 18px">
+                                Remark:<span class="text-dark">{{
+                                  History["Remark"]
+                                  }}</span>
                               </div>
-
-                              <div></div>
                             </div>
+
+                            <div class="d-flex flex-wrap mb-1" *ngIf="History.Entry_Type == 2">
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundcourse mr-1 text-orange small"
+                                    style="margin-top: -1px">note</mat-icon></span>
+                              </div>
+
+                              <div>
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
+                              </div>
+                              <div class="pr-3" style="width: 210px; margin-left: 18px">
+                                On:<span class="text-dark">{{
+                                  History["Entry_Date_Time"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 210px; margin-left: 18px">
+                                By User:<span class="text-dark">{{
+                                  History["By_User_Name"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 210px; margin-left: 18px">
+                                To User:<span class="text-dark">{{
+                                  History["To_User_Name"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 600px; margin-left: 18px">
+                                Remark:<span class="text-dark">{{
+                                  History["Remark"]
+                                  }}</span>
+                              </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap mb-1" *ngIf="History.Entry_Type == 3">
+                              <div class="pr-3">
+                                <span>
+                                  <mat-icon class="icon-backgroundcourse mr-1 text-blue small"
+                                    style="margin-top: -1px">task</mat-icon></span>
+                              </div>
+
+                              <div>
+                                <span class="text-brown" style="width: 150px; margin-left: -19px">{{
+                                  History["Entry_Caption"] }}:</span>
+                              </div>
+                              <div class="pr-3" style="width: 210px; margin-left: 18px">
+                                On:<span class="text-dark">{{
+                                  History["Next_FollowUp_Date"]
+                                  }}</span>
+                              </div>
+
+                              <div class="pr-3" style="width: 600px; margin-left: 18px">
+                                Remark:<span class="text-dark">{{
+                                  History["Remark"]
+                                  }}</span>
+                              </div>
+                            </div>
+
+                            <div></div>
                           </div>
                         </div>
                       </div>
@@ -15384,40 +15386,41 @@
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-md-12 pl-0 b-0 mt-1 mb-0 pb-0 new-btm-btns" *ngIf="Buttonset_view">
-            <div class="container-fluidbuttons mb-2 pl-0">
-              <div class="dt-card b-1 mt-0 mb-0" style="margin-left: 4% !important;">
-                <div class="dt-card__body mt-0 mb-0">
-                  <div class="form-row mt-0 mb-0">
-                    <div class="col-lg-12">
-                      <button class="close-button-style btnflot mr-0 bb-1" type="submit" (click)="Close_Click()"
-                        style="background-color: #5d6071">
-                        Close
-                      </button>
-                      <button *ngIf="Save_button_view" class="save-button-style btnflot bb-2"
-                        [hidden]="Student_Save == false" id="Save_Button" (click)="Save_Profile()" type="submit">
-                        Save
-                      </button>
-                      <button class="delete-button-style btnflot bb-3" [hidden]="Student_Delete == false"
-                        *ngIf="Student_Id_Edit > 0" (click)="Delete_Student(Profile_.Student_Id)" type="submit"
-                        style="background-color: #e0001b">
-                        Delete
-                      </button>
-                      <button class="other-button-style btnflot bb-4" [hidden]="View_Follow_"
-                        (click)="View_Follow_Click_()" type="submit">
-                        FollowUp
-                      </button>
+        <div class="col-md-12 pl-0 b-0 mt-1 mb-0 pb-0 new-btm-btns" *ngIf="Buttonset_view">
+          <div class="container-fluidbuttons mb-2 pl-0">
+            <div class="dt-card b-1 mt-0 mb-0" style="margin-left: 4% !important;">
+              <div class="dt-card__body mt-0 mb-0">
+                <div class="form-row mt-0 mb-0">
+                  <div class="col-lg-12">
+                    <button class="close-button-style btnflot mr-0 bb-1" type="submit" (click)="Close_Click()"
+                      style="background-color: #5d6071">
+                      Close
+                    </button>
+                    <button *ngIf="Save_button_view" class="save-button-style btnflot bb-2"
+                      [hidden]="Student_Save == false" id="Save_Button" (click)="Save_Profile()" type="submit">
+                      Save
+                    </button>
+                    <button class="delete-button-style btnflot bb-3" [hidden]="Student_Delete == false"
+                      *ngIf="Student_Id_Edit > 0" (click)="Delete_Student(Profile_.Student_Id)" type="submit"
+                      style="background-color: #e0001b">
+                      Delete
+                    </button>
+                    <button class="other-button-style btnflot bb-4" [hidden]="View_Follow_"
+                      (click)="View_Follow_Click_()" type="submit">
+                      FollowUp
+                    </button>
 
-                      <!-- console.log('user_category_New: ', {{user_category_New}});
+                    <!-- console.log('user_category_New: ', {{user_category_New}});
                     console.log('Move_to_Freelancer: ', {{Move_to_Freelancer}}); -->
-                      <button class="other-button-style btnflot bb-4"
-                        [hidden]=" user_category_New!='1' ||  Move_to_Freelancer=='1'"
-                        (click)="Move_To_Freelancer_Click()" type="submit">
-                        Move to Freelancer
+                    <button class="other-button-style btnflot bb-4"
+                      [hidden]=" user_category_New!='1' ||  Move_to_Freelancer=='1'"
+                      (click)="Move_To_Freelancer_Click()" type="submit">
+                      Move to Freelancer
 
-                      </button>
-                      <!-- <button
+                    </button>
+                    <!-- <button
   class="other-button-style btnflot bb-4"
   *ngIf="user_category == 1"
   (click)="Move_To_Freelancer_Click()"
@@ -15425,14 +15428,14 @@
 >
   Move to Freelancer
 </button> -->
-                      <!-- Transfer Button for User Selection -->
+                    <!-- Transfer Button for User Selection -->
 
-                      <button class="other-button-style btnflot bb-5" [hidden]="View_History_" id="Followup_History"
-                        style="background-color: #ff5e52" (click)="Get_FollowUp_History_Withdate()" type="submit">
-                        History
-                      </button>
-                      <!-- (click)="Followup_History()" -->
-                      <!-- <button
+                    <button class="other-button-style btnflot bb-5" [hidden]="View_History_" id="Followup_History"
+                      style="background-color: #ff5e52" (click)="Get_FollowUp_History_Withdate()" type="submit">
+                      History
+                    </button>
+                    <!-- (click)="Followup_History()" -->
+                    <!-- <button
 											class="other-button-style btnflot bb-7"
 											[hidden]="View_Follow_"
 											(click)="Transfer_Click_Student()"
@@ -15441,7 +15444,7 @@
 						 
 											Transfer
 										</button> -->
-                      <!-- <button
+                    <!-- <button
 											class="other-button-style btnflot bb-7"
 											[hidden]="View_Student_"
 											(click)="Transfer_Click_Student()"
@@ -15449,12 +15452,12 @@
 										>
 											Transfer
 										</button> -->
-                      <button class="other-button-style btnflot bb-7" [hidden]="View_Student_"
-                        (click)="View_Student_Click_()" type="submit">
-                        View Profile
-                      </button>
+                    <button class="other-button-style btnflot bb-7" [hidden]="View_Student_"
+                      (click)="View_Student_Click_()" type="submit">
+                      View Profile
+                    </button>
 
-                      <!-- <button
+                    <!-- <button
 											class="other-button-style btnflot bb-8"
 											[hidden]="View_Student_"
 											(click)="Transfer_Click_()"
@@ -15466,15 +15469,15 @@
 											Transfer
 										</button> -->
 
-                      <button class="other-button-style btnflot bb-7" *ngIf="Registration_Visiblility"
-                        (click)="Register_Candidate()" type="submit">
-                        Enroll Candidate
-                      </button>
-                      <button class="other-button-style btnflot bb-8" *ngIf="Remove_Registration_Visibility"
-                        (click)="Remove_Registration()" type="submit" style="background-color: #8a85bc">
-                        Remove Enroll
-                      </button>
-                      <!-- <button
+                    <button class="other-button-style btnflot bb-7" *ngIf="Registration_Visiblility"
+                      (click)="Register_Candidate()" type="submit">
+                      Enroll Candidate
+                    </button>
+                    <button class="other-button-style btnflot bb-8" *ngIf="Remove_Registration_Visibility"
+                      (click)="Remove_Registration()" type="submit" style="background-color: #8a85bc">
+                      Remove Enroll
+                    </button>
+                    <!-- <button
 											class="other-button-style btnflot"
 											*ngIf="welcome_mail_view"
 											(click)="Send_Welcome_Mail()"
@@ -15482,72 +15485,72 @@
 										>
 											Send Welcome Mail
 										</button> -->
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-md-12 pl-0 b-0 mt-1 mb-0 pb-0 hide-tab" *ngIf="Buttonset_view">
-            <div class="container-fluidbuttons mb-2">
-              <div class="dt-card b-1 mt-0 mb-0">
-                <div class="dt-card__body mt-0 mb-0">
-                  <div class="form-row mt-0 mb-0">
-                    <div class="col-lg-12">
-                      <button class="close-button-style btnflot mr-0" style="background-color: red" type="submit"
-                        (click)="Close_Click()">
-                        Close
-                      </button>
-                      <button class="save-button-style btnflot" [hidden]="Student_Save == false" id="Save_Button"
-                        (click)="Save_Profile()" type="submit">
-                        Save
-                      </button>
-                      <button class="delete-button-style btnflot" [hidden]="Student_Delete == false"
-                        *ngIf="Student_Id_Edit > 0" (click)="Delete_Student(Profile_.Student_Id)" type="submit">
-                        Delete
-                      </button>
-                      <button class="other-button-style btnflot" [hidden]="View_Follow_"
-                        style="background-color: #af21a8" (click)="View_Follow_Click_()" type="submit">
-                        FollowUp
-                      </button>
-                      <button class="other-button-style btnflot" [hidden]="View_History_"
-                        style="background-color: #b48c1d" id="Followup_History" (click)="Followup_History()"
-                        type="submit">
-                        History
-                      </button>
-                      <button class="other-button-style btnflot" [hidden]="View_Follow_"
-                        style="background-color: #0db195" (click)="Transfer_Click_Student()" type="submit">
-                        <i class="icon icon-users icon-fw icon-lg material-icons">
-                          north_east
-                        </i>
-                        Transfer
-                      </button>
-                      <button class="other-button-style btnflot" [hidden]="View_Student_"
-                        (click)="View_Student_Click_()" type="submit">
-                        View Profile
-                      </button>
+        <div class="col-md-12 pl-0 b-0 mt-1 mb-0 pb-0 hide-tab" *ngIf="Buttonset_view">
+          <div class="container-fluidbuttons mb-2">
+            <div class="dt-card b-1 mt-0 mb-0">
+              <div class="dt-card__body mt-0 mb-0">
+                <div class="form-row mt-0 mb-0">
+                  <div class="col-lg-12">
+                    <button class="close-button-style btnflot mr-0" style="background-color: red" type="submit"
+                      (click)="Close_Click()">
+                      Close
+                    </button>
+                    <button class="save-button-style btnflot" [hidden]="Student_Save == false" id="Save_Button"
+                      (click)="Save_Profile()" type="submit">
+                      Save
+                    </button>
+                    <button class="delete-button-style btnflot" [hidden]="Student_Delete == false"
+                      *ngIf="Student_Id_Edit > 0" (click)="Delete_Student(Profile_.Student_Id)" type="submit">
+                      Delete
+                    </button>
+                    <button class="other-button-style btnflot" [hidden]="View_Follow_" style="background-color: #af21a8"
+                      (click)="View_Follow_Click_()" type="submit">
+                      FollowUp
+                    </button>
+                    <button class="other-button-style btnflot" [hidden]="View_History_"
+                      style="background-color: #b48c1d" id="Followup_History" (click)="Followup_History()"
+                      type="submit">
+                      History
+                    </button>
+                    <button class="other-button-style btnflot" [hidden]="View_Follow_" style="background-color: #0db195"
+                      (click)="Transfer_Click_Student()" type="submit">
+                      <i class="icon icon-users icon-fw icon-lg material-icons">
+                        north_east
+                      </i>
+                      Transfer
+                    </button>
+                    <button class="other-button-style btnflot" [hidden]="View_Student_" (click)="View_Student_Click_()"
+                      type="submit">
+                      View Profile
+                    </button>
 
-                      <button class="other-button-style btnflot" [hidden]="View_Student_"
-                        style="background-color: #0db195" (click)="Transfer_Click_()" type="submit">
-                        <!-- <i
+                    <button class="other-button-style btnflot" [hidden]="View_Student_"
+                      style="background-color: #0db195" (click)="Transfer_Click_()" type="submit">
+                      <!-- <i
 											class="icon icon-users icon-fw icon-lg material-icons "
 											
 										>
 											north_east </i
 										> -->
-                        Transfer
-                      </button>
+                      Transfer
+                    </button>
 
-                      <button class="other-button-style btnflot" *ngIf="Registration_Visiblility"
-                        (click)="Register_Candidate()" type="submit">
-                        Enroll Candidate
-                      </button>
-                      <button class="other-button-style btnflot" *ngIf="Remove_Registration_Visibility"
-                        (click)="Remove_Registration()" type="submit">
-                        Remove Enroll
-                      </button>
-                      <!-- <button
+                    <button class="other-button-style btnflot" *ngIf="Registration_Visiblility"
+                      (click)="Register_Candidate()" type="submit">
+                      Enroll Candidate
+                    </button>
+                    <button class="other-button-style btnflot" *ngIf="Remove_Registration_Visibility"
+                      (click)="Remove_Registration()" type="submit">
+                      Remove Enroll
+                    </button>
+                    <!-- <button
 											class="other-button-style btnflot"
 											*ngIf="welcome_mail_view"
 											(click)="Send_Welcome_Mail()"
@@ -15555,122 +15558,121 @@
 										>
 											Send Welcome Mail
 										</button> -->
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-md-12 pl-0 b-0 mt-1 mb-0 pb-0" *ngIf="Transfer_Button_view">
-            <div class="container-fluidbuttons mb-2">
-              <div class="dt-card b-1 mt-0 mb-0">
-                <div class="dt-card__body mt-0 mb-0">
-                  <div class="form-row mt-0 mb-0">
-                    <!-- <div class="col-md-6 col-sm-6"></div>  style="margin-left: 113px;"-->
-                    <div class="col-md-12 col-sm-2">
-                      <button class="close-button-style btnflot mr-0" type="submit" style="background-color: red"
-                        (click)="Close_Click_Transfer()">
-                        Close
-                      </button>
-
-                      <button class="save-button-style btnflot" id="Save_Button" (click)="Transfer_Cofirmation()"
-                        type="submit" style="background-color: #08f08f">
-                        Save
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- </div> -->
         </div>
+
+        <div class="col-md-12 pl-0 b-0 mt-1 mb-0 pb-0" *ngIf="Transfer_Button_view">
+          <div class="container-fluidbuttons mb-2">
+            <div class="dt-card b-1 mt-0 mb-0">
+              <div class="dt-card__body mt-0 mb-0">
+                <div class="form-row mt-0 mb-0">
+                  <!-- <div class="col-md-6 col-sm-6"></div>  style="margin-left: 113px;"-->
+                  <div class="col-md-12 col-sm-2">
+                    <button class="close-button-style btnflot mr-0" type="submit" style="background-color: red"
+                      (click)="Close_Click_Transfer()">
+                      Close
+                    </button>
+
+                    <button class="save-button-style btnflot" id="Save_Button" (click)="Transfer_Cofirmation()"
+                      type="submit" style="background-color: #08f08f">
+                      Save
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- </div> -->
       </div>
     </div>
+  </div>
 
-    <div class="row right-sec" *ngIf="!Entry_View" [style.height.px]="myInnerHeight">
-      <!-- <div *ngIf="isDesktopMenu()"> -->
-      <div class="col-md-12 pl-3 pr-3 mt-5" style="border: 1; background-color: #fff" *ngIf="isDesktopMenu()">
-        <div class="dt-card searchboxcls mb-0 pb-1" style="
+  <div class="row right-sec" *ngIf="!Entry_View" [style.height.px]="myInnerHeight">
+    <!-- <div *ngIf="isDesktopMenu()"> -->
+    <div class="col-md-12 pl-3 pr-3 mt-5" style="border: 1; background-color: #fff" *ngIf="isDesktopMenu()">
+      <div class="dt-card searchboxcls mb-0 pb-1" style="
           background-color: #fff;
           padding-right: 0;
           padding-left: 0;
           width: 100% !important;
         ">
-          <div class="dt-card__body">
-            <div class="mb-0">
-              <div class="form-row">
-                <label class="col-md-0 col-sm-0 col-form-label text-sm-right "></label>
-                <div class="col-md-3  ml-0 pl-1"
-                  style="margin-left: -12px !important; margin-bottom: 0.1rem !important;">
-                  <input type="text" style="padding-left: 36px" [(ngModel)]="Search_Name" name="Search_Name"
-                    class="searchtextboxformcontrol" placeholder=" " (keyup.enter)="Search_Lead_button()" />
-                  <span class="material-icons pl-1 searchicon mr-1"> search</span>
-                </div>
+        <div class="dt-card__body">
+          <div class="mb-0">
+            <div class="form-row">
+              <label class="col-md-0 col-sm-0 col-form-label text-sm-right "></label>
+              <div class="col-md-3  ml-0 pl-1" style="margin-left: -12px !important; margin-bottom: 0.1rem !important;">
+                <input type="text" style="padding-left: 36px" [(ngModel)]="Search_Name" name="Search_Name"
+                  class="searchtextboxformcontrol" placeholder=" " (keyup.enter)="Search_Lead_button()" />
+                <span class="material-icons pl-1 searchicon mr-1"> search</span>
+              </div>
 
-                <label class="col-md-1 col-sm-1 col-form-label text-sm-right">To Staff</label>
-                <div class="col-md-3 col-sm-2 " style=" margin-bottom: 0.1rem !important;">
-                  <select class="form-control p-0 pl-1" [(ngModel)]="User_Search" id="User_" id="simple-select">
-                    <option *ngFor="let User_T of Users_Data12" [ngValue]="User_T">
-                      {{ User_T.User_Details_Name }}
+              <label class="col-md-1 col-sm-1 col-form-label text-sm-right">To Staff</label>
+              <div class="col-md-3 col-sm-2 " style=" margin-bottom: 0.1rem !important;">
+                <select class="form-control p-0 pl-1" [(ngModel)]="User_Search" id="User_" id="simple-select">
+                  <option *ngFor="let User_T of Users_Data12" [ngValue]="User_T">
+                    {{ User_T.User_Details_Name }}
+                  </option>
+                </select>
+              </div>
+
+              <div class="col-md-4 col-sm-4">
+                <button (click)="Create_New()" mat-raised-button [hidden]="CreateStudentButtonView == false"
+                  class="save-button-style pull-right mr-1 line-btn rose-btn">
+                  Create New
+                </button>
+                <button (click)="Search_More_Options()" mat-raised-button type="submit"
+                  class="More-button-style btnflot pull-left mr-1 line-btn green-btn">
+                  <span [hidden]="More_Search_Options">Less Options</span>
+                  <span [hidden]="!More_Search_Options">More Options</span>
+                </button>
+                <button (click)="Search_Lead_button()" mat-raised-button type="submit"
+                  class="other-button-style btnflot pull-left mr-1 line-btn yellow-btn">
+                  Search
+                </button>
+              </div>
+            </div>
+
+            <div class="row  " [hidden]="More_Search_Options">
+
+              <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
+
+
+                <label class="col-md-5 col-lg-5 col-form-label text-sm-right">Department</label>
+                <div class="col-md-7 col-sm-7 " style=" margin-bottom: 0.1rem !important;">
+                  <select [(ngModel)]="Department_Search" class="form-control p-0 pl-1" id="simple-select">
+                    <option *ngFor="let Department_T of Department_Data" [ngValue]="Department_T">
+                      {{ Department_T.Department_Name }}
                     </option>
                   </select>
                 </div>
-
-                <div class="col-md-4 col-sm-4">
-                  <button (click)="Create_New()" mat-raised-button [hidden]="CreateStudentButtonView == false"
-                    class="save-button-style pull-right mr-1 line-btn rose-btn">
-                    Create New
-                  </button>
-                  <button (click)="Search_More_Options()" mat-raised-button type="submit"
-                    class="More-button-style btnflot pull-left mr-1 line-btn green-btn">
-                    <span [hidden]="More_Search_Options">Less Options</span>
-                    <span [hidden]="!More_Search_Options">More Options</span>
-                  </button>
-                  <button (click)="Search_Lead_button()" mat-raised-button type="submit"
-                    class="other-button-style btnflot pull-left mr-1 line-btn yellow-btn">
-                    Search
-                  </button>
+              </div>
+              <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
+                <label class="col-md-5 col-sm-5 col-form-label text-sm-right">Branch</label>
+                <div class="col-md-7 col-sm-7 " style=" margin-bottom: 0.1rem !important;">
+                  <select [(ngModel)]="Search_Branch" class="form-control p-0 pl-1" id="simple-select">
+                    <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">
+                      {{ Branch_T.Branch_Name }}
+                    </option>
+                  </select>
                 </div>
               </div>
-
-              <div class="row  " [hidden]="More_Search_Options">
-
-                <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
-
-
-                  <label class="col-md-5 col-lg-5 col-form-label text-sm-right">Department</label>
-                  <div class="col-md-7 col-sm-7 " style=" margin-bottom: 0.1rem !important;">
-                    <select [(ngModel)]="Department_Search" class="form-control p-0 pl-1" id="simple-select">
-                      <option *ngFor="let Department_T of Department_Data" [ngValue]="Department_T">
-                        {{ Department_T.Department_Name }}
-                      </option>
-                    </select>
-                  </div>
+              <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
+                <label class="col-md-5 col-sm-5 col-form-label text-sm-right">Status</label>
+                <div class="col-md-7 col-lg-7 " style=" margin-bottom: 0.1rem !important;">
+                  <select [(ngModel)]="Search_Status" class="form-control p-0 pl-1" id="simple-select">
+                    <option *ngFor="let Status_T of Status_Data" [ngValue]="Status_T">
+                      {{ Status_T.Department_Status_Name }}
+                    </option>
+                  </select>
                 </div>
-                <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
-                  <label class="col-md-5 col-sm-5 col-form-label text-sm-right">Branch</label>
-                  <div class="col-md-7 col-sm-7 " style=" margin-bottom: 0.1rem !important;">
-                    <select [(ngModel)]="Search_Branch" class="form-control p-0 pl-1" id="simple-select">
-                      <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">
-                        {{ Branch_T.Branch_Name }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
-                  <label class="col-md-5 col-sm-5 col-form-label text-sm-right">Status</label>
-                  <div class="col-md-7 col-lg-7 " style=" margin-bottom: 0.1rem !important;">
-                    <select [(ngModel)]="Search_Status" class="form-control p-0 pl-1" id="simple-select">
-                      <option *ngFor="let Status_T of Status_Data" [ngValue]="Status_T">
-                        {{ Status_T.Department_Status_Name }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-                <!-- <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
+              </div>
+              <!-- <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
 
               <label class="col-form-label col-md-5    text-sm-right "
                 >FollowUp</label
@@ -15706,75 +15708,75 @@
               </div>
             </div> -->
 
-                <label class="col-md-2 col-lg-1 col-form-label text-sm-right pt-1">Date Type</label>
-                <div class="col-md-2 col-sm-2 mb-1">
-                  <select class="form-control" [(ngModel)]="Date_Type" name="Date_Type">
-                    <option value="1">Follow Up On</option>
-                    <option value="2">Created On</option>
+              <label class="col-md-2 col-lg-1 col-form-label text-sm-right pt-1">Date Type</label>
+              <div class="col-md-2 col-sm-2 mb-1">
+                <select class="form-control" [(ngModel)]="Date_Type" name="Date_Type">
+                  <option value="1">Follow Up On</option>
+                  <option value="2">Created On</option>
+                </select>
+              </div>
+
+              <!-- Date Checkbox -->
+              <label class="col-md-2 col-lg-1 col-form-label text-sm-right pt-1 x-tra-label"
+                style="padding-left: 14px;">
+                {{Date_Type == 1 ? 'Follow Up On' : 'Created On'}}
+              </label>
+
+              <div class="col-md-1 col-lg-2 mb-1 x-tra-label">
+                <div class="checkbox-to-crect-sales-search-section">
+                  <div class="form-check uper-dte-lbel-sales-sctn-new pl-0">
+                    <label class="form-check-label">
+                      <input type='checkbox' class="form-check-input" name="Date_checks" [(ngModel)]="Look_In_Date" />
+                      <span class="form-check-sign">
+                        <span class="check"></span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
+
+                <label class="col-md-5 col-sm-5 col-form-label text-sm-right">From</label>
+                <div class="col-md-7 col-lg-7  " style=" margin-bottom: 0.1rem !important;">
+                  <!-- <input type="date" class="form-control p-0 pl-1" placeholder="From"[(ngModel)]="Search_FromDate" name="Search_FromDate" > -->
+                  <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
+                    style="padding-top: 12px !important">
+                    <input matInput [matDatepicker]="dp15" placeholder="" [(ngModel)]="Search_FromDate"
+                      name="Search_FromDate" />
+                    <mat-datepicker-toggle matSuffix [for]="dp15"></mat-datepicker-toggle>
+                    <mat-datepicker #dp15></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
+                <label class="col-md-5 col-sm-5 col-form-label text-sm-right">To</label>
+                <div class="col-md-7 col-lg-7 " style=" margin-bottom: 0.1rem !important;">
+                  <!-- <input type="date" class="form-control p-0 pl-1" placeholder="To"  [(ngModel)]="Search_ToDate" name="Search_ToDate"> -->
+                  <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
+                    style="padding-top: 12px !important">
+                    <input matInput [matDatepicker]="dpdate11" placeholder="" [(ngModel)]="Search_ToDate"
+                      name="Search_ToDate" />
+                    <mat-datepicker-toggle matSuffix [for]="dpdate11"></mat-datepicker-toggle>
+                    <mat-datepicker #dpdate11></mat-datepicker>
+                  </mat-form-field>
+
+                </div>
+              </div>
+
+              <div class="col-md-3 col-lg-3 row" style=" margin-bottom: 0.1rem !important;">
+                <label class="col-md-5 col-sm-5 col-form-label text-sm-right">By
+                </label>
+                <div class="col-md-7 col-sm-7  " style=" margin-bottom: 0.1rem !important;">
+                  <select class="form-control p-0 pl-1" [(ngModel)]="By_User_Search" id="User_" id="simple-select">
+                    <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">
+                      {{ User_T.User_Details_Name }}
+                    </option>
                   </select>
                 </div>
+              </div>
 
-                <!-- Date Checkbox -->
-                <label class="col-md-2 col-lg-1 col-form-label text-sm-right pt-1 x-tra-label"
-                  style="padding-left: 14px;">
-                  {{Date_Type == 1 ? 'Follow Up On' : 'Created On'}}
-                </label>
-
-                <div class="col-md-1 col-lg-2 mb-1 x-tra-label">
-                  <div class="checkbox-to-crect-sales-search-section">
-                    <div class="form-check uper-dte-lbel-sales-sctn-new pl-0">
-                      <label class="form-check-label">
-                        <input type='checkbox' class="form-check-input" name="Date_checks" [(ngModel)]="Look_In_Date" />
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
-
-                  <label class="col-md-5 col-sm-5 col-form-label text-sm-right">From</label>
-                  <div class="col-md-7 col-lg-7  " style=" margin-bottom: 0.1rem !important;">
-                    <!-- <input type="date" class="form-control p-0 pl-1" placeholder="From"[(ngModel)]="Search_FromDate" name="Search_FromDate" > -->
-                    <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
-                      style="padding-top: 12px !important">
-                      <input matInput [matDatepicker]="dp15" placeholder="" [(ngModel)]="Search_FromDate"
-                        name="Search_FromDate" />
-                      <mat-datepicker-toggle matSuffix [for]="dp15"></mat-datepicker-toggle>
-                      <mat-datepicker #dp15></mat-datepicker>
-                    </mat-form-field>
-                  </div>
-                </div>
-                <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;">
-                  <label class="col-md-5 col-sm-5 col-form-label text-sm-right">To</label>
-                  <div class="col-md-7 col-lg-7 " style=" margin-bottom: 0.1rem !important;">
-                    <!-- <input type="date" class="form-control p-0 pl-1" placeholder="To"  [(ngModel)]="Search_ToDate" name="Search_ToDate"> -->
-                    <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
-                      style="padding-top: 12px !important">
-                      <input matInput [matDatepicker]="dpdate11" placeholder="" [(ngModel)]="Search_ToDate"
-                        name="Search_ToDate" />
-                      <mat-datepicker-toggle matSuffix [for]="dpdate11"></mat-datepicker-toggle>
-                      <mat-datepicker #dpdate11></mat-datepicker>
-                    </mat-form-field>
-
-                  </div>
-                </div>
-
-                <div class="col-md-3 col-lg-3 row" style=" margin-bottom: 0.1rem !important;">
-                  <label class="col-md-5 col-sm-5 col-form-label text-sm-right">By
-                  </label>
-                  <div class="col-md-7 col-sm-7  " style=" margin-bottom: 0.1rem !important;">
-                    <select class="form-control p-0 pl-1" [(ngModel)]="By_User_Search" id="User_" id="simple-select">
-                      <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">
-                        {{ User_T.User_Details_Name }}
-                      </option>
-                    </select>
-                  </div>
-                </div>
-
-                <!-- <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;"> 
+              <!-- <div class="col-md-3 col-lg-3  row" style=" margin-bottom: 0.1rem !important;"> 
               <label class="col-md-5 col-sm-5 col-form-label text-sm-right"style=" margin-bottom: 0.1rem !important;"
                 >Class</label
               >
@@ -15796,7 +15798,7 @@
             </div> -->
 
 
-                <!-- <div class="col-md-3 col-lg-3  row"> 
+              <!-- <div class="col-md-3 col-lg-3  row"> 
             <label  class="col-md-5 col-sm-5 col-form-label text-sm-right" style="padding-bottom: 0 !important;"> Freelancer Manager</label>
                       <div  class="col-md-7 col-sm-7 ">
                         <select [(ngModel)]="Agent_Search12" id="User1_" required class="form-control p-0 pl-1 ">
@@ -15804,31 +15806,31 @@
                         </select>  
                       </div> </div> -->
 
-                <div class="col-md-3 col-lg-3  row">
-                  <!-- 
+              <div class="col-md-3 col-lg-3  row">
+                <!-- 
             <label  class="col-md-5 col-sm-5 col-form-label text-sm-right"> Freelancer</label>
             <div   class="col-md-7 col-sm-7 ">
               <select [(ngModel)]="Agent_Search1" id="User1_" required class="form-control p-0 pl-1 ">
               <option *ngFor="let User_T of Users_Data1" [ngValue]="User_T">{{User_T.Agent_Name}}</option>
               </select>  
             </div>  -->
-                </div>
-
-
               </div>
+
+
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-md-12 pl-3 pr-3 mt-0" style="
+    <div class="col-md-12 pl-3 pr-3 mt-0" style="
         border: 1;
         background-color: #fff;
         padding-left: 15px;
         padding-right: 15px;
       " *ngIf="isDesktopMenu()">
-        <hr style="margin: 0px !important" class="lineheadersearch mb-0 mt-0" />
-        <div class="dt-card mb-0 pb-1" style="
+      <hr style="margin: 0px !important" class="lineheadersearch mb-0 mt-0" />
+      <div class="dt-card mb-0 pb-1" style="
         
 	padding-top: 0 !important;
           background-color: #fff;
@@ -15838,61 +15840,61 @@
           width: 100% !important;
         ">
 
-          <div class="card-body card-body-for-searchedit-lead-section pl-0 pr-0" style="padding-top: 0px">
-            <div class="table-responsive table_screen"
-              style="overflow: scroll; scrollbar-width: none; width: 100%; font-size: 12px "
-              [style.height.px]="myInnerHeight">
-              <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format"
-                style="width: 100% !important">
-                <thead style="
+        <div class="card-body card-body-for-searchedit-lead-section pl-0 pr-0" style="padding-top: 0px">
+          <div class="table-responsive table_screen"
+            style="overflow: scroll; scrollbar-width: none; width: 100%; font-size: 12px "
+            [style.height.px]="myInnerHeight">
+            <table class="table table-hover colour-change-title-searchsection-table heading-styles-as-gmail-format"
+              style="width: 100% !important">
+              <thead style="
                   color: #151515 !important;
                   text-align: left;
                   background-color: #f6f8fc;    
                 ">
 
-                  <th class="col-md-0 pl-1 ml-0" style="color: #151515 !important">
-                    No
-                  </th>
+                <th class="col-md-0 pl-1 ml-0" style="color: #151515 !important">
+                  No
+                </th>
 
-                  <th *ngIf="Enable_Call_Button" class="col-md-0 pl-1 ml-0" style="color: #151515 !important">
-                    Call
-                  </th>
-                  <th class="col-md-0 pl-1 ml-0" style="color: #151515 !important">
-                    Follow Up
-                  </th>
+                <th *ngIf="Enable_Call_Button" class="col-md-0 pl-1 ml-0" style="color: #151515 !important">
+                  Call
+                </th>
+                <th class="col-md-0 pl-1 ml-0" style="color: #151515 !important">
+                  Follow Up
+                </th>
 
-                  <th class="col-md-2 pl-1 ml-0" style="color: #151515 !important">
-                    Follow Up On
-                  </th>
-                  <th class="col-md-2 pl-1 ml-0" style="color: #151515 !important">
-                    Entry Date Time
-                  </th>
-                  <th class="col-md-2 pl-1 ml-0" style="color: #151515 !important;white-space: nowrap;">
-                    Student
-                  </th>
-                  <th class="col-md-1 pl-1 ml-0" style="color: #151515 !important">
-                    Mobile
-                  </th>
-                  <th class="col-md-1 pl-1 ml-0" style="color: #151515 !important">
-                    Country
-                  </th>
-                  <th class="col-md-3 pl-1 ml-0" style="color: #151515 !important">
-                    Status
-                  </th>
-                  <th class="col-md-1 pl-1 ml-0" style="color: #151515 !important">
-                    Enquiry Source
-                  </th>
-                  <th class="col-md-3 pl-1 ml-0" style="color: #151515 !important;white-space: nowrap;">
-                    Remark
-                  </th>
-                  <th *ngIf="Navbar_Leads_View_Menus === 1" class="col-md-1 pl-1 ml-0"
-                    style="color: #151515 !important;white-space:nowrap ;">
-                    Department
-                  </th>
+                <th class="col-md-2 pl-1 ml-0" style="color: #151515 !important">
+                  Follow Up On
+                </th>
+                <th class="col-md-2 pl-1 ml-0" style="color: #151515 !important">
+                  Entry Date Time
+                </th>
+                <th class="col-md-2 pl-1 ml-0" style="color: #151515 !important;white-space: nowrap;">
+                  Student
+                </th>
+                <th class="col-md-1 pl-1 ml-0" style="color: #151515 !important">
+                  Mobile
+                </th>
+                <th class="col-md-1 pl-1 ml-0" style="color: #151515 !important">
+                  Country
+                </th>
+                <th class="col-md-3 pl-1 ml-0" style="color: #151515 !important">
+                  Status
+                </th>
+                <th class="col-md-1 pl-1 ml-0" style="color: #151515 !important">
+                  Enquiry Source
+                </th>
+                <th class="col-md-3 pl-1 ml-0" style="color: #151515 !important;white-space: nowrap;">
+                  Remark
+                </th>
+                <th *ngIf="Navbar_Leads_View_Menus === 1" class="col-md-1 pl-1 ml-0"
+                  style="color: #151515 !important;white-space:nowrap ;">
+                  Department
+                </th>
 
 
 
-                  <!-- <th
+                <!-- <th
                 *ngIf="Navbar_Leads_View_Menus === 2"
                   class="col-md-1 pl-1 ml-0"
                   style="color: #151515 !important;white-space: nowrap;"
@@ -15908,52 +15910,51 @@
                 </th> -->
 
 
-                  <th class="col-md-1 pl-1 ml-0" style="color: #151515 !important;white-space: nowrap;">
-                    To Staff
-                  </th>
+                <th class="col-md-1 pl-1 ml-0" style="color: #151515 !important;white-space: nowrap;">
+                  To Staff
+                </th>
 
 
-                  <th *ngIf="Enable_Class_Profile" class="col-md-1 pl-1 ml-0" style="color: #151515 !important">
-                    Class
-                  </th>
+                <th *ngIf="Enable_Class_Profile" class="col-md-1 pl-1 ml-0" style="color: #151515 !important">
+                  Class
+                </th>
 
-                </thead>
+              </thead>
 
-                <tbody *ngFor="let Student_Data_d of Student_Data; let i = index">
-                  <tr class="table-data-row">
-                    <td class="id-table-data">
+              <tbody *ngFor="let Student_Data_d of Student_Data; let i = index">
+                <tr class="table-data-row">
+                  <td class="id-table-data">
 
 
-                      <span [hidden]="Student_Data_d.FollowUp == 0" style="top: 9px; position: relative;">{{
-                        Student_Data_d["RowNo"] }}</span>
-                    </td>
+                    <span [hidden]="Student_Data_d.FollowUp == 0" style="top: 9px; position: relative;">{{
+                      Student_Data_d["RowNo"] }}</span>
+                  </td>
 
-                    <td class="call-table-data" *ngIf="Enable_Call_Button">
-                      <button style="border-width: 0ch" *ngIf="Enable_Call_Button" name="callbutton"
-                        _ngcontent-gdi-c11="" class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button"
-                        mat-raised-button="" mattooltip="Remove" type="button"
-                        aria-describedby="cdk-describedby-message-1" cdk-describedby-host="" ng-reflect-position="above"
-                        ng-reflect-message="Remove">
-                        <span class="mat-button-wrapper">
-                          <i class="fa fa-phone" style="
+                  <td class="call-table-data" *ngIf="Enable_Call_Button">
+                    <button style="border-width: 0ch" *ngIf="Enable_Call_Button" name="callbutton" _ngcontent-gdi-c11=""
+                      class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button" mat-raised-button=""
+                      mattooltip="Remove" type="button" aria-describedby="cdk-describedby-message-1"
+                      cdk-describedby-host="" ng-reflect-position="above" ng-reflect-message="Remove">
+                      <span class="mat-button-wrapper">
+                        <i class="fa fa-phone" style="
                             font-weight: 800;
                             font-size: 12px !important;
                             cursor: pointer !important;
                           " aria-hidden="true" (click)="Make_A_Call(Student_Data_d['Phone_Number'])"></i></span>
-                        <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false"
-                          ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
-                        <div class="mat-button-focus-overlay"></div>
-                      </button>
-                    </td>
-                    <td class="calendar-table-data calender-row">
-                      <button style="border-width: 0ch" name="{{ Student_Data_d.Student_Id }}{{
+                      <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false"
+                        ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                      <div class="mat-button-focus-overlay"></div>
+                    </button>
+                  </td>
+                  <td class="calendar-table-data calender-row">
+                    <button style="border-width: 0ch" name="{{ Student_Data_d.Student_Id }}{{
                         Student_Data_d.Student_Name
                       }}" _ngcontent-gdi-c11="" class="btn btn-danger btn-link btn-sm btn-just-icon mat-raised-button"
-                        mat-raised-button="" mattooltip="Remove" type="button"
-                        aria-describedby="cdk-describedby-message-1" cdk-describedby-host="" ng-reflect-position="above"
-                        ng-reflect-message="Remove">
-                        <span class="mat-button-wrapper">
-                          <i [ngClass]="{
+                      mat-raised-button="" mattooltip="Remove" type="button"
+                      aria-describedby="cdk-describedby-message-1" cdk-describedby-host="" ng-reflect-position="above"
+                      ng-reflect-message="Remove">
+                      <span class="mat-button-wrapper">
+                        <i [ngClass]="{
                             Four: Student_Data_d.tp === 1,
                             three: Student_Data_d.tp === 2
                           }" class="fa fa-calendar-minus-o two" style="
@@ -15971,79 +15972,78 @@
                               Student_Data_d['To_User_Id']
                             )
                           "></i></span>
-                        <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false"
-                          ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
-                        <div class="mat-button-focus-overlay"></div>
-                      </button>
-                    </td>
-                    <td class="date-table-data" style="white-space: nowrap;">
-                      <span [hidden]="Student_Data_d.FollowUp == 0" style="top: 9px; position: relative;">{{
-                        Student_Data_d["Next_FollowUp_Date"]
-                        }}</span>
-                    </td>
-                    <td class="date-table-data" style="white-space: nowrap;">
-                      <span style="top: 9px; position: relative;">{{
-                        Student_Data_d["Entry_date"]
-                        }}</span>
-                    </td>
+                      <div class="mat-button-ripple mat-ripple" matripple="" ng-reflect-centered="false"
+                        ng-reflect-disabled="false" ng-reflect-trigger="[object HTMLButtonElement]"></div>
+                      <div class="mat-button-focus-overlay"></div>
+                    </button>
+                  </td>
+                  <td class="date-table-data" style="white-space: nowrap;">
+                    <span [hidden]="Student_Data_d.FollowUp == 0" style="top: 9px; position: relative;">{{
+                      Student_Data_d["Next_FollowUp_Date"]
+                      }}</span>
+                  </td>
+                  <td class="date-table-data" style="white-space: nowrap;">
+                    <span style="top: 9px; position: relative;">{{
+                      Student_Data_d["Entry_date"]
+                      }}</span>
+                  </td>
 
-                    <td class="name-table-data" (click)="Edit_Student(Student_Data_d, i, 1)"
-                      style="color: #0baef4; cursor: pointer;white-space: nowrap;">
-                      <span style="top: 9px; position: relative;">
-                        {{ Student_Data_d["Student_Name"] }}
-                      </span>
+                  <td class="name-table-data" (click)="Edit_Student(Student_Data_d, i, 1)"
+                    style="color: #0baef4; cursor: pointer;white-space: nowrap;">
+                    <span style="top: 9px; position: relative;">
+                      {{ Student_Data_d["Student_Name"] }}
+                    </span>
 
-                    </td>
+                  </td>
 
-                    <td class="number-table-data" style="white-space: nowrap;">
-                      <span style="top: 9px; position: relative;">
-                        {{ Student_Data_d["Phone_Number"] }}
-                      </span>
+                  <td class="number-table-data" style="white-space: nowrap;">
+                    <span style="top: 9px; position: relative;">
+                      {{ Student_Data_d["Phone_Number"] }}
+                    </span>
 
-                    </td>
-                    <td class="status-table-data" style="white-space: nowrap;">
+                  </td>
+                  <td class="status-table-data" style="white-space: nowrap;">
 
-                      <span style="top: 9px; position: relative;">
-                        {{ Student_Data_d["Country_Name"] }}
-                      </span>
+                    <span style="top: 9px; position: relative;">
+                      {{ Student_Data_d["Country_Name"] }}
+                    </span>
 
-                    </td>
-                    <td class="class-table-data" style="white-space: nowrap;">
+                  </td>
+                  <td class="class-table-data" style="white-space: nowrap;">
 
-                      <span style="white-space: nowrap;  top: 9px; background-color: rgb(249 244 244); " class="twobg1"
-                        [style.color]="Student_Data_d.Color">
-                        {{ Student_Data_d["Department_Status_Name"] }}
-                      </span>
-                    </td>
+                    <span style="white-space: nowrap;  top: 9px; background-color: rgb(249 244 244); " class="twobg1"
+                      [style.color]="Student_Data_d.Color">
+                      {{ Student_Data_d["Department_Status_Name"] }}
+                    </span>
+                  </td>
 
-                    <td class="status-table-data" style="white-space: nowrap;">
+                  <td class="status-table-data" style="white-space: nowrap;">
 
-                      <span style="top: 9px; position: relative;">
-                        {{ Student_Data_d["Enquiry_Source_Name"] }}
-                      </span>
+                    <span style="top: 9px; position: relative;">
+                      {{ Student_Data_d["Enquiry_Source_Name"] }}
+                    </span>
 
-                    </td>
+                  </td>
 
 
-                    <td class="remark-table-data" style="white-space: nowrap;">
-                      <span style="top: 9px; position: relative;">
-                        {{ Student_Data_d["Remark"] }}
-                      </span>
+                  <td class="remark-table-data" style="white-space: nowrap;">
+                    <span style="top: 9px; position: relative;">
+                      {{ Student_Data_d["Remark"] }}
+                    </span>
 
-                    </td>
-                    <td *ngIf="Navbar_Leads_View_Menus === 1" class="department-table-data"
-                      style="white-space:nowrap ;">
+                  </td>
+                  <td *ngIf="Navbar_Leads_View_Menus === 1" class="department-table-data" style="white-space:nowrap ;">
 
-                      <span style="top: 9px; position: relative;">
-                        {{ Student_Data_d["Department_Name"] }}
-                      </span>
+                    <span style="top: 9px; position: relative;">
+                      {{ Student_Data_d["Department_Name"] }}
+                    </span>
 
-                    </td>
-
+                  </td>
 
 
 
-                    <!-- <td   *ngIf="Navbar_Leads_View_Menus === 2" class="department-table-data" style="white-space: nowrap;">
+
+                  <!-- <td   *ngIf="Navbar_Leads_View_Menus === 2" class="department-table-data" style="white-space: nowrap;">
                   
                     <span style="top: 9px; position: relative;">
                       {{ Student_Data_d["Parent_User_Name"] }}
@@ -16063,248 +16063,247 @@
 
 
 
-                    <td class="staff-table-data" style="white-space: nowrap;">
-                      <span style="top: 9px; position: relative;">
+                  <td class="staff-table-data" style="white-space: nowrap;">
+                    <span style="top: 9px; position: relative;">
 
-                        {{ Student_Data_d["User_Details_Name"] }}
-                      </span>
+                      {{ Student_Data_d["User_Details_Name"] }}
+                    </span>
 
-                    </td>
+                  </td>
 
-                    <td class="class-table-data" *ngIf="Enable_Class_Profile" style="white-space: nowrap;">
+                  <td class="class-table-data" *ngIf="Enable_Class_Profile" style="white-space: nowrap;">
 
-                      <span style="top: 9px; position: relative;">
+                    <span style="top: 9px; position: relative;">
 
-                        {{ Student_Data_d["Class_Name"] }}
-                      </span>
-                    </td>
+                      {{ Student_Data_d["Class_Name"] }}
+                    </span>
+                  </td>
 
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div style="width: 50%;
+        </div>
+        <div style="width: 50%;
 justify-content: space-between;
 display: flex;
 ">
-            <div>
-              <label style="padding-top: 0 !important;">Total Follow Ups :<b
-                  style="color: #5f6368 !important; font-size: 15px !important">{{ Data_Count + Missed_Count }}
-                </b>
-                , Missed Follow Ups :
-                <b style="color: #5f6368 !important; font-size: 15px !important">{{
-                  Missed_Count
-                  }}</b></label>
-            </div>
-
-
-            <div class=" buttons-next-previous">
-              <button mat-raised-button type="submit" (click)="previous_Click()"
-                class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
-                style="background: none">
-                <i class="fa fa-chevron-left" aria-hidden="true"
-                  style="color: #5f6368 !important; font-size: 15px !important"></i>
-              </button>
-              <button mat-raised-button type="submit" (click)="Next_Click()"
-                class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
-                style="background: none">
-                <i class="fa fa-chevron-right" aria-hidden="true"
-                  style="color: #5f6368 !important; font-size: 15px !important"></i>
-              </button>
-            </div>
-
+          <div>
+            <label style="padding-top: 0 !important;">Total Follow Ups :<b
+                style="color: #5f6368 !important; font-size: 15px !important">{{ Data_Count + Missed_Count }}
+              </b>
+              , Missed Follow Ups :
+              <b style="color: #5f6368 !important; font-size: 15px !important">{{
+                Missed_Count
+                }}</b></label>
           </div>
 
 
+          <div class=" buttons-next-previous">
+            <button mat-raised-button type="submit" (click)="previous_Click()"
+              class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
+              style="background: none">
+              <i class="fa fa-chevron-left" aria-hidden="true"
+                style="color: #5f6368 !important; font-size: 15px !important"></i>
+            </button>
+            <button mat-raised-button type="submit" (click)="Next_Click()"
+              class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
+              style="background: none">
+              <i class="fa fa-chevron-right" aria-hidden="true"
+                style="color: #5f6368 !important; font-size: 15px !important"></i>
+            </button>
+          </div>
 
         </div>
+
+
+
       </div>
+    </div>
 
 
-      <div *ngIf="isMobileMenu()">
-        <div class="col-md-12 pl-3 pr-3 mt-2" style="border: 1; ">
-          <div class="dt-card mb-0 pb-1">
-            <div class="dt-card__body">
-              <div class="mb-0">
-                <div class="form-row">
-                  <label class="col-md-2 col-lg-1 col-form-label text-sm-right pt-1">Search</label>
-                  <div class="col-md-3 col-sm-3 mb-1 ml-0 pl-1">
-                    <input type="text" [(ngModel)]="Search_Name" name="Search_Name" style="padding-left: 40px"
-                      class="searchtextboxformcontrol" placeholder=" " />
+    <div *ngIf="isMobileMenu()">
+      <div class="col-md-12 pl-3 pr-3 mt-2" style="border: 1; ">
+        <div class="dt-card mb-0 pb-1">
+          <div class="dt-card__body">
+            <div class="mb-0">
+              <div class="form-row">
+                <label class="col-md-2 col-lg-1 col-form-label text-sm-right pt-1">Search</label>
+                <div class="col-md-3 col-sm-3 mb-1 ml-0 pl-1">
+                  <input type="text" [(ngModel)]="Search_Name" name="Search_Name" style="padding-left: 40px"
+                    class="searchtextboxformcontrol" placeholder=" " />
+                </div>
+
+                <div class="col-md-0 col-sm-0">
+                  <button (click)="Create_New()" mat-raised-button type="submit"
+                    class="save-button-style btn-pdng pull-right mr-1">
+                    Create New
+                  </button>
+                  <button style="box-shadow: none" (click)="Search_More_Options()" mat-raised-button type="submit"
+                    class="More_Search_Options btn-info btn-pdng btnflot pull-left mr-1">
+                    <span [hidden]="More_Search_Options">Less Options</span>
+                    <span [hidden]="!More_Search_Options">More Options</span>
+                  </button>
+                  <button (click)="Search_Lead_button()" mat-raised-button type="submit"
+                    class="other-button-style btnflot btn-pdng pull-left mr-1">
+                    Search
+                  </button>
+                </div>
+              </div>
+
+              <div class="row col-12" [hidden]="More_Search_Options">
+                <div class="col-md-4 row">
+                  <label class="col-md-5 col-lg-5 col-form-label text-sm-right"
+                    style="text-align: end;">Department</label>
+                  <div class="col-md-7 col-lg-7 mb-1">
+                    <select [(ngModel)]="Department_Search" class="form-control p-0 pl-1" id="simple-select">
+                      <option *ngFor="let Department_T of Department_Data" [ngValue]="Department_T">
+                        {{ Department_T.Department_Name }}
+                      </option>
+                    </select>
                   </div>
-
-                  <div class="col-md-0 col-sm-0">
-                    <button (click)="Create_New()" mat-raised-button type="submit"
-                      class="save-button-style btn-pdng pull-right mr-1">
-                      Create New
-                    </button>
-                    <button style="box-shadow: none" (click)="Search_More_Options()" mat-raised-button type="submit"
-                      class="More_Search_Options btn-info btn-pdng btnflot pull-left mr-1">
-                      <span [hidden]="More_Search_Options">Less Options</span>
-                      <span [hidden]="!More_Search_Options">More Options</span>
-                    </button>
-                    <button (click)="Search_Lead_button()" mat-raised-button type="submit"
-                      class="other-button-style btnflot btn-pdng pull-left mr-1">
-                      Search
-                    </button>
+                </div>
+                <div class="col-md-4 row">
+                  <label class="col-md-1 col-sm-1 col-form-label text-sm-right">To Staff</label>
+                  <div class="col-md-2 col-sm-2 mb-1">
+                    <select class="form-control p-0 pl-1" [(ngModel)]="User_Search" id="User_" id="simple-select">
+                      <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">
+                        {{ User_T.User_Details_Name }}
+                      </option>
+                    </select>
                   </div>
                 </div>
 
-                <div class="row col-12" [hidden]="More_Search_Options">
-                  <div class="col-md-4 row">
-                    <label class="col-md-5 col-lg-5 col-form-label text-sm-right"
-                      style="text-align: end;">Department</label>
-                    <div class="col-md-7 col-lg-7 mb-1">
-                      <select [(ngModel)]="Department_Search" class="form-control p-0 pl-1" id="simple-select">
-                        <option *ngFor="let Department_T of Department_Data" [ngValue]="Department_T">
-                          {{ Department_T.Department_Name }}
-                        </option>
-                      </select>
-                    </div>
+                <div class="col-md-4 row">
+                  <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Branch</label>
+                  <div class="col-md-2 col-sm-2 mb-1">
+                    <select [(ngModel)]="Search_Branch" class="form-control p-0 pl-1" id="simple-select">
+                      <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">
+                        {{ Branch_T.Branch_Name }}
+                      </option>
+                    </select>
                   </div>
-                  <div class="col-md-4 row">
-                    <label class="col-md-1 col-sm-1 col-form-label text-sm-right">To Staff</label>
-                    <div class="col-md-2 col-sm-2 mb-1">
-                      <select class="form-control p-0 pl-1" [(ngModel)]="User_Search" id="User_" id="simple-select">
-                        <option *ngFor="let User_T of Users_Data" [ngValue]="User_T">
-                          {{ User_T.User_Details_Name }}
-                        </option>
-                      </select>
-                    </div>
+                </div>
+                <div class="col-md-4 row">
+                  <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Status</label>
+                  <div class="col-md-4 col-lg-2 mb-1">
+                    <select [(ngModel)]="Search_Status" class="form-control p-0 pl-1" id="simple-select">
+                      <option *ngFor="let Status_T of Status_Data" [ngValue]="Status_T">
+                        {{ Status_T.Department_Status_Name }}
+                      </option>
+                    </select>
                   </div>
-
-                  <div class="col-md-4 row">
-                    <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Branch</label>
-                    <div class="col-md-2 col-sm-2 mb-1">
-                      <select [(ngModel)]="Search_Branch" class="form-control p-0 pl-1" id="simple-select">
-                        <option *ngFor="let Branch_T of Branch_Data" [ngValue]="Branch_T">
-                          {{ Branch_T.Branch_Name }}
-                        </option>
-                      </select>
-                    </div>
+                </div>
+                <div class="col-md-4 row">
+                  <label class="col-md-2 col-lg-1 col-form-label text-sm-right">Enrolled
+                  </label>
+                  <div class="col-md-2 col-sm-2 mb-1">
+                    <select [(ngModel)]="Is_Registered" class="form-control p-0 pl-1" id="simple-select">
+                      <option value="1">
+                        All <i class="fa fa-caret-down" aria-hidden="true"></i>
+                      </option>
+                      <option value="2">
+                        Yes <i class="fa fa-caret-down" aria-hidden="true"></i>
+                      </option>
+                      <option value="3">
+                        No <i class="fa fa-caret-down" aria-hidden="true"></i>
+                      </option>
+                    </select>
                   </div>
-                  <div class="col-md-4 row">
-                    <label class="col-md-2 col-sm-2 col-form-label text-sm-right">Status</label>
-                    <div class="col-md-4 col-lg-2 mb-1">
-                      <select [(ngModel)]="Search_Status" class="form-control p-0 pl-1" id="simple-select">
-                        <option *ngFor="let Status_T of Status_Data" [ngValue]="Status_T">
-                          {{ Status_T.Department_Status_Name }}
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-4 row">
-                    <label class="col-md-2 col-lg-1 col-form-label text-sm-right">Enrolled
-                    </label>
-                    <div class="col-md-2 col-sm-2 mb-1">
-                      <select [(ngModel)]="Is_Registered" class="form-control p-0 pl-1" id="simple-select">
-                        <option value="1">
-                          All <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        </option>
-                        <option value="2">
-                          Yes <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        </option>
-                        <option value="3">
-                          No <i class="fa fa-caret-down" aria-hidden="true"></i>
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-4 row">
+                </div>
+                <div class="col-md-4 row">
 
 
-                    <label class="col-md-0 col-sm-0 ml-1 col-form-label text-sm-right x-tra-label">FollowUp</label>
-                    <div class="col-md-0 col-sm-0 mb-1">
-                      <div _ngcontent-xmy-c9="" class="checkbox-to-crect-sales-search-section">
-                        <div _ngcontent-xmy-c9="" class="form-check uper-dte-lbel-sales-sctn-new pl-0">
-                          <label _ngcontent-xmy-c9="" class="form-check-label">
-                            <input type="checkbox" class="form-check-input" name="Date_checks"
-                              [(ngModel)]="Look_In_Date" />
-                            <span _ngcontent-xmy-c9="" class="form-check-sign"><span _ngcontent-xmy-c9="" class="check">
-                              </span>
+                  <label class="col-md-0 col-sm-0 ml-1 col-form-label text-sm-right x-tra-label">FollowUp</label>
+                  <div class="col-md-0 col-sm-0 mb-1">
+                    <div _ngcontent-xmy-c9="" class="checkbox-to-crect-sales-search-section">
+                      <div _ngcontent-xmy-c9="" class="form-check uper-dte-lbel-sales-sctn-new pl-0">
+                        <label _ngcontent-xmy-c9="" class="form-check-label">
+                          <input type="checkbox" class="form-check-input" name="Date_checks"
+                            [(ngModel)]="Look_In_Date" />
+                          <span _ngcontent-xmy-c9="" class="form-check-sign"><span _ngcontent-xmy-c9="" class="check">
                             </span>
-                          </label>
-                        </div>
-                        <!-- <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Followup</label> -->
+                          </span>
+                        </label>
                       </div>
+                      <!-- <label class="col-md-1 col-sm-1 col-form-label text-sm-right">Followup</label> -->
                     </div>
                   </div>
+                </div>
 
-                  <div class="col-md-4 row">
+                <div class="col-md-4 row">
 
-                    <label class="col-md-1 col-sm-1 col-form-label text-sm-right">From</label>
-                    <div class="col-md-3 col-lg-2 mb-1">
-                      <!-- <input type="date" class="form-control p-0 pl-1" placeholder="From"[(ngModel)]="Search_FromDate" name="Search_FromDate" > -->
-                      <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
-                        style="padding-top: 12px !important">
-                        <input matInput [matDatepicker]="dp19" placeholder="" [(ngModel)]="Search_FromDate"
-                          name="Search_FromDate" />
-                        <mat-datepicker-toggle matSuffix [for]="dp19"></mat-datepicker-toggle>
-                        <mat-datepicker #dp19></mat-datepicker>
-                      </mat-form-field>
-                    </div>
+                  <label class="col-md-1 col-sm-1 col-form-label text-sm-right">From</label>
+                  <div class="col-md-3 col-lg-2 mb-1">
+                    <!-- <input type="date" class="form-control p-0 pl-1" placeholder="From"[(ngModel)]="Search_FromDate" name="Search_FromDate" > -->
+                    <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
+                      style="padding-top: 12px !important">
+                      <input matInput [matDatepicker]="dp19" placeholder="" [(ngModel)]="Search_FromDate"
+                        name="Search_FromDate" />
+                      <mat-datepicker-toggle matSuffix [for]="dp19"></mat-datepicker-toggle>
+                      <mat-datepicker #dp19></mat-datepicker>
+                    </mat-form-field>
                   </div>
-                  <div class="col-md-4 row">
+                </div>
+                <div class="col-md-4 row">
 
-                    <label class="col-md-1 col-sm-1 col-form-label text-sm-right">To</label>
-                    <div class="col-md-3 col-lg-2 mb-1">
-                      <!-- <input type="date" class="form-control p-0 pl-1" placeholder="To"  [(ngModel)]="Search_ToDate" name="Search_ToDate"> -->
-                      <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
-                        style="padding-top: 12px !important">
-                        <input matInput [matDatepicker]="dpdate05" placeholder="" [(ngModel)]="Search_ToDate"
-                          name="Search_ToDate" />
-                        <mat-datepicker-toggle matSuffix [for]="dpdate05"></mat-datepicker-toggle>
-                        <mat-datepicker #dpdate05></mat-datepicker>
-                      </mat-form-field>
+                  <label class="col-md-1 col-sm-1 col-form-label text-sm-right">To</label>
+                  <div class="col-md-3 col-lg-2 mb-1">
+                    <!-- <input type="date" class="form-control p-0 pl-1" placeholder="To"  [(ngModel)]="Search_ToDate" name="Search_ToDate"> -->
+                    <mat-form-field class="form-control mrgn-crct-input-text-div-tre-prt-sles1"
+                      style="padding-top: 12px !important">
+                      <input matInput [matDatepicker]="dpdate05" placeholder="" [(ngModel)]="Search_ToDate"
+                        name="Search_ToDate" />
+                      <mat-datepicker-toggle matSuffix [for]="dpdate05"></mat-datepicker-toggle>
+                      <mat-datepicker #dpdate05></mat-datepicker>
+                    </mat-form-field>
 
-                      <!--// <mat-form-field > -->
-                      <!-- <input matInput  class="form-control"  [matDatepicker]="dpToDate" placeholder="" [(ngModel)]="Search_ToDate" name="Search_ToDate">
+                    <!--// <mat-form-field > -->
+                    <!-- <input matInput  class="form-control"  [matDatepicker]="dpToDate" placeholder="" [(ngModel)]="Search_ToDate" name="Search_ToDate">
                                     <mat-datepicker-toggle matSuffix [for]="dpToDate"></mat-datepicker-toggle>
                                     <mat-datepicker #dpToDate></mat-datepicker> -->
-                      <!-- </mat-form-field> //-->
-                    </div>
+                    <!-- </mat-form-field> //-->
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="col-md-12 pl-0 pr-0" [style.height.px]="myInnerHeight" itemSize="90">
-          <div class="dt-module__content ps-custom-scrollbar">
-            <div class="card-body set-height-scroll-bar-wole-block">
-              <div class="card horizontal mb-1 mt-0 pt-1 pb-1"
-                *ngFor="let Student_Data_d of Student_Data; let i = index">
-                <div class="card-stacked">
-                  <div class="card-body pb-0 pt-1">
+      <div class="col-md-12 pl-0 pr-0" [style.height.px]="myInnerHeight" itemSize="90">
+        <div class="dt-module__content ps-custom-scrollbar">
+          <div class="card-body set-height-scroll-bar-wole-block">
+            <div class="card horizontal mb-1 mt-0 pt-1 pb-1" *ngFor="let Student_Data_d of Student_Data; let i = index">
+              <div class="card-stacked">
+                <div class="card-body pb-0 pt-1">
+                  <div class="d-flex flex-wrap mb-0">
+                    <!-- <div class="pr-3"><span class="text-dark"><h4><b>{{Student_Data_d["Student_Name"]}}</b></h4></span></div> -->
                     <div class="d-flex flex-wrap mb-0">
-                      <!-- <div class="pr-3"><span class="text-dark"><h4><b>{{Student_Data_d["Student_Name"]}}</b></h4></span></div> -->
-                      <div class="d-flex flex-wrap mb-0">
-                        <span class="icon-background">
-                          <mat-icon class="text-light-blue small">perm_identity</mat-icon></span>
-                        <div class="pr-3 pt-0">
-                          <span class="text-dark-new pl-1 icon-pointer" (click)="Edit_Student(Student_Data_d, i, 1)">{{
-                            Student_Data_d["Student_Name"] }}</span>
-                        </div>
-                        <!-- <div class="pr-3"><span class="text-dark"><h4><b>{{Student_Data_d["Phone_Number"]}}</b></h4></span></div>  class=" text-dark"-->
-
-                        <div class="pr-3 pt-0">
-                          <span class="icon-background1"><mat-icon
-                              class="text-green small">call_end</mat-icon></span><span class="text-dark pl-1">{{
-                            Student_Data_d["Phone_Number"]
-                            }}</span>
-                        </div>
+                      <span class="icon-background">
+                        <mat-icon class="text-light-blue small">perm_identity</mat-icon></span>
+                      <div class="pr-3 pt-0">
+                        <span class="text-dark-new pl-1 icon-pointer" (click)="Edit_Student(Student_Data_d, i, 1)">{{
+                          Student_Data_d["Student_Name"] }}</span>
                       </div>
-                      <div class="d-flex flex-wrap mb-0 pb-1">
-                        <div class="pr-3">
-                          Next FollowUp:
-                          <span [ngClass]="{
+                      <!-- <div class="pr-3"><span class="text-dark"><h4><b>{{Student_Data_d["Phone_Number"]}}</b></h4></span></div>  class=" text-dark"-->
+
+                      <div class="pr-3 pt-0">
+                        <span class="icon-background1"><mat-icon
+                            class="text-green small">call_end</mat-icon></span><span class="text-dark pl-1">{{
+                          Student_Data_d["Phone_Number"]
+                          }}</span>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-wrap mb-0 pb-1">
+                      <div class="pr-3">
+                        Next FollowUp:
+                        <span [ngClass]="{
                             Four: Student_Data_d.tp === 1,
                             three: Student_Data_d.tp === 2
                           }" [hidden]="Student_Data_d.FollowUp == 0">{{ Student_Data_d["Next_FollowUp_Date"] }}</span>
-                        </div>
-                        <button type="button" (click)="
+                      </div>
+                      <button type="button" (click)="
                           New_Followup(
                             Student_Data_d['Student_Id'],
                             Student_Data_d['Student_Name'],
@@ -16314,55 +16313,55 @@ display: flex;
                             2
                           )
                         " class="btn3 infos mr-1 mb-1 mt-0">
-                          Add FollowUp
-                        </button>
-                        <div class="pr-3">
-                          Remark:
-                          <span class="text-dark">
-                            {{ Student_Data_d["Remark"] }}</span>
-                        </div>
-
-                        <!-- <button (click)="Search_More_Options1()" mat-raised-button type="submit" class="btn btn-danger pull-right mr-1">+</button> -->
+                        Add FollowUp
+                      </button>
+                      <div class="pr-3">
+                        Remark:
+                        <span class="text-dark">
+                          {{ Student_Data_d["Remark"] }}</span>
                       </div>
 
-                      <!-- btn-new btn-outline-success mr-1 mb-1 mt-0 icon-button-style   -->
-                      <span class="text-dark-new pl-1 icon-pointer" (click)="Search_More_Options1(Student_Data_d)">
-                        <span *ngIf="Student_Data_d.more_info">View Less </span>
-                        <span *ngIf="!Student_Data_d.more_info">View More</span>
-                      </span>
+                      <!-- <button (click)="Search_More_Options1()" mat-raised-button type="submit" class="btn btn-danger pull-right mr-1">+</button> -->
                     </div>
 
-                    <div *ngIf="Student_Data_d.more_info">
-                      <div class="d-flex flex-wrap mb-1">
-                        <div class="pr-3">
-                          Branch :
-                          <span class="text-dark">{{
-                            Student_Data_d["Branch_Name"]
-                            }}</span>
-                        </div>
-                        <div class="pr-3">
-                          Department :
-                          <span class="text-dark">{{
-                            Student_Data_d["Department_Name"]
-                            }}</span>
-                        </div>
-                        <div class="pr-3">
-                          Status :
-                          <span class="text-dark corners">{{
-                            Student_Data_d["Department_Status_Name"]
-                            }}</span>
-                        </div>
-                        <div class="pr-3">
-                          Assigned to :
-                          <span class="text-dark">{{
-                            Student_Data_d["User_Details_Name"]
-                            }}</span>
-                        </div>
-                        <!-- <div class="pr-3">Department Status : <span >{{Student_Data_d["Department_Status_Name"]}}</span></div>  -->
+                    <!-- btn-new btn-outline-success mr-1 mb-1 mt-0 icon-button-style   -->
+                    <span class="text-dark-new pl-1 icon-pointer" (click)="Search_More_Options1(Student_Data_d)">
+                      <span *ngIf="Student_Data_d.more_info">View Less </span>
+                      <span *ngIf="!Student_Data_d.more_info">View More</span>
+                    </span>
+                  </div>
+
+                  <div *ngIf="Student_Data_d.more_info">
+                    <div class="d-flex flex-wrap mb-1">
+                      <div class="pr-3">
+                        Branch :
+                        <span class="text-dark">{{
+                          Student_Data_d["Branch_Name"]
+                          }}</span>
                       </div>
+                      <div class="pr-3">
+                        Department :
+                        <span class="text-dark">{{
+                          Student_Data_d["Department_Name"]
+                          }}</span>
+                      </div>
+                      <div class="pr-3">
+                        Status :
+                        <span class="text-dark corners">{{
+                          Student_Data_d["Department_Status_Name"]
+                          }}</span>
+                      </div>
+                      <div class="pr-3">
+                        Assigned to :
+                        <span class="text-dark">{{
+                          Student_Data_d["User_Details_Name"]
+                          }}</span>
+                      </div>
+                      <!-- <div class="pr-3">Department Status : <span >{{Student_Data_d["Department_Status_Name"]}}</span></div>  -->
                     </div>
+                  </div>
 
-                    <!-- <div  class="mt-0 mb-0">
+                  <!-- <div  class="mt-0 mb-0">
                                     <button type="button"  (click)="New_Followup(Student_Data_d['Student_Id'],Student_Data_d['Student_Name'],i)" class="btn-new btn-outline-success mr-1 mb-1 mt-0 icon-button-style">Add Followup</button>
                                     <span class="text-dark-new  pl-1 icon-pointer " (click)="Search_More_Options1(Student_Data_d)">
                                         <span *ngIf='Student_Data_d.more_info'>View Less </span>
@@ -16370,122 +16369,122 @@ display: flex;
                                 </span>
             
                             </div> -->
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="form-group">
-            <div class="col-md-12" style="text-align: center">
-              <button mat-raised-button type="submit" (click)="previous_Click()"
-                class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
-                style="background: none">
-                <i class="fa fa-chevron-left" aria-hidden="true" style="color: #5f6368"></i>
-              </button>
-              <button mat-raised-button type="submit" (click)="Next_Click()"
-                class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
-                style="background: none">
-                <i class="fa fa-chevron-right" aria-hidden="true" style="color: #5f6368"></i>
-              </button>
-            </div>
-          </div>
-
         </div>
+        <div class="form-group">
+          <div class="col-md-12" style="text-align: center">
+            <button mat-raised-button type="submit" (click)="previous_Click()"
+              class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
+              style="background: none">
+              <i class="fa fa-chevron-left" aria-hidden="true" style="color: #5f6368"></i>
+            </button>
+            <button mat-raised-button type="submit" (click)="Next_Click()"
+              class="btn btn-danger change-colour-button buttons-next-previous-edit-portion p-2"
+              style="background: none">
+              <i class="fa fa-chevron-right" aria-hidden="true" style="color: #5f6368"></i>
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
+</div>
 
-  <div class="col-md-12 pr-0 pl-0" id="Historydiv" *ngIf="Historydiv">
-    <div class="container-fluidprofile">
-      <div class="dt-card mt-2" style="margin-top: 85px !important">
-        <div class="dt-card__header">
-          <div class="dt-card__heading">
-            <h3>
-              <i class="icon icon-users icon-fw icon-lg material-icons mr-2" style="color: #586ae9">
-                history </i><b style="
+<div class="col-md-12 pr-0 pl-0" id="Historydiv" *ngIf="Historydiv">
+  <div class="container-fluidprofile">
+    <div class="dt-card mt-2" style="margin-top: 85px !important">
+      <div class="dt-card__header">
+        <div class="dt-card__heading">
+          <h3>
+            <i class="icon icon-users icon-fw icon-lg material-icons mr-2" style="color: #586ae9">
+              history </i><b style="
                 margin-bottom: 20px;
                 margin-bottom: 20px;
                 color: #4b5cd5;
                 font-weight: 600;
               ">Task History of
-              </b>
-              <b style="
+            </b>
+            <b style="
                 margin-bottom: 20px;
                 margin-bottom: 20px;
                 color: #4b5cd5;
                 font-weight: 600;
               ">{{ student_name }} -</b>
 
-              <b style="
+            <b style="
                 margin-bottom: 20px;
                 margin-bottom: 20px;
                 color: #4b5cd5;
                 font-weight: 600;
               ">{{ to_user_name }}</b>
-            </h3>
-            <div class="mb-2"></div>
-            <hr class="lineheader" />
-          </div>
+          </h3>
+          <div class="mb-2"></div>
+          <hr class="lineheader" />
         </div>
-        <div class="dt-card__body">
-          <div class="mb-0">
-            <div class="dt-module__content ps-custom-scrollbar" style="overflow-y: scroll"
-              [style.height.px]="myHeightsubthree">
-              <div class="card-body set-height-scroll-bar-wole-block">
-                <div class="card-stacked mb-2 mt-2" *ngFor="let History of Student_Task_Data; let i = index"
-                  style="width: 100% !important">
-                  <div class="card-body pb-0 pt-1">
-                    <div class="d-flex flex-wrap mb-0">
-                      <div class="d-flex flex-wrap mb-1">
-                        <div class="pr-3">
-                          <span>
-                            <mat-icon class="icon-backgroundfollowup no-curs mr-1 text-purple small"
-                              style="margin-top: -1px">date_range</mat-icon></span>
-                        </div>
+      </div>
+      <div class="dt-card__body">
+        <div class="mb-0">
+          <div class="dt-module__content ps-custom-scrollbar" style="overflow-y: scroll"
+            [style.height.px]="myHeightsubthree">
+            <div class="card-body set-height-scroll-bar-wole-block">
+              <div class="card-stacked mb-2 mt-2" *ngFor="let History of Student_Task_Data; let i = index"
+                style="width: 100% !important">
+                <div class="card-body pb-0 pt-1">
+                  <div class="d-flex flex-wrap mb-0">
+                    <div class="d-flex flex-wrap mb-1">
+                      <div class="pr-3">
+                        <span>
+                          <mat-icon class="icon-backgroundfollowup no-curs mr-1 text-purple small"
+                            style="margin-top: -1px">date_range</mat-icon></span>
+                      </div>
 
-                        <!-- <div>
+                      <!-- <div>
                       <span
                         class="text-dark"
                         style="width: 150px; margin-left: -19px"
                         >{{ History["Entry_Caption"] }}:</span
                       >
                     </div> -->
-                        <div class="pr-3 history-width" style="margin-left: 18px">
-                          FollowUp On:<span class="text-dark">{{
-                            History["Followup_Date"]
-                            }}</span>
-                        </div>
+                      <div class="pr-3 history-width" style="margin-left: 18px">
+                        FollowUp On:<span class="text-dark">{{
+                          History["Followup_Date"]
+                          }}</span>
+                      </div>
 
-                        <div class="pr-3 history-width" style="margin-left: 18px">
-                          User:<span class="text-dark">{{
-                            History["To_User_Name"]
-                            }}</span>
-                        </div>
-                        <div class="pr-3 history-width" style="margin-left: 18px">
-                          Entry Date:<span class="text-dark">{{
-                            History["Entry_Date"]
-                            }}</span>
-                        </div>
+                      <div class="pr-3 history-width" style="margin-left: 18px">
+                        User:<span class="text-dark">{{
+                          History["To_User_Name"]
+                          }}</span>
+                      </div>
+                      <div class="pr-3 history-width" style="margin-left: 18px">
+                        Entry Date:<span class="text-dark">{{
+                          History["Entry_Date"]
+                          }}</span>
+                      </div>
 
-                        <div class="pr-3 history-width" style="margin-left: 18px">
-                          Remark:<span class="text-dark">{{
-                            History["Remark"]
-                            }}</span>
-                        </div>
-                        <div class="pr-3 history-width" style="margin-left: 18px">
-                          Status:
-                          <span class="text-dark">{{
-                            History["Status_Name"]
-                            }}</span>
-                        </div>
+                      <div class="pr-3 history-width" style="margin-left: 18px">
+                        Remark:<span class="text-dark">{{
+                          History["Remark"]
+                          }}</span>
+                      </div>
+                      <div class="pr-3 history-width" style="margin-left: 18px">
+                        Status:
+                        <span class="text-dark">{{
+                          History["Status_Name"]
+                          }}</span>
+                      </div>
 
-                        <div class="pr-3 history-width" style="margin-left: 18px">
-                          Task Details:
-                          <span class="text-dark">{{
-                            History["Task_Details"]
-                            }}</span>
-                        </div>
-                        <!-- <div
+                      <div class="pr-3 history-width" style="margin-left: 18px">
+                        Task Details:
+                        <span class="text-dark">{{
+                          History["Task_Details"]
+                          }}</span>
+                      </div>
+                      <!-- <div
                       class="pr-3 history-width"
                       style="margin-left: 18px"
                     >
@@ -16494,9 +16493,8 @@ display: flex;
                         History["Student_Name"]
                       }}</span>
                     </div> -->
-                      </div>
-                      <div></div>
                     </div>
+                    <div></div>
                   </div>
                 </div>
               </div>
@@ -16504,41 +16502,42 @@ display: flex;
           </div>
         </div>
       </div>
-      <div class="form-row">
-        <div class="col-12">
-          <button class="other-button-style btnflot pull-right mr-1" style="height: 33px !important"
-            (click)="Close_History()" type="submit" style="background-color: red">
-            Close
-          </button>
-        </div>
+    </div>
+    <div class="form-row">
+      <div class="col-12">
+        <button class="other-button-style btnflot pull-right mr-1" style="height: 33px !important"
+          (click)="Close_History()" type="submit" style="background-color: red">
+          Close
+        </button>
       </div>
     </div>
   </div>
+</div>
 
 
 
-  <div class="col-md-12" style="margin-left: 50% !important; top: 25%; border: 1px solid lightgrey" *ngIf="preview_div">
-    <!-- <div *ngIf="!selectedPdfPreview &&pdfload"> <p class="text-muted">No Preview</p> </div> -->
-    <div *ngIf="!selectedPdfPreview && pdfload">
-      <p class="text-muted"></p>
-    </div>
-
-    <div *ngIf="!pdfload" class="overlay" style="margin-top: 50%; margin-left: 46%; background-color: transparent"
-      [style.left.px]="spinleft">
-      <!-- <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value"> </mat-progress-spinner> -->
-      <img src="/assets/img/spinner.gif" width="100px" />
-    </div>
-
-    <embed [src]="selectedPdfPreview" [style.height.px]="460" (error)="handlePdfError()" class="pdfview-section"
-      *ngIf="pdfload && selectedPdfPreview" class="pdf-content" />
-
-    <!-- Close button -->
-    <!-- <button  class="close-button" (click)="closePdfPreview()">Close</button> -->
-
-    <span class="icon-background3 mr-1" (click)="closePdfPreview()">
-      <mat-icon class="text-red small">close</mat-icon></span>
+<div class="col-md-12" style="margin-left: 50% !important; top: 25%; border: 1px solid lightgrey" *ngIf="preview_div">
+  <!-- <div *ngIf="!selectedPdfPreview &&pdfload"> <p class="text-muted">No Preview</p> </div> -->
+  <div *ngIf="!selectedPdfPreview && pdfload">
+    <p class="text-muted"></p>
   </div>
 
-  <!-- Added on 13-06-2024 -->
+  <div *ngIf="!pdfload" class="overlay" style="margin-top: 50%; margin-left: 46%; background-color: transparent"
+    [style.left.px]="spinleft">
+    <!-- <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value"> </mat-progress-spinner> -->
+    <img src="/assets/img/spinner.gif" width="100px" />
+  </div>
 
-  <!--- -->
+  <embed [src]="selectedPdfPreview" [style.height.px]="460" (error)="handlePdfError()" class="pdfview-section"
+    *ngIf="pdfload && selectedPdfPreview" class="pdf-content" />
+
+  <!-- Close button -->
+  <!-- <button  class="close-button" (click)="closePdfPreview()">Close</button> -->
+
+  <span class="icon-background3 mr-1" (click)="closePdfPreview()">
+    <mat-icon class="text-red small">close</mat-icon></span>
+</div>
+
+<!-- Added on 13-06-2024 -->
+
+<!--- -->
